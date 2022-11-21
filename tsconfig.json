@@ -4,6 +4,8 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
+    "sourceMap": true,
+    "outDir": "dist",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,

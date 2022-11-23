@@ -10,29 +10,32 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 model User {
-  id        Int @id @default(autoincrement())
-  email     String @unique
+  id        Int     @id @default(autoincrement())
+  email     String  @unique
   password  String
-  username  String @unique
+  username  String  @unique
   active    Boolean @default(true)
-  role      Role @default(GUEST) 
+  role      Role    @default(GUEST)
+  sales     Sale[]
 }
 
 model Sale {
-  id      Int       @id @default(autoincrement())
-  total   Int
-  date    DateTime
-  state   Boolean
-  //user    User      @relation(fields: [userId], references: [id])
-  //userId  Int
+  id          Int           @id @default(autoincrement())
+  total       Int   
+  date        DateTime    
+  state       State         @default(PENDING)
+  user        User          @relation(fields: [userId], references: [id])
+  userId      Int   
+  saleDetails SaleDetail[]
 }
 
-model saleDetails {
-  id Int @id @default(autoincrement())
-  amount Int
-  price Int
-  idProduct String
-  //sales Sale[]
+model SaleDetail {
+  id        Int     @id @default(autoincrement())
+  amount    Int     
+  price     Int     
+  idProduct String  
+  sale      Sale    @relation(fields: [saleId], references: [id])
+  saleId    Int     
 }
 
 enum Role {
@@ -40,4 +43,10 @@ enum Role {
   USER
   MOD
   ADMIN
+}
+
+enum State {
+  PENDING
+  SUCCESSFULLY
+  FAILURE
 }

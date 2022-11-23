@@ -16,6 +16,7 @@ export default function NavBar() {
                 <Link href="/about">
                     About
                 </Link>
+                {/* falta agregar boton de carrito */}
             </div>
         </nav>
     );

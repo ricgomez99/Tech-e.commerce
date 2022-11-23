@@ -1,12 +1,16 @@
 export async function postProduct(data: BodyInit) {
-  const request = await fetch(
-    "https://techproductsshop-production.up.railway.app/products",
-    {
-      method: "POST",
-      body: data,
-    }
-  );
-  return request.json();
+  try {
+    const request = await fetch(
+      "https://techproductsshop-production.up.railway.app/products",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+    return request.json();
+  } catch (error) {
+    return error;
+  }
 }
 
 export async function idProduct(id: string) {
@@ -18,6 +22,7 @@ export async function idProduct(id: string) {
   } catch (error) {
     return error;
   }
+
 }
 
 export async function nameProduct(name: string) {
@@ -28,3 +33,14 @@ export async function nameProduct(name: string) {
     return error;
   }
 }
+
+}
+
+export async function getCategories() {
+    try{const request = await fetch("https://techproductsshop-production.up.railway.app/categories")
+        return  request.json();
+    } catch(error){
+      return error
+    }
+}
+

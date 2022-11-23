@@ -15,32 +15,33 @@ export async function postProduct(data: BodyInit) {
 
 export async function idProduct(id: string) {
   try {
-    const json = fetch(
+    const request = fetch(
       `https://techproductsshop-production.up.railway.app/${id}`
     );
-    return (await json).json();
+    return (await request).json();
   } catch (error) {
     return error;
   }
-
 }
 
 export async function nameProduct(name: string) {
   try {
-    const json = await fetch(`https://techproductsshop-production.up.railway.app?title=${name}`)
-    return json.json();
+    const request = await fetch(
+      `https://techproductsshop-production.up.railway.app?title=${name}`
+    );
+    return request.json();
   } catch (error) {
     return error;
   }
 }
 
-}
-
 export async function getCategories() {
-    try{const request = await fetch("https://techproductsshop-production.up.railway.app/categories")
-        return  request.json();
-    } catch(error){
-      return error
-    }
+  try {
+    const request = await fetch(
+      "https://techproductsshop-production.up.railway.app/categories"
+    );
+    return request.json();
+  } catch (error) {
+    return error;
+  }
 }
-

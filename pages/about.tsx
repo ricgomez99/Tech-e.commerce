@@ -1,7 +1,15 @@
+import Layout from "../components/layout";
+import Footer from "../components/footer";
+
 export default function About() {
     return(
-        <div>
-            <h1>About component</h1>
-        </div>
+        <Layout>
+            <div>
+                <h1>About component</h1>
+            </div>
+            <div>
+                <Footer />
+            </div>
+        </Layout>
     );
 };

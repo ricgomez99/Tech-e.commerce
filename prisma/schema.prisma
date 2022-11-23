@@ -17,3 +17,10 @@ model saleDetails {
   idProduct String
   // idSale Sale[]
 }
+
+enum Role {
+  GUEST
+  USER
+  MOD
+  ADMIN
+}

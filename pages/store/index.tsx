@@ -8,7 +8,7 @@ type Data = {
 export default function Index({ products }: Data) {
   return (
     <Layout>
-      <h1>Here all the products, Home Page</h1>
+      <h1>Store page</h1>
       <div>
         {products &&
           products.map((product: any) => (

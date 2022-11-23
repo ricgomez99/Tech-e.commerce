@@ -18,6 +18,14 @@ model User {
   role      Role @default(GUEST)
 }
 
+model saleDetails {
+  id Int @id @default(autoincrement())
+  amount Int
+  price Int
+  idProduct String
+  // idSale Sale[]
+}
+
 enum Role {
   GUEST
   USER

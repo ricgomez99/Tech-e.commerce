@@ -22,7 +22,20 @@ export async function idProduct(id: string) {
   } catch (error) {
     return error;
   }
+
 }
+
+export async function nameProduct(name: string) {
+  try {
+    const json = await fetch(`https://techproductsshop-production.up.railway.app?title=${name}`)
+    return json.json();
+  } catch (error) {
+    return error;
+  }
+}
+
+}
+
 export async function getCategories() {
     try{const request = await fetch("https://techproductsshop-production.up.railway.app/categories")
         return  request.json();
@@ -30,3 +43,4 @@ export async function getCategories() {
       return error
     }
 }
+

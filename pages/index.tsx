@@ -1,25 +1,25 @@
 import Head from "next/head";
 //import Image from "next/image";
 import styles from "../styles/Home.module.css";
-// import Layout from "../components/layout.tsx";
-// import Footer from "../components/footer.tsx";
+import Layout from "../components/layout";
+import Footer from "../components/footer";
 
 export default function Home() {
   return (
-    // <Layout>
-    <div className={styles.main}>
-      <div>
+    <Layout>
+      <div className={styles.main}>
         <div>
-          <div>Info de la landing</div>
-          <div>Imagen</div>
+          <div>
+            <div>Info de la landing</div>
+            <div>Imagen</div>
+          </div>
+          <button className={styles.card}>Get Started</button>
+          <div>Carrusel de productos?</div>
+          <div>Carrusel de imagenes</div>
+          <button className={styles.card}>Get Offer</button>
         </div>
-        <button className={styles.card}>Get Started</button>
-        <div>Carrusel de productos?</div>
-        <div>Carrusel de imagenes</div>
-        <button className={styles.card}>Get Offer</button>
+        <Footer />
       </div>
-      {/* <Footer/> */}
-    </div>
-    // </Layout>
+    </Layout>
   );
 }

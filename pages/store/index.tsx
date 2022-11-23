@@ -1,4 +1,5 @@
 import { getProducts } from "../../services/productService";
+import Layout from "./../../components/layout";
 
 type Data = {
   products: any[];
@@ -6,7 +7,7 @@ type Data = {
 
 export default function Index({ products }: Data) {
   return (
-    <div>
+    <Layout>
       <h1>Here all the products, Home Page</h1>
       <div>
         {products &&
@@ -14,7 +15,7 @@ export default function Index({ products }: Data) {
             <li key={product.id}>{product.title}</li>
           ))}
       </div>
-    </div>
+    </Layout>
   );
 }
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
-//import style from "../styles/menu.module.css";
+//import style from "../styles/navBar.module.css";
 
-export default function Navbar() {
+export default function NavBar() {
 
     return (
         <nav>

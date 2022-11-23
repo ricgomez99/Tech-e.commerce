@@ -12,12 +12,11 @@ export default function Footer(){
 
         <Link href='/about' >About</Link> 
 
-        <Link href='https://github.com/ricgomez99/Tech-e.commerce'> 
+        <a href='https://github.com/ricgomez99/Tech-e.commerce'> 
         <Image src={githubLogo} alt="img" width={48} height={48}></Image>
-        </Link>
-        
+        </a>
+
       </footer>
     </div>
   )
 }
-{/* <Link href='https://github.com/ricgomez99/Tech-e.commerce' /> */}

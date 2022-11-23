@@ -4,7 +4,7 @@ type Data = {
   products: any[];
 };
 
-export default function IndexStore({ products }: Data) {
+export default function Index({ products }: Data) {
   return (
     <div>
       <h1>Here all the products, Home Page</h1>

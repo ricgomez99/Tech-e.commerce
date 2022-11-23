@@ -15,7 +15,7 @@ model User {
   password  String
   username  String @unique
   active    Boolean @default(true)
-  role      Role @default(GUEST)
+  role      Role @default(GUEST) 
 }
 
 model saleDetails {

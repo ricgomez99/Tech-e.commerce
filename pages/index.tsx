@@ -10,18 +10,15 @@ export default function Home() {
     <div className={styles.main}>
       <div>
         <div>
-          <h1>Info de la landing</h1>
-          <h1>Imagen</h1>
+          <div>Info de la landing</div>
+          <div>Imagen</div>
         </div>
         <button className={styles.card}>Get Started</button>
         <div>Carrusel de productos?</div>
-        <h1>Carrusel de imagenes</h1>
+        <div>Carrusel de imagenes</div>
         <button className={styles.card}>Get Offer</button>
       </div>
       {/* <Footer/> */}
-      <footer className={styles.footer}>
-        El footer que hizo Felipe
-      </footer>
     </div>
     // </Layout>
   );

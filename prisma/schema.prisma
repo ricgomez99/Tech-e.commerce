@@ -10,12 +10,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Sale {
+  id      Int       @id @default(autoincrement())
+  total   Int
+  date    DateTime
+  state   Boolean
+  //user    User      @relation(fields: [userId], references: [id])
+  //userId  Int
+}
+
 model saleDetails {
   id Int @id @default(autoincrement())
   amount Int
   price Int
   idProduct String
-  // idSale Sale[]
+  //sales Sale[]
 }
 
 enum Role {

@@ -8,10 +8,10 @@ export default function Navbar() {
             <div>
                 <h1>La NAVBAR va aquí, links finales pendientes</h1>
                 <Link href="/">
-                    Landing
-                </Link>
-                <Link href="/home">
                     Home
+                </Link>
+                <Link href="/store">
+                    Store
                 </Link>
                 <Link href="/about">
                     About

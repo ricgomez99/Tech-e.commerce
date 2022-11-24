@@ -10,7 +10,9 @@ export default function Home() {
       <div className={styles.main}>
         <div>
           <div>
-            <div>Info de la landing</div>
+            <div>
+              <h1>Welcome to the Landing page!</h1>
+            </div>
             <div>Imagen</div>
           </div>
           <button className={styles.card}>Get Started</button>

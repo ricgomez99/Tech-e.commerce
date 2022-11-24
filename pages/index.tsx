@@ -20,8 +20,8 @@ export default function Home() {
           <div>Carrusel de imagenes</div>
           <button className={styles.card}>Get Offer</button>
         </div>
-        <Footer />
       </div>
+        <Footer />
     </Layout>
   );
 }

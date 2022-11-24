@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { getSession, signOut } from "next-auth/react"
 import { useRouter } from "next/router";
-import SingInModal from "../pages/signinmodal";
+import SignInModal from "../pages/signinmodal";
 
 import styles from "../styles/navbar.module.css"
 
@@ -72,7 +72,7 @@ const Navbar = ({session}: any) => {
                     {/* {router.query.signInModal && (
                         <SingInModal singinmodal={router.query.singinmodal}/>
                     ) } */}
-                    { !session  && <Link href="/signinmodal">
+                    { !session  && <Link href="/?signinmodal">
                     Sing In
                     </Link>}
                     { session &&

@@ -1,27 +1,30 @@
-import Head from "next/head";
-//import Image from "next/image";
+// import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Layout from "../components/layout";
 import Footer from "../components/footer";
+import Image from "next/image";
+import landing from '../public/Img/landing.png';
+import CarouselLanding from "../components/carousellanding";
+import { useRouter } from "next/router";
 
 export default function Home() {
+
+  const router = useRouter();
+
   return (
     <Layout>
-      <div className={styles.main}>
-        <div>
-          <div>
+        <div className="container-fluid text-center">
             <div>
-              <h1>Welcome to the Landing page!</h1>
+              <h1>Tech E-Commerce</h1>
             </div>
-            <div>Imagen</div>
-          </div>
-          <button className={styles.card}>Get Started</button>
-          <div>Carrusel de productos?</div>
-          <div>Carrusel de imagenes</div>
-          <button className={styles.card}>Get Offer</button>
+            <div>
+              <p className="text-start">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Excepturi rerum, quo, unde, error necessitatibus debitis tenetur tempore assumenda nostrum rem sapiente! Natus, est sint inventore exercitationem vel velit molestias. Tempora.</p>
+            </div>
+            <Image src={landing} alt="img" width={350}></Image>
+          <button className={styles.card} onClick={() => router.push("/store")}>Get Started</button>
+          <CarouselLanding/>
         </div>
-      </div>
         <Footer />
     </Layout>
   );
-}
+};

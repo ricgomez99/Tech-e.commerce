@@ -1,4 +1,4 @@
-import { getProducts } from "../../services/productService";
+import { getProducts } from "../../services/paths";
 import Layout from "./../../components/layout";
 import Footer from "./../../components/footer";
 import Product from "./../../components/product";
@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { paginate } from "./../../utils/paginate";
 import stylePaginator from "../../styles/paginator.module.css";
 import SearchBar from "../../components/searchbar";
+import { nameProduct } from "../../services/productEndPoints";
 
 import { useRouter } from "next/router"; //for Temporary Form Button
 
@@ -24,25 +25,34 @@ export default function Index({ products }: Data) {
 
   const paginateItems: any = paginate(items, currentPage, pageSize);
 
+  let response: any;
+
+  const handleSearch = async (title: any) => {
+    response = await nameProduct(title);
+    setItems(response);
+  };
+
   const handlePageChange = (page: any): any => {
     setCurrentPage(page);
   };
 
   useEffect(() => {
-    setItems(products);
-  }, []);
+    if (response?.length > 0) {
+      setItems(response);
+    } else {
+      setItems(products);
+    }
+  }, [response]);
 
   return (
     <Layout>
       <h1>Store page</h1>
-      <SearchBar />
-
       {/* Temporary Form Button */}
       <button onClick={() => router.push("/newproduct")}>
         Add New Product
       </button>
       {/* Temporary Form Button */}
-
+      <SearchBar onSearch={handleSearch} />
       <div className={styledProducts.items}>
         {paginateItems &&
           paginateItems.map((product: any) => (

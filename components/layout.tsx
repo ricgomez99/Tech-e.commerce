@@ -8,13 +8,13 @@ type Props = {
 };
 
 export default function Layout({ title, children }: Props) {
-    return(
-      <div>
-        <Head>
-          <title>E-commerce{title? `| ${title}` : ""}</title>
-        </Head>
-        <NavBar/>
-        <div>{children}</div>
-      </div>
-    );
-};
+  return (
+    <div>
+      <Head>
+        <title>E-commerce{title ? `| ${title}` : ""}</title>
+      </Head>
+      <NavBar />
+      <div>{children}</div>
+    </div>
+  );
+}

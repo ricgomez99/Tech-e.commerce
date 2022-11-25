@@ -1,7 +1,7 @@
 .items {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(12rem, 18rem));
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: center;
   margin: 15px 10px;
 }
@@ -43,7 +43,7 @@
 
 .products_filter_container{
   display: grid; 
-  grid-template-columns: 0.3fr 1.7fr; 
+  grid-template-columns: 0.25fr 1.75fr; 
   grid-template-rows: 2fr; 
   gap: 0px 0px; 
   grid-template-areas: "filter_sorter items"; 

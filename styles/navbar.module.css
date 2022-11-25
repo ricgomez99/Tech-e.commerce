@@ -19,6 +19,9 @@
     background-color: black;
     border-radius: 2px;
 }
+.a_pointer {
+    cursor: pointer;
+}
 
 .nav__menu_list {
     display: flex;

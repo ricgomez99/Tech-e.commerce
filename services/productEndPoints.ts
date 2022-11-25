@@ -1,6 +1,6 @@
 //Esta función postea los productos
 
-export async function postProduct(data: BodyInit) {
+export async function postProduct(data: any) {
   try {
     const request = await fetch(
       "https://techproductsshop-production.up.railway.app/products",

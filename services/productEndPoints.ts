@@ -50,7 +50,8 @@ export async function getCategories() {
     const request = await fetch(
       "https://techproductsshop-production.up.railway.app/categories"
     );
-    return request.json();
+    const categories = await request.json();
+    return categories
   } catch (error) {
     return error;
   }

@@ -12,13 +12,17 @@ const Navbar = () => {
 
   const { data: session } = useSession();
 
-  console.log(session);
   return (
     <header>
       <nav className={styles.navbar}>
         <Link href="/" className="ps-3 navbar-brand">
           <Image src="/img/e-commerce.png" alt="logo" width={35} height={35} />
         </Link>
+        <div>
+          {session ? (
+            <span>Hello, {session.user?.name?.split(" ")[0]}</span>
+          ) : null}
+        </div>
         <div
           onClick={() => setNavActive(!navActive)}
           className={styles.nav__menu_bar}

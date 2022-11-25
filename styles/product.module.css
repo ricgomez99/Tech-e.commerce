@@ -1,0 +1,42 @@
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 18rem));
+  gap: 2rem;
+  justify-content: center;
+  margin: 25px 10px;
+}
+
+.item {
+  background-color: #fff;
+  padding: 20px;
+  font-size: 20px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
+  box-shadow: 0 2px 20px #dddddd;
+}
+
+.item:hover {
+  transform: scale(1.02);
+}
+
+.item h3 {
+  text-overflow: ellipsis;
+  font-size: 19px;
+  margin: 5px 0;
+  white-space: nowrap;
+}
+
+.title {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.image {
+  height: 13rem;
+  width: 100%;
+  object-fit: scale-down;
+  background: #fff;
+}

@@ -1,18 +1,19 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import SignInButton from "./signinbutton";
 
 const SignInModal = () => {
-  
+
   const [showModal, setShowModal] = useState(false);
-  
+
   return (
     <>
-    <div>
-      <h6 onClick={() => setShowModal(true)}>SignIn</h6>
-    </div>
+      <div>
+        <h6 onClick={() => setShowModal(true)}>SignIn</h6>
+      </div>
 
-    {showModal ? (
-      <div className="divsote">
-        <style jsx>{`
+      {showModal ? (
+        <div className="divsote">
+          <style jsx>{`
         .divsote {
           background-color:rgba(0, 0, 0, 0.5);
           height: 100vh;
@@ -28,17 +29,15 @@ const SignInModal = () => {
           width:20vw;
         }
         `}
-        </style>
-        <div className="divsito">
-        <div>SignIn Modal</div>
-        <div>SignIn Modal</div>
-        <div>SignIn Modal</div>
-        <button onClick={() => setShowModal(false)}>Close</button>
+          </style>
+          <div className="divsito">
+            <SignInButton />
+            <button onClick={() => setShowModal(false)}>Close</button>
+          </div>
         </div>
-</div>
-    ) : null }
+      ) : null}
     </>
-  )
-}
+  );
+};
 
 export default SignInModal;

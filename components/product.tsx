@@ -51,7 +51,7 @@ export default function Product({ product, showAs, qty }: Data) {
         <div>
           <h3>{product.title}</h3>
           <div>{product.price}</div>
-
+          //Logica para aumentar cantidad del carrito
           {/* {qty === 0 ? "" : <div>Units: {qty}</div>}
           {qty === 0 ? "" : <div>Subtotal: ${qty * product.price}</div>} */}
         </div>

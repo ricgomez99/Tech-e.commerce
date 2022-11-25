@@ -9,6 +9,7 @@ type Data = {
 };
 
 export default function Product({ product, showAs, qty }: Data) {
+  console.log(product);
   if (showAs === "Page") {
     return (
       <div className={style.page}>
@@ -24,7 +25,9 @@ export default function Product({ product, showAs, qty }: Data) {
           <div>
             <h2>{product.title}</h2>
           </div>
-          <div className={style.price}>{product.price}</div>
+          <div>Category: {product.categories}</div>
+          <div className={style.price}>${product.price}</div>
+          <div>Stock: {product.stock}</div>
           <div>{product.description}</div>
           <div>
             <button>Add to cart</button>

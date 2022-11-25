@@ -40,3 +40,44 @@
   object-fit: scale-down;
   background: #fff;
 }
+
+.page {
+  background-color: #fff;
+  padding: 40px;
+  display: flex;
+  box-shadow: 0 0 50px #bbbb;
+  transform: scale(0);
+  animation: scale 0.3s ease forwards;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.price {
+  font-size: 28px;
+  margin: 10px 0;
+}
+
+.listItem {
+  display: flex;
+  gap: 10px;
+  border-bottom: solid 1px #ccc;
+  padding: 10px 0;
+}
+
+.listItem h3 {
+  margin: 5px 0;
+}
+
+@keyframes scale {
+  from {
+    transform: scale(0);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}

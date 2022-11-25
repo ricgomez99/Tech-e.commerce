@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, ReactNode, FC } from "react";
 import { getSession, signOut } from "next-auth/react"
 import { useRouter } from "next/router";
 import SignInModal from "../pages/signinmodal";
@@ -15,6 +15,11 @@ import styles from "../styles/navbar.module.css"
     
 // ];
 
+interface Props {
+    children: ReactNode;
+    session: any;
+};
+
 export const getServerSideProps =  async (context: any) => {
    const session =  await getSession(context)
 //    if(!session) return {
@@ -28,7 +33,7 @@ export const getServerSideProps =  async (context: any) => {
         }
     }
 }
-const Navbar = ({session}: any) => {
+const Navbar: FC<Props> = ({children, session}) => {
     const [navActive, setNavActive] = useState<boolean>(false);
     const [activeIdx, setActiveIdx] = useState(-1);
     const router = useRouter();
@@ -48,6 +53,7 @@ const Navbar = ({session}: any) => {
                     <div></div>
                     <div></div>
                 </div>
+                
                 <div className={`${navActive ? `${styles.nav__menu_list + ' ' + styles.nav__menu_list_active}` : `${styles.nav__menu_list}`} `}>
                     {/* {MENU_LIST.map((menu, idx) => (
                         <div
@@ -60,26 +66,21 @@ const Navbar = ({session}: any) => {
                             <NavItem active={activeIdx === idx} {...menu} />
                         </div>
                     ))} */}
-                    <Link href="/">
-                    Home
-                    </Link>
-                    <Link href="/about">
-                    About
-                    </Link>
                     <Link href="/store">
                     Store
+                    </Link>
+                    <Link href="/">
+                    Home
                     </Link>
                     {/* {router.query.signInModal && (
                         <SingInModal singinmodal={router.query.singinmodal}/>
                     ) } */}
-                    { !session  && <Link href="/?signinmodal">
-                    Sing In
-                    </Link>}
+                    { !session  && <SignInModal/>}
                     { session &&
-                    <h3 onClick={() => signOut()}>
+                    <a onClick={() => signOut()}>
                     Sign Out
-                    </h3>}
-                    
+                    </a>}
+            
             
                 </div>
             </nav>

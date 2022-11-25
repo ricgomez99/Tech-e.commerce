@@ -20,7 +20,7 @@ const [title, setTitle] = useState("");
     
     setTitle(e.target.value);
     
-    // console.log(nameProduct(e.target.value))
+
   };
 
   return (

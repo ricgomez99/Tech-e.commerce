@@ -25,7 +25,7 @@ export async function postProduct(data: any) {
 export async function idProduct(id: string) {
   try {
     const request = fetch(
-      `https://techproductsshop-production.up.railway.app/${id}`
+      `https://techproductsshop-production.up.railway.app/products/${id}`
     );
     return (await request).json();
   } catch (error) {
@@ -40,10 +40,9 @@ export async function nameProduct(title: string) {
     const request: any = await fetch(
       `https://techproductsshop-production.up.railway.app/products?title=${title}`
     );
-   
-const response = request.json()
-    return response;
 
+    const response = request.json();
+    return response;
   } catch (error) {
     return error;
   }

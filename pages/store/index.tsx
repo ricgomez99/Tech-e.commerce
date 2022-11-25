@@ -1,4 +1,4 @@
-import { getProducts } from "../../services/productService";
+import { getProducts } from "../../services/paths";
 import Layout from "./../../components/layout";
 import Footer from "./../../components/footer";
 import Product from "./../../components/product";

@@ -51,6 +51,7 @@ color: rgb(63, 63, 63);
         height: 15vh;
         padding-bottom: 6px; 
         background-color: #A4C3B2;
+        bottom: 0;
     }
     .aboutus{
         transform: translateY(-7px);

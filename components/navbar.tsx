@@ -2,9 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import React, { useState } from "react";
 import { signOut, useSession } from "next-auth/react";
-
 import SignInModal from "./signinmodal";
-
 import styles from "../styles/navbar.module.css";
 
 const Navbar = () => {
@@ -38,8 +36,15 @@ const Navbar = () => {
               : `${styles.nav__menu_list}`
           } `}
         >
-          <Link href="/store">Store</Link>
-          <Link href="/">Home</Link>
+          <Link
+            href="/store"
+            style={{ textDecoration: "none", color: "black" }}
+          >
+            Store
+          </Link>
+          <Link href="/" style={{ textDecoration: "none", color: "black" }}>
+            Home
+          </Link>
           {!session && <SignInModal />}
           {session && (
             <a className="a_pointer" onClick={() => signOut()}>

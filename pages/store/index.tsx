@@ -1,4 +1,4 @@
-import { getProducts } from "../../services/productService";
+import { getProducts } from "../../services/paths";
 import Layout from "./../../components/layout";
 import Footer from "./../../components/footer";
 import Product from "./../../components/product";
@@ -11,6 +11,9 @@ import SearchBar from "../../components/searchbar";
 import Filter from "components/filter";
 import Sort from "components/sort";
 import { getCategories, getProducts2 } from "services/productEndPoints";
+import { nameProduct } from "../../services/productEndPoints";
+
+import { useRouter } from "next/router"; //for Temporary Form Button
 
 type Data = {
   products: any[];
@@ -18,12 +21,21 @@ type Data = {
 };
 
 export default function Index({ products, categories }: Data) {
+  const router = useRouter(); //for Temporary Form Button
+
   const [items, setItems] = useState<any[]>([]);
   
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 8;
   let responseFilter: Array<any>
   const paginateItems: any = paginate(items, currentPage, pageSize);
+
+  let response: any;
+
+  const handleSearch = async (title: any) => {
+    response = await nameProduct(title);
+    setItems(response);
+  };
 
   const handlePageChange = (page: any): any => {
     setCurrentPage(page);
@@ -35,15 +47,24 @@ export default function Index({ products, categories }: Data) {
   }
 
   useEffect(() => {
-    setItems(products);
-  }, []);
+    if (response?.length > 0) {
+      setItems(response);
+    } else {
+      setItems(products);
+    }
+  }, [response]);
 
   return (
 
 
     <Layout>
       <h1>Store page</h1>
-      <SearchBar />
+      {/* Temporary Form Button */}
+      <button onClick={() => router.push("/newproduct")}>
+        Add New Product
+      </button>
+      {/* Temporary Form Button */}
+      <SearchBar onSearch={handleSearch}  />
       <div className={styledProducts.products_filter_container}>
         <div className={styledProducts.filter_sorter}>
           <div className={styledProducts.sort}><Sort /></div>

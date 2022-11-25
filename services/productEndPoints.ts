@@ -1,13 +1,17 @@
 //Esta función postea los productos
 
-
-export async function postProduct(data: BodyInit) {
+export async function postProduct(data: any) {
   try {
     const request = await fetch(
       "https://techproductsshop-production.up.railway.app/products",
       {
         method: "POST",
-        body: data,
+        headers: {
+          "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        mode: "cors",
+        body: JSON.stringify(data),
       }
     );
     return request.json();
@@ -21,7 +25,7 @@ export async function postProduct(data: BodyInit) {
 export async function idProduct(id: string) {
   try {
     const request = fetch(
-      `https://techproductsshop-production.up.railway.app/${id}`
+      `https://techproductsshop-production.up.railway.app/products/${id}`
     );
     return (await request).json();
   } catch (error) {
@@ -36,8 +40,9 @@ export async function nameProduct(title: string) {
     const request: any = await fetch(
       `https://techproductsshop-production.up.railway.app/products?title=${title}`
     );
-    console.log(request.json())
-    return request.json();
+
+    const response = request.json();
+    return response;
   } catch (error) {
     return error;
   }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { nameProduct } from "../services/otherEndPoint";
+import { nameProduct } from "../services/productEndPoints";
 
 export default function SearchBar() {
 

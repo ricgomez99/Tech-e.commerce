@@ -9,6 +9,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
 
 const [title, setTitle] = useState("");
 
+
+
 //   const handleSubmit = (e : any) => {
 //     e.preventDefault();
 //     if(title){
@@ -20,14 +22,18 @@ const [title, setTitle] = useState("");
 
 //   }
 
-//   const handleChange = (e: any) => {
+//   const handleClick = () => {
     
-//     setTitle(e.target.value);
-    
+//     onSearch(title);
 
 //   };
 
   return (
+    <form 
+    onSubmit={(e) => {
+        e.preventDefault();
+        onSearch(title);
+    }}>
     <div>
       <input
         type="text"
@@ -35,11 +41,10 @@ const [title, setTitle] = useState("");
         placeholder="Search product..."
         onChange={(e) => setTitle(e.target.value)}
       />
-      <button type="submit" onSubmit={(e) => {
-        e.preventDefault();
-        onSearch(title);
-      }}>Search</button>
+      {/* <button onClick={handleClick}>Search</button> */}
+      <button type="submit">Search</button>
     </div>
+    </form>
   );
 }
 

@@ -37,9 +37,9 @@ export async function nameProduct(title: string) {
       `https://techproductsshop-production.up.railway.app/products?title=${title}`
     );
    
-
-   console.log("entro");
-    return request;
+const response = request.json()
+  //  console.log(response);
+    return response;
   } catch (error) {
     return error;
   }

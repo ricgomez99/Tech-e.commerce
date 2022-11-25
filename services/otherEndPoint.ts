@@ -1,5 +1,6 @@
 //Esta función postea los productos
 
+
 export async function postProduct(data: BodyInit) {
   try {
     const request = await fetch(
@@ -30,11 +31,12 @@ export async function idProduct(id: string) {
 
 //Esta función trae los productos por query(name)
 
-export async function nameProduct(name: string) {
+export async function nameProduct(title: string) {
   try {
-    const request = await fetch(
-      `https://techproductsshop-production.up.railway.app?title=${name}`
+    const request: any = await fetch(
+      `https://techproductsshop-production.up.railway.app/products?title=${title}`
     );
+    console.log(request.json())
     return request.json();
   } catch (error) {
     return error;

@@ -10,7 +10,7 @@ import stylePaginator from "../../styles/paginator.module.css";
 import SearchBar from "../../components/searchbar";
 import Filter from "components/filter";
 import Sort from "components/sort";
-import { getCategories } from "services/productEndPoints";
+import { getCategories, getProducts2 } from "services/productEndPoints";
 
 type Data = {
   products: any[];
@@ -22,12 +22,17 @@ export default function Index({ products, categories }: Data) {
   
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 8;
-
+  let responseFilter: Array<any>
   const paginateItems: any = paginate(items, currentPage, pageSize);
 
   const handlePageChange = (page: any): any => {
     setCurrentPage(page);
   };
+
+  const onFilter = async (value : string) => {
+    responseFilter = await getProducts2({categories: value});
+    setItems(responseFilter)
+  }
 
   useEffect(() => {
     setItems(products);
@@ -43,7 +48,7 @@ export default function Index({ products, categories }: Data) {
         <div className={styledProducts.filter_sorter}>
           <div className={styledProducts.sort}><Sort /></div>
           <div className={styledProducts.categories}>
-            <Filter categories={categories} />
+            <Filter categories={categories} onFilter = {onFilter} />
           </div>
         </div>
         <div className={styledProducts.items}>

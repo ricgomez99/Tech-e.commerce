@@ -31,7 +31,7 @@ export default function Index({ products }: Data) {
   return (
     <Layout>
       <h1>Store page</h1>
-      <SearchBar/>
+      <SearchBar />
       <div className={styledProducts.items}>
         {paginateItems &&
           paginateItems.map((product: any) => (

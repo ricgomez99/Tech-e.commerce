@@ -36,8 +36,10 @@ export async function nameProduct(title: string) {
     const request: any = await fetch(
       `https://techproductsshop-production.up.railway.app/products?title=${title}`
     );
-    console.log(request.json())
-    return request.json();
+   
+
+   console.log("entro");
+    return request;
   } catch (error) {
     return error;
   }

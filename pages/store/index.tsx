@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import { paginate } from "./../../utils/paginate";
 import stylePaginator from "../../styles/paginator.module.css";
 import SearchBar from "../../components/searchbar";
+import { nameProduct } from "../../services/productEndPoints";
+import { title } from "process";
 
 type Data = {
   products: any[];
@@ -20,6 +22,18 @@ export default function Index({ products }: Data) {
 
   const paginateItems: any = paginate(items, currentPage, pageSize);
 
+  const handleSearch = (title: string) =>{
+    nameProduct(title)
+    
+  }
+  
+  useEffect(() => {
+    if(items){
+      handleSearch(title);
+    }
+    
+  }, [])
+
   const handlePageChange = (page: any): any => {
     setCurrentPage(page);
   };
@@ -31,7 +45,7 @@ export default function Index({ products }: Data) {
   return (
     <Layout>
       <h1>Store page</h1>
-      <SearchBar/>
+      <SearchBar onSearch={handleSearch}/>
       <div className={styledProducts.items}>
         {paginateItems &&
           paginateItems.map((product: any) => (

@@ -28,8 +28,8 @@ export default function Index({ products }: Data) {
   let response: any;
 
   const handleSearch = async (title: any) => {
-    response = await nameProduct(title);
-    setItems(response);
+      response = await nameProduct(title);
+      setItems(response);
   };
 
   const handlePageChange = (page: any): any => {

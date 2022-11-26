@@ -12,7 +12,7 @@ import st from "../styles/Home.module.css";
 
 export default function CarouselLanding() {
   return (
-    <Carousel fade className={st.car}>
+    <Carousel fade className={st.car} variant="dark" interval = {null}>
       <Carousel.Item>
         <Image className="d-block w-100" src={headphone} alt="Third slide" />
         <Carousel.Caption></Carousel.Caption>

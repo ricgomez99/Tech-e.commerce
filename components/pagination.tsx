@@ -23,7 +23,14 @@ export default function Pagination({
     <nav aria-label="Page navigation example">
       <ul className="pagination">
         <li className="page-item">
-          <a className="page-link" href="#" aria-label="Previous">
+          <a
+            className="page-link"
+            href="#"
+            aria-label="Previous"
+            onClick={() =>
+              onPageChange(currentPage === 1 ? pages.length : currentPage - 1)
+            }
+          >
             <span aria-hidden="true">&laquo;</span>
           </a>
         </li>
@@ -43,7 +50,14 @@ export default function Pagination({
           </li>
         ))}
         <li className="page-item">
-          <a className="page-link" href="#" aria-label="Next">
+          <a
+            className="page-link"
+            href="#"
+            aria-label="Next"
+            onClick={() =>
+              onPageChange(currentPage === pages.length ? 1 : currentPage + 1)
+            }
+          >
             <span aria-hidden="true">&raquo;</span>
           </a>
         </li>

@@ -10,6 +10,7 @@ import Footer from "../components/footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { getCategories, postProduct } from "../services/productEndPoints";
+import Router from "next/router";
 
 const NewProduct: NextPage = () => {
   const [message, setMessage] = useState(""); // This will be used to show a message if the submission is successful
@@ -43,6 +44,7 @@ const NewProduct: NextPage = () => {
   return (
     <Layout>
       <div>
+      <button className="btn btn-primary" onClick={() => Router.back()}>Go Back</button>
         <div className="vh-100 d-flex flex-column justify-content-center align-items-center">
           <div hidden={!submitted} className="alert alert-primary" role="alert">
             {message}

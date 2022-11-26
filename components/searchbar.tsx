@@ -4,7 +4,6 @@ export interface SearchBarProps {
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
-  
   const [title, setTitle] = useState("");
 
   return (

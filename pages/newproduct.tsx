@@ -44,13 +44,15 @@ const NewProduct: NextPage = () => {
   return (
     <Layout>
       <div>
-      <button className="btn btn-primary" onClick={() => Router.back()}>Go Back</button>
+      
+
         <div className="vh-100 d-flex flex-column justify-content-center align-items-center">
           <div hidden={!submitted} className="alert alert-primary" role="alert">
             {message}
           </div>
 
           <form className="w-50" onSubmit={formik.handleSubmit}>
+            <button type="button" className="btn btn-primary btn-xs mb-5 p-1" onClick={() => Router.back()}>Go Back</button>
             {/*  */}
             <div className="mb-3">
               <label htmlFor="title" className="form-label">

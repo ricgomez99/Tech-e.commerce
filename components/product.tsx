@@ -73,13 +73,13 @@ export default function Product({ product, showAs, qty }: Data) {
       </div>
       <div className={style.title}>
         <h3>
-          <Link href={`/store/${product.id}`}>{product.title}</Link>
+          <Link href={`/store/${product.id}`} style={{textDecoration: "none", color: "#9A9A9A"}} >{product.title}</Link>
         </h3>
       </div>
-      <div>{product.price}</div>
-      <div>
+      <div style={{color: "#9A9A9A"}}>US${product.price}</div>
+      {/* <div>
         <button>Add to cart</button>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -36,7 +36,6 @@ export async function nameProduct(title: string) {
     const request: any = await fetch(
       `https://techproductsshop-production.up.railway.app/products?title=${title}`
     );
-    console.log(request.json())
     return request.json();
   } catch (error) {
     return error;

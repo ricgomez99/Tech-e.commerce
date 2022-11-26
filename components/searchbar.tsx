@@ -4,6 +4,7 @@ export interface SearchBarProps {
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+  
   const [title, setTitle] = useState("");
 
   return (
@@ -11,6 +12,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
       onSubmit={(e) => {
         e.preventDefault();
         onSearch(title);
+        setTitle("")
       }}
     >
       <div>

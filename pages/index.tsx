@@ -11,28 +11,32 @@ export default function Home() {
 
   return (
     <Layout>
-      <div className="container-fluid text-center">
-        <div>
-          <h1>Tech E-Commerce</h1>
-
-          <div>
-            <p className="text-start">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Excepturi rerum, quo, unde, error necessitatibus debitis tenetur
-              tempore assumenda nostrum rem sapiente! Natus, est sint inventore
-              exercitationem vel velit molestias. Tempora.
-            </p>
+          <div className={styles.container}>
+          <div className={styles.container_all}>
+            <div className={styles.text}>
+              <h1>Tech E-Commerce</h1>
+              <p className="text-start">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Excepturi rerum, quo, unde, error necessitatibus debitis tenetur
+                tempore assumenda nostrum rem sapiente! Natus, est sint inventore
+                exercitationem vel velit molestias. Tempora. Lorem ipsum dolor sit
+                amet consectetur adipisicing elit. Aliquid quasi, sed esse nobis rerum
+                itaque! Ut repellat harum rerum molestias voluptate quibusdam assumenda
+                praesentium nobis minima numquam. Dicta, eligendi a.
+              </p>
+            </div>
+            <div>
+              <Image src={landing} alt="img" width={650}></Image>
+            </div>
           </div>
-          <Image src={landing} alt="img" width={350}></Image>
           <button className={styles.card} onClick={() => router.push("/store")}>
             Get Started
           </button>
+          </div>
           <div className={styles.carContainer}>
             <CarouselLanding />
           </div>
-        </div>
         <Footer />
-      </div>
     </Layout>
   );
-}
+};

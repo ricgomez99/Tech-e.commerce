@@ -47,7 +47,7 @@ const Navbar = () => {
           </Link>
           {!session && <SignInModal />}
           {session && (
-            <a className="a_pointer" onClick={() => signOut()}>
+            <a className="btn btn-secondary me-2" onClick={() => signOut()}>
               Sign Out
             </a>
           )}

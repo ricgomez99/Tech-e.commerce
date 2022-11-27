@@ -32,17 +32,17 @@ export default function Index({ products, categories }: Data) {
   const handleSearch = async (title: any) => {
     response = await nameProduct(title);
     setItems(response);
-    setCurrentPage(1)
+    setCurrentPage(1);
   };
 
   const handlePageChange = (page: any): any => {
     setCurrentPage(page);
   };
 
-  const onFilterSort = async (conditions:any) => {
-    setItems(await getProducts2(conditions))
-    setCurrentPage(1)
-  }
+  const onFilterSort = async (conditions: any) => {
+    setItems(await getProducts2(conditions));
+    setCurrentPage(1);
+  };
 
   useEffect(() => {
     if (response?.length > 0) {
@@ -53,16 +53,15 @@ export default function Index({ products, categories }: Data) {
   }, [response]);
 
   return (
-
-
     <Layout>
-      <h1>Store page</h1>
-      {/* Temporary Form Button */}
-      <button onClick={() => router.push("/newproduct")}>
-        Add New Product
-      </button>
-      {/* Temporary Form Button */}
-      <SearchBar onSearch={handleSearch} />
+      <div className="d-flex justify-content-evenly mt-3">
+        <SearchBar onSearch={handleSearch} />
+        {/* Temporary Form Button */}
+        <button onClick={() => router.push("/newproduct")}>
+          Add New Product
+        </button>
+        {/* Temporary Form Button */}
+      </div>
       <div className={styledProducts.products_filter_container}>
         <Filtersort categories={categories} onFilterSort={onFilterSort} />
         <div className={styledProducts.items}>

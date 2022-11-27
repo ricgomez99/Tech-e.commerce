@@ -7,9 +7,13 @@ const SignInModal = () => {
   return (
     <>
       <div>
-        <h6 onClick={() => setShowModal(true)} style={{ cursor: "pointer" }}>
-          SignIn
-        </h6>
+        <a
+          onClick={() => setShowModal(true)}
+          style={{ cursor: "pointer" }}
+          className="btn btn-outline-success me-2"
+        >
+          Sign In
+        </a>
       </div>
 
       {showModal ? (
@@ -33,8 +37,15 @@ const SignInModal = () => {
             `}
           </style>
           <div className="divsito">
-            <SignInButton />
-            <button onClick={() => setShowModal(false)}>Close</button>
+            <div className="">
+              <button
+                onClick={() => setShowModal(false)}
+                type="button"
+                className="btn-close p-3 mx-auto"
+                aria-label="Close"
+              ></button>
+              <SignInButton />
+            </div>
           </div>
         </div>
       ) : null}

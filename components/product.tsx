@@ -2,6 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import style from "../styles/product.module.css";
 
+import Footer from "./footer";
+
+import Router from "next/router";
+
 type Data = {
   product: any;
   showAs: string;
@@ -11,28 +15,38 @@ type Data = {
 export default function Product({ product, showAs, qty }: Data) {
   if (showAs === "Page") {
     return (
-      <div className={style.page}>
-        <div>
-          <Image
-            src={product.image}
-            alt={product.title}
-            width={500}
-            height={500}
-          />
-        </div>
-        <div className={style.info}>
+      <>
+        {/*  */}
+        <button
+          type="button"
+          className="btn btn-primary btn-xs mb-5 p-1"
+          onClick={() => Router.back()}
+        >
+          Go Back
+        </button>
+        {/*  */}
+        <div className={style.page}>
           <div>
-            <h2>{product.title}</h2>
+            <Image
+              src={product.image}
+              alt={product.title}
+              width={500}
+              height={500}
+            />
           </div>
-          <div>Category: {product.categories}</div>
-          <div className={style.price}>${product.price}</div>
-          <div>Stock: {product.stock}</div>
-          <div>{product.description}</div>
-          <div>
-            <button>Add to cart</button>
+          <div className={style.info}>
+            <div>
+              <h2>{product.title}</h2>
+            </div>
+            <div>Category: {product.categories}</div>
+            <div className={style.price}>${product.price}</div>
+            <div>Stock: {product.stock}</div>
+            <div>{product.description}</div>
+            <div>{/* <button>Add to cart</button> */}</div>
           </div>
         </div>
-      </div>
+        <Footer />
+      </>
     );
   }
 
@@ -73,10 +87,15 @@ export default function Product({ product, showAs, qty }: Data) {
       </div>
       <div className={style.title}>
         <h3>
-          <Link href={`/store/${product.id}`} style={{textDecoration: "none", color: "#9A9A9A"}} >{product.title}</Link>
+          <Link
+            href={`/store/${product.id}`}
+            style={{ textDecoration: "none", color: "#9A9A9A" }}
+          >
+            {product.title}
+          </Link>
         </h3>
       </div>
-      <div style={{color: "#9A9A9A"}}>US${product.price}</div>
+      <div style={{ color: "#9A9A9A" }}>US${product.price}</div>
       {/* <div>
         <button>Add to cart</button>
       </div> */}

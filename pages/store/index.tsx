@@ -44,13 +44,13 @@ export default function Index({ products, categories }: Data) {
     setCurrentPage(1)
   }
 
-  // useEffect(() => {
-  //   if (response?.length > 0) {
-  //     setItems(response);
-  //   } else {
-  //     setItems(products);
-  //   }
-  // }, [response]);
+  useEffect(() => {
+    if (response?.length > 0) {
+      setItems(response);
+    } else {
+      setItems(products);
+    }
+  }, [response]);
 
   return (
 

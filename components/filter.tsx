@@ -1,11 +1,9 @@
-import { getProducts2 } from "services/productEndPoints";
 import styles from "styles/filter.module.css";
 
-export default function Filter({ categories, onFilter }: any) {
+export default function Filter({ categories, handleConditions }: any) {
   const handlerOnClick = (e:any) => {
     e.preventDefault()
-    console.log(e.target.outerText)
-    onFilter(e.target.outerText)
+    handleConditions({ categories: e.target.outerText })
   }
   return (
     <div className={styles.container}>

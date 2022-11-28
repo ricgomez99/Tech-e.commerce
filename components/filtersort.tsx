@@ -16,6 +16,7 @@ export default function Filtersort({categories, onFilterSort}:any) {
   
   return (
     <div className={styles.filter_sorter}>
+      <button onClick={()=>setConditions({})}> Refresh </button>
       <div className={styles.sort}>        
         <Sort handleConditions={handleConditions} />
       </div>

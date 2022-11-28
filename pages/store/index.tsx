@@ -11,7 +11,6 @@ import SearchBar from "../../components/searchbar";
 import { getCategories, getProducts2 } from "services/productEndPoints";
 import { nameProduct } from "../../services/productEndPoints";
 import Filtersort from "components/filtersort";
-
 import { useRouter } from "next/router"; //for Temporary Form Button
 
 type Data = {

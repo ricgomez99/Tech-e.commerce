@@ -1,3 +1,4 @@
+import { useAppContext } from "./statewrapper";
 import Link from "next/link";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -6,9 +7,15 @@ import SignInModal from "./signinmodal";
 import styles from "../styles/navbar.module.css";
 
 const Navbar = () => {
+  const cart = useAppContext();
   const [navActive, setNavActive] = useState<boolean>(false);
-
+  
   const { data: session } = useSession();
+  //!call action of the cart
+
+  function handleOpenCart() {
+    cart.openCart();
+  }
 
   return (
     <header>
@@ -45,6 +52,10 @@ const Navbar = () => {
           <Link href="/" style={{ textDecoration: "none", color: "black" }}>
             Home
           </Link>
+          {/* cart's button */}
+          <div>
+            <button onClick={handleOpenCart}>Cart ({cart.getNumberOfItems()})</button>
+          </div>
           {!session && <SignInModal />}
           {session && (
             <a className="btn btn-secondary me-2" onClick={() => signOut()}>

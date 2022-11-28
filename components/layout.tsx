@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import Head from "next/head";
 import NavBar from "./navbar";
+import ShoppingCart from "./shoppingcart"
 
 type Props = {
   title?: string;
@@ -15,6 +16,7 @@ export default function Layout({ title, children }: Props) {
       </Head>
       <NavBar />
       <div>{children}</div>
+      <ShoppingCart />
     </div>
   );
 }

@@ -49,7 +49,7 @@ export default function StateWrapper({ children }: Props) {
     setItems([...temp]);
   }
 
-  function handledeleteItem(item: any) {
+  function handleDeleteItem(item: any) {
     const temp = [...items];
     const deleteItem = temp.filter((product: any) => product.id !== item.id);
 
@@ -70,10 +70,10 @@ export default function StateWrapper({ children }: Props) {
         openCart: handleOpenCart,
         closeCart: handleCloseCart,
         addItemToCart: handleAddItemToCart,
-        deleteItem: handledeleteItem,
+        deleteItem: handleDeleteItem,
         getNumberOfItems: handleNumberOfItems,
       }}
-    ></AppContext.Provider>
+    >{children}</AppContext.Provider>
   );
 }
 

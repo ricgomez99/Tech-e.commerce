@@ -1,0 +1,60 @@
+ .footer {
+     background-color: #A4C3B2;
+     padding-top: 8px;
+ }
+
+ .nav {
+     display: flex;
+     margin-left: 100px;
+     margin-right: 100px;
+     justify-content: space-between;
+     align-items: center;
+ }
+
+
+
+ .paragraph {
+     text-align: center;
+     line-height: 1.3rem;
+     transform: translateY(7px);
+     color: rgb(63, 63, 63);
+ }
+
+
+
+ .aboutus {
+     display: inline-block;
+     height: 3px;
+     transform: translateY(-15px);
+     text-decoration: none;
+     color: #000000;
+ }
+
+ .aboutus:hover {
+     color: #F6FFF8;
+ }
+
+ @media(max-width: 1000px) {
+     .nav {
+         display: flex;
+         justify-content: space-around;
+         margin: 0;
+         font-size: 0.8rem;
+     }
+
+     .paragraph {
+         width: 200px;
+         height: 80px;
+         margin: 0;
+     }
+
+     .footer {
+         height: 15vh;
+         padding-bottom: 6px;
+         background-color: #A4C3B2;
+     }
+
+     .aboutus {
+         transform: translateY(-7px);
+     }
+ }

@@ -1,0 +1,24 @@
+.filter_sorter {
+  border: whitesmoke 1px solid;
+  border-radius: 0px 20px 20px 0px;
+  border-left: none;
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 0.3fr 1.7fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "sort"
+    "categories"; 
+  grid-area: filter_sorter;
+  margin: 10px 0px 10px 0px;
+}
+
+.sort { 
+  justify-self: center; 
+  align-self: center; 
+  grid-area: sort; 
+}
+
+.categories { 
+  grid-area: categories;
+}

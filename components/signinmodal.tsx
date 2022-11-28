@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import SignInButton from "./signinbutton";
+import { useScrollBlock } from "utils/scrollblock";
 
 const SignInModal = () => {
   const [showModal, setShowModal] = useState(false);
+  const [blockScroll, allowScroll] = useScrollBlock();
 
   return (
     <>
       <div>
         <a
-          onClick={() => setShowModal(true)}
+          onClick={() => {
+            setShowModal(true);
+            blockScroll();
+          }}
           style={{ cursor: "pointer" }}
           className="btn btn-outline-success me-2"
         >
@@ -17,7 +22,11 @@ const SignInModal = () => {
       </div>
 
       {showModal ? (
-        <div className="divsote">
+        <div className="divsote"
+          onClick={() => {
+            setShowModal(false);
+            allowScroll();
+          }}>
           <style jsx>
             {`
               .divsote {
@@ -28,24 +37,20 @@ const SignInModal = () => {
                 top: 0;
                 left: 0;
                 backdrop-filter: blur(4px);
+                z-index: 10;
               }
               .divsito {
                 margin: 40vh auto;
-                background-color: white;
+                display: flex;
+                background-color: #A4C3B2;
+                flex-direction: column;
                 width: 20vw;
+                border-radius: 15px;
               }
             `}
           </style>
-          <div className="divsito">
-            <div className="">
-              <button
-                onClick={() => setShowModal(false)}
-                type="button"
-                className="btn-close p-3 mx-auto"
-                aria-label="Close"
-              ></button>
-              <SignInButton />
-            </div>
+          <div className="divsito" onClick={(e) => e.stopPropagation()} >
+            <SignInButton />
           </div>
         </div>
       ) : null}

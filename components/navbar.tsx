@@ -14,7 +14,7 @@ const Navbar = () => {
     <header>
       <nav className={styles.navbar}>
         <Link href="/" className="ps-3 navbar-brand">
-          <Image src="/img/e-commerce.png" alt="logo" width={35} height={35} />
+          <Image src="/public/img/e-commerce.png" alt="logo" width={35} height={35} />
         </Link>
         <div>
           {session ? (

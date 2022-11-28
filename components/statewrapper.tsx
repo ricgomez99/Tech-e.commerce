@@ -76,3 +76,7 @@ export default function StateWrapper({ children }: Props) {
     ></AppContext.Provider>
   );
 }
+
+export function useAppContext() {
+  return useContext(AppContext);
+}

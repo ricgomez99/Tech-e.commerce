@@ -29,7 +29,7 @@ model Sale {
   saleDetails SaleDetail[]
 }
 
-model SaleDetail {
+model SaleDetail { 
   id        Int     @id @default(autoincrement())
   amount    Int     
   price     Int     

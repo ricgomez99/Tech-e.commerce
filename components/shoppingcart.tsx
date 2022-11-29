@@ -17,7 +17,7 @@ export default function ShoppingCart() {
     return(
     <div className={style.shoppingCart} style={{display: cart.isOpen ? "block" : "none"}} >
         <div>
-            <button onClick={handleCloseCart}><BsFillXCircleFill /></button>
+            <button onClick={handleCloseCart} className={style.button}><BsFillXCircleFill /></button>
         </div>
             {!cart.items.length ? (
             <div className={style.empty}>

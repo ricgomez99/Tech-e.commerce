@@ -20,4 +20,8 @@
     justify-content: center;
   }
 
-  
+  .button{
+    background-color: transparent;
+    color: #535353;
+    border: none;
+  }

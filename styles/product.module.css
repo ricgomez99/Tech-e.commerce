@@ -77,13 +77,17 @@
 }
 
 .content {
-  overflow: hidden;
-  width: 120px;
+  white-space: nowrap;
+  width: 190px;
+}
+.detailContent {
+  display: flex;
+  justify-content: space-between;
 }
 
 .listItem h3 {
-  white-space: nowrap;
-  text-overflow: ellipsis "[...]";
+  text-overflow: ellipsis;
+  overflow: hidden;
   margin: 5px 0;
 }
 

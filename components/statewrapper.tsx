@@ -20,7 +20,7 @@ const AppContext = createContext<AppContextInterface>({
   openCart: () => {},
   closeCart: () => {},
   addItemToCart: (item: any) => {},
-  deleteItem: (item: any) => {},
+  deleteItem: (id: number) => {},
   getNumberOfItems: () => {},
 });
 
@@ -49,9 +49,9 @@ export default function StateWrapper({ children }: Props) {
     setItems([...temp]);
   }
 
-  function handleDeleteItem(item: any) {
+  function handleDeleteItem(id: number) {
     const temp = [...items];
-    const deleteItem = temp.filter((product: any) => product.id !== item.id);
+    const deleteItem = temp.filter((product: any) => product.id !== id);
 
     setItems(deleteItem);
   }

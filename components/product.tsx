@@ -15,10 +15,9 @@ type Data = {
 export default function Product({ product, showAs, qty }: Data) {
   const cart = useAppContext();
 
-  const handleDelete = (product : any) => {
+  const handleDelete = (product: any) => {
     cart.deleteItem(product);
-    console.log(product)
-  }
+  };
 
   if (showAs === "Page") {
     return (
@@ -39,6 +38,7 @@ export default function Product({ product, showAs, qty }: Data) {
               alt={product.title}
               width={500}
               height={500}
+              className={style.detailsImg}
             />
           </div>
           <div className={style.info}>
@@ -46,8 +46,8 @@ export default function Product({ product, showAs, qty }: Data) {
               <h2>{product.title}</h2>
             </div>
             <div>Category: {product.categories}</div>
-            <div className={style.price}>${product.price}</div>
             <div>Stock: {product.stock}</div>
+            <div className={style.price}>${product.price}</div>
             <div>{product.description}</div>
             <div>
               <AddButton item={product} />
@@ -73,17 +73,22 @@ export default function Product({ product, showAs, qty }: Data) {
         <div className={style.content}>
           <h3>{product.title}</h3>
           <div className={style.detailContent}>
-          <div className="left">  
-          <div>${product.price}</div>
-          {qty === 0 ? "" : <div>Units: {qty}</div>}
-          {qty === 0 ? "" : <div>Subtotal: ${qty * product.price}</div>}
-          </div>
-          <div className="right">
-            {qty === 0 ? "" : 
-            <div>
-            <button onClick={() =>handleDelete(product.id)}>borrar</button>  
-            </div>}
-          </div>
+            <div className="left">
+              <div>${product.price}</div>
+              {qty === 0 ? "" : <div>Units: {qty}</div>}
+              {qty === 0 ? "" : <div>Subtotal: ${qty * product.price}</div>}
+            </div>
+            <div className="right">
+              {qty === 0 ? (
+                ""
+              ) : (
+                <div>
+                  <button onClick={() => handleDelete(product.id)}>
+                    borrar
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

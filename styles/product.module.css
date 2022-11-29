@@ -56,11 +56,17 @@
   box-shadow: 0 0 50px #bbbb;
   transform: scale(0);
   animation: scale 0.3s ease forwards;
+  margin: 18px 10px;
+}
+
+.detailsImg {
+  object-fit: scale-down;
 }
 
 .info {
   display: flex;
   flex-direction: column;
+  padding: 0 20px;
   gap: 20px;
 }
 

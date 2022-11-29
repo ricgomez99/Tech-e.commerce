@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SignInButton from "./signinbutton";
 import { useScrollBlock } from "utils/scrollblock";
 
-const SignInModal = () => {
+export default function SignInModal() {
   const [showModal, setShowModal] = useState(false);
   const [blockScroll, allowScroll] = useScrollBlock();
 
@@ -13,7 +13,7 @@ const SignInModal = () => {
           onClick={() => {
             setShowModal(true);
             blockScroll();
-          }}
+          } }
           style={{ cursor: "pointer" }}
           className="btn btn-outline-success me-2"
         >
@@ -26,7 +26,7 @@ const SignInModal = () => {
           onClick={() => {
             setShowModal(false);
             allowScroll();
-          }}>
+          } }>
           <style jsx>
             {`
               .divsote {
@@ -49,13 +49,11 @@ const SignInModal = () => {
               }
             `}
           </style>
-          <div className="divsito" onClick={(e) => e.stopPropagation()} >
+          <div className="divsito" onClick={(e) => e.stopPropagation()}>
             <SignInButton />
           </div>
         </div>
       ) : null}
     </>
   );
-};
-
-export default SignInModal;
+}

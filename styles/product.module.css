@@ -41,12 +41,12 @@
   background: #fff;
 }
 
-.products_filter_container{
-  display: grid; 
-  grid-template-columns: 0.25fr 1.75fr; 
-  grid-template-rows: 2fr; 
-  gap: 0px 0px; 
-  grid-template-areas: "filter_sorter items"; 
+.products_filter_container {
+  display: grid;
+  grid-template-columns: 0.25fr 1.75fr;
+  grid-template-rows: 2fr;
+  gap: 0px 0px;
+  grid-template-areas: "filter_sorter items";
 }
 
 .page {
@@ -76,7 +76,14 @@
   padding: 10px 0;
 }
 
+.content {
+  overflow: hidden;
+  width: 120px;
+}
+
 .listItem h3 {
+  white-space: nowrap;
+  text-overflow: ellipsis "[...]";
   margin: 5px 0;
 }
 

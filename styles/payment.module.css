@@ -6,3 +6,22 @@
 .containerPayment {
     margin: 20px;
 }
+
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.total {
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-end;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.totalPrice {
+    margin-bottom: 50px;
+}

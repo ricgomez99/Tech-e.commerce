@@ -1,0 +1,12 @@
+.addBtn {
+  padding: 10px 20px;
+  background: transparent;
+  border: 2px solid #a4c3b2;
+  color: #9fc4af;
+  font-weight: 500;
+}
+
+.addBtn:hover {
+  background: #a4c3b2;
+  color: #fff;
+}

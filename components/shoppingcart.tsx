@@ -1,6 +1,7 @@
 import { useAppContext } from "./statewrapper";
 import Product from "./product";
 import style from "../styles/shoppingcart.module.css";
+import { BsFillXCircleFill } from "react-icons/bs";
 
 export default function ShoppingCart() {
     const cart = useAppContext();
@@ -16,10 +17,10 @@ export default function ShoppingCart() {
     return(
     <div className={style.shoppingCart} style={{display: cart.isOpen ? "block" : "none"}} >
         <div>
-            <button onClick={handleCloseCart}>X</button>
+            <button onClick={handleCloseCart} className={style.button}><BsFillXCircleFill /></button>
         </div>
             {!cart.items.length ? (
-            <div>
+            <div className={style.empty}>
                 Cart is empty
             </div>): (
             <>

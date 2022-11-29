@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import style from "../styles/product.module.css";
+import AddButton from "./addButton";
 
 import Footer from "./footer";
 
@@ -42,7 +43,9 @@ export default function Product({ product, showAs, qty }: Data) {
             <div className={style.price}>${product.price}</div>
             <div>Stock: {product.stock}</div>
             <div>{product.description}</div>
-            <div>{/* <button>Add to cart</button> */}</div>
+            <div>
+              <AddButton item={product} />
+            </div>
           </div>
         </div>
         <Footer />
@@ -61,7 +64,7 @@ export default function Product({ product, showAs, qty }: Data) {
             height={100}
           />
         </div>
-        <div>
+        <div className={style.content}>
           <h3>{product.title}</h3>
           <div>{product.price}</div>
 

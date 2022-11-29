@@ -17,10 +17,9 @@ type Data = {
 export default function Product({ product, showAs, qty }: Data) {
   const cart = useAppContext();
 
-  const handleDelete = (product : any) => {
+  const handleDelete = (product: any) => {
     cart.deleteItem(product);
-    console.log(product)
-  }
+  };
 
   if (showAs === "Page") {
     return (
@@ -41,6 +40,7 @@ export default function Product({ product, showAs, qty }: Data) {
               alt={product.title}
               width={500}
               height={500}
+              className={style.detailsImg}
             />
           </div>
           <div className={style.info}>
@@ -48,8 +48,8 @@ export default function Product({ product, showAs, qty }: Data) {
               <h2>{product.title}</h2>
             </div>
             <div>Category: {product.categories}</div>
-            <div className={style.price}>${product.price}</div>
             <div>Stock: {product.stock}</div>
+            <div className={style.price}>${product.price}</div>
             <div>{product.description}</div>
             <div>
               <AddButton item={product} />

@@ -1,4 +1,5 @@
 import { useAppContext } from "./statewrapper";
+import style from "../styles/addButton.module.css";
 
 export default function AddButton({ item }: any) {
   const cart = useAppContext();
@@ -7,5 +8,9 @@ export default function AddButton({ item }: any) {
     cart.addItemToCart(item);
     cart.openCart();
   }
-  return <button onClick={handleClick}>Add to cart</button>;
+  return (
+    <button className={style.addBtn} onClick={handleClick}>
+      Add to cart
+    </button>
+  );
 }

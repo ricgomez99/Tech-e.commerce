@@ -56,7 +56,7 @@ export async function getCategories() {
       "https://techproductsshop-production.up.railway.app/categories"
     );
     const categories = await request.json();
-    return categories
+    return categories;
   } catch (error) {
     return error;
   }
@@ -101,6 +101,23 @@ export async function updateProduct(id: string, data: BodyInit) {
       {
         method: "PATCH",
         body: data,
+      }
+    );
+    const response = await request.json();
+    return response;
+  } catch (error) {
+    return error;
+  }
+}
+
+//Esta funcion hace un delete de un producto
+
+export async function deleteProduct(id: string) {
+  try {
+    const request = await fetch(
+      `https://techproductsshop-production.up.railway.app/products/${id}`,
+      {
+        method: "DELETE",
       }
     );
     const response = await request.json();

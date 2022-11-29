@@ -80,9 +80,16 @@
   white-space: nowrap;
   width: 190px;
 }
+
 .detailContent {
   display: flex;
   justify-content: space-between;
+}
+
+.button{
+  background-color: transparent;
+  color: #223fff;
+  border: none;
 }
 
 .listItem h3 {

@@ -14,7 +14,7 @@ export default function CardPayment() {
   return(
     <div>
       {products.items?.map((p) => (
-        <div className={styles.container}>
+        <div key={p.id} className={styles.container}>
           <div>
             <Image
               src={p.image}

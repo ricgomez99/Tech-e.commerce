@@ -4,6 +4,17 @@ type Props = {
   children?: ReactNode;
 };
 
+let cartJSON: Map<string, object> = new Map ();
+typeof window !== "undefined"
+  ? localStorage.getItem("cart")
+    ? (cartJSON = new Map(
+        Object.entries(JSON.parse(localStorage.getItem("cart")!))
+      ))
+    : null
+  : null;
+
+let itemsArr: Array<Object> = Array.from(cartJSON.values());
+
 interface AppContextInterface {
   isOpen: boolean;
   items: any[];
@@ -13,6 +24,8 @@ interface AppContextInterface {
   deleteItem: any;
   deletePerItem: any;
   getNumberOfItems: any;
+  updateCart: any;
+  getCart: any;
 }
 
 const AppContext = createContext<AppContextInterface>({
@@ -24,11 +37,13 @@ const AppContext = createContext<AppContextInterface>({
   deleteItem: (id: number) => {},
   deletePerItem: (id: number) => {},
   getNumberOfItems: () => {},
+  updateCart: () => {},
+  getCart: () => {},
 });
 
 export default function StateWrapper({ children }: Props) {
   const [isOpen, setIsOpen] = useState(false);
-  const [items, setItems] = useState<any[]>([]);
+  const [items, setItems] = useState<any[]>(itemsArr);
 
   function handleOpenCart() {
     setIsOpen(true);
@@ -74,6 +89,21 @@ export default function StateWrapper({ children }: Props) {
     return total;
   }
 
+  function localCart(): any {
+    localStorage.setItem("cart", JSON.stringify(items));
+  }
+
+  function storedCart(): any {
+    let cartMap = new Map();
+    if (localStorage.getItem("cart")) {
+      const cartJSON = localStorage.getItem("cart");
+      return cartJSON !== null
+        ? new Map(Object.entries(JSON.parse(cartJSON)))
+        : cartMap;
+    }
+    return cartMap;
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -85,8 +115,12 @@ export default function StateWrapper({ children }: Props) {
         deleteItem: handleDeleteItem,
         deletePerItem: handleDeletePerItem,
         getNumberOfItems: handleNumberOfItems,
+        updateCart: localCart,
+        getCart: storedCart,
       }}
-    >{children}</AppContext.Provider>
+    >
+      {children}
+    </AppContext.Provider>
   );
 }
 

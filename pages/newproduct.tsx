@@ -22,7 +22,6 @@ const NewProduct = (categories: any) => {
       image: "",
     },
     onSubmit: (values) => {
-      console.log(values);
       setMessage("Form submitted");
       postProduct(values);
       setSubmitted(true);

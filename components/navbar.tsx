@@ -1,7 +1,7 @@
 import { useAppContext } from "./statewrapper";
 import Link from "next/link";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { signOut, useSession } from "next-auth/react";
 import SignInModal from "./signinmodal";
 import styles from "../styles/navbar.module.css";
@@ -16,6 +16,12 @@ const Navbar = () => {
   function handleOpenCart() {
     cart.openCart();
   }
+
+  const [cartCounter, setCartCounter] = useState(0)
+
+  useEffect(()=>{
+    setCartCounter(cart.getNumberOfItems())
+  }, [cart.addItemToCart, cart.deleteItem])
 
   return (
     <header>
@@ -54,9 +60,11 @@ const Navbar = () => {
           </Link>
           {/* cart's button */}
           <div>
+
             <button onClick={handleOpenCart}>
-              Cart ({cart.getNumberOfItems()})
+            Cart ({cartCounter})
             </button>
+
           </div>
           {!session && <SignInModal />}
           {session && (

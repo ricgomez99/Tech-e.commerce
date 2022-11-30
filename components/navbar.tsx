@@ -9,7 +9,7 @@ import styles from "../styles/navbar.module.css";
 const Navbar = () => {
   const cart = useAppContext();
   const [navActive, setNavActive] = useState<boolean>(false);
-  
+
   const { data: session } = useSession();
   //!call action of the cart
 
@@ -27,7 +27,7 @@ const Navbar = () => {
     <header>
       <nav className={styles.navbar}>
         <Link href="/" className="ps-3 navbar-brand">
-          <Image src="/public/img/e-commerce.png" alt="logo" width={35} height={35} />
+          <Image src="/img/e-commerce.png" alt="logo" width={35} height={35} />
         </Link>
         <div>
           {session ? (
@@ -60,7 +60,11 @@ const Navbar = () => {
           </Link>
           {/* cart's button */}
           <div>
-            <button onClick={handleOpenCart}>Cart ({cartCounter})</button>
+
+            <button onClick={handleOpenCart}>
+            Cart ({cartCounter})
+            </button>
+
           </div>
           {!session && <SignInModal />}
           {session && (
@@ -69,6 +73,9 @@ const Navbar = () => {
             </a>
           )}
         </div>
+        <Link href="/payment">
+          <button>Payment</button>
+        </Link>
       </nav>
     </header>
   );

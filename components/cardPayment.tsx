@@ -25,6 +25,7 @@ export default function CardPayment() {
           </div>
           <div className={styles.titleContainer}>
             <h5 className={styles.title}> {p.title}</h5>
+            {p.qty === 0 ? "" : <div>Units: {p.qty}</div>}
             <h3 className={styles.price}>US${p.price}</h3>
             <button className="btn btn-danger" onClick={() =>handleDelete(p.id)}><FaTrash/></button>
           </div>

@@ -19,7 +19,7 @@ export default function Payment() {
   return(
     <Layout>
       <div className={styles.containerPayment}>
-        <button onClick={() => Router.back()} className="btn btn-outline-secondary">
+        <button onClick={() => Router.back()} className="btn btn-secondary">
           <MdOutlineArrowBack/>
         </button>
         <div className={styles.title}>

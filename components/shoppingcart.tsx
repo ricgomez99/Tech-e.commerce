@@ -3,6 +3,7 @@ import Product from "./product";
 import style from "../styles/shoppingcart.module.css";
 import { BsFillXCircleFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function ShoppingCart() {
   const cart = useAppContext();
@@ -57,6 +58,9 @@ export default function ShoppingCart() {
           <div>Total: ${getTotal()}</div>
         </>
       )}
+        <Link href="/payment">
+            <button style={{ cursor: "pointer", width: "150px", height:"40px"}} className="btn btn-success">Checkout</button>
+        </Link>
     </div>
   );
 }

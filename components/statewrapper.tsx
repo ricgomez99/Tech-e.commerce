@@ -11,6 +11,7 @@ interface AppContextInterface {
   closeCart: any;
   addItemToCart: any;
   deleteItem: any;
+  deletePerItem: any;
   getNumberOfItems: any;
 }
 
@@ -21,6 +22,7 @@ const AppContext = createContext<AppContextInterface>({
   closeCart: () => {},
   addItemToCart: (item: any) => {},
   deleteItem: (id: number) => {},
+  deletePerItem: (id: number) => {},
   getNumberOfItems: () => {},
 });
 
@@ -56,6 +58,16 @@ export default function StateWrapper({ children }: Props) {
     setItems(deleteItem);
   }
 
+  function handleDeletePerItem(id: number) {
+    const temp = [...items];
+    const found = temp.find((product: any) => product.id === id);
+
+    if(found) {
+      found.qty--
+    } 
+    setItems([...temp]);
+  }
+
   function handleNumberOfItems() {
     const total = items.reduce((acc, item) => acc + item.qty, 0);
 
@@ -71,6 +83,7 @@ export default function StateWrapper({ children }: Props) {
         closeCart: handleCloseCart,
         addItemToCart: handleAddItemToCart,
         deleteItem: handleDeleteItem,
+        deletePerItem: handleDeletePerItem,
         getNumberOfItems: handleNumberOfItems,
       }}
     >{children}</AppContext.Provider>

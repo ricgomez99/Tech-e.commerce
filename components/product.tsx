@@ -17,6 +17,14 @@ type Data = {
 export default function Product({ product, showAs, qty }: Data) {
   const cart = useAppContext();
 
+  const handleAddItem = (product: any) => {
+    cart.addItemToCart(product);
+  };
+
+  const handleDeletePerItem = (product : any) => {
+    cart.deletePerItem(product);
+  }
+
   const handleDelete = (product: any) => {
     cart.deleteItem(product);
   };
@@ -82,8 +90,10 @@ export default function Product({ product, showAs, qty }: Data) {
           </div>
           <div className="right">
             {qty === 0 ? "" : 
-            <div>
-            <button onClick={() =>handleDelete(product.id)} className={style.button}><BsFillTrashFill /></button>  
+            <div className={style.buttons}>
+            <button onClick={() =>handleDelete(product.id)} className={style.button}><BsFillTrashFill /></button> 
+            <button onClick={() =>handleAddItem(product)} className={style.button}>+</button>
+            {qty === 1 ? "" : <button onClick={() =>handleDeletePerItem(product.id)} className={style.button}>-</button>}
             </div>}
           </div>
           </div>

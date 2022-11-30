@@ -63,6 +63,9 @@ const Navbar = () => {
             </a>
           )}
         </div>
+        <Link href="/payment" >
+        <button>Payment</button>
+        </Link>
       </nav>
     </header>
   );

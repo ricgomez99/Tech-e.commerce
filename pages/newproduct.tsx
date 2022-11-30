@@ -26,8 +26,6 @@ const NewProduct: NextPage = () => {
       image: "",
     },
     onSubmit: (values) => {
-      // console.log(JSON.stringify(values));
-      console.log(values);
       setMessage("Form submitted");
       postProduct(values);
       setSubmitted(true);

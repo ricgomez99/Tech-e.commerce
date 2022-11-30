@@ -4,7 +4,7 @@ type Props = {
   children?: ReactNode;
 };
 
-let cartJSON = [{}];
+let cartJSON: Map<string, object> = new Map ();
 typeof window !== "undefined"
   ? localStorage.getItem("cart")
     ? (cartJSON = new Map(
@@ -13,12 +13,7 @@ typeof window !== "undefined"
     : null
   : null;
 
-console.log(cartJSON);
-let obj = Object.fromEntries(cartJSON);
-console.log(obj);
-
-let arr = Array.from(cartJSON.values());
-console.log(arr);
+let itemsArr: Array<Object> = Array.from(cartJSON.values());
 
 interface AppContextInterface {
   isOpen: boolean;
@@ -46,7 +41,7 @@ const AppContext = createContext<AppContextInterface>({
 
 export default function StateWrapper({ children }: Props) {
   const [isOpen, setIsOpen] = useState(false);
-  const [items, setItems] = useState<any[]>(arr);
+  const [items, setItems] = useState<any[]>(itemsArr);
 
   function handleOpenCart() {
     setIsOpen(true);

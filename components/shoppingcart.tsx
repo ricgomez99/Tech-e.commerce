@@ -2,31 +2,25 @@ import { useAppContext } from "./statewrapper";
 import Product from "./product";
 import style from "../styles/shoppingcart.module.css";
 import { BsFillXCircleFill } from "react-icons/bs";
-
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function ShoppingCart() {
   const cart = useAppContext();
 
-  if (typeof window !== "undefined") {
-    cart.updateCart();
-  }
+  const [emptyCart, setEmptyCart] = useState(true);
 
-  //   const getCart = () => {
-  //     if (typeof window !== "undefined") {
-  //       const cartJSON = localStorage.getItem("carrito");
-  //       return cartJSON !== null ? JSON.parse(cartJSON) : "{}";
-  //     }
-  //     return;
-  //   };
   useEffect(() => {
     cart.getCart();
-  }, []);
+    cart.updateCart();
+    cart.items ? setEmptyCart(false) : setEmptyCart(true)
+  }, [cart.updateCart]);
+
   const currentCart = cart.items;
 
   const handleCloseCart = () => {
     cart.closeCart();
   };
+
   const getTotal = () => {
     const total = cart.items.reduce(
       (acc, item) => acc + item.qty * item.price,
@@ -45,7 +39,7 @@ export default function ShoppingCart() {
           <BsFillXCircleFill />
         </button>
       </div>
-      {!currentCart?.length ? (
+      {emptyCart ? (
         <div className={style.empty}>Cart is empty</div>
       ) : (
         <>

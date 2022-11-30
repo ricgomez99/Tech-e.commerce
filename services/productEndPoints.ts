@@ -1,22 +1,19 @@
+import axios from "axios";
+
 //Esta función postea los productos
+
 
 export async function postProduct(data: any) {
   try {
-    const request = await fetch(
-      "https://techproductsshop-production.up.railway.app/products",
-      {
-        method: "POST",
+      const response = await axios.post("https://techproductsshop-production.up.railway.app/products", data, {
         headers: {
-          "Content-Type": "application/json",
-          // 'Content-Type': 'application/x-www-form-urlencoded',
+          "Content-Type": "multipart/form-data",
         },
-        mode: "cors",
-        body: JSON.stringify(data),
-      }
-    );
-    return request.json();
-  } catch (error) {
-    return error;
+      });
+      return  response.data;
+    ;
+  } catch (e) {
+    console.log(e);
   }
 }
 
@@ -96,14 +93,14 @@ export async function getProducts2(data: any) {
 
 export async function updateProduct(id: string, data: BodyInit) {
   try {
-    const request = await fetch(
-      `https://techproductsshop-production.up.railway.app/products/${id}`,
-      {
-        method: "PATCH",
-        body: data,
+    const request = await axios.patch(
+      `https://techproductsshop-production.up.railway.app/products/${id}`, data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       }
     );
-    const response = await request.json();
+    const response = await request.data
     return response;
   } catch (error) {
     return error;

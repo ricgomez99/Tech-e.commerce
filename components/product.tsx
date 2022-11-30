@@ -6,6 +6,7 @@ import Footer from "./footer";
 import Router from "next/router";
 import { useAppContext } from "../components/statewrapper";
 import { BsFillTrashFill } from "react-icons/bs";
+import { MdOutlineArrowBack } from "react-icons/md";
 
 
 type Data = {
@@ -33,12 +34,8 @@ export default function Product({ product, showAs, qty }: Data) {
     return (
       <>
         {/*  */}
-        <button
-          type="button"
-          className="btn btn-primary btn-xs mb-5 p-1"
-          onClick={() => Router.back()}
-        >
-          Go Back
+        <button onClick={() => Router.back()} className="btn btn-secondary">
+              <MdOutlineArrowBack/>
         </button>
         {/*  */}
         <div className={style.page}>

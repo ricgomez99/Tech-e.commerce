@@ -4,8 +4,7 @@ import Image from "next/image";
 import logo from "../public/Img/e-commerce.png";
 import styles from "../styles/about.module.css";
 import Router from "next/router";
-
-
+import { MdOutlineArrowBack } from "react-icons/md";
 
 export default function About() {
      
@@ -13,7 +12,9 @@ export default function About() {
     <Layout>
        <div className={styles.everythingAbout}>
          <div>
-           <button className={styles.buttonAbout} onClick={() => Router.back()}>←</button>
+            <button onClick={() => Router.back()} className="btn btn-secondary">
+              <MdOutlineArrowBack/>
+            </button>
          </div>
          <div className={styles.titleAbout}>
            <Image className={styles.logoAbout} src={logo} alt='img'></Image>

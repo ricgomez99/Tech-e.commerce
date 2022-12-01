@@ -147,7 +147,7 @@ const NewProduct = (categories: any) => {
                 Product Image
               </label>
               <input
-                type="text"
+                type="file"
                 name="image"
                 className="form-control"
                 placeholder="Image URL..."
@@ -165,6 +165,7 @@ const NewProduct = (categories: any) => {
               Add Product
             </button>
           </form>
+          
         </div>
         <Footer />
       </div>

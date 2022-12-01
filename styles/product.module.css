@@ -31,7 +31,12 @@
 
 .title {
   width: 100%;
-  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+.title h3 {
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .image {
@@ -41,12 +46,12 @@
   background: #fff;
 }
 
-.products_filter_container{
-  display: grid; 
-  grid-template-columns: 0.25fr 1.75fr; 
-  grid-template-rows: 2fr; 
-  gap: 0px 0px; 
-  grid-template-areas: "filter_sorter items"; 
+.products_filter_container {
+  display: grid;
+  grid-template-columns: 0.25fr 1.75fr;
+  grid-template-rows: 2fr;
+  gap: 0px 0px;
+  grid-template-areas: "filter_sorter items";
 }
 
 .page {
@@ -56,11 +61,21 @@
   box-shadow: 0 0 50px #bbbb;
   transform: scale(0);
   animation: scale 0.3s ease forwards;
+  margin: 18px 10px;
+}
+
+.detailsImg {
+  object-fit: scale-down;
+}
+
+.cartImg {
+  object-fit: scale-down;
 }
 
 .info {
   display: flex;
   flex-direction: column;
+  padding: 0 20px;
   gap: 20px;
 }
 
@@ -76,8 +91,30 @@
   padding: 10px 0;
 }
 
+.content {
+  white-space: nowrap;
+  width: 190px;
+}
+
+.detailContent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  background-color: transparent;
+  color: #223fff;
+  border: none;
+}
+
 .listItem h3 {
+  text-overflow: ellipsis;
+  overflow: hidden;
   margin: 5px 0;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes scale {

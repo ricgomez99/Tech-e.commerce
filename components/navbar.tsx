@@ -1,20 +1,32 @@
+import { useAppContext } from "./statewrapper";
 import Link from "next/link";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { signOut, useSession } from "next-auth/react";
 import SignInModal from "./signinmodal";
 import styles from "../styles/navbar.module.css";
 
 const Navbar = () => {
+  const cart = useAppContext();
   const [navActive, setNavActive] = useState<boolean>(false);
 
   const { data: session } = useSession();
+
+  function handleOpenCart() {
+    cart.openCart();
+  }
+
+  const [cartCounter, setCartCounter] = useState(0)
+
+  useEffect(()=>{
+    setCartCounter(cart.getNumberOfItems())
+  }, [cart.addItemToCart, cart.deleteItem])
 
   return (
     <header>
       <nav className={styles.navbar}>
         <Link href="/" className="ps-3 navbar-brand">
-          <Image src="/public/img/e-commerce.png" alt="logo" width={35} height={35} />
+          <Image src="/img/e-commerce.png" alt="logo" width={35} height={35} />
         </Link>
         <div>
           {session ? (
@@ -45,6 +57,13 @@ const Navbar = () => {
           <Link href="/" style={{ textDecoration: "none", color: "black" }}>
             Home
           </Link>
+          <div>
+
+            <button onClick={handleOpenCart}>
+            Cart ({cartCounter})
+            </button>
+
+          </div>
           {!session && <SignInModal />}
           {session && (
             <a className="btn btn-secondary me-2" onClick={() => signOut()}>

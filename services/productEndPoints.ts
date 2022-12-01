@@ -1,22 +1,16 @@
+import axios from "axios";
+
 //Esta función postea los productos
 
 export async function postProduct(data: any) {
   try {
-    const request = await fetch(
+    const response = await axios.post(
       "https://techproductsshop-production.up.railway.app/products",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        mode: "cors",
-        body: JSON.stringify(data),
-      }
+      data
     );
-    return request.json();
-  } catch (error) {
-    return error;
+    return response.data;
+  } catch (e) {
+    console.log(e);
   }
 }
 
@@ -56,7 +50,7 @@ export async function getCategories() {
       "https://techproductsshop-production.up.railway.app/categories"
     );
     const categories = await request.json();
-    return categories
+    return categories;
   } catch (error) {
     return error;
   }
@@ -96,11 +90,30 @@ export async function getProducts2(data: any) {
 
 export async function updateProduct(id: string, data: BodyInit) {
   try {
+    const request = await axios.patch(
+      `https://techproductsshop-production.up.railway.app/products/${id}`,
+      data,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+    const response = await request.data;
+    return response;
+  } catch (error) {
+    return error;
+  }
+}
+
+//Esta funcion hace un delete de un producto
+
+export async function deleteProduct(id: string) {
+  try {
     const request = await fetch(
       `https://techproductsshop-production.up.railway.app/products/${id}`,
       {
-        method: "PATCH",
-        body: data,
+        method: "DELETE",
       }
     );
     const response = await request.json();

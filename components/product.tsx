@@ -32,11 +32,11 @@ export default function Product({ product, showAs, qty }: Data) {
   if (showAs === "Page") {
     return (
       <>
-        {/*  */}
+   
         <button onClick={() => Router.back()} className="btn btn-secondary">
           <MdOutlineArrowBack />
         </button>
-        {/*  */}
+    
         <div className={style.page}>
           <div>
             <Image

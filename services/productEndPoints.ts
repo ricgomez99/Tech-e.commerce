@@ -2,16 +2,13 @@ import axios from "axios";
 
 //Esta función postea los productos
 
-
 export async function postProduct(data: any) {
   try {
-      const response = await axios.post("https://techproductsshop-production.up.railway.app/products", data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      return  response.data;
-    ;
+    const response = await axios.post(
+      "https://techproductsshop-production.up.railway.app/products",
+      data
+    );
+    return response.data;
   } catch (e) {
     console.log(e);
   }
@@ -94,13 +91,15 @@ export async function getProducts2(data: any) {
 export async function updateProduct(id: string, data: BodyInit) {
   try {
     const request = await axios.patch(
-      `https://techproductsshop-production.up.railway.app/products/${id}`, data, {
+      `https://techproductsshop-production.up.railway.app/products/${id}`,
+      data,
+      {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       }
     );
-    const response = await request.data
+    const response = await request.data;
     return response;
   } catch (error) {
     return error;

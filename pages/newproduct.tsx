@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import type { NextPage } from "next";
 import * as yup from "yup";
-
 import Layout from "../components/layout";
 import Footer from "../components/footer";
 
@@ -11,6 +10,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import { getCategories, postProduct } from "../services/productEndPoints";
 import Router from "next/router";
+
+
+
 
 const NewProduct: NextPage = () => {
   const [message, setMessage] = useState(""); // This will be used to show a message if the submission is successful
@@ -128,7 +130,7 @@ const NewProduct: NextPage = () => {
                 Product Image
               </label>
               <input
-                type="text"
+                type="file"
                 name="image"
                 className="form-control"
                 placeholder="Image URL..."
@@ -146,6 +148,7 @@ const NewProduct: NextPage = () => {
               Add Product
             </button>
           </form>
+          
         </div>
         <Footer />
       </div>

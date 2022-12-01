@@ -6,6 +6,7 @@ import Footer from "./footer";
 import Router from "next/router";
 import { useAppContext } from "../components/statewrapper";
 import { BsFillTrashFill } from "react-icons/bs";
+import { MdOutlineArrowBack } from "react-icons/md";
 
 
 type Data = {
@@ -17,6 +18,14 @@ type Data = {
 export default function Product({ product, showAs, qty }: Data) {
   const cart = useAppContext();
 
+  const handleAddItem = (product: any) => {
+    cart.addItemToCart(product);
+  };
+
+  const handleDeletePerItem = (product : any) => {
+    cart.deletePerItem(product);
+  }
+
   const handleDelete = (product: any) => {
     cart.deleteItem(product);
   };
@@ -25,12 +34,8 @@ export default function Product({ product, showAs, qty }: Data) {
     return (
       <>
         {/*  */}
-        <button
-          type="button"
-          className="btn btn-primary btn-xs mb-5 p-1"
-          onClick={() => Router.back()}
-        >
-          Go Back
+        <button onClick={() => Router.back()} className="btn btn-secondary">
+              <MdOutlineArrowBack/>
         </button>
         {/*  */}
         <div className={style.page}>
@@ -82,8 +87,10 @@ export default function Product({ product, showAs, qty }: Data) {
           </div>
           <div className="right">
             {qty === 0 ? "" : 
-            <div>
-            <button onClick={() =>handleDelete(product.id)} className={style.button}><BsFillTrashFill /></button>  
+            <div className={style.buttons}>
+            <button onClick={() =>handleDelete(product.id)} className={style.button}><BsFillTrashFill /></button> 
+            <button onClick={() =>handleAddItem(product)} className={style.button}>+</button>
+            {qty === 1 ? "" : <button onClick={() =>handleDeletePerItem(product.id)} className={style.button}>-</button>}
             </div>}
           </div>
           </div>

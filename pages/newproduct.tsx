@@ -17,7 +17,7 @@ const NewProduct = (categories: any) => {
     await postProduct(values);
     setSubmitted(true);
   };
-
+ 
   function handleOnChange(changeEvent: any) {
     const reader = new FileReader();
 

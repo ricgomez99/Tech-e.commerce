@@ -1,0 +1,13 @@
+.title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.container{
+    display: flex;
+    margin: 60px;
+}
+
+.payImg {
+    object-fit: scale-down;
+}

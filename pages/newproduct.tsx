@@ -1,18 +1,14 @@
 import { useState } from "react";
-
 import { useFormik } from "formik";
-import type { NextPage } from "next";
+// import type { NextPage } from "next";
 import * as yup from "yup";
-
 import Layout from "../components/layout";
 import Footer from "../components/footer";
-
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import { getCategories, postProduct } from "../services/productEndPoints";
 import Router from "next/router";
 
-const NewProduct: NextPage = () => {
+const NewProduct = (categories: any) => {
   const [message, setMessage] = useState(""); // This will be used to show a message if the submission is successful
   const [submitted, setSubmitted] = useState(false);
 
@@ -21,13 +17,11 @@ const NewProduct: NextPage = () => {
       title: "",
       price: 0,
       stock: 0,
-      categories: "Desktop",
+      categories: "",
       description: "",
       image: "",
     },
     onSubmit: (values) => {
-      // console.log(JSON.stringify(values));
-      console.log(values);
       setMessage("Form submitted");
       postProduct(values);
       setSubmitted(true);
@@ -44,15 +38,19 @@ const NewProduct: NextPage = () => {
   return (
     <Layout>
       <div>
-      
-
         <div className="vh-100 d-flex flex-column justify-content-center align-items-center">
           <div hidden={!submitted} className="alert alert-primary" role="alert">
             {message}
           </div>
 
           <form className="w-50" onSubmit={formik.handleSubmit}>
-            <button type="button" className="btn btn-primary btn-xs mb-5 p-1" onClick={() => Router.back()}>Go Back</button>
+            <button
+              type="button"
+              className="btn btn-primary btn-xs mb-5 p-1"
+              onClick={() => Router.back()}
+            >
+              Go Back
+            </button>
             {/*  */}
             <div className="mb-3">
               <label htmlFor="title" className="form-label">
@@ -107,6 +105,27 @@ const NewProduct: NextPage = () => {
             </div>
             {/*  */}
             <div className="mb-3">
+              <label htmlFor="categories" className="form-label">
+                Categories
+              </label>
+              <select
+                name="categories"
+                id="categories"
+                className="form-control"
+                onChange={formik.handleChange}
+              >
+                <option value="default" hidden>
+                  Choose category...
+                </option>
+                {categories.categories?.map((category: any) => (
+                  <option value={category.categories} key={category.id}>
+                    {category.categories}
+                  </option>
+                ))}
+              </select>
+            </div>
+            {/*  */}
+            <div className="mb-3">
               <label htmlFor="description" className="form-label">
                 Description
               </label>
@@ -128,7 +147,7 @@ const NewProduct: NextPage = () => {
                 Product Image
               </label>
               <input
-                type="text"
+                type="file"
                 name="image"
                 className="form-control"
                 placeholder="Image URL..."
@@ -146,6 +165,7 @@ const NewProduct: NextPage = () => {
               Add Product
             </button>
           </form>
+          
         </div>
         <Footer />
       </div>

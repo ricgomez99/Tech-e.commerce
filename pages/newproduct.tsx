@@ -13,7 +13,6 @@ const NewProduct = (categories: any) => {
   const [imageSrc, setImageSrc] = useState("");
 
   const submit = async (values: any) => {
-    console.log(values);
     setMessage("Form submitted");
     await postProduct(values);
     setSubmitted(true);

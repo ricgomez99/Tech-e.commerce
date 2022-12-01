@@ -9,53 +9,17 @@ import { MdOutlineArrowBack } from "react-icons/md";
 import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string)
-const otro = [
-  {
-    price_data: {
-      currency: 'usd',
-      product_data: {
-        name: 'Papita.jpg',
-        images:['https://media.tenor.com/PZTvw4FUaTcAAAAM/le%C5%9F.gif'],
-      },
-      unit_amount: 2000,
-    },
-    quantity: 1,
-  },
-  {
-    price_data: {
-      currency: 'usd',
-      product_data: {
-        name: 'Banana',
-        images:['https://media.tenor.com/4_E21LSI0ogAAAAj/banana-cheerer.gif'],
-      },
-      unit_amount: 500,
-    },
-    quantity: 2,
-  },
-  {
-    price_data: {
-      currency: 'usd',
-      product_data: {
-        
-        name: 'Mouse',
-        images: ["https://http2.mlstatic.com/D_NQ_NP_2X_979137-MLA44255818618_122020-F.webp"],
-      },
-      unit_amount: 1500,
-    },
-    quantity: 1,
-  },
-]
 
-function conversion (cart:any) {
-  if(!cart.length) return
+function conversion(cart: any) {
+  if (!cart.length) return
   let array: any[] = []
   for (let i = 0; i < cart.length; i++) {
     array.push({
-      price_data:{
-        currency:'usd',
+      price_data: {
+        currency: 'usd',
         product_data: {
           name: cart[i].title,
-          images:[cart[i].image]
+          images: [cart[i].image]
         },
         unit_amount: cart[i].price * 100,
       },
@@ -103,7 +67,12 @@ export default function Payment() {
           </div>
           <div className={styles.total}>
             <h3 className={styles.totalPrice}>Total price: US${getTotal()}</h3>
-            <button style={{ cursor: "pointer", width: "250px", height: "50px" }} className="btn btn-success" role="link" onClick={handleClick} >
+            <button
+              style={{ cursor: "pointer", width: "250px", height: "50px" }}
+              className="btn btn-success"
+              role="link"
+              onClick={handleClick}
+            >
               Pay
             </button>
           </div>

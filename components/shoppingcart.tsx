@@ -4,17 +4,20 @@ import style from "../styles/shoppingcart.module.css";
 import { BsFillXCircleFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function ShoppingCart() {
   const cart = useAppContext();
+  const { events } = useRouter();
 
   const [emptyCart, setEmptyCart] = useState(true);
 
   useEffect(() => {
+    events.on("routeChangeStart", handleCloseCart);
     cart.getCart();
     cart.updateCart();
-    cart.items ? setEmptyCart(false) : setEmptyCart(true);
-  }, [cart.updateCart]);
+    cart.items.length ? setEmptyCart(false) : setEmptyCart(true);
+  }, [cart.updateCart, cart.addItemToCart, cart.deleteItem]);
 
   const currentCart = cart.items;
 

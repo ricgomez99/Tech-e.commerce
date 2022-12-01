@@ -57,9 +57,9 @@ export default function StateWrapper({ children }: Props) {
     const temp = [...items];
     const found = temp.find((product: any) => product.id === item.id);
 
-    if (found) {
+    if (found && found.qty < found.stock) {
       found.qty++;
-    } else {
+    } else if(!found) {
       item.qty = 1;
       temp.push(item);
     }

@@ -11,7 +11,6 @@ const Navbar = () => {
   const [navActive, setNavActive] = useState<boolean>(false);
 
   const { data: session } = useSession();
-  //!call action of the cart
 
   function handleOpenCart() {
     cart.openCart();
@@ -58,7 +57,6 @@ const Navbar = () => {
           <Link href="/" style={{ textDecoration: "none", color: "black" }}>
             Home
           </Link>
-          {/* cart's button */}
           <div>
 
             <button onClick={handleOpenCart}>

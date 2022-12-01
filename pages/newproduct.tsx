@@ -12,37 +12,12 @@ const NewProduct = (categories: any) => {
   const [submitted, setSubmitted] = useState(false);
   const [imageSrc, setImageSrc] = useState("");
 
-  // const formik = useFormik({
-  //   initialValues: {
-  //     title: "",
-  //     price: 0,
-  //     stock: 0,
-  //     categories: "",
-  //     description: "",
-  //     image: {},
-  //   },
-  //   onSubmit: (values) => {
-  //     console.log(values);
-  //     setMessage("Form submitted");
-  //     postProduct(values);
-  //     setSubmitted(true);
-  //   },
-  //   validationSchema: yup.object({
-  //     title: yup.string().trim().required("Product name is required"),
-  //     price: yup.number().positive("Value must be greater than 0"),
-  //     stock: yup.number().positive("Value must be greater than 0"), //Will we be able to add
-  //     description: yup.string().trim().required("Description is required"),
-  //     // image: yup.string().trim().required("Must add a valid image URL"),
-  //   }),
-  // });
-
   const submit = async (values: any) => {
-    console.log(values);
     setMessage("Form submitted");
     await postProduct(values);
     setSubmitted(true);
   };
-
+ 
   function handleOnChange(changeEvent: any) {
     const reader = new FileReader();
 
@@ -150,11 +125,8 @@ const NewProduct = (categories: any) => {
                     id="image"
                     value={imageSrc}
                   />
-                  Confirmar imagen
+                  Confirm Image
                 </label>
-                {/* {formik.errors.image && (
-                <div className="text-danger">{formik.errors.image}</div>
-              )} */}
               </div>
               <button type="submit" className="btn btn-primary">
                 Add Product

@@ -7,6 +7,7 @@ import styles from "../styles/payment.module.css";
 import { useAppContext } from "components/statewrapper";
 import { MdOutlineArrowBack } from "react-icons/md";
 import { loadStripe } from "@stripe/stripe-js";
+import { useState, useEffect } from "react";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string)
 
@@ -31,14 +32,15 @@ function conversion(cart: any) {
 
 export default function Payment() {
 
-  const products = useAppContext().items;
+  const cart = useAppContext();
+  const [emptyCart, setEmptyCart] = useState(true);
 
   const getTotal = () => {
-    const total = products.reduce((acc, item) => acc + item.qty * item.price, 0);
+    const total = cart.items.reduce((acc, item) => acc + item.qty * item.price, 0);
     return total;
   }
   const handleClick = async (event: any) => {
-    const line_items = conversion(products)
+    const line_items = conversion(cart.items)
     const { sessionId } = await fetch('http://localhost:3000/api/checkout_sessions', {
       method: 'POST',
       headers: {
@@ -52,32 +54,39 @@ export default function Payment() {
     });
   };
 
+  useEffect(() => {
+    cart.updateCart();
+    cart.items.length ? setEmptyCart(false) : setEmptyCart(true);
+  }, [cart.updateCart, cart.addItemToCart, cart.deleteItem]);
+
   return (
     <Layout>
-      <div className={styles.containerPayment}>
-        <button onClick={() => Router.back()} className="btn btn-secondary">
-          <MdOutlineArrowBack />
-        </button>
-        <div className={styles.title}>
-          <h2>Payment Details</h2>
-        </div>
-        <div className={styles.containerInfo}>
-          <div className={styles.card}>
-            <CardPayment />
+      {!emptyCart ?
+        <div className={styles.containerPayment}>
+          <button onClick={() => Router.back()} className="btn btn-secondary">
+            <MdOutlineArrowBack />
+          </button>
+          <div className={styles.title}>
+            <h2>Payment Details</h2>
           </div>
-          <div className={styles.total}>
-            <h3 className={styles.totalPrice}>Total price: US${getTotal()}</h3>
-            <button
-              style={{ cursor: "pointer", width: "250px", height: "50px" }}
-              className="btn btn-success"
-              role="link"
-              onClick={handleClick}
-            >
-              Pay
-            </button>
+          <div className={styles.containerInfo}>
+            <div className={styles.card}>
+              <CardPayment />
+            </div>
+            <div className={styles.total}>
+              <h3 className={styles.totalPrice}>Total price: US${getTotal()}</h3>
+              <button
+                style={{ cursor: "pointer", width: "250px", height: "50px" }}
+                className="btn btn-success"
+                role="link"
+                onClick={handleClick}
+              >
+                Pay
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      : <div>Empty Car</div>}
       <Footer />
     </Layout>
   );

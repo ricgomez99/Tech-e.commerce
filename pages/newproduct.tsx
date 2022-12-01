@@ -115,6 +115,7 @@ const NewProduct = (categories: any) => {
                   <option value="default" hidden>
                     Choose category...
                   </option>
+
                   {categories.categories?.map((category: any) => (
                     <option value={category.categories} key={category.id}>
                       {category.categories}
@@ -160,6 +161,7 @@ const NewProduct = (categories: any) => {
               </button>
             </Form>
           </Formik>
+
         </div>
         <Footer />
       </div>

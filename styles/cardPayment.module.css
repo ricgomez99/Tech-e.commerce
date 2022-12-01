@@ -3,17 +3,11 @@
     text-overflow: ellipsis;
 }
 
-.titleContainer {
-    white-space: nowrap;
-    width: 500px;
-}
-
 .container{
     display: flex;
     margin: 60px;
 }
 
-.price{
-    display: flex;
-    justify-content: center;
+.payImg {
+    object-fit: scale-down;
 }

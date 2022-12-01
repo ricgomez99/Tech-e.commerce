@@ -13,7 +13,7 @@ export default function ShoppingCart() {
   useEffect(() => {
     cart.getCart();
     cart.updateCart();
-    cart.items ? setEmptyCart(false) : setEmptyCart(true)
+    cart.items ? setEmptyCart(false) : setEmptyCart(true);
   }, [cart.updateCart]);
 
   const currentCart = cart.items;
@@ -58,9 +58,14 @@ export default function ShoppingCart() {
           <div>Total: ${getTotal()}</div>
         </>
       )}
-        <Link href="/payment">
-            <button style={{ cursor: "pointer", width: "150px", height:"40px"}} className="btn btn-success">Checkout</button>
-        </Link>
+      <Link href="/payment">
+        <button
+          style={{ cursor: "pointer", width: "150px", height: "40px" }}
+          className="btn btn-success"
+        >
+          Checkout
+        </button>
+      </Link>
     </div>
   );
 }

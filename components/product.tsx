@@ -145,9 +145,9 @@ export default function Product({ product, showAs, qty }: Data) {
         </h3>
       </div>
       <div style={{ color: "#9A9A9A" }}>US${product.price}</div>
-      {/* <div>
-        <button>Add to cart</button>
-      </div> */}
+      <div>
+        <AddButton item={product} />
+      </div>
     </div>
   );
 }

@@ -8,6 +8,7 @@ import { useAppContext } from "components/statewrapper";
 import { MdOutlineArrowBack } from "react-icons/md";
 import { loadStripe } from "@stripe/stripe-js";
 import { useState, useEffect } from "react";
+import { updateStock } from "../services/productEndPoints"
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string)
 
@@ -39,8 +40,16 @@ export default function Payment() {
     const total = cart.items.reduce((acc, item) => acc + item.qty * item.price, 0);
     return total;
   }
+  console.log(cart.items)
   const handleClick = async (event: any) => {
-    const line_items = conversion(cart.items)
+    cart.items.map(async(product) => {
+      const stocked = product.stock - product.qty;
+      const stock = stocked.toString();
+      await updateStock(product.id , stocked)
+      console.log(product.stock)
+
+    });
+    const line_items = conversion(cart.items);
     const { sessionId } = await fetch('/api/checkout_sessions', {
       method: 'POST',
       headers: {
@@ -52,6 +61,7 @@ export default function Payment() {
     const { error }: any = await stripe?.redirectToCheckout({
       sessionId,
     });
+    console.log(cart.items[0])
   };
 
   useEffect(() => {

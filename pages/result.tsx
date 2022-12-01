@@ -3,7 +3,7 @@ import Footer from "components/footer";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 
-export default function result() {
+export default function Result() {
   const router = useRouter();
   const { data, error } = useSWR(
     router.query.session_id

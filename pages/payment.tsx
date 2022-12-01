@@ -41,7 +41,7 @@ export default function Payment() {
   }
   const handleClick = async (event: any) => {
     const line_items = conversion(cart.items)
-    const { sessionId } = await fetch('http://localhost:3000/api/checkout_sessions', {
+    const { sessionId } = await fetch('/api/checkout_sessions', {
       method: 'POST',
       headers: {
         "content-type": "application/json"

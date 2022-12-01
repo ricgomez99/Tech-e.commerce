@@ -68,6 +68,10 @@
   object-fit: scale-down;
 }
 
+.cartImg {
+  object-fit: scale-down;
+}
+
 .info {
   display: flex;
   flex-direction: column;
@@ -97,7 +101,7 @@
   justify-content: space-between;
 }
 
-.button{
+.button {
   background-color: transparent;
   color: #223fff;
   border: none;

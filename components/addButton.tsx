@@ -15,7 +15,7 @@ export default function AddButton({ item }: any) {
     <button className={style.addBtn} onClick={handleClick}>
       Add to cart
     </button>
-    </div>) : (<p>Exceding stock</p>)) : (<div>
+    </div>) : (<button disabled>Exceding stock</button>)) : (<div>
     <button className={style.addBtn} onClick={handleClick}>
       Add to cart
     </button>

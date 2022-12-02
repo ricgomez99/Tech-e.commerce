@@ -43,7 +43,7 @@ const NewProduct = (categories: any) => {
               stock: 0,
               categories: "",
               description: "",
-              image: "",
+              image: [],
             }}
             validationSchema={yup.object({
               title: yup.string().required("Product name is required"),

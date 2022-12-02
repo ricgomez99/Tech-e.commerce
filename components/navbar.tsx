@@ -16,17 +16,22 @@ const Navbar = () => {
     cart.openCart();
   }
 
-  const [cartCounter, setCartCounter] = useState(0)
+  const [cartCounter, setCartCounter] = useState(0);
 
-  useEffect(()=>{
-    setCartCounter(cart.getNumberOfItems())
-  }, [cart.addItemToCart, cart.deleteItem])
+  useEffect(() => {
+    setCartCounter(cart.getNumberOfItems());
+  }, [cart.addItemToCart, cart.deleteItem]);
 
   return (
     <header>
       <nav className={styles.navbar}>
         <Link href="/" className="ps-3 navbar-brand">
-          <Image src="/img/e-commerce.png" alt="logo" width={35} height={35} />
+          <Image
+            src="https://res.cloudinary.com/davixx5su/image/upload/v1670005747/folder/e-commerce_ctrsgi.png"
+            alt="logo"
+            width={35}
+            height={35}
+          />
         </Link>
         <div>
           {session ? (
@@ -58,11 +63,7 @@ const Navbar = () => {
             Home
           </Link>
           <div>
-
-            <button onClick={handleOpenCart}>
-            Cart ({cartCounter})
-            </button>
-
+            <button onClick={handleOpenCart}>Cart ({cartCounter})</button>
           </div>
           {!session && <SignInModal />}
           {session && (

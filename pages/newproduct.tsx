@@ -43,7 +43,7 @@ const NewProduct = (categories: any) => {
               stock: 0,
               categories: "",
               description: "",
-              image: {},
+              image: "",
             }}
             validationSchema={yup.object({
               title: yup.string().required("Product name is required"),
@@ -51,7 +51,6 @@ const NewProduct = (categories: any) => {
               stock: yup.number().positive("Value must be greater than 0"), //Will we be able to add
               categories: yup.string().required("categories is required"),
               description: yup.string().required("Description is required"),
-              image: yup.string().required("Must add a valid image URL"),
             })}
             onSubmit={submit}
           >
@@ -148,7 +147,11 @@ const NewProduct = (categories: any) => {
                   Product Image
                 </label>
                 <br />
-                <input type="file" onChange={handleOnChange} />
+                <input
+                  type="file"
+                  onChange={handleOnChange}
+                  accept=".jpg, .jpeg, .png"
+                />
                 <ErrorMessage
                   name="image"
                   component="div"

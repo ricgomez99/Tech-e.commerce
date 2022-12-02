@@ -1,19 +1,16 @@
-import React, { useState } from "react";
-export interface SearchBarProps {
-  onSearch(title: string): void;
-}
+import React, {useState} from "react";
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+const SearchBar = ({handleConditions}: any) => {
   const [title, setTitle] = useState("");
 
+  const handlerOnSubmit = (e: any) => {
+    e.preventDefault();
+    handleConditions({title});
+    setTitle("");
+  };
+
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        onSearch(title);
-        setTitle("")
-      }}
-    >
+    <form onSubmit={(e) => handlerOnSubmit(e)}>
       <div>
         <input
           type="text"

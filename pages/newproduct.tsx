@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
 import Layout from "../components/layout";
 import Footer from "../components/footer";
 import "bootstrap/dist/css/bootstrap.min.css";
+import styles from "../styles/newproduct.module.css";
 import { getCategories, postProduct } from "../services/productEndPoints";
 import Router from "next/router";
 
 const NewProduct = (categories: any) => {
-  const [message, setMessage] = useState(""); // This will be used to show a message if the submission is successful
+  const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [imageSrc, setImageSrc] = useState("");
 
@@ -17,7 +18,7 @@ const NewProduct = (categories: any) => {
     await postProduct(values);
     setSubmitted(true);
   };
- 
+
   function handleOnChange(changeEvent: any) {
     const reader = new FileReader();
 
@@ -31,7 +32,7 @@ const NewProduct = (categories: any) => {
   return (
     <Layout>
       <div>
-        <div className="vh-100 d-flex flex-column justify-content-center align-items-center">
+        <div className="d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
           <div hidden={!submitted} className="alert alert-primary" role="alert">
             {message}
           </div>
@@ -44,6 +45,14 @@ const NewProduct = (categories: any) => {
               description: "",
               image: {},
             }}
+            validationSchema={yup.object({
+              title: yup.string().required("Product name is required"),
+              price: yup.number().positive("Value must be greater than 0"),
+              stock: yup.number().positive("Value must be greater than 0"), //Will we be able to add
+              categories: yup.string().required("categories is required"),
+              description: yup.string().required("Description is required"),
+              image: yup.string().required("Must add a valid image URL"),
+            })}
             onSubmit={submit}
           >
             <Form className="w-50">
@@ -64,18 +73,33 @@ const NewProduct = (categories: any) => {
                   className="form-control"
                   placeholder="LOGITECH Wireless Mouse..."
                 />
+                <ErrorMessage
+                  name="title"
+                  component="div"
+                  className="text-danger"
+                />
               </div>
               <div className="mb-3">
                 <label htmlFor="price" className="form-label">
                   Price {"(USD)"}
                 </label>
                 <Field type="number" name="price" className="form-control" />
+                <ErrorMessage
+                  name="price"
+                  component="div"
+                  className="text-danger"
+                />
               </div>
               <div className="mb-3">
                 <label htmlFor="stock" className="form-label">
                   Stock
                 </label>
                 <Field name="stock" type="number" className="form-control" />
+                <ErrorMessage
+                  name="stock"
+                  component="div"
+                  className="text-danger"
+                />
               </div>
               <div className="mb-3">
                 <label htmlFor="categories" className="form-label">
@@ -97,6 +121,11 @@ const NewProduct = (categories: any) => {
                     </option>
                   ))}
                 </Field>
+                <ErrorMessage
+                  name="categories"
+                  component="div"
+                  className="text-danger"
+                />
               </div>
               <div className="mb-3">
                 <label htmlFor="description" className="form-label">
@@ -108,6 +137,11 @@ const NewProduct = (categories: any) => {
                   className="form-control"
                   placeholder="Product description ..."
                 />
+                <ErrorMessage
+                  name="description"
+                  component="div"
+                  className="text-danger"
+                />
               </div>
               <div className="mb-3">
                 <label htmlFor="image" className="form-label">
@@ -115,8 +149,20 @@ const NewProduct = (categories: any) => {
                 </label>
                 <br />
                 <input type="file" onChange={handleOnChange} />
+                <ErrorMessage
+                  name="image"
+                  component="div"
+                  className="text-danger"
+                />
                 <br />
-                <img src={imageSrc} alt={imageSrc} />
+                {imageSrc.length ? (
+                  <img
+                    src={imageSrc}
+                    alt={imageSrc}
+                    className={styles.imgUpload}
+                  />
+                ) : null}
+
                 <br />
                 <label htmlFor="image" className="form-label">
                   <Field
@@ -133,7 +179,6 @@ const NewProduct = (categories: any) => {
               </button>
             </Form>
           </Formik>
-
         </div>
         <Footer />
       </div>

@@ -4,7 +4,7 @@ type Props = {
   children?: ReactNode;
 };
 
-let cartJSON: Map<string, object> = new Map ();
+let cartJSON: Map<string, object> = new Map();
 typeof window !== "undefined"
   ? localStorage.getItem("cart")
     ? (cartJSON = new Map(
@@ -26,6 +26,7 @@ interface AppContextInterface {
   getNumberOfItems: any;
   updateCart: any;
   getCart: any;
+  resetCart: any;
 }
 
 const AppContext = createContext<AppContextInterface>({
@@ -39,6 +40,7 @@ const AppContext = createContext<AppContextInterface>({
   getNumberOfItems: () => {},
   updateCart: () => {},
   getCart: () => {},
+  resetCart: () => {},
 });
 
 export default function StateWrapper({ children }: Props) {
@@ -57,9 +59,9 @@ export default function StateWrapper({ children }: Props) {
     const temp = [...items];
     const found = temp.find((product: any) => product.id === item.id);
 
-    if (found) {
+    if (found && found.qty < found.stock) {
       found.qty++;
-    } else {
+    } else if (!found) {
       item.qty = 1;
       temp.push(item);
     }
@@ -77,9 +79,9 @@ export default function StateWrapper({ children }: Props) {
     const temp = [...items];
     const found = temp.find((product: any) => product.id === id);
 
-    if(found) {
-      found.qty--
-    } 
+    if (found) {
+      found.qty--;
+    }
     setItems([...temp]);
   }
 
@@ -104,6 +106,11 @@ export default function StateWrapper({ children }: Props) {
     return cartMap;
   }
 
+  function resetCart(): any {
+    setItems([]);
+    localCart();
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -117,6 +124,7 @@ export default function StateWrapper({ children }: Props) {
         getNumberOfItems: handleNumberOfItems,
         updateCart: localCart,
         getCart: storedCart,
+        resetCart,
       }}
     >
       {children}

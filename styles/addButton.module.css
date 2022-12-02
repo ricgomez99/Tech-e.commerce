@@ -10,3 +10,9 @@
   background: #a4c3b2;
   color: #fff;
 }
+
+.addBtn:disabled{
+  border: 1px solid #a4c3b2;
+  background-color: #cccccc;
+  color: #a4c3b2;
+}

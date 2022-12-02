@@ -56,7 +56,7 @@ export default function Product({ product, showAs, qty }: Data) {
             <div className={style.price}>${product.price}</div>
             <div>{product.description}</div>
             <div>
-              <AddButton item={product} />
+            <AddButton item={product} />
             </div>
           </div>
         </div>
@@ -96,12 +96,12 @@ export default function Product({ product, showAs, qty }: Data) {
                   >
                     <BsFillTrashFill />
                   </button>
-                  <button
+                  {qty < product.stock ? (<button
                     onClick={() => handleAddItem(product)}
                     className={style.button}
                   >
                     +
-                  </button>
+                  </button>) : ("")}
                   {qty === 1 ? (
                     ""
                   ) : (
@@ -146,7 +146,7 @@ export default function Product({ product, showAs, qty }: Data) {
       </div>
       <div style={{ color: "#9A9A9A" }}>US${product.price}</div>
       <div>
-        <AddButton item={product} />
+       <AddButton item={product} />
       </div>
     </div>
   );

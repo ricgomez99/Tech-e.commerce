@@ -21,7 +21,7 @@ type Data = {
 export default function Index({ products, categories }: Data) {
   const router = useRouter(); //for Temporary Form Button
 
-  const [items, setItems] = useState<any[]>([]);
+  const [items, setItems] = useState<any[]>([]); 
 
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 8;

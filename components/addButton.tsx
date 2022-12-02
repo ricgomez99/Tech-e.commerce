@@ -8,9 +8,18 @@ export default function AddButton({ item }: any) {
     cart.addItemToCart(item);
     cart.openCart();
   }
+  
   return (
+    <>
+    {item.qty ? (item.qty < item.stock ? (<div>
     <button className={style.addBtn} onClick={handleClick}>
       Add to cart
     </button>
+    </div>) : (<p>Exceding stock</p>)) : (<div>
+    <button className={style.addBtn} onClick={handleClick}>
+      Add to cart
+    </button>
+    </div>)}
+    </>
   );
 }

@@ -69,6 +69,11 @@ export default function Home() {
         />
       </div>
       <div className={styles.carousel}>
+        <h2>Our Categories</h2>
+        <p>
+          The categories will allow you to sort and explore all the products
+          available, making smoother your shopping experience.
+        </p>
         <CarouselLanding />
       </div>
       <Footer />

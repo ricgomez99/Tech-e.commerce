@@ -40,6 +40,7 @@
   .carouselImg {
     width: 150px;
     height: 200px;
+    padding-top: 10px;
     object-fit: scale-down;
   }
 }

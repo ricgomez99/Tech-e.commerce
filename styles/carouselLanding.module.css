@@ -26,12 +26,4 @@
   background: transparent;
 }
 
-.carouselImg {
-  width: 400px;
-  height: 400px;
-  object-fit: scale-down;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-}
+

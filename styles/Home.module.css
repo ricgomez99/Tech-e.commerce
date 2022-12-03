@@ -86,5 +86,22 @@
 }
 
 .carousel {
-  margin: 100px auto;
+  padding: 100px 0;
+  background: #fffdf9;
+  text-align: center;
+}
+
+.carousel h2 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #6b9080;
+  padding-bottom: 60px;
+}
+
+.carousel p {
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: #a6a9b6;
+  width: 650px;
+  margin: 0 auto;
 }

@@ -26,13 +26,6 @@
   background: transparent;
 }
 
-@media (max-width: 750px) {
-  .carContainer {
-    width: 100%;
-    height: 250px;
-    padding: 0px;
-  }
-
   .car {
     width: 100%;
     height: 100%;

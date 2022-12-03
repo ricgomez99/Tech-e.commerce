@@ -25,6 +25,7 @@
   margin: 0 auto;
   background: transparent;
 }
+
 @media (max-width: 750px) {
   .carContainer {
     width: 100%;

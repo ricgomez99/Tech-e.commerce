@@ -16,7 +16,7 @@ export default function Pagination({
 }: Params) {
   const pageCount = items / pageSize;
 
-  if (Math.ceil(Number(pageCount === 1))) return null;
+  if (Math.ceil(Number(pageCount <= 1))) return null;
 
   const pages = _.range(1, pageCount + 1);
   let showPages = [];

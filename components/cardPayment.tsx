@@ -38,7 +38,7 @@ export default function CardPayment() {
             {p.qty === 0 ? "" : <div><h5>Units: {p.qty}</h5></div>}
             {p.qty === 0 ? "" : <div><h4>Subtotal: US${p.qty * p.price}</h4></div>}
             <button className="btn btn-danger" onClick={() =>handleDelete(p.id)}><FaTrash/></button>
-            <button onClick={() => handleAddProduct(p)}>+</button>
+            {p.qty < p.stock ? (<button onClick={() => handleAddProduct(p)}>+</button>) : ""}
             {p.qty === 1 ? ("") :(<button onClick={() => handleDeleteOneProduct(p.id)}>-</button>)}
           </div>
         </div>

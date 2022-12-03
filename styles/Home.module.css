@@ -109,3 +109,64 @@
 .steps {
   width: 300px;
 }
+@media (max-width: 750px) {
+  .ImageContainer {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+  }
+  .mainImage {
+    width: 100%;
+    height: 100%;
+  }
+  .container .container_all .text {
+    width: 100%;
+  }
+  .container {
+    padding: 0;
+  }
+  .container_all {
+    flex-wrap: wrap;
+  }
+  .text {
+    text-align: justify;
+  }
+  .text h1 {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+  .description {
+    padding: 0;
+    padding-top: 30px;
+    font-size: 1.1rem;
+    word-spacing: 3px;
+  }
+  .subDescription {
+    padding-right: 0;
+    font-size: 1rem;
+  }
+  .products {
+    font-size: 1.1rem;
+  }
+  .carousel {
+    padding: 30px 1.6rem;
+  }
+  .carousel p {
+    width: 100%;
+    font-size: 1.1rem;
+    text-align: justify;
+  }
+  .carousel h2 {
+    font-size: 2.5rem;
+    padding-bottom: 30px;
+  }
+  .btn {
+    align-self: center;
+    width: 87%;
+    padding-left: 0;
+  }
+  .card {
+    width: 100%;
+  }
+}

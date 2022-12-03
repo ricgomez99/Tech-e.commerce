@@ -8,7 +8,6 @@ import { useAppContext } from "components/statewrapper";
 import { MdOutlineArrowBack } from "react-icons/md";
 import { loadStripe } from "@stripe/stripe-js";
 import { useState, useEffect } from "react";
-import { updateStock } from "../services/productEndPoints";
 import { useSession } from "next-auth/react";
 import Button from "react-bootstrap/Button";
 
@@ -48,11 +47,6 @@ export default function Payment() {
     return total;
   };
   const handleClick = async (event: any) => {
-    cart.items.map(async (product) => {
-      const stocked = product.stock - product.qty;
-      const stock = stocked.toString();
-      await updateStock(product.id, stocked);
-    });
     const line_items = conversion(cart.items);
     const { sessionId } = await fetch("/api/checkout_sessions", {
       method: "POST",

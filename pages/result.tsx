@@ -7,6 +7,8 @@ import styles from "../styles/result.module.css";
 import Image from "next/image";
 import { useAppContext } from "components/statewrapper";
 import { useEffect, useState } from "react";
+import { updateStock } from "services/productEndPoints";
+import Link from "next/link";
 
 export default function Result() {
   const router = useRouter();
@@ -27,62 +29,47 @@ export default function Result() {
   let itemsArr: any[] = [];
 
   useEffect(() => {
-    console.log("items", products.items);
     cart = products.getCart();
-
-    console.log("cart", cart);
     cart ? (itemsArr = Array.from(cart.values())) : null;
-    console.log("arr", itemsArr);
+    itemsArr.map(async (product) => {
+      const stocked = product.stock - product.qty;
+      const stock = stocked.toString();
+      await updateStock(product.id, stocked);
+    });
     products.resetCart();
   }, []);
-  // data
-  //   ? data.session.payment_intent.status === "succeeded"
-  //     ? products.resetCart()
-  //     : null
-  //   : null;
 
   console.log("products", products.items);
 
   return (
     <Layout>
-      <div>
+      <div className="d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
         <div>
           {data ? (
             <div>
-              <h1>Thank you for your purchase!</h1>
+              <h1 className="text-center">Thank you for your purchase!</h1>
 
-              <h2>Your order was completed successfully. </h2>
+              <h2 className="text-center">
+                Your order was completed successfully.{" "}
+              </h2>
 
-              {/* {itemsArr.map((p) => (
-                // {products?.items.map((p) => (
-                <div key={p.id} className={styles.container}>
-                  <div>
-                    <Image
-                      src={p.image}
-                      alt={p.title}
-                      width={200}
-                      height={150}
-                      className={styles.payImg}
-                    />
-                  </div>
-                  <div>
-                    <h5 className={styles.title}> {p.title}</h5>
-                    {p.qty === 0 ? (
-                      ""
-                    ) : (
-                      <div>
-                        <h5>Units: {p.qty}</h5>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ))} */}
-              {<h4>Total: ${data.session.amount_total / 100}</h4>}
+              <h3 className="text-center text-break">
+                An email with the details of your order will be sent to your
+                email address shortly.
+                <br />
+                Your order ID is: {data.session.id}
+              </h3>
+
+              <h3>
+                To continue shopping click{" "}
+                <Link href="/store" style={{ textDecoration: "none" }}>
+                  here.
+                </Link>
+              </h3>
             </div>
           ) : null}
           {/* Instead of Null here should go a 404 page */}
         </div>
-        {/* <pre>{data ? JSON.stringify(data, null, 2) : "Loading..."}</pre> */}
       </div>
       <Footer />
     </Layout>

@@ -105,6 +105,18 @@ export async function updateProduct(id: string, data: BodyInit) {
     return error;
   }
 }
+export async function updateStock(id: string, stocked: number) {
+  try {
+    const request = await axios.patch(
+      `https://techproductsshop-production.up.railway.app/products/${id}`, {stock: stocked}
+    );
+    const response = await request.data;
+    return response;
+  } catch (error) {
+    return error;
+  }
+}
+
 
 //Esta funcion hace un delete de un producto
 

@@ -1,15 +1,14 @@
-import {getProducts} from "../../services/paths";
+import { getProducts } from "../../services/paths";
 import Layout from "./../../components/layout";
-import Footer from "./../../components/footer";
 import Product from "./../../components/product";
 import styledProducts from "../../styles/product.module.css";
 import Pagination from "../../components/pagination";
-import {useEffect, useState} from "react";
-import {paginate} from "./../../utils/paginate";
+import { useEffect, useState } from "react";
+import { paginate } from "./../../utils/paginate";
 import stylePaginator from "../../styles/paginator.module.css";
 import SearchBar from "../../components/searchbar";
-import {getCategories, getProducts2} from "services/productEndPoints";
-import {useRouter} from "next/router"; //for Temporary Form Button
+import { getCategories, getProducts2 } from "services/productEndPoints";
+import { useRouter } from "next/router"; //for Temporary Form Button
 import styles from "styles/filtersort.module.css";
 import Sort from "components/sort";
 import Filter from "components/filter";
@@ -19,7 +18,7 @@ type Data = {
   categories: any[];
 };
 
-export default function Index({products, categories}: Data) {
+export default function Index({ products, categories }: Data) {
   const router = useRouter(); //for Temporary Form Button
   const [items, setItems] = useState<any[]>([]);
   const [conditions, setConditions] = useState({});
@@ -32,7 +31,7 @@ export default function Index({products, categories}: Data) {
   };
 
   const handleConditions = (values: any) => {
-    setConditions({...conditions, ...values});
+    setConditions({ ...conditions, ...values });
   };
 
   useEffect(() => {
@@ -60,7 +59,7 @@ export default function Index({products, categories}: Data) {
         <div className={styles.filter_sorter}>
           <button
             onClick={() => setConditions({})}
-            style={{height: "2rem", marginTop: "1rem"}}
+            style={{ height: "2rem", marginTop: "1rem" }}
           >
             Refresh
           </button>
@@ -93,9 +92,6 @@ export default function Index({products, categories}: Data) {
           pageSize={pageSize}
           onPageChange={handlePageChange}
         />
-      </div>
-      <div>
-        <Footer />
       </div>
     </Layout>
   );

@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import style from "../styles/product.module.css";
 import AddButton from "./addButton";
-import Footer from "./footer";
 import Router from "next/router";
 import { useAppContext } from "../components/statewrapper";
 import { BsFillTrashFill } from "react-icons/bs";
@@ -32,11 +31,13 @@ export default function Product({ product, showAs, qty }: Data) {
   if (showAs === "Page") {
     return (
       <>
-   
-        <button onClick={() => Router.back()} className="btn btn-secondary">
+        <button
+          onClick={() => Router.back()}
+          className="btn btn-secondary mt-3"
+        >
           <MdOutlineArrowBack />
         </button>
-    
+
         <div className={style.page}>
           <div>
             <Image
@@ -48,19 +49,24 @@ export default function Product({ product, showAs, qty }: Data) {
             />
           </div>
           <div className={style.info}>
-            <div>
-              <h2>{product.title}</h2>
+            <div className={style.text}>
+              <h1>{product.title}</h1>
             </div>
-            <div>Category: {product.categories}</div>
-            <div>Stock: {product.stock}</div>
+            <div className={`${style.description} fs-6`}>
+              Category: {product.categories}
+            </div>
+            <div className={`${style.description} fs-6`}>
+              Stock: {product.stock}
+            </div>
             <div className={style.price}>${product.price}</div>
-            <div>{product.description}</div>
+            <div className={`${style.description} fs-6`}>
+              {product.description}
+            </div>
             <div>
               <AddButton item={product} />
             </div>
           </div>
         </div>
-        <Footer />
       </>
     );
   }
@@ -96,12 +102,16 @@ export default function Product({ product, showAs, qty }: Data) {
                   >
                     <BsFillTrashFill />
                   </button>
-                  <button
-                    onClick={() => handleAddItem(product)}
-                    className={style.button}
-                  >
-                    +
-                  </button>
+                  {qty < product.stock ? (
+                    <button
+                      onClick={() => handleAddItem(product)}
+                      className={style.button}
+                    >
+                      +
+                    </button>
+                  ) : (
+                    ""
+                  )}
                   {qty === 1 ? (
                     ""
                   ) : (

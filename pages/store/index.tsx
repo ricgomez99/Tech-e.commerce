@@ -9,7 +9,7 @@ import {paginate} from "./../../utils/paginate";
 import stylePaginator from "../../styles/paginator.module.css";
 import SearchBar from "../../components/searchbar";
 import {getCategories, getProducts2} from "services/productEndPoints";
-import {useRouter} from "next/router"; //for Temporary Form Button
+import {useRouter} from "next/router"; 
 import styles from "styles/filtersort.module.css";
 import Sort from "components/sort";
 import Filter from "components/filter";
@@ -20,7 +20,7 @@ type Data = {
 };
 
 export default function Index({products, categories}: Data) {
-  const router = useRouter(); //for Temporary Form Button
+  const router = useRouter(); 
   const [items, setItems] = useState<any[]>([]); 
   const [conditions, setConditions] = useState({});
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -48,13 +48,13 @@ export default function Index({products, categories}: Data) {
 
   return (
     <Layout>
-      <div className="d-flex justify-content-evenly mt-3">
+      <div className={styles.filter_sorter}>
         <SearchBar handleConditions={handleConditions} />
-        {/* Temporary Form Button */}
+        
         <button onClick={() => router.push("/newproduct")}>
           Add New Product
         </button>
-        {/* Temporary Form Button */}
+        
       </div>
       <div className={styledProducts.products_filter_container}>
         <div className={styles.filter_sorter}>

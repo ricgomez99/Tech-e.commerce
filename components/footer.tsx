@@ -13,8 +13,8 @@ export default function Footer() {
               About Us
             </Link>
             <p className={styles.paragraph}>
-              Designed and built with all the love in the world <br /> by the
-              Fullstack Street Guys team.
+              Designed and built with all the love in the world by the Fullstack
+              Street Guys team.
             </p>
             <a
               className={styles.logo}

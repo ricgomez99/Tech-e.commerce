@@ -43,7 +43,7 @@ export default function SignInButton() {
           alt="Google sign-in"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Facebook_icon.svg/2048px-Facebook_icon.svg.png"
         />
-        Login with facebook
+        Login with Facebook
       </a>
       <a
         className="btn btn-outline-dark"
@@ -60,7 +60,7 @@ export default function SignInButton() {
           alt="Google sign-in"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/1280px-Twitter-logo.svg.png"
         />
-        Login with twitter
+        Login with Twitter
       </a>
     </div>
   );

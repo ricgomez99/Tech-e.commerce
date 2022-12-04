@@ -1,5 +1,4 @@
 import Layout from "components/layout";
-import Footer from "components/footer";
 import CardPayment from "components/cardPayment";
 import Router from "next/router";
 import React from "react";
@@ -117,7 +116,6 @@ export default function Payment() {
       ) : (
         <div>Empty Car</div>
       )}
-      <Footer />
     </Layout>
   );
 }

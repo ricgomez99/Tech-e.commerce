@@ -1,0 +1,19 @@
+.box {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+.box .row.header {
+  flex: 0 1 auto;
+}
+
+.box .row.content {
+  flex: 1 1 auto;
+  height: 100%;
+  background-color: #fdfaf6;
+}
+
+.box .row.footer {
+  flex: 0 1 40px;
+}

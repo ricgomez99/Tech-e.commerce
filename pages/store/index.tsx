@@ -1,6 +1,5 @@
 import { getProducts } from "../../services/paths";
 import Layout from "./../../components/layout";
-import Footer from "./../../components/footer";
 import Product from "./../../components/product";
 import styledProducts from "../../styles/product.module.css";
 import Pagination from "../../components/pagination";
@@ -93,9 +92,6 @@ export default function Index({products, categories}: Data) {
           pageSize={pageSize}
           onPageChange={handlePageChange}
         />
-      </div>
-      <div>
-        <Footer />
       </div>
     </Layout>
   );

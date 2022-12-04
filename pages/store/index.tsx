@@ -1,11 +1,11 @@
-import {getProducts} from "../../services/paths";
+import { getProducts } from "../../services/paths";
 import Layout from "./../../components/layout";
 import Footer from "./../../components/footer";
 import Product from "./../../components/product";
 import styledProducts from "../../styles/product.module.css";
 import Pagination from "../../components/pagination";
-import {useEffect, useState} from "react";
-import {paginate} from "./../../utils/paginate";
+import { useEffect, useState } from "react";
+import { paginate } from "./../../utils/paginate";
 import stylePaginator from "../../styles/paginator.module.css";
 import SearchBar from "../../components/searchbar";
 import {getCategories, getProducts2} from "services/productEndPoints";
@@ -32,7 +32,7 @@ export default function Index({products, categories}: Data) {
   };
 
   const handleConditions = (values: any) => {
-    setConditions({...conditions, ...values});
+    setConditions({ ...conditions, ...values });
   };
 
   useEffect(() => {
@@ -60,7 +60,7 @@ export default function Index({products, categories}: Data) {
         <div className={styles.filter_sorter}>
           <button
             onClick={() => setConditions({})}
-            style={{height: "2rem", marginTop: "1rem"}}
+            style={{ height: "2rem", marginTop: "1rem" }}
           >
             Refresh
           </button>

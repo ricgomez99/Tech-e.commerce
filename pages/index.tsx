@@ -27,8 +27,13 @@ export default function Home() {
               place, and completely available for you in just one click.
             </p>
           </div>
-          <div>
-            <Image src={landing} alt="img" width={650}></Image>
+          <div className={styles.ImageContainer}>
+            <Image
+              className={styles.mainImage}
+              src={landing}
+              alt="img"
+              width={650}
+            ></Image>
           </div>
         </div>
         <div className={styles.btn}>

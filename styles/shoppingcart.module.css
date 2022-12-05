@@ -4,13 +4,13 @@
   right: 0;
   background-color: #fff;
   width: 350px;
-  height: 100vh;
+  height: max-content;
+  max-height: 80vh;
   padding: 25px;
   box-sizing: border-box;
   box-shadow: 0 0 10px #bbbb;
-  display: flex;
-  flex-direction: column;
   z-index: 1;
+  overflow-y: scroll;
 }
 
 .empty {

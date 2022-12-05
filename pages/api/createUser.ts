@@ -1,12 +1,8 @@
-// import { prisma } from "lib/prisma";
-import { PrismaClient } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
+import { prisma } from "lib/prisma";
 
-const prisma = new PrismaClient();
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handlerCreateUser(req: NextApiRequest, res: NextApiResponse) {
     const {email, password, username} = req.body;
-    console.log(email, password, username)
-
     try {
       const creation = await prisma.user.create({
         data: {
@@ -15,10 +11,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           username: username
         }
       })
-      console.log(creation)
-     return res.status(200).json(creation)
+     return res.status(200).send(creation)
     } catch (error) {
-      console.log("Failure");
       return res.status(400).json({message: "It's not working"})
     }
 }

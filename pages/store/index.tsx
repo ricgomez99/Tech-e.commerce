@@ -45,6 +45,10 @@ export default function Index({products, categories}: Data) {
     }
   }, [conditions]);
 
+  useEffect(() => {
+    setConditions({});
+  }, [router.query.refresh]);
+
   return (
     <Layout>
       <div className="d-flex justify-content-evenly mt-3">

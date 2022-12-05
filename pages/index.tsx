@@ -1,6 +1,5 @@
 import styles from "../styles/Home.module.css";
 import Layout from "../components/layout";
-import Footer from "../components/footer";
 import Image from "next/image";
 import landing from "../public/Img/landing.webp";
 import CarouselLanding from "../components/carousellanding";
@@ -81,7 +80,6 @@ export default function Home() {
         </p>
         <CarouselLanding />
       </div>
-      <Footer />
     </Layout>
   );
 }

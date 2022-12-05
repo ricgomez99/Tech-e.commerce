@@ -1,8 +1,6 @@
 import Layout from "components/layout";
-import Footer from "components/footer";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-
 import styles from "../styles/result.module.css";
 import Image from "next/image";
 import { useAppContext } from "components/statewrapper";
@@ -43,35 +41,32 @@ export default function Result() {
 
   return (
     <Layout>
-      <div className="d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
-        <div>
-          {data ? (
-            <div>
-              <h1 className="text-center">Thank you for your purchase!</h1>
+      <div className={styles.container}>
+        {data ? (
+          <div className={styles.text}>
+            <h1 className="text-center">Thank you for your purchase!</h1>
 
-              <h2 className="text-center">
-                Your order was completed successfully.{" "}
-              </h2>
+            <h2 className={`${styles.description} text-center fs-2`}>
+              Your order was completed successfully.{" "}
+            </h2>
 
-              <h3 className="text-center text-break">
-                An email with the details of your order will be sent to your
-                email address shortly.
-                <br />
-                Your order ID is: {data.session.id}
-              </h3>
+            <h3 className={`${styles.description} text-center fs-3 text-break`}>
+              An email with the details of your order will be sent to your email
+              address shortly.
+              <br />
+              {/* Your order ID is: {data.session.id} */}
+            </h3>
 
-              <h3>
-                To continue shopping click{" "}
-                <Link href="/store" style={{ textDecoration: "none" }}>
-                  here.
-                </Link>
-              </h3>
-            </div>
-          ) : null}
-          {/* Instead of Null here should go a 404 page */}
-        </div>
+            <h3 className={`${styles.description} text-center fs-3`}>
+              To continue shopping click{" "}
+              <Link href="/store" style={{ textDecoration: "none" }}>
+                here.
+              </Link>
+            </h3>
+          </div>
+        ) : null}
+        {/* Instead of Null here should go a 404 page */}
       </div>
-      <Footer />
     </Layout>
   );
 }

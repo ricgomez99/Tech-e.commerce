@@ -1,6 +1,5 @@
 import { getProducts } from "../../services/paths";
 import Layout from "./../../components/layout";
-import Footer from "./../../components/footer";
 import Product from "./../../components/product";
 import styledProducts from "../../styles/product.module.css";
 import Pagination from "../../components/pagination";
@@ -8,8 +7,8 @@ import { useEffect, useState } from "react";
 import { paginate } from "./../../utils/paginate";
 import stylePaginator from "../../styles/paginator.module.css";
 import SearchBar from "../../components/searchbar";
-import { getCategories, getProducts2 } from "services/productEndPoints";
-import { useRouter } from "next/router"; //for Temporary Form Button
+import {getCategories, getProducts2} from "services/productEndPoints";
+import {useRouter} from "next/router"; 
 import styles from "styles/filtersort.module.css";
 import Sort from "components/sort";
 import Filter from "components/filter";
@@ -19,9 +18,9 @@ type Data = {
   categories: any[];
 };
 
-export default function Index({ products, categories }: Data) {
-  const router = useRouter(); //for Temporary Form Button
-  const [items, setItems] = useState<any[]>([]);
+export default function Index({products, categories}: Data) {
+  const router = useRouter(); 
+  const [items, setItems] = useState<any[]>([]); 
   const [conditions, setConditions] = useState({});
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 8;
@@ -46,15 +45,19 @@ export default function Index({ products, categories }: Data) {
     }
   }, [conditions]);
 
+  useEffect(() => {
+    setConditions({});
+  }, [router.query.refresh]);
+
   return (
     <Layout>
       <div className="d-flex justify-content-evenly mt-3">
         <SearchBar handleConditions={handleConditions} />
-        {/* Temporary Form Button */}
+        
         <button onClick={() => router.push("/newproduct")}>
           Add New Product
         </button>
-        {/* Temporary Form Button */}
+        
       </div>
       <div className={styledProducts.products_filter_container}>
         <div className={styles.filter_sorter}>
@@ -93,9 +96,6 @@ export default function Index({ products, categories }: Data) {
           pageSize={pageSize}
           onPageChange={handlePageChange}
         />
-      </div>
-      <div>
-        <Footer />
       </div>
     </Layout>
   );

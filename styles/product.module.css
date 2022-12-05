@@ -7,7 +7,7 @@
 }
 
 .item {
-  background-color: #fdfaf6;
+  background-color: #fff;
   padding: 20px;
   font-size: 20px;
   width: 300px;
@@ -61,7 +61,7 @@
   transform: scale(0);
   animation: scale 0.3s ease forwards;
   margin: 18px 10px;
-  background: #fdfaf6;
+  background: #fff;
 }
 
 .detailsImg {

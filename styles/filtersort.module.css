@@ -1,24 +1,31 @@
 .filter_sorter {
+  height: 40rem;
   border: whitesmoke 1px solid;
   border-radius: 0px 20px 20px 0px;
   border-left: none;
-  display: grid; 
-  grid-template-columns: 1fr; 
-  grid-template-rows: 0.3fr 1.7fr; 
-  gap: 0px 0px; 
-  grid-template-areas: 
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.3fr 1.4fr 0.3fr;
+  gap: 0px 0px;
+  grid-template-areas:
     "sort"
-    "categories"; 
+    "categories"
+    "refresh";
   grid-area: filter_sorter;
   margin: 10px 0px 10px 0px;
 }
 
-.sort { 
-  justify-self: center; 
-  align-self: center; 
-  grid-area: sort; 
+.sort {
+  justify-self: center;
+  align-self: center;
+  grid-area: sort;
 }
 
-.categories { 
+.categories {
   grid-area: categories;
+}
+
+.refresh {
+  align-self: initial;
+  grid-area: refresh;
 }

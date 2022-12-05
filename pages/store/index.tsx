@@ -47,7 +47,7 @@ export default function Index({products, categories}: Data) {
 
   return (
     <Layout>
-      <div className={styles.filter_sorter}>
+      <div className="d-flex justify-content-evenly mt-3">
         <SearchBar handleConditions={handleConditions} />
         
         <button onClick={() => router.push("/newproduct")}>

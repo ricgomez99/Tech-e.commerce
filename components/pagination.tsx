@@ -15,12 +15,16 @@ export default function Pagination({
   onPageChange,
 }: Params) {
   const pageCount = items / pageSize;
-
-  if (Math.ceil(Number(pageCount <= 1))) return null;
-
   const pages = _.range(1, pageCount + 1);
   let showPages = [];
-  switch (currentPage) {
+
+  
+  if (Math.ceil(Number(pageCount <= 1))) {
+    return null;
+  } else if(Math.ceil(Number(pageCount)) == 2){
+    currentPage == 1 ? showPages = [currentPage, currentPage +1] : showPages = [currentPage -1, currentPage];
+  }  else {
+    switch (currentPage) {
     case 1:
       showPages = [currentPage, currentPage+1, currentPage+2]      
       break;
@@ -30,8 +34,10 @@ export default function Pagination({
     default:
       showPages = [currentPage-1, currentPage, currentPage+1]
       break;
-  }
+  }}
 
+  
+console.log(showPages)
   return (
     <nav aria-label="Page navigation example">
       <ul className="pagination">

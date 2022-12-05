@@ -17,6 +17,7 @@ const NewProduct = (categories: any) => {
     setMessage("Form submitted");
     await postProduct(values);
     setSubmitted(true);
+    Router.push("/store");
   };
 
   function handleOnChange(changeEvent: any) {
@@ -49,7 +50,7 @@ const NewProduct = (categories: any) => {
               title: yup.string().required("Product name is required"),
               price: yup.number().positive("Value must be greater than 0"),
               stock: yup.number().positive("Value must be greater than 0"), //Will we be able to add
-              categories: yup.string().required("categories is required"),
+              categories: yup.string().required("Category is required"),
               description: yup.string().required("Description is required"),
             })}
             onSubmit={submit}

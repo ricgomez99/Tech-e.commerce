@@ -3,6 +3,12 @@ import style from "../styles/addButton.module.css";
 
 export default function AddButton({ item }: any) {
   const cart = useAppContext();
+  let temp: any = [];
+  if(cart.items.length){
+    let temp = [...cart.items]
+  }
+  console.log(temp)
+  const found = temp.find((product: any) => product.id === item.id)
 
   function handleClick() {
     cart.addItemToCart(item);
@@ -11,7 +17,7 @@ export default function AddButton({ item }: any) {
   
   return (
     <>
-    {item.qty ? (item.qty < item.stock ? (<div>
+    {found && found.qty ? (found.qty < found.stock ? (<div>
     <button className={style.addBtn} onClick={handleClick}>
       Add to cart
     </button>

@@ -157,6 +157,7 @@ export default function Product({ product, showAs, qty }: Data) {
       <div style={{ color: "#9A9A9A" }}>US${product.price}</div>
       <div>
         <AddButton item={product} />
+        {/* {product.qty ? product.qty < product.stock ? (<AddButton item={product} />) : (<p>stock exceed</p>) : (<AddButton item={product} />)} */}
       </div>
     </div>
   );

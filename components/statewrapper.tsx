@@ -59,7 +59,7 @@ export default function StateWrapper({ children }: Props) {
     const temp = [...items];
     const found = temp.find((product: any) => product.id === item.id);
 
-    if (found && found.qty < found.stock) {
+    if (found && found.stock && found.qty < found.stock) {
       found.qty++;
     } else if (!found) {
       item.qty = 1;
@@ -71,6 +71,8 @@ export default function StateWrapper({ children }: Props) {
   function handleDeleteItem(id: number) {
     const temp = [...items];
     const deleteItem = temp.filter((product: any) => product.id !== id);
+    const found = temp.find((product: any) => product.id === id);
+    found.qty = 0;
 
     setItems(deleteItem);
   }

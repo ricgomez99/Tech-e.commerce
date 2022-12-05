@@ -59,16 +59,16 @@ export default function ShoppingCart() {
             ))}
           </div>
           <div>Total: ${getTotal()}</div>
+          <Link href="/payment">
+            <button
+              style={{ cursor: "pointer", width: "150px", height: "40px" }}
+              className="btn btn-success"
+            >
+              Checkout
+            </button>
+          </Link>
         </>
       )}
-      <Link href="/payment">
-        <button
-          style={{ cursor: "pointer", width: "150px", height: "40px" }}
-          className="btn btn-success"
-        >
-          Checkout
-        </button>
-      </Link>
     </div>
   );
 }

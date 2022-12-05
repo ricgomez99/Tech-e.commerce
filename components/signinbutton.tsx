@@ -28,7 +28,7 @@ export default function SignInButton() {
         />
         Login with Google
       </a>
-      <a
+      {/* <a
         className="btn btn-outline-dark mb-1"
         onClick={() => signIn("facebook")}
         role="button"
@@ -44,8 +44,8 @@ export default function SignInButton() {
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Facebook_icon.svg/2048px-Facebook_icon.svg.png"
         />
         Login with Facebook
-      </a>
-      <a
+      </a> */}
+      {/* <a
         className="btn btn-outline-dark"
         onClick={() => signIn("twitter")}
         role="button"
@@ -61,7 +61,7 @@ export default function SignInButton() {
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/1280px-Twitter-logo.svg.png"
         />
         Login with Twitter
-      </a>
+      </a> */}
     </div>
   );
 }

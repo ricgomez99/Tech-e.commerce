@@ -5,3 +5,16 @@
 .container div:hover {
   background-color: whitesmoke;
 }
+.filter {
+  cursor: pointer;
+}
+.filter:hover{
+  background-color: #eee;
+  transform: translateX(15px) scale(0.9);
+}
+
+.filtered{
+  cursor: pointer;
+  background-color: #e5e5e5;
+  transform: scale(1.09);
+}

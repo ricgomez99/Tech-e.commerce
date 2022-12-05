@@ -19,14 +19,10 @@ export default function Filter({categories, handleConditions}: any) {
         <div
           key={e.id}
           onClick={(e) => handlerOnClick(e)}
-          style={
+          className={
             state === e.categories
-              ? {
-                  cursor: "pointer",
-                  backgroundColor: "whitesmoke",
-                  transform: "scale(1.02)",
-                }
-              : {cursor: "pointer"}
+              ? styles.filtered
+              : styles.filter
           }
         >
           {e.categories}

@@ -5,8 +5,10 @@ import React, { useEffect, useState } from "react";
 import { signOut, useSession } from "next-auth/react";
 import SignInModal from "./signinmodal";
 import styles from "../styles/navbar.module.css";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
+  const router = useRouter();
   const cart = useAppContext();
   const [navActive, setNavActive] = useState<boolean>(false);
 
@@ -17,6 +19,13 @@ const Navbar = () => {
   }
 
   const [cartCounter, setCartCounter] = useState(0);
+
+  const handlerRefresh = () => {
+    router.push({
+      pathname: "/store",
+      query: { refresh: "true" },
+    });
+  };
 
   useEffect(() => {
     setCartCounter(cart.getNumberOfItems());
@@ -55,6 +64,9 @@ const Navbar = () => {
         >
           <Link
             href="/store"
+            onClick={
+              router.pathname === "/store" ? () => handlerRefresh() : () => null
+            }
             style={{ textDecoration: "none", color: "black" }}
           >
             Store

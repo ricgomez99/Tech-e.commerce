@@ -1,14 +1,19 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "lib/prisma";
-import { number, string } from "yup";
 
 export default async function handlerUpdateUser(req: NextApiRequest, res: NextApiResponse) {
-    const {email, password, username, id} = req.body;
+    const {email, password, username} = req.body;
+    const { id } = req.query;
     try {
-        console.log("entra")
-const creation = prisma.user.update
-      console.log("creation")
-     return res.status(200).send(creation)
+    const user = await prisma.user.update({
+      where: {id: Number(id)},
+      data: {
+        email: email,
+        password: password,
+        username: username
+      }
+    }) 
+    return res.status(200).send(user)
     } catch (error) {
       return res.status(400).json({message: "It's not working"})
     }

@@ -1,6 +1,5 @@
 import _ from "lodash";
 
-
 type Params = {
   items: number;
   pageSize: number;
@@ -18,39 +17,41 @@ export default function Pagination({
   const pages = _.range(1, pageCount + 1);
   let showPages = [];
 
-  
   if (Math.ceil(Number(pageCount <= 1))) {
     return null;
-  } else if(Math.ceil(Number(pageCount)) == 2){
-    currentPage == 1 ? showPages = [currentPage, currentPage +1] : showPages = [currentPage -1, currentPage];
-  }  else {
+  } else if (Math.ceil(Number(pageCount)) == 2) {
+    currentPage == 1
+      ? (showPages = [currentPage, currentPage + 1])
+      : (showPages = [currentPage - 1, currentPage]);
+  } else {
     switch (currentPage) {
-    case 1:
-      showPages = [currentPage, currentPage+1, currentPage+2]      
-      break;
-    case pages.length:
-      showPages = [currentPage-2, currentPage-1, currentPage]
-      break;
-    default:
-      showPages = [currentPage-1, currentPage, currentPage+1]
-      break;
-  }}
+      case 1:
+        showPages = [currentPage, currentPage + 1, currentPage + 2];
+        break;
+      case pages.length:
+        showPages = [currentPage - 2, currentPage - 1, currentPage];
+        break;
+      default:
+        showPages = [currentPage - 1, currentPage, currentPage + 1];
+        break;
+    }
+  }
 
-  
-console.log(showPages)
   return (
     <nav aria-label="Page navigation example">
       <ul className="pagination">
         {currentPage !== 1 ? (
-        <li className="page-item">
-          <a 
-            className="page-link"
-            href="#"
-            aria-label="Previous"
-            onClick={()=> onPageChange(1)}>
-              <span>Start</span>        
-          </a>
-        </li>) : null }
+          <li className="page-item">
+            <a
+              className="page-link"
+              href="#"
+              aria-label="Previous"
+              onClick={() => onPageChange(1)}
+            >
+              <span>Start</span>
+            </a>
+          </li>
+        ) : null}
         <li className="page-item">
           <a
             className="page-link"
@@ -91,15 +92,17 @@ console.log(showPages)
           </a>
         </li>
         {currentPage !== pages.length ? (
-        <li className="page-item">
-          <a 
-            className="page-link"
-            href="#"
-            aria-label="Next"
-            onClick={()=> onPageChange(pages.length)}>
-              <span>End</span>        
-          </a>
-        </li>) : null }
+          <li className="page-item">
+            <a
+              className="page-link"
+              href="#"
+              aria-label="Next"
+              onClick={() => onPageChange(pages.length)}
+            >
+              <span>End</span>
+            </a>
+          </li>
+        ) : null}
       </ul>
     </nav>
   );

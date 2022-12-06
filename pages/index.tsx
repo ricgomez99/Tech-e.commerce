@@ -4,7 +4,7 @@ import Image from "next/image";
 import landing from "../public/Img/landing.webp";
 import CarouselLanding from "../components/carousellanding";
 import { useRouter } from "next/router";
-import LandingCard from "components/landingCard";
+import LandingCard from "../components/landingCard";
 import { FiShoppingCart } from "react-icons/fi";
 import { GoSearch } from "react-icons/go";
 import { BsCreditCard } from "react-icons/bs";

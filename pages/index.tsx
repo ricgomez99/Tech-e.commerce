@@ -4,6 +4,10 @@ import Image from "next/image";
 import landing from "../public/Img/landing.webp";
 import CarouselLanding from "../components/carousellanding";
 import { useRouter } from "next/router";
+import LandingCard from "components/landingCard";
+import { FiShoppingCart } from "react-icons/fi";
+import { GoSearch } from "react-icons/go";
+import { BsCreditCard } from "react-icons/bs";
 
 export default function Home() {
   const router = useRouter();
@@ -40,6 +44,35 @@ export default function Home() {
             Get Started
           </button>
         </div>
+      </div>
+      <div className={styles.stepsContainer}>
+      <div className={styles.steps}>
+        <LandingCard 
+          logo={<GoSearch/>}
+          title="Search products"
+          text="We have 8 different categories for 
+                an easier searching process, and over
+                100 products for you to find whatever
+                you are looking for."
+        />   
+      </div>
+      <div className={styles.steps}>
+        <LandingCard 
+          logo={<FiShoppingCart/>}
+          title="Add it to cart"
+          text="Add products to the shopping cart directly 
+                from the store page or take a look at the
+                product details and add them when you are ready."
+        />
+      </div>
+      <div className={styles.steps}>
+        <LandingCard
+          logo={<BsCreditCard/>}
+          title="Buy it"
+          text="Go to checkout, review or update your
+                order and proceed to payment easily."
+        />
+      </div>
       </div>
       <div className={styles.carousel}>
         <h2>Our Categories</h2>

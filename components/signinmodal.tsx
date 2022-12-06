@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SignInButton from "./signinbutton";
 import { useScrollBlock } from "utils/scrollblock";
+import Link from "next/link";
 
 export default function SignInModal() {
   const [showModal, setShowModal] = useState(false);
@@ -49,6 +50,11 @@ export default function SignInModal() {
               }
             `}
           </style>
+          <div>
+            <Link href="/signup">
+              Do not have an account? Register here!
+            </Link>
+          </div>
           <div className="divsito" onClick={(e) => e.stopPropagation()}>
             <SignInButton />
           </div>

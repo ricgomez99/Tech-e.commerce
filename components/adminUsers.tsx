@@ -1,4 +1,4 @@
-import styles from "../styles/UsersAdmin.module.css";
+import styles from "../styles/usersAdmin.module.css";
 
 export default function AdminUsers() {
   return(

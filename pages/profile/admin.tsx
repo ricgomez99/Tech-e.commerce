@@ -1,6 +1,9 @@
 import Layout from "./../../components/layout";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import AdminOrders from "components/adminOrders";
+import AdminProducts from "components/adminProducts";
+import AdminUsers from "components/adminUsers";
 
 import { MdOutlineArrowBack } from "react-icons/md";
 
@@ -25,7 +28,17 @@ export default function AdminTools() {
 
           <button onClick={() => setTool("products")}>Products</button>
         </div>
-        <div>Aqui va el componente de {tool}</div>
+        <div>
+          {tool === "users" ? (
+            <AdminUsers />
+          ) : tool === "orders" ? (
+            <AdminOrders />
+          ) : tool === "products" ? (
+            <AdminProducts />
+          ) : (
+            <div>404 Not Found</div>
+          )}
+        </div>
       </div>
     </Layout>
   );

@@ -107,8 +107,13 @@
 }
 
 .steps {
-  width: 300px;
+  width: 250px;
+  box-shadow: 0 2px 20px #dddddd;
+  padding: 20px;
+  text-align: center;
+  margin: 30px;
 }
+
 @media (max-width: 750px) {
   .ImageContainer {
     width: 100%;
@@ -169,4 +174,9 @@
   .card {
     width: 100%;
   }
+}
+
+.stepsContainer {
+  display: flex;
+  justify-content: center;
 }

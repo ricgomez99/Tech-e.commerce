@@ -45,6 +45,7 @@ export default function Home() {
           </button>
         </div>
       </div>
+      <div className={styles.stepsContainer}>
       <div className={styles.steps}>
         <LandingCard 
           logo={<GoSearch/>}
@@ -71,6 +72,7 @@ export default function Home() {
           text="Go to checkout, review or update your
                 order and proceed to payment easily."
         />
+      </div>
       </div>
       <div className={styles.carousel}>
         <h2>Our Categories</h2>

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function AddButton({ item }: any) {
   const cart = useAppContext();
+
   const [available, setAvailable] = useState(true);
 
   function handleClick() {

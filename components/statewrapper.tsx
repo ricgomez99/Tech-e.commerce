@@ -71,7 +71,7 @@ export default function StateWrapper({ children }: Props) {
   function handleDeleteItem(id: number) {
     const temp = [...items];
     const deleteItem = temp.filter((product: any) => product.id !== id);
-
+    
     setItems(deleteItem);
   }
 

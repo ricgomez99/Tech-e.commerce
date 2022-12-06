@@ -52,7 +52,7 @@ export default function SignInModal() {
           </style>
           <div>
             <Link href="/signup">
-              Don't have an account? Register here!
+              Do not have an account? Register here!
             </Link>
           </div>
           <div className="divsito" onClick={(e) => e.stopPropagation()}>

@@ -3,7 +3,7 @@ import { Formik, Field, ErrorMessage, Form } from "formik";
 import { createUser } from "../services/userEndPoints";
 import * as yup from "yup";
 
-export default function signIn(){
+export default function SignIn(){
     const [submitted,setSubmitted] = useState(false);
 
     const handleSubmit = async (values: any) => {

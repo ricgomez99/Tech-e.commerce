@@ -1,9 +1,9 @@
-import SignUp from "../../components/signUp"
+import SignIn from "../../components/signUp"
 
-export default function signUp(){
+export default function SignUp(){
     return (
       <div>
-      <SignUp />
+      <SignIn />
       </div>
     )
 }

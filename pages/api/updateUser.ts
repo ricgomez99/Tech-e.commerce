@@ -1,9 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "lib/prisma";
-import { number, string } from "yup";
 
 export default async function handlerUpdateUser(req: NextApiRequest, res: NextApiResponse) {
-    const {email, password, username, id} = req.body;
+    const {email, password, username} = req.body;
+    const {id} = req.query
     try {
         console.log("entra")
 const creation = prisma.user.update

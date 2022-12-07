@@ -7,7 +7,7 @@ import styles from "../../styles/newproduct.module.css";
 import { getCategories, postProduct } from "../../services/productEndPoints";
 import Router from "next/router";
 
-const NewProduct = (categories: any) => {
+export default function NewProduct(categories: any) {
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [imageSrc, setImageSrc] = useState("");
@@ -198,4 +198,4 @@ export async function getStaticProps() {
   };
 }
 
-export default NewProduct;
+

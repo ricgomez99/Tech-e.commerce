@@ -10,8 +10,8 @@ export async function postProduct(data: any) {
     );
     return response.data;
   } catch (error: any) {
-    return {error: error.message}
-}
+    return { error: error.message };
+  }
 }
 
 //Esta función trae los productos por id
@@ -23,8 +23,8 @@ export async function idProduct(id: string) {
     );
     return (await request).json();
   } catch (error: any) {
-    return {error: error.message}
-}
+    return { error: error.message };
+  }
 }
 
 //Esta función trae los productos por query(name)
@@ -38,8 +38,8 @@ export async function nameProduct(title: string) {
     const response = request.json();
     return response;
   } catch (error: any) {
-    return {error: error.message}
-}
+    return { error: error.message };
+  }
 }
 
 //Esta función trae las categorías de los productos
@@ -52,8 +52,8 @@ export async function getCategories() {
     const categories = await request.json();
     return categories;
   } catch (error: any) {
-    return {error: error.message}
-}
+    return { error: error.message };
+  }
 }
 
 //Esto hace lo mismo que getProducts, pero tiene anexado los filtros
@@ -82,8 +82,8 @@ export async function getProducts2(data: any) {
       return products;
     }
   } catch (error: any) {
-    return {error: error.message}
-}
+    return { error: error.message };
+  }
 }
 
 //Esta función hace un update de los parámetros de los productos
@@ -102,21 +102,21 @@ export async function updateProduct(id: string, data: BodyInit) {
     const response = await request.data;
     return response;
   } catch (error: any) {
-    return {error: error.message}
-}
+    return { error: error.message };
+  }
 }
 export async function updateStock(id: string, stocked: number) {
   try {
     const request = await axios.patch(
-      `https://techproductsshop-production.up.railway.app/products/${id}`, {stock: stocked}
+      `https://techproductsshop-production.up.railway.app/products/${id}`,
+      { stock: stocked }
     );
     const response = await request.data;
     return response;
   } catch (error: any) {
-    return {error: error.message}
+    return { error: error.message };
+  }
 }
-}
-
 
 //Esta funcion hace un delete de un producto
 
@@ -131,6 +131,6 @@ export async function deleteProduct(id: string) {
     const response = await request.json();
     return response;
   } catch (error: any) {
-    return {error: error.message}
-}
+    return { error: error.message };
+  }
 }

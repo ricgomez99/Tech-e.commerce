@@ -1,7 +1,7 @@
 import Layout from "components/layout";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import styles from "../styles/result.module.css";
+import styles from "../../styles/result.module.css";
 import Image from "next/image";
 import { useAppContext } from "components/statewrapper";
 import { useEffect, useState } from "react";

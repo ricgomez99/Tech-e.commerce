@@ -1,6 +1,6 @@
 import SignIn from "../../components/signUp"
 
-export default function SignUp(){
+export default function SignUp(){ 
     return (
       <div>
       <SignIn />

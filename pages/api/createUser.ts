@@ -16,7 +16,7 @@ export default async function handlerCreateUser(
         username: username,
       },
     });
-    console.log(creation)
+    console.log(creation);
     return res.status(200).send(creation);
   } catch (error) {
     return res.status(400).json({ message: "It's not working" });

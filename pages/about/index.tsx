@@ -1,6 +1,6 @@
 import Layout from "../../components/layout";
 import Image from "next/image";
-import logo from "../public/Img/e-commerce.png";
+import logo from "../../public/Img/e-commerce.png";
 import styles from "../../styles/about.module.css";
 import Router from "next/router";
 import { MdOutlineArrowBack } from "react-icons/md";

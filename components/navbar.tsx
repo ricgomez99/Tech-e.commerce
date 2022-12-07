@@ -7,7 +7,7 @@ import SignInModal from "./signinmodal";
 import styles from "../styles/navbar.module.css";
 import { useRouter } from "next/router";
 
-const Navbar = () => {
+export default function Navbar() {
   const router = useRouter();
   const cart = useAppContext();
   const [navActive, setNavActive] = useState<boolean>(false);
@@ -89,4 +89,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+

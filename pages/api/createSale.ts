@@ -1,11 +1,13 @@
 import { prisma } from "lib/prisma";
 import { NextApiRequest, NextApiResponse } from "next";
 
+
 export default async function handlerCreateSale(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const { total, date, userId } = req.body;
+  
   try {
     const creation = await prisma.sale.create({
       data: {

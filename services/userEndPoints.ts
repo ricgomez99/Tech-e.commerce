@@ -43,3 +43,15 @@ export async function updateUser(data: any, id: any) {
     return { error: error.message };
   }
 }
+
+export async function logInUser(data: any){
+  try {
+    const response = await axios.post(
+      "http://localhost:3000/api/loginUser",
+      data
+    );
+    return response.data;
+  } catch (error: any) {
+    return { error: error.message };
+  }
+}

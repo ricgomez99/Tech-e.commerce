@@ -55,3 +55,12 @@ export async function logInUser(data: any){
     return { error: error.message };
   }
 }
+
+export async function userSales(id: any) {
+  try {
+    const response = await axios.get(`http://localhost:3000/api/findUserSales?id=${id}`)
+    return response.data
+  } catch(error: any){
+    return {error: error.message};
+  }
+}

@@ -39,7 +39,7 @@ export async function updateUser(id: number, data: any) {
       data
     );
     return response.data;
-  } catch (error) {
+  } catch (error: any) {
     return { error: error.message };
   }
 }

@@ -32,7 +32,7 @@ export async function findUniqueUser(id: number) {
   }
 }
 
-export async function updateUser(id: number, data: any) {
+export async function updateUser(data: any, id: any) {
   try {
     const response = await axios.patch(
       `http://localhost:3000/api/updateUser?id=${id}`,
@@ -75,3 +75,4 @@ export async function userSales(id: any) {
     return {error: error.message};
   }
 }
+

@@ -23,20 +23,20 @@ export default function AdminUserDetails({ id }: any) {
     switch (e.target.value) {
       case "ban":
         if (user.active === true) {
-          updateUser(user.id, { active: false });
+          updateUser({ active: false }, user.id);
           setActive(!active);
         } else {
-          updateUser(user.id, { active: true });
+          updateUser({ active: true }, user.id);
           setActive(!active);
         }
         break;
 
       case "role":
         if (user.role === "ADMIN") {
-          updateUser(user.id, { role: "USER" });
+          updateUser({ role: "USER" }, user.id);
           setRole(!role);
         } else {
-          updateUser(user.id, { role: "ADMIN" });
+          updateUser({ role: "ADMIN" }, user.id);
           setRole(!role);
         }
 

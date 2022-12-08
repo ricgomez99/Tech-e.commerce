@@ -5,7 +5,6 @@ export default async function handlerUpdateUser(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-
   const { email, password, username, role, active } = req.body;
   const { id } = req.query;
   try {

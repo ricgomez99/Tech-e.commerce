@@ -5,7 +5,7 @@ import { logInUser } from "../services/userEndPoints"
 import SignInButton from "./signinbutton";
 import { useScrollBlock } from "utils/scrollblock";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+
 
 
 export default function SignInModal() {
@@ -14,6 +14,7 @@ export default function SignInModal() {
   const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = async (values: any) => {
+
     try{
       const user = await logInUser(values);
       // if(user){

@@ -1,7 +1,5 @@
 import axios from "axios";
 
-//Esta función postea los productos
-
 export async function postProduct(data: any) {
   try {
     const response = await axios.post(
@@ -14,8 +12,6 @@ export async function postProduct(data: any) {
   }
 }
 
-//Esta función trae los productos por id
-
 export async function idProduct(id: string) {
   try {
     const request = fetch(
@@ -26,8 +22,6 @@ export async function idProduct(id: string) {
     return { error: error.message };
   }
 }
-
-//Esta función trae los productos por query(name)
 
 export async function nameProduct(title: string) {
   try {
@@ -42,8 +36,6 @@ export async function nameProduct(title: string) {
   }
 }
 
-//Esta función trae las categorías de los productos
-
 export async function getCategories() {
   try {
     const request = await fetch(
@@ -55,8 +47,6 @@ export async function getCategories() {
     return { error: error.message };
   }
 }
-
-//Esto hace lo mismo que getProducts, pero tiene anexado los filtros
 
 export async function getProducts2(data: any) {
   try {
@@ -88,7 +78,7 @@ export async function getProducts2(data: any) {
 
 //Esta función hace un update de los parámetros de los productos
 
-export async function updateProduct(id: string, data: BodyInit) {
+export async function updateProduct(id: string, data: any) {
   try {
     const request = await axios.patch(
       `https://techproductsshop-production.up.railway.app/products/${id}`,
@@ -105,6 +95,7 @@ export async function updateProduct(id: string, data: BodyInit) {
     return { error: error.message };
   }
 }
+
 export async function updateStock(id: string, stocked: number) {
   try {
     const request = await axios.patch(
@@ -118,7 +109,18 @@ export async function updateStock(id: string, stocked: number) {
   }
 }
 
-//Esta funcion hace un delete de un producto
+export async function logicDelete(id: string, enable: boolean) {
+  try {
+    const request = await axios.patch(
+      `https://techproductsshop-production.up.railway.app/products/${id}`,
+      { enabled: enable }
+    );
+    const response = await request.data;
+    return response;
+  } catch (error: any) {
+    return { error: error.message };
+  }
+}
 
 export async function deleteProduct(id: string) {
   try {

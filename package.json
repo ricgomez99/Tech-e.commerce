@@ -21,6 +21,7 @@
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.4",
     "formik": "^2.2.9",
+    "knex": "^2.3.0",
     "lodash": "^4.17.21",
     "next": "13.0.4",
     "next-auth": "^4.17.0",

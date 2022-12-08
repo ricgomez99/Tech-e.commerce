@@ -6,24 +6,30 @@ import SignInButton from "./signinbutton";
 import { useScrollBlock } from "utils/scrollblock";
 import Link from "next/link";
 
+import userServiceFactory from "clientServices/userService";
+import useUser from "../lib/useUser";
+
+const userService = userServiceFactory();
+
 
 
 export default function SignInModal() {
+
+  const { user, mutateUser } = useUser({
+    redirectTo: "/",
+    redirectIfFound: true,
+});
+
   const [showModal, setShowModal] = useState(false);
   const [blockScroll, allowScroll] = useScrollBlock();
   const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = async (values: any) => {
 
-    try{
-      const user = await logInUser(values);
-      // if(user){
-      //   SignIn
-      // }
-      
-    }catch(err){
-      alert (err)
-    }
+    // try{
+
+    // }catch(err){
+    // }
  
   };
 

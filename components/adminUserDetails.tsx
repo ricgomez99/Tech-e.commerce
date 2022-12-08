@@ -67,7 +67,7 @@ export default function AdminUserDetails({ id }: any) {
               Ban User
             </button>
             <div>
-              User's orders
+              User&apos;s orders
               <div>
                 <ul>
                   <li>Orden 1</li>

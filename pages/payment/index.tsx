@@ -2,7 +2,7 @@ import Layout from "components/layout";
 import CardPayment from "components/cardPayment";
 import Router from "next/router";
 import React from "react";
-import styles from "../styles/payment.module.css";
+import styles from "../../styles/payment.module.css";
 import { useAppContext } from "components/statewrapper";
 import { MdOutlineArrowBack } from "react-icons/md";
 import { loadStripe } from "@stripe/stripe-js";

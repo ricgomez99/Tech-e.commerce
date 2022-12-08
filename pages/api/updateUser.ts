@@ -5,7 +5,8 @@ export default async function handlerUpdateUser(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { email, password, username, active, role } = req.body;
+
+  const { email, password, username, role, active } = req.body;
   const { id } = req.query;
   try {
     const user = await prisma.user.update({
@@ -14,8 +15,8 @@ export default async function handlerUpdateUser(
         email: email,
         password: password,
         username: username,
-        active: active,
         role: role,
+        active: active
       },
     });
     return res.status(200).send(user);

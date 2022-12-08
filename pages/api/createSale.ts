@@ -1,11 +1,13 @@
 import { prisma } from "lib/prisma";
 import { NextApiRequest, NextApiResponse } from "next";
 
+
 export default async function handlerCreateSale(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const { total, date, userId } = req.body;
+  //!in order create the sale, you must pass by date an constant with new Date(), and then pass that constant like date.toISOString()
   try {
     const creation = await prisma.sale.create({
       data: {

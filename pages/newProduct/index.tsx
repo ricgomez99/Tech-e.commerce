@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
-import Layout from "../components/layout";
+import Layout from "../../components/layout";
 import "bootstrap/dist/css/bootstrap.min.css";
-import styles from "../styles/newproduct.module.css";
-import { getCategories, postProduct } from "../services/productEndPoints";
+import styles from "../../styles/newproduct.module.css";
+import { getCategories, postProduct } from "../../services/productEndPoints";
 import Router from "next/router";
 
-const NewProduct = (categories: any) => {
+export default function NewProduct(categories: any) {
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [imageSrc, setImageSrc] = useState("");
@@ -198,4 +198,4 @@ export async function getStaticProps() {
   };
 }
 
-export default NewProduct;
+

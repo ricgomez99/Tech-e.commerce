@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-const SearchBar = ({handleConditions}: any) => {
+export default function SearchBar({handleConditions}: any) {
   const [title, setTitle] = useState("");
 
   const handlerOnSubmit = (e: any) => {
@@ -24,4 +24,3 @@ const SearchBar = ({handleConditions}: any) => {
   );
 };
 
-export default SearchBar;

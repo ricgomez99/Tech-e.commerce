@@ -54,7 +54,7 @@ export default function Index({ products, categories }: Data) {
       <div className="d-flex justify-content-evenly mt-3">
         <SearchBar handleConditions={handleConditions} />
 
-        <button onClick={() => router.push("/newproduct")}>
+        <button onClick={() => router.push("/newProduct")}>
           Add New Product
         </button>
 

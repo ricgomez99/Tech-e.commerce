@@ -15,14 +15,12 @@
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
     "axios": "^1.2.0",
-    "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.2.3",
     "cors": "^2.8.5",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.4",
     "formik": "^2.2.9",
-    "knex": "^2.3.0",
     "lodash": "^4.17.21",
     "next": "13.0.4",
     "next-auth": "^4.17.0",
@@ -37,7 +35,6 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.0",
     "@types/bcryptjs": "^2.4.2",
     "@types/lodash": "^4.14.190",
     "prisma": "^4.6.1"

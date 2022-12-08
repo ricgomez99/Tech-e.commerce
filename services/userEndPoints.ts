@@ -55,3 +55,19 @@ export async function logInUser(data: any){
     return { error: error.message };
   }
 }
+
+
+
+
+
+
+// export async function handlerGetUniqueUsers(id: number) {
+//   try {
+//     const response = await axios.get(
+//       `http://localhost:3000/api/databaseService?id=${id}`
+//     );
+//     return response.data;
+//   } catch (error: any) {
+//     return { error: error.message };
+//   }
+// }

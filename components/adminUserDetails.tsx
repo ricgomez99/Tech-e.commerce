@@ -1,4 +1,4 @@
-import styles from "../styles/usersAdmin.module.css";
+//import styles from "../styles/usersAdmin.module.css";
 import { updateUser, findUniqueUser } from "services/userEndPoints";
 import { useEffect, useState } from "react";
 
@@ -50,11 +50,11 @@ export default function AdminUserDetails({ id }: any) {
   function handleRole() {}
 
   return (
-    <div className={styles.usersContainer}>
-      <div className={styles.userDetail}>
+    <div>
+      <div>
         <h5>User Detail</h5>
         {user ? (
-          <div className={styles.detail}>
+          <div>
             <h3>ID: {user.id}</h3>
             <h3>Username: {user.username}</h3>
             <h3>Email: {user.email}</h3>

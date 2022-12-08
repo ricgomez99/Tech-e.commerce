@@ -10,7 +10,7 @@ import UserOptions from "./userOptionsModal";
 import { BsPersonCircle } from "react-icons/bs";
 import { useScrollBlock } from "utils/scrollblock";
 
-const Navbar = () => {
+export default function Navbar() {
   const router = useRouter();
   const cart = useAppContext();
   const [navActive, setNavActive] = useState<boolean>(false);
@@ -134,4 +134,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+

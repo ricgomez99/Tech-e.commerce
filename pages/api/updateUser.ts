@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "lib/prisma";
+import bcryptjs from "bcryptjs"
 
 export default async function handlerUpdateUser(
   req: NextApiRequest,
@@ -7,12 +8,16 @@ export default async function handlerUpdateUser(
 ) {
   const { email, password, username, role, active } = req.body;
   const { id } = req.query;
+  let hashed;
+  if(password){
+    hashed = await bcryptjs.hash(password, 8)
+  }
   try {
     const user = await prisma.user.update({
       where: { id: Number(id) },
       data: {
         email: email,
-        password: password,
+        password: hashed,
         username: username,
         role: role,
         active: active

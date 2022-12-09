@@ -23,7 +23,7 @@ export default function SignInModal() {
   const [submitted, setSubmitted] = useState(false)
 
   const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("");
 
     const handleSubmit = async (e: any) => {
         e.preventDefault();

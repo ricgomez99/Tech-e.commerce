@@ -14,7 +14,7 @@ export default async function handlerUpdateUser(
   // }
   try {
     const user = await prisma.user.update({
-     where: {id: id as string},
+     where: {id: id as any},
       data: {
         email: email,
         name: name,

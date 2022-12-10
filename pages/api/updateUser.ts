@@ -6,19 +6,18 @@ export default async function handlerUpdateUser(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { email, password, username, role, active } = req.body;
+  const { email, name, role, active } = req.body;
   const { id } = req.query;
   let hashed;
-  if(password){
-    hashed = await bcryptjs.hash(password, 8)
-  }
+  // if(password){
+  //   hashed = await bcryptjs.hash(password, 8)
+  // }
   try {
     const user = await prisma.user.update({
-      where: { id: Number(id) },
+     where: {id: id},
       data: {
         email: email,
-        password: hashed,
-        username: username,
+        name: name,
         role: role,
         active: active
       },

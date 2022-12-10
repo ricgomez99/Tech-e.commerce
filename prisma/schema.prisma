@@ -45,12 +45,12 @@ model User {
   password  String?
   name      String?
   image     String?
-  // emailVerified DateTime? @map("email_verified")  
+  emailVerified DateTime? @map("email_verified")  
   active    Boolean @default(true)
   role      Role    @default(USER)
   sales     Sale[]
-  accounts      Account[]
-  sessions      Session[]
+  accounts  Account[]
+  sessions  Session[]
 
   @@map("users")
 }

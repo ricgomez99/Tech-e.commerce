@@ -84,7 +84,6 @@ model SaleDetail {
 }
 
 enum Role {
-  GUEST
   USER
   MOD
   ADMIN

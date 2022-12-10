@@ -21,7 +21,7 @@ export async function findManyUsers() {
   }
 }
 
-export async function findUniqueUser(id: number) {
+export async function findUniqueUser(id: string) {
   try {
     const response = await axios.get(
       `http://localhost:3000/api/findUniqueUser?id=${id}`
@@ -32,7 +32,7 @@ export async function findUniqueUser(id: number) {
   }
 }
 
-export async function updateUser(data: any, id: any) {
+export async function updateUser(data: any, id: string) {
   try {
     const response = await axios.patch(
       `http://localhost:3000/api/updateUser?id=${id}`,
@@ -55,3 +55,24 @@ export async function logInUser(data: any){
     return { error: error.message };
   }
 }
+
+// export async function handlerGetUniqueUsers(id: number) {
+//   try {
+//     const response = await axios.get(
+//       `http://localhost:3000/api/databaseService?id=${id}`
+//     );
+//     return response.data;
+//   } catch (error: any) {
+//     return { error: error.message };
+//   }
+// }
+
+export async function userSales(id: any) {
+  try {
+    const response = await axios.get(`http://localhost:3000/api/findUserSales?id=${id}`)
+    return response.data
+  } catch(error: any){
+    return {error: error.message};
+  }
+}
+

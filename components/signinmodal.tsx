@@ -1,30 +1,51 @@
 import React, { useState } from "react";
-import { Formik, Field, ErrorMessage, Form } from "formik";
-import * as yup from "yup";
-import { logInUser } from "../services/userEndPoints"
+// import SignInButton from "./signinbutton";
 import SignInButton from "./signinbutton";
 import { useScrollBlock } from "utils/scrollblock";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+
+import userServiceFactory from "clientServices/userService";
+import useUser from "../lib/useUser";
+
+const userService = userServiceFactory();
+
+
 
 
 export default function SignInModal() {
+
+  const { user, mutateUser } = useUser({
+    redirectTo: "/",
+    redirectIfFound: true,
+});
+
   const [showModal, setShowModal] = useState(false);
   const [blockScroll, allowScroll] = useScrollBlock();
   const [submitted, setSubmitted] = useState(false)
 
-  const handleSubmit = async (values: any) => {
-    try{
-      const user = await logInUser(values);
-      // if(user){
-      //   SignIn
-      // }
-      
-    }catch(err){
-      alert (err)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+    const handleSubmit = async (e: any) => {
+        e.preventDefault();
+        console.log(email,password)
+        try {
+            mutateUser(
+                await userService.login(email, password)
+            );
+        } catch (error:any) {
+            alert(error.response.data.error);
+        }
+        
+    };
+
+    const emailHandler =  (e:any) => {
+        setEmail(e.target.value);
     }
- 
-  };
+
+    const passwordHandler =  (e:any) => {
+        setPassword(e.target.value);
+    }
 
   return (
     <>
@@ -70,47 +91,23 @@ export default function SignInModal() {
             `}
           </style>
           <div className="divsito" onClick={(e) => e.stopPropagation()}>
-            <div>
-            <Formik
-            initialValues={{
-              email: "",
-              password: "",
-            }}
-            validationSchema={yup.object({
-                email: yup.string().required("Email is required."),
-                password: yup.string().required("Password is required"),
-              })}
-            onSubmit={handleSubmit}
-          >
-            <Form>
-            <div>
-                <Field
-                  type="text"
-                  name="email"
-                  placeholder="user@email.com"
-                />
-                <ErrorMessage
-                  name="email"
-                  component="div"
-                  className="text-danger"
-                />
-              </div>
-              <div>
-                <Field
-                  type="password"
-                  name="password"
-                  placeholder="Password..."
-                />
-                <ErrorMessage
-                  name="password"
-                  component="div"
-                  className="text-danger"
-                />
-              </div>
-                <button type="submit" value="Login">Log In!</button>
-            </Form>
-            </Formik>
-            </div>
+          <div>
+        {<form onSubmit={handleSubmit}>
+  
+
+                        <div>
+                            <label><b>Email</b></label>
+                            <input type="email" placeholder="Enter Email" name="email" required
+                                onChange={emailHandler}/>
+
+                            <label><b>Password</b></label>
+                            <input type="password" placeholder="Enter Password" name="password" required
+                                onChange={passwordHandler}/>
+
+                            <button type="submit">Log In</button>
+                        </div>
+                </form>}
+    </div>
             <SignInButton />
             <div>
             <Link href="/signup">

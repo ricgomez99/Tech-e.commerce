@@ -57,12 +57,6 @@ export default function Index({ products, categories }: Data) {
         <button onClick={() => router.push("/newProduct")}>
           Add New Product
         </button>
-
-        {/*  */}
-        <button onClick={() => router.push("/profile/admin")}>
-          Admin Tools
-        </button>
-        {/*  */}
       </div>
       <div className={styledProducts.products_filter_container}>
         <div className={styles.filter_sorter}>

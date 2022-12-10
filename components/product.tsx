@@ -6,6 +6,7 @@ import Router from "next/router";
 import { useAppContext } from "../components/statewrapper";
 import { BsFillTrashFill } from "react-icons/bs";
 import { MdOutlineArrowBack } from "react-icons/md";
+import LogicDeleteButton from "./logicDeleteButton";
 
 type Data = {
   product: any;
@@ -64,6 +65,9 @@ export default function Product({ product, showAs, qty }: Data) {
             </div>
             <div>
               <AddButton item={product} />
+            </div>
+            <div>
+              <LogicDeleteButton id={product.id} enabled={product.enabled} />
             </div>
           </div>
         </div>

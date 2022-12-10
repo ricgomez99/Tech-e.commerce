@@ -4,10 +4,10 @@ import { useRouter } from "next/router";
 import AdminOrders from "components/adminOrders";
 import AdminProducts from "components/adminProducts";
 import AdminUsers from "components/adminUsers";
-
 import { MdOutlineArrowBack } from "react-icons/md";
 
 export default function AdminTools() {
+  
   const router = useRouter();
 
   const [tool, setTool] = useState("users");
@@ -42,4 +42,4 @@ export default function AdminTools() {
       </div>
     </Layout>
   );
-}
+};

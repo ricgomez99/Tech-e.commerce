@@ -1,4 +1,4 @@
-import styles from "../styles/ordersAdmin.module.css";
+import styles from "../styles/adminOrders.module.css";
 
 export default function AdminOrders() {
   return(

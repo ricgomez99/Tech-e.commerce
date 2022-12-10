@@ -8,9 +8,8 @@ import userServiceFactory from "clientServices/userService";
 import useUser from "../lib/useUser";
 
 const userService = userServiceFactory();
-//localstorage {user : papita@gmail.com}
-//const user = localStorage.get("user")
-//{user ? lkasjdflaksdjfñlaskdf : null}
+
+
 
 
 export default function SignInModal() {

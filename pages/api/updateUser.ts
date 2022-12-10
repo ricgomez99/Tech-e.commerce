@@ -27,3 +27,4 @@ export default async function handlerUpdateUser(
     return res.status(400).json({ message: "It's not working" });
   }
 }
+

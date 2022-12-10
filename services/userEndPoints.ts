@@ -21,7 +21,7 @@ export async function findManyUsers() {
   }
 }
 
-export async function findUniqueUser(id: number) {
+export async function findUniqueUser(id: string) {
   try {
     const response = await axios.get(
       `http://localhost:3000/api/findUniqueUser?id=${id}`

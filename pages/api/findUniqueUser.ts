@@ -10,7 +10,7 @@ export default async function handlerGetUniqueUsers(
   try {
     const findUser = await prisma.user.findUnique({
       where: {
-        id: id 
+        id: id as any
       },
     });
     return res.status(200).json(findUser);

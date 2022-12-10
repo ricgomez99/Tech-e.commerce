@@ -22,7 +22,9 @@ export async function findManySales() {
 }
 export async function findSaleDetails(id: any) {
   try {
-    const response = await axios.get(`http://localhost:3000/api/sale?id=${id}`);
+    const response = await axios.get(
+      `http://localhost:3000/api/findUniqueSale?id=${id}`
+    );
     return response.data;
   } catch (error: any) {
     return { error: error.message };

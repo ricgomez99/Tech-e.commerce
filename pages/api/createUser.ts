@@ -13,7 +13,7 @@ export default async function handlerCreateUser(
       data: {
         email: email,
         password: passwordHash,
-        username: username,
+        name: username,
       },
     });
     console.log(creation);

@@ -11,8 +11,9 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     if(!user){
         res.status(400).send("This email is not registered in here");
     }else {
-        const validate = await bcryptjs.compare(password, user.password)
-        if(!validate) res.status(400).send("Wrong password");
+        if(user.password){
+        const validate = await bcryptjs.compare(password, (user).password)
+        if(!validate) res.status(400).send("Wrong password");}
         else res.status(200).send("User verified")
     }
     }catch(err: any){

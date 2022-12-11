@@ -97,11 +97,11 @@ export default function SignInModal() {
                 </form>} */}
     </div>
             <SignInButton />
-            <div>
+            {/* <div>
             <Link href="/signup">
                 Do not have an account? Register here!
             </Link>
-          </div>
+          </div> */}
           </div>
         </div>
       ) : null}

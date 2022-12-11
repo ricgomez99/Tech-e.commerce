@@ -119,9 +119,24 @@ export default function Navbar() {
                   </a>
                   <Link href="#">
                     <button
+                      // onClick={() => {
+                      //   setShow(false);
+                      //   allowScroll();
+                      // }}
                       className={`btn btn-outline-success ${styles.userDetailsBtn}`}
                     >
                       User details
+                    </button>
+                  </Link>
+                  <Link href="/profile/admin" scroll={true}>
+                    <button
+                      onClick={() => {
+                        setShow(false);
+                        allowScroll();
+                      }}
+                      className={`btn btn-outline-success ${styles.userDetailsBtn}`}
+                    >
+                      Admin Tools
                     </button>
                   </Link>
                 </div>
@@ -132,6 +147,4 @@ export default function Navbar() {
       </nav>
     </header>
   );
-};
-
-
+}

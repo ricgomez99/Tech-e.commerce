@@ -21,10 +21,10 @@ export async function findManyUsers() {
   }
 }
 
-export async function findUniqueUser(id: string) {
+export async function findUniqueUser(email: string) {
   try {
     const response = await axios.get(
-      `http://localhost:3000/api/findUniqueUser?id=${id}`
+      `http://localhost:3000/api/findUniqueUser?id=${email}`
     );
     return response.data;
   } catch (error: any) {

@@ -39,13 +39,24 @@ export default function Index({ products, categories }: Data) {
   useEffect(() => {
     try {
       (async () => {
-        setItems(await getProducts2(conditions));
+        const response = await getProducts2(conditions);
+        const filtered = response.filter(
+          (product: any) => product.enabled === true
+        );
+        setItems(filtered);
         setCurrentPage(1);
       })();
     } catch (error) {
       console.log(error);
     }
   }, [conditions]);
+
+  useEffect(() => {
+    const filterItems = items.filter(
+      (product: any) => product.enabled === false
+    );
+    console.log(filterItems);
+  }, []);
 
   useEffect(() => {
     setConditions({});

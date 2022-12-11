@@ -1,8 +1,8 @@
 import Button from "react-bootstrap/Button";
-import {TbArrowsSort} from "react-icons/tb";
-import {useState} from "react";
+import { TbArrowsSort } from "react-icons/tb";
+import { useState } from "react";
 
-export default function Sort({handleConditions}: any) {
+export default function Sort({ handleConditions }: any) {
   const [direction, setDirection] = useState("ASC");
 
   const handleOnClick = (e: any) => {
@@ -15,7 +15,16 @@ export default function Sort({handleConditions}: any) {
   };
   return (
     <div>
-      <Button variant="light" onClick={(e) => handleOnClick(e)}>
+      <Button
+        variant="light"
+        size="sm"
+        style={{
+          color: "#6B9080",
+          padding: "6px 20px",
+          fontWeight: "500",
+        }}
+        onClick={(e) => handleOnClick(e)}
+      >
         PRICE <TbArrowsSort />
       </Button>
     </div>

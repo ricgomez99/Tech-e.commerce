@@ -3,7 +3,7 @@ import axios from "axios";
 export async function createUser(data: any) {
   try {
     const response = await axios.post(
-      "http://localhost:3000/api/createUser",
+      "http://localhost:3000/api/createUsers",
       data
     );
     return response.data;
@@ -67,7 +67,7 @@ export async function logInUser(data: any){
 //   }
 // }
 
-export async function userSales(id: any) {
+export async function userSales(id: string) {
   try {
     const response = await axios.get(`http://localhost:3000/api/findUserSales?id=${id}`)
     return response.data

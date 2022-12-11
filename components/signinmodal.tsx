@@ -4,48 +4,36 @@ import SignInButton from "./signinbutton";
 import { useScrollBlock } from "utils/scrollblock";
 import Link from "next/link";
 
-import userServiceFactory from "clientServices/userService";
-import useUser from "../lib/useUser";
-
-const userService = userServiceFactory();
-
-
-
+// import useUser from "../lib/useUser";
 
 export default function SignInModal() {
 
-  const { user, mutateUser } = useUser({
-    redirectTo: "/",
-    redirectIfFound: true,
-});
-
   const [showModal, setShowModal] = useState(false);
   const [blockScroll, allowScroll] = useScrollBlock();
-  const [submitted, setSubmitted] = useState(false)
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
-        console.log(email,password)
-        try {
-            mutateUser(
-                await userService.login(email, password)
-            );
-        } catch (error:any) {
-            alert(error.response.data.error);
-        }
+    // const handleSubmit = async (e: any) => {
+    //     e.preventDefault();
+    //     console.log(email,password)
+    //     try {
+    //         mutateUser(
+    //             await userService.login(email, password)
+    //         );
+    //     } catch (error:any) {
+    //         alert(error.response.data.error);
+    //     }
         
-    };
+    // };
 
-    const emailHandler =  (e:any) => {
-        setEmail(e.target.value);
-    }
+    // const emailHandler =  (e:any) => {
+    //     setEmail(e.target.value);
+    // }
 
-    const passwordHandler =  (e:any) => {
-        setPassword(e.target.value);
-    }
+    // const passwordHandler =  (e:any) => {
+    //     setPassword(e.target.value);
+    // }
 
   return (
     <>
@@ -54,7 +42,7 @@ export default function SignInModal() {
           onClick={() => {
             setShowModal(true);
             blockScroll();
-          } }
+          }}
           style={{ cursor: "pointer" }}
           className="btn btn-outline-success me-2"
         >
@@ -63,11 +51,13 @@ export default function SignInModal() {
       </div>
 
       {showModal ? (
-        <div className="divsote"
+        <div
+          className="divsote"
           onClick={() => {
             setShowModal(false);
             allowScroll();
-          } }>
+          }}
+        >
           <style jsx>
             {`
               .divsote {
@@ -83,7 +73,7 @@ export default function SignInModal() {
               .divsito {
                 margin: 40vh auto;
                 display: flex;
-                background-color: #A4C3B2;
+                background-color: #a4c3b2;
                 flex-direction: column;
                 width: 20vw;
                 border-radius: 15px;
@@ -92,7 +82,7 @@ export default function SignInModal() {
           </style>
           <div className="divsito" onClick={(e) => e.stopPropagation()}>
           <div>
-        {<form onSubmit={handleSubmit}>
+        {/* {<form onSubmit={handleSubmit}>
   
 
                         <div>
@@ -106,14 +96,14 @@ export default function SignInModal() {
 
                             <button type="submit">Log In</button>
                         </div>
-                </form>}
+                </form>} */}
     </div>
             <SignInButton />
-            <div>
+            {/* <div>
             <Link href="/signup">
                 Do not have an account? Register here!
             </Link>
-          </div>
+          </div> */}
           </div>
         </div>
       ) : null}

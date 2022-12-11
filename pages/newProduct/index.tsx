@@ -19,7 +19,7 @@ export default function NewProduct(categories: any) {
     Router.push("/store");
   };
 
-  function handleOnChange(changeEvent: any) {
+  function handleChange(changeEvent: any) {
     const reader = new FileReader();
 
     reader.onload = function (onLoadEvent: any) {
@@ -110,9 +110,7 @@ export default function NewProduct(categories: any) {
                   id="categories"
                   className="form-control"
                 >
-                  <option value="default" hidden>
-                    Choose category...
-                  </option>
+                  <option hidden>Choose category...</option>
 
                   {categories.categories?.map((category: any) => (
                     <option value={category.categories} key={category.id}>
@@ -149,7 +147,7 @@ export default function NewProduct(categories: any) {
                 <br />
                 <input
                   type="file"
-                  onChange={handleOnChange}
+                  onChange={handleChange}
                   accept=".jpg, .jpeg, .png"
                 />
                 <ErrorMessage
@@ -159,23 +157,24 @@ export default function NewProduct(categories: any) {
                 />
                 <br />
                 {imageSrc.length ? (
-                  <img
-                    src={imageSrc}
-                    alt={imageSrc}
-                    className={styles.imgUpload}
-                  />
+                  <>
+                    <img
+                      src={imageSrc}
+                      alt={imageSrc}
+                      className={styles.imgUpload}
+                    />
+                    <br />
+                    <label htmlFor="image" className="form-label">
+                      <Field
+                        type="checkbox"
+                        name="image"
+                        id="image"
+                        value={imageSrc}
+                      />
+                      Confirm Image
+                    </label>
+                  </>
                 ) : null}
-
-                <br />
-                <label htmlFor="image" className="form-label">
-                  <Field
-                    type="checkbox"
-                    name="image"
-                    id="image"
-                    value={imageSrc}
-                  />
-                  Confirm Image
-                </label>
               </div>
               <button type="submit" className="btn btn-primary">
                 Add Product
@@ -186,7 +185,7 @@ export default function NewProduct(categories: any) {
       </div>
     </Layout>
   );
-};
+}
 
 export async function getStaticProps() {
   const res = await getCategories();
@@ -197,5 +196,3 @@ export async function getStaticProps() {
     },
   };
 }
-
-

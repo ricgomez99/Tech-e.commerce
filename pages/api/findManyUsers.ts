@@ -10,8 +10,9 @@ export default async function handlerGetUsers(
       select: {
         id: true,
         email: true,
-        username: true,
         role: true,
+        name: true
+
       },
     });
     return res.status(200).json(findUsers);

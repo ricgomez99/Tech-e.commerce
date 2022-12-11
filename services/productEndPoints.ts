@@ -82,12 +82,7 @@ export async function updateProduct(id: string, data: any) {
   try {
     const request = await axios.patch(
       `https://techproductsshop-production.up.railway.app/products/${id}`,
-      data,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
+      data
     );
     const response = await request.data;
     return response;

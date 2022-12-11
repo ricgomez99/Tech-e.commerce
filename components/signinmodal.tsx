@@ -4,48 +4,37 @@ import SignInButton from "./signinbutton";
 import { useScrollBlock } from "utils/scrollblock";
 import Link from "next/link";
 
-import userServiceFactory from "clientServices/userService";
-import useUser from "../lib/useUser";
-
-const userService = userServiceFactory();
-
+// import { signIn } from "next-auth/react";
 
 
 
 export default function SignInModal() {
 
-  const { user, mutateUser } = useUser({
-    redirectTo: "/",
-    redirectIfFound: true,
-});
 
   const [showModal, setShowModal] = useState(false);
   const [blockScroll, allowScroll] = useScrollBlock();
   const [submitted, setSubmitted] = useState(false)
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
-        console.log(email,password)
-        try {
-            mutateUser(
-                await userService.login(email, password)
-            );
-        } catch (error:any) {
-            alert(error.response.data.error);
-        }
+    // const handleSubmit = async (e: any) => {
+    //     e.preventDefault();
+    //    const signInCredentials = await signIn("credentials", {
+    //     email: email,
+    //     password: password
+    //    }
+    //    )
         
-    };
+    // };
 
-    const emailHandler =  (e:any) => {
-        setEmail(e.target.value);
-    }
+    // const emailHandler =  (e:any) => {
+    //     setEmail(e.target.value);
+    // }
 
-    const passwordHandler =  (e:any) => {
-        setPassword(e.target.value);
-    }
+    // const passwordHandler =  (e:any) => {
+    //     setPassword(e.target.value);
+    // }
 
   return (
     <>
@@ -91,7 +80,7 @@ export default function SignInModal() {
             `}
           </style>
           <div className="divsito" onClick={(e) => e.stopPropagation()}>
-          <div>
+          {/* <div>
         {<form onSubmit={handleSubmit}>
   
 
@@ -107,13 +96,13 @@ export default function SignInModal() {
                             <button type="submit">Log In</button>
                         </div>
                 </form>}
-    </div>
+    </div> */}
             <SignInButton />
-            <div>
+            {/* <div>
             <Link href="/signup">
                 Do not have an account? Register here!
             </Link>
-          </div>
+          </div> */}
           </div>
         </div>
       ) : null}

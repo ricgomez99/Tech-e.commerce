@@ -6,14 +6,14 @@ export default async function handlerCreateUser(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { email, password, username } = req.body;
+  const { email, password, name } = req.body;
   let passwordHash: any = await bcryptjs.hash(password, 8);
   try {
     const creation = await prisma.user.create({
       data: {
         email: email,
         password: passwordHash,
-        username: username,
+        name: name,
       },
     });
     console.log(creation);

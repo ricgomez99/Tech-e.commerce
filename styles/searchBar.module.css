@@ -1,0 +1,33 @@
+.searchBar {
+  display: flex;
+  position: relative;
+}
+
+.searchBar input {
+  position: absolute;
+  background: #fff;
+  padding: 10px 40px;
+  border: none;
+  box-shadow: 0 0 8px 2px #aaaa;
+  display: flex;
+  border-radius: 5px;
+}
+
+.submitBtn {
+  position: relative;
+  display: flex;
+  border: none;
+  transform: translateX(215px);
+  padding: 9px 7px;
+  margin-top: 3px;
+  background: transparent;
+}
+
+.searchIcon {
+  font-size: 20px;
+  color: #6b9080;
+}
+
+.searchIcon:hover {
+  color: #a4c3b2;
+}

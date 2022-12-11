@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { prisma } from "lib/prisma";
-import bcryptjs from "bcryptjs";
+// import bcryptjs from "bcryptjs";
 
 export default async function handlerCreateUser(
   req: NextApiRequest,

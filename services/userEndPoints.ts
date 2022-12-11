@@ -3,7 +3,7 @@ import axios from "axios";
 export async function createUser(data: any) {
   try {
     const response = await axios.post(
-      "http://localhost:3000/api/createUser",
+      "http://localhost:3000/api/createUsers",
       data
     );
     return response.data;

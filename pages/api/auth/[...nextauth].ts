@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 import NextAuth, { NextAuthOptions } from "next-auth";
 import FacebookProvider from "next-auth/providers/facebook";
+=======
+import NextAuth from "next-auth";
+>>>>>>> 65ef5e42233b600bf2ff19a3f24211269f9c6b68
 import GoogleProvider from "next-auth/providers/google";
-import TwitterProvider from "next-auth/providers/twitter";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "lib/prisma";
 import CredentialProviders from "next-auth/providers/credentials"
@@ -11,13 +14,10 @@ import { compare } from "bcryptjs";
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
-    FacebookProvider({
-      clientId: process.env.FACEBOOK_ID as string,
-      clientSecret: process.env.FACEBOOK_SECRET as string,
-    }),
     GoogleProvider({
       clientId: process.env.GOOGLE_ID as string,
       clientSecret: process.env.GOOGLE_SECRET as string,
+<<<<<<< HEAD
     }),
     TwitterProvider({
       clientId: process.env.TWITTER_CLIENT_ID as string,
@@ -60,3 +60,8 @@ export const authOptions: NextAuthOptions = {
 };
 
 export default NextAuth(authOptions)
+=======
+    }), 
+  ],
+});
+>>>>>>> 65ef5e42233b600bf2ff19a3f24211269f9c6b68

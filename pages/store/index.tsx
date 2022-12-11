@@ -58,7 +58,6 @@ export default function Index({ products, categories }: Data) {
           <SearchBar handleConditions={handleConditions} />
         </div>
 
-
         <div className={styledProducts.toolsBtn}>
           <button
             className={styledProducts.addToCart}
@@ -67,9 +66,6 @@ export default function Index({ products, categories }: Data) {
             Add Product
             <BsFillPlusCircleFill className={styledProducts.icon} />
           </button>
-      </div>
-      <div className={styledProducts.products_filter_container}>
-        <div className={styles.filter_sorter}>
 
           <button
             className={styledProducts.adminBtn}

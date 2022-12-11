@@ -16,7 +16,7 @@ export default async function handlerFindManySales(
           select: {
             id: true,
             email: true,
-            username: true,
+            name: true,
             role: true,
           },
         },

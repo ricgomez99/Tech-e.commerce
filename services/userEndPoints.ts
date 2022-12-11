@@ -67,7 +67,7 @@ export async function logInUser(data: any){
 //   }
 // }
 
-export async function userSales(id: any) {
+export async function userSales(id: string) {
   try {
     const response = await axios.get(`http://localhost:3000/api/findUserSales?id=${id}`)
     return response.data

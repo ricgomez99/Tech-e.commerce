@@ -1,6 +1,6 @@
 .navbar {
   display: flex;
-  padding: 16px;
+  padding: 8px 16px;
   justify-content: space-between;
   align-items: center;
   background-color: #d3dfd9;
@@ -56,6 +56,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+  gap: 15px;
+}
+
+.signOutBtn {
+  padding: 5px 15px;
+}
+
+.userDetailsBtn {
+  padding: 5px 15px;
+  background: transparent;
+}
+
+.profilePicture {
+  border-radius: 100px;
+  margin: 10px;
+  border: 6px solid #d3dfd9;
 }
 
 @media screen and (min-width: 768px) {

@@ -1,4 +1,4 @@
-.container div{
+.container div {
   padding: 15px 0px 15px 15px;
 }
 
@@ -7,13 +7,14 @@
 }
 .filter {
   cursor: pointer;
+  border-bottom: 1px solid #e5e5e5;
 }
-.filter:hover{
+.filter:hover {
   background-color: #eee;
-  transform: translateX(15px) scale(0.9);
+  transform: translateX(13px) scale(0.9);
 }
 
-.filtered{
+.filtered {
   cursor: pointer;
   background-color: #e5e5e5;
   transform: scale(1.09);

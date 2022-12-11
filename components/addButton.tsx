@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 export default function AddButton({ item }: any) {
   const cart = useAppContext();
+
   const [available, setAvailable] = useState(true);
 
   function handleClick() {
@@ -13,9 +14,9 @@ export default function AddButton({ item }: any) {
 
   useEffect(() => {
     const itemCart = cart.items.find((e: any) => e.id === item.id);
-    if (itemCart) {
+    if (itemCart)
       itemCart.qty < item.stock ? setAvailable(true) : setAvailable(false);
-    } else setAvailable(true);
+    else item.stock ? setAvailable(true) : setAvailable(false);
   }, [cart.items]);
 
   return (

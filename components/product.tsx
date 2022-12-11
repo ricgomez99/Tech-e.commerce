@@ -6,6 +6,7 @@ import Router from "next/router";
 import { useAppContext } from "../components/statewrapper";
 import { BsFillTrashFill } from "react-icons/bs";
 import { MdOutlineArrowBack } from "react-icons/md";
+import LogicDeleteButton from "./logicDeleteButton";
 
 type Data = {
   product: any;
@@ -31,12 +32,12 @@ export default function Product({ product, showAs, qty }: Data) {
   if (showAs === "Page") {
     return (
       <>
-        <button
-          onClick={() => Router.back()}
-          className="btn btn-secondary mt-3"
-        >
-          <MdOutlineArrowBack />
-        </button>
+        <div>
+          <MdOutlineArrowBack
+            onClick={() => Router.back()}
+            className={style.backBtn}
+          />
+        </div>
 
         <div className={style.page}>
           <div>
@@ -62,8 +63,11 @@ export default function Product({ product, showAs, qty }: Data) {
             <div className={`${style.description} fs-6`}>
               {product.description}
             </div>
-            <div>
+            <div className={style.addTocart}>
               <AddButton item={product} />
+            </div>
+            <div>
+              <LogicDeleteButton id={product.id} enabled={product.enabled} />
             </div>
           </div>
         </div>
@@ -154,7 +158,9 @@ export default function Product({ product, showAs, qty }: Data) {
           </Link>
         </h3>
       </div>
-      <div style={{ color: "#9A9A9A" }}>US${product.price}</div>
+      <div style={{ color: "#7895B2", fontWeight: "500" }}>
+        US${product.price}
+      </div>
       <div>
         <AddButton item={product} />
       </div>

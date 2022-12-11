@@ -1,7 +1,7 @@
 import styles from "styles/filter.module.css";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
-export default function Filter({categories, handleConditions}: any) {
+export default function Filter({ categories, handleConditions }: any) {
   const [state, setState] = useState("");
 
   const handlerOnClick = (e: any) => {
@@ -10,7 +10,7 @@ export default function Filter({categories, handleConditions}: any) {
   };
 
   useEffect(() => {
-    handleConditions({categories: state});
+    handleConditions({ categories: state });
   }, [state]);
 
   return (
@@ -19,16 +19,11 @@ export default function Filter({categories, handleConditions}: any) {
         <div
           key={e.id}
           onClick={(e) => handlerOnClick(e)}
-          className={
-            state === e.categories
-              ? styles.filtered
-              : styles.filter
-          }
+          className={state === e.categories ? styles.filtered : styles.filter}
         >
           {e.categories}
         </div>
       ))}
-      <div></div>
     </div>
   );
 }

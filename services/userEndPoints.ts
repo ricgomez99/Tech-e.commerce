@@ -1,24 +1,78 @@
 import axios from "axios";
 
-export async function createUser(data: any){
-try {
-    // console.log(data)
-    // return await fetch("http//localhost:3000/api/create"), {
-    //     body: JSON.stringify(data),
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     },
-    //     method: "POST"
-    // }
-  
-  
+export async function createUser(data: any) {
+  try {
     const response = await axios.post(
-        "localhost:5432/api/create",
-        data
-      );
-      console.log(response)
-      return response.data;
-} catch (error) {
-    console.log(error)
+      "http://localhost:3000/api/createUsers",
+      data
+    );
+    return response.data;
+  } catch (error: any) {
+    return { error: error.message };
+  }
 }
+
+export async function findManyUsers() {
+  try {
+    const response = await axios.get("http://localhost:3000/api/findManyUsers");
+    return response.data;
+  } catch (error: any) {
+    return { error: error.message };
+  }
 }
+
+export async function findUniqueUser(id: string) {
+  try {
+    const response = await axios.get(
+      `http://localhost:3000/api/findUniqueUser?id=${id}`
+    );
+    return response.data;
+  } catch (error: any) {
+    return { error: error.message };
+  }
+}
+
+export async function updateUser(data: any, id: string) {
+  try {
+    const response = await axios.patch(
+      `http://localhost:3000/api/updateUser?id=${id}`,
+      data
+    );
+    return response.data;
+  } catch (error: any) {
+    return { error: error.message };
+  }
+}
+
+export async function logInUser(data: any){
+  try {
+    const response = await axios.post(
+      "http://localhost:3000/api/loginUser",
+      data
+    );
+    return response.data;
+  } catch (error: any) {
+    return { error: error.message };
+  }
+}
+
+// export async function handlerGetUniqueUsers(id: number) {
+//   try {
+//     const response = await axios.get(
+//       `http://localhost:3000/api/databaseService?id=${id}`
+//     );
+//     return response.data;
+//   } catch (error: any) {
+//     return { error: error.message };
+//   }
+// }
+
+export async function userSales(id: string) {
+  try {
+    const response = await axios.get(`http://localhost:3000/api/findUserSales?id=${id}`)
+    return response.data
+  } catch(error: any){
+    return {error: error.message};
+  }
+}
+

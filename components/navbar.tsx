@@ -6,11 +6,19 @@ import { signOut, useSession } from "next-auth/react";
 import SignInModal from "./signinmodal";
 import styles from "../styles/navbar.module.css";
 import { useRouter } from "next/router";
+import UserOptions from "./userOptionsModal";
+import { BsPersonCircle } from "react-icons/bs";
+import { useScrollBlock } from "utils/scrollblock";
 
-const Navbar = () => {
+export default function Navbar() {
   const router = useRouter();
   const cart = useAppContext();
   const [navActive, setNavActive] = useState<boolean>(false);
+
+  //User Options State (Modal)
+  const [show, setShow] = useState<boolean>(false);
+  //Block Sroll bar
+  const [blockScroll, allowScroll] = useScrollBlock();
 
   const { data: session } = useSession();
 
@@ -18,7 +26,7 @@ const Navbar = () => {
     cart.openCart();
   }
 
-  const [cartCounter, setCartCounter] = useState(0);
+  const [cartCounter, setCartCounter] = useState<any>(0);
 
   const handlerRefresh = () => {
     router.push({
@@ -75,18 +83,68 @@ const Navbar = () => {
             Home
           </Link>
           <div>
-            <button onClick={handleOpenCart}>Cart ({cartCounter})</button>
+            <button onClick={handleOpenCart}>Cart({cartCounter})</button>
           </div>
           {!session && <SignInModal />}
           {session && (
-            <a className="btn btn-secondary me-2" onClick={() => signOut()}>
-              Sign Out
-            </a>
+            <>
+              <BsPersonCircle
+                onClick={() => {
+                  setShow(true);
+                  blockScroll();
+                }}
+                style={{ fontSize: "30px", cursor: "pointer" }}
+              />
+              <UserOptions
+                onClose={() => {
+                  setShow(false);
+                  allowScroll();
+                }}
+                show={show}
+              >
+                <Image
+                  src="/Img/user_profile.jpg"
+                  alt="profile picture"
+                  className={styles.profilePicture}
+                  width={160}
+                  height={160}
+                />
+                <h3>{session.user?.name?.split(" ")[0]}</h3>
+                <div className={styles.buttons}>
+                  <a
+                    className={`btn btn-secondary ${styles.signOutBtn}`}
+                    onClick={() => signOut()}
+                  >
+                    Sign Out
+                  </a>
+                  <Link href="#">
+                    <button
+                      // onClick={() => {
+                      //   setShow(false);
+                      //   allowScroll();
+                      // }}
+                      className={`btn btn-outline-success ${styles.userDetailsBtn}`}
+                    >
+                      User details
+                    </button>
+                  </Link>
+                  <Link href="/profile/admin" scroll={true}>
+                    <button
+                      onClick={() => {
+                        setShow(false);
+                        allowScroll();
+                      }}
+                      className={`btn btn-outline-success ${styles.userDetailsBtn}`}
+                    >
+                      Admin Tools
+                    </button>
+                  </Link>
+                </div>
+              </UserOptions>
+            </>
           )}
         </div>
       </nav>
     </header>
   );
-};
-
-export default Navbar;
+}

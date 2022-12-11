@@ -12,20 +12,29 @@
     "categories"
     "refresh";
   grid-area: filter_sorter;
-  margin: 10px 0px 10px 0px;
+  margin: 15px 0 15px 0;
+  padding-right: 10px;
+  box-shadow: 0 4px 10px #aaaa;
 }
 
 .sort {
-  justify-self: center;
+  justify-self: flex-start;
   align-self: center;
   grid-area: sort;
+  margin-left: 8px;
+}
+
+.allBtn {
+  margin: 8px 10px;
+  justify-self: flex-start;
 }
 
 .categories {
   grid-area: categories;
+  color: #6b9080;
 }
 
 .refresh {
-  align-self: initial;
+  align-self: baseline;
   grid-area: refresh;
 }

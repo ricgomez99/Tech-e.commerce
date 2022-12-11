@@ -42,7 +42,7 @@ export default function SignInModal() {
           onClick={() => {
             setShowModal(true);
             blockScroll();
-          } }
+          }}
           style={{ cursor: "pointer" }}
           className="btn btn-outline-success me-2"
         >
@@ -51,11 +51,13 @@ export default function SignInModal() {
       </div>
 
       {showModal ? (
-        <div className="divsote"
+        <div
+          className="divsote"
           onClick={() => {
             setShowModal(false);
             allowScroll();
-          } }>
+          }}
+        >
           <style jsx>
             {`
               .divsote {
@@ -71,7 +73,7 @@ export default function SignInModal() {
               .divsito {
                 margin: 40vh auto;
                 display: flex;
-                background-color: #A4C3B2;
+                background-color: #a4c3b2;
                 flex-direction: column;
                 width: 20vw;
                 border-radius: 15px;

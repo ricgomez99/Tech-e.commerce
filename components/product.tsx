@@ -7,6 +7,7 @@ import { useAppContext } from "../components/statewrapper";
 import { BsFillTrashFill } from "react-icons/bs";
 import { MdOutlineArrowBack } from "react-icons/md";
 import LogicDeleteButton from "./logicDeleteButton";
+import UpdateModal from "./updateModal";
 
 type Data = {
   product: any;
@@ -68,6 +69,9 @@ export default function Product({ product, showAs, qty }: Data) {
             </div>
             <div>
               <LogicDeleteButton id={product.id} enabled={product.enabled} />
+            </div>
+            <div>
+              <UpdateModal product={product} />
             </div>
           </div>
         </div>

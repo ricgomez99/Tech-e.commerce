@@ -52,13 +52,6 @@ export default function Index({ products, categories }: Data) {
   }, [conditions]);
 
   useEffect(() => {
-    const filterItems = items.filter(
-      (product: any) => product.enabled === false
-    );
-    console.log(filterItems);
-  }, []);
-
-  useEffect(() => {
     setConditions({});
   }, [router.query.refresh]);
 

@@ -12,6 +12,8 @@ import { useRouter } from "next/router";
 import styles from "styles/filtersort.module.css";
 import Sort from "components/sort";
 import Filter from "components/filter";
+import { BsFillGearFill, BsFillPlusCircleFill } from "react-icons/bs";
+import Button from "react-bootstrap/Button";
 
 type Data = {
   products: any[];
@@ -51,21 +53,44 @@ export default function Index({ products, categories }: Data) {
 
   return (
     <Layout>
-      <div className="d-flex justify-content-evenly mt-3">
-        <SearchBar handleConditions={handleConditions} />
+      <div className={styledProducts.tools}>
+        <div className={styledProducts.searchBar}>
+          <SearchBar handleConditions={handleConditions} />
+        </div>
 
-        <button onClick={() => router.push("/newProduct")}>
-          Add New Product
-        </button>
+        <div className={styledProducts.toolsBtn}>
+          <button
+            className={styledProducts.addToCart}
+            onClick={() => router.push("/newProduct")}
+          >
+            Add Product
+            <BsFillPlusCircleFill className={styledProducts.icon} />
+          </button>
+
+          <button
+            className={styledProducts.adminBtn}
+            onClick={() => router.push("/profile/admin")}
+          >
+            Admin <BsFillGearFill className={styledProducts.icon} />
+          </button>
+        </div>
       </div>
       <div className={styledProducts.products_filter_container}>
         <div className={styles.filter_sorter}>
-          <button
-            onClick={() => setConditions({})}
-            style={{ height: "2rem", marginTop: "1rem" }}
-          >
-            Refresh
-          </button>
+          <div className={styles.allBtn}>
+            <Button
+              variant="light"
+              size="sm"
+              style={{
+                color: "#6B9080",
+                padding: "6px 25px",
+                fontWeight: "500",
+              }}
+              onClick={() => setConditions({})}
+            >
+              All
+            </Button>
+          </div>
           <div className={styles.sort}>
             <Sort handleConditions={handleConditions} />
           </div>

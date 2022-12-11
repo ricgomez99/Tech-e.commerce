@@ -4,6 +4,8 @@
   border: 2px solid #a4c3b2;
   color: #9fc4af;
   font-weight: 500;
+  width: 100%;
+  border-radius: 5px;
 }
 
 .addBtn:hover {
@@ -11,7 +13,7 @@
   color: #fff;
 }
 
-.addBtn:disabled{
+.addBtn:disabled {
   border: 1px solid #a4c3b2;
   background-color: #cccccc;
   color: #a4c3b2;

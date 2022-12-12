@@ -6,7 +6,7 @@ export default async function handlerCreateSale(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { total, date, userId } = req.body;
+  const { total, date, userId, state } = req.body;
   //!in order create the sale, you must pass by date an constant with new Date()
   //! and then pass that constant like date.toISOString()
   //? just like this => new Date().toISOString()
@@ -17,6 +17,7 @@ export default async function handlerCreateSale(
         total: total,
         date: date,
         userId: userId,
+        state: state
       },
     });
     return res.status(200).json(creation);

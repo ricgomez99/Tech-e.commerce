@@ -1,7 +1,7 @@
 import Layout from "components/layout";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import styles from "../styles/result.module.css";
+import styles from "../../styles/result.module.css";
 import Image from "next/image";
 import { useAppContext } from "components/statewrapper";
 import { useEffect, useState } from "react";
@@ -22,8 +22,6 @@ export default function Result() {
     (url) => fetch(url).then((res) => res.json())
   );
 
-  data ? console.log(data.session.payment_intent.status) : null;
-
   let itemsArr: any[] = [];
 
   useEffect(() => {
@@ -36,8 +34,6 @@ export default function Result() {
     });
     products.resetCart();
   }, []);
-
-  console.log("products", products.items);
 
   return (
     <Layout>

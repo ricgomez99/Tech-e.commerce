@@ -2,7 +2,7 @@ import Layout from "components/layout";
 import CardPayment from "components/cardPayment";
 import Router from "next/router";
 import React from "react";
-import styles from "../styles/payment.module.css";
+import styles from "../../styles/payment.module.css";
 import { useAppContext } from "components/statewrapper";
 import { MdOutlineArrowBack } from "react-icons/md";
 import { loadStripe } from "@stripe/stripe-js";
@@ -67,14 +67,14 @@ export default function Payment() {
 
   return (
     <Layout>
+      <div>
+        <MdOutlineArrowBack
+          onClick={() => Router.push("/store")}
+          className={styles.backBtn}
+        />
+      </div>
       {!emptyCart ? (
         <div className={styles.containerPayment}>
-          <button
-            onClick={() => Router.push("/store")}
-            className="btn btn-secondary"
-          >
-            <MdOutlineArrowBack />
-          </button>
           <div className={styles.title}>
             <h2>Payment Details</h2>
           </div>

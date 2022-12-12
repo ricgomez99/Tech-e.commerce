@@ -1,9 +1,9 @@
 .items {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(12rem, 18rem));
-  gap: 1.5rem;
+  gap: 2.5rem;
   justify-content: center;
-  margin: 15px 10px;
+  margin: 15px 12px;
 }
 
 .item {
@@ -60,7 +60,7 @@
   box-shadow: 0 0 10px #bbbb;
   transform: scale(0);
   animation: scale 0.3s ease forwards;
-  margin: 18px 10px;
+  margin: 20px 30px;
   background: #fff;
 }
 
@@ -75,7 +75,7 @@
 .info {
   display: flex;
   flex-direction: column;
-  padding: 0 20px;
+  padding: 0 30px;
   gap: 20px;
 }
 
@@ -84,7 +84,7 @@
   margin: 10px 0;
   font-size: 2rem;
   font-weight: bold;
-  color: #6b9080;
+  color: #7895b2;
 }
 
 .listItem {
@@ -133,6 +133,68 @@
   color: #a6a9b6;
 }
 
+.addTocart {
+  width: 30%;
+  padding: 15px 0;
+}
+
+.backBtn {
+  font-size: 25px;
+  margin-top: 10px;
+  margin-left: 25px;
+  cursor: pointer;
+}
+
+.backBtn:hover {
+  color: #385170;
+}
+
+.tools {
+  padding: 25px 0;
+  display: flex;
+  width: 100%;
+}
+
+.searchBar {
+  justify-content: flex-start;
+  display: flex;
+  width: 300px;
+  padding: 0 28px;
+}
+
+.toolsBtn {
+  justify-content: space-evenly;
+  gap: 8px;
+  width: 400px;
+  display: flex;
+  flex-direction: row;
+  margin: 0 220px;
+}
+
+.toolsBtn button {
+  display: flex;
+  padding: 8px 20px;
+  background: #fff;
+  font-weight: 500;
+  color: #92ba92;
+  border-radius: 5px;
+  border: 1px solid #92ba92;
+}
+
+.icon {
+  margin: 6px;
+  margin-left: 15px;
+  margin-right: 5px;
+  font-size: 16px;
+  color: #2a528a;
+  background: transparent;
+}
+
+.toolsBtn button:hover {
+  color: #ffff;
+  background: #a4c3b2;
+}
+
 @keyframes scale {
   from {
     transform: scale(0);
@@ -140,5 +202,21 @@
 
   to {
     transform: scale(1);
+  }
+}
+
+@media (max-width: 750px) {
+  .tools {
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+
+  .toolsBtn {
+    align-items: center;
+    margin: 20px auto;
+  }
+
+  .item {
+    width: 100%;
   }
 }

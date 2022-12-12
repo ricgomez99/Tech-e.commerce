@@ -5,6 +5,7 @@ import AdminOrders from "components/adminOrders";
 import AdminProducts from "components/adminProducts";
 import AdminUsers from "components/adminUsers";
 import { MdOutlineArrowBack } from "react-icons/md";
+import styles from "../../styles/admin.module.css";
 
 export default function AdminTools() {
   
@@ -15,12 +16,12 @@ export default function AdminTools() {
   return (
     <Layout>
       <div>
-        <button
-          onClick={() => router.push("/store")}
-          className="btn btn-secondary"
-        >
-          <MdOutlineArrowBack />
-        </button>
+        <div>
+          <MdOutlineArrowBack
+            onClick={() => router.push("/store")}
+            className={styles.backBtn}
+          />
+        </div>
         <div className="d-flex justify-content-evenly mt-3">
           <button onClick={() => setTool("users")}>Users</button>
 

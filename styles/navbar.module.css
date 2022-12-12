@@ -80,6 +80,33 @@
   border: 6px solid #d3dfd9;
 }
 
+.cart {
+  display: flex;
+  align-items: center;
+}
+
+.cartButton {
+  border: none;
+  background-color: #d3dfd9;
+}
+
+.cartLogo {
+  font-size: 30px;
+}
+
+.cartCounter {
+  border-radius: 100px;
+  height: 25px;
+  background-color: white;
+  padding: 4px 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  color: #6b9080;
+  font-weight: 500;
+}
+
 @media screen and (min-width: 768px) {
   .nav__menu_bar {
     display: none;

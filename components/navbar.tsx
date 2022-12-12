@@ -8,6 +8,7 @@ import styles from "../styles/navbar.module.css";
 import { useRouter } from "next/router";
 import UserOptions from "./userOptionsModal";
 import { BsPersonCircle } from "react-icons/bs";
+import { FiShoppingCart } from "react-icons/fi";
 import { useScrollBlock } from "utils/scrollblock";
 import { findUniqueUser } from "services/userEndPoints";
   
@@ -48,13 +49,13 @@ export default function Navbar() {
           <Image
             src="https://res.cloudinary.com/davixx5su/image/upload/v1670005747/folder/e-commerce_ctrsgi.png"
             alt="logo"
-            width={35}
-            height={35}
+            width={50}
+            height={50}
           />
         </Link>
         <div>
           {session ? (
-            <span>Hello, {session.user?.name?.split(" ")[0]}</span>
+            <span>Hello {session.user?.name?.split(" ")[0]}!</span>
           ) : null}
         </div>
         <div
@@ -84,8 +85,9 @@ export default function Navbar() {
           <Link href="/" style={{ textDecoration: "none", color: "black" }}>
             Home
           </Link>
-          <div>
-            <button onClick={handleOpenCart}>Cart({cartCounter})</button>
+          <div className={styles.cart}>
+            <button className={styles.cartButton} onClick={handleOpenCart}><FiShoppingCart className={styles.cartLogo}/></button>
+            <div className={styles.cartCounter}>{cartCounter}</div>
           </div>
           {!session && <SignInModal />}
           {session && (

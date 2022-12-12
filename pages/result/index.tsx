@@ -2,11 +2,15 @@ import Layout from "components/layout";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import styles from "../../styles/result.module.css";
-import Image from "next/image";
+// import Image from "next/image";
 import { useAppContext } from "components/statewrapper";
 import { useEffect, useState } from "react";
 import { updateStock } from "services/productEndPoints";
 import Link from "next/link";
+import { postSale, findSaleDetails } from "services/saleEndPoints";
+import { createDetailSale } from "services/DetailSaleendPoints";
+import { useSession } from "next-auth/react";
+
 
 export default function Result() {
   const router = useRouter();
@@ -23,17 +27,34 @@ export default function Result() {
   );
 
   let itemsArr: any[] = [];
+  let totalPrice: number;
+  let user: string;
+  const { data: session } = useSession()
+  if(!!session === true) {
+    
+  }
 
   useEffect(() => {
     cart = products.getCart();
     cart ? (itemsArr = Array.from(cart.values())) : null;
+    itemsArr.map((product) => {
+      totalPrice += (product.price * product.qty)
+    })
+    const data = {
+      total : totalPrice,
+      date : new Date().toISOString(),
+      userId : ""
+    }
+    let created = 
     itemsArr.map(async (product) => {
       const stocked = product.stock - product.qty;
       const stock = stocked.toString();
       await updateStock(product.id, stocked);
+
     });
     products.resetCart();
   }, []);
+
 
   return (
     <Layout>

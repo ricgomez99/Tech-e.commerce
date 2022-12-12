@@ -25,18 +25,23 @@ export default function AdminOrderDetails({ id }: any) {
 
   async function handleClick(e: any) {
     switch (e.target.value) {
-      case "complete":
+      case "success":
         // await banAlert();
         break;
-
+      case "pending":
+        // await banAlert();
+        break;
+      case "failure":
+        // await banAlert();
+        break;
       default:
         break;
     }
   }
 
-  // async function banAlert() {
+  // async function statusAlert() {
   //   Swal.fire({
-  //     title: order.active
+  //     title: order.state === 'PENDING'
   //       ? "Are you sure you want to ban this user?"
   //       : "Are you sure you want to unban this user?",
   //     text: "This action can be reverted at any time",
@@ -100,12 +105,22 @@ export default function AdminOrderDetails({ id }: any) {
             </div>
 
             <h3>Status: {order.state}</h3>
-            <button value="complete" onClick={(e) => handleClick(e)}>
-              Mark as completed
-            </button>
-            <button value="cancel" onClick={(e) => handleClick(e)}>
-              Cancel order
-            </button>
+            {order.state === "SUCCESS" ? null : (
+              <button value="success" onClick={(e) => handleClick(e)}>
+                Mark as completed
+              </button>
+            )}
+            {order.state === "PENDING" ? null : (
+              <button value="pending" onClick={(e) => handleClick(e)}>
+                Mark as pending
+              </button>
+            )}
+            {order.state ===
+            (
+              <button value="failure" onClick={(e) => handleClick(e)}>
+                Mark as failed
+              </button>
+            )}
           </div>
         ) : null}
       </div>

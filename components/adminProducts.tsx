@@ -53,7 +53,7 @@ export default function AdminProducts() {
           </div>
           <div className={styles.all}>
               {products?.map((p) =>(
-                <div className={styles.products}>
+                <div key={p.id} className={styles.products}>
                   <div>
                     <Image
                       width={100}

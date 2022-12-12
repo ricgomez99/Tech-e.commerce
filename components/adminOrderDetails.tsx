@@ -115,8 +115,7 @@ export default function AdminOrderDetails({ id }: any) {
                 Mark as pending
               </button>
             )}
-            {order.state ===
-            (
+            {order.state === "FAILURE" ? null : (
               <button value="failure" onClick={(e) => handleClick(e)}>
                 Mark as failed
               </button>

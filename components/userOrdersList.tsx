@@ -18,7 +18,7 @@ export default function UserOrdersList({ id }: any) {
     <ul>
       {orders
         ? orders.map((o) => (
-            <li>
+            <li key={o.id}>
               ID: {o.id}, Date: {o.date}, Total: ${o.total}.00 USD, Payment:{" "}
               {o.state}{" "}
             </li>

@@ -1,4 +1,4 @@
-import styles from "../styles/usersAdmin.module.css";
+import styles from "../styles/adminUsers.module.css";
 import { updateUser, findUniqueUser } from "services/userEndPoints";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
@@ -13,6 +13,7 @@ export default function AdminUserDetails({ email }: any) {
       (async () => {
         setUser(await findUniqueUser(email));
       })();
+      console.log(user);
     } catch (error) {
       console.log(error);
     }
@@ -119,25 +120,29 @@ export default function AdminUserDetails({ email }: any) {
   }
 
   return (
-    <div className={styles.productsContainer}>
-      <div className={styles.productDetail}>
+    <div className={styles.usersContainer}>
+      <div className={styles.userDetail}>
         <h5>User Detail</h5>
         {user ? (
           <div className={styles.detail}>
             <h3>ID: {user.id}</h3>
             <h3>Username: {user.name}</h3>
             <h3>Email: {user.email}</h3>
-            <h3>Role: {user.role}</h3>
-            <button value="role" onClick={(e) => handleClick(e)}>
-              {user.role === "ADMIN" ? "Set as User" : "Upgrade to Admin"}
-            </button>
-            <h3>Active: {user.active?.toString()}</h3>
-            <button value="ban" onClick={(e) => handleClick(e)}>
-              {user.active ? "Ban User" : "Unban User"}
-            </button>
+            <div className={styles.click}>
+              <h3>Role: {user.role}</h3>
+              <button value="role" onClick={(e) => handleClick(e)}>
+                {user.role === "ADMIN" ? "Set as User" : "Upgrade to Admin"}
+              </button>
+            </div>
+            <div className={styles.click}>
+              <h3>Active: {user.active?.toString()}</h3>
+              <button value="ban" onClick={(e) => handleClick(e)}>
+                {user.active ? "Ban User" : "Unban User"}
+              </button>
+            </div>
             <div>
-              User&apos;s orders
-              <div className={styles.all}>
+              <h3>Orders</h3>
+              <div className={styles.userOrders}>
                 <UserOrdersList id={user.id} />
               </div>
             </div>

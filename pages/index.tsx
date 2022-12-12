@@ -46,7 +46,7 @@ export default function Home() {
         </div>
       </div>
       <div className={styles.stepsContainer}>
-      <div className={styles.steps}>
+      <div>
         <LandingCard 
           logo={<GoSearch/>}
           title="Search products"
@@ -56,7 +56,7 @@ export default function Home() {
                 you are looking for."
         />   
       </div>
-      <div className={styles.steps}>
+      <div className={styles.middleCard}>
         <LandingCard 
           logo={<FiShoppingCart/>}
           title="Add it to cart"
@@ -65,7 +65,7 @@ export default function Home() {
                 product details and add them when you are ready."
         />
       </div>
-      <div className={styles.steps}>
+      <div>
         <LandingCard
           logo={<BsCreditCard/>}
           title="Buy it"

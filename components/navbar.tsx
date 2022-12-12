@@ -22,6 +22,8 @@ export default function Navbar() {
   const [blockScroll, allowScroll] = useScrollBlock();
 
   const { data: session } = useSession();
+  
+  
 
   function handleOpenCart() {
     cart.openCart();
@@ -128,17 +130,6 @@ export default function Navbar() {
                       className={`btn btn-outline-success ${styles.userDetailsBtn}`}
                     >
                       User details
-                    </button>
-                  </Link>
-                  <Link href="/profile/admin" scroll={true}>
-                    <button
-                      onClick={() => {
-                        setShow(false);
-                        allowScroll();
-                      }}
-                      className={`btn btn-outline-success ${styles.userDetailsBtn}`}
-                    >
-                      Admin Tools
                     </button>
                   </Link>
                 </div>

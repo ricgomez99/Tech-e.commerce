@@ -106,13 +106,6 @@
   margin: 0 auto;
 }
 
-.steps {
-  width: 250px;
-  box-shadow: 0 2px 20px #dddddd;
-  padding: 20px;
-  text-align: center;
-  margin: 30px;
-}
 
 @media (max-width: 750px) {
   .ImageContainer {
@@ -179,10 +172,6 @@
     flex-direction: column;
     margin-right: 5%!important ;
   }
-  .steps {
-    width: 90%;
-    font-size: 95%;
-  }
 }
 
 .stepsContainer {
@@ -190,3 +179,4 @@
   justify-content: center;
   margin: 8% auto;
 }
+

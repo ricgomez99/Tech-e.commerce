@@ -15,7 +15,6 @@ export default function Navbar() {
   const router = useRouter();
   const cart = useAppContext();
   const [navActive, setNavActive] = useState<boolean>(false);
-  // const [user, setUser] = useState<any>({})
 
   //User Options State (Modal)
   const [show, setShow] = useState<boolean>(false);
@@ -36,8 +35,7 @@ export default function Navbar() {
       query: { refresh: "true" },
     });
   };
-  const email: string | undefined = session?.user?.email?.toString();
-
+  
   useEffect(() => {
     setCartCounter(cart.getNumberOfItems());
   }, [cart.addItemToCart, cart.deleteItem]);

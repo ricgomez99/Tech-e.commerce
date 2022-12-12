@@ -2,20 +2,21 @@ import styles from "../styles/usersAdmin.module.css";
 import { updateUser, findUniqueUser } from "services/userEndPoints";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import UserOrdersList from "./userOrdersList";
 
-export default function AdminUserDetails({ id }: any) {
+export default function AdminUserDetails({ email }: any) {
   const [user, setUser] = useState<any>({});
   const [state, setState] = useState<boolean>(true);
 
   useEffect(() => {
     try {
       (async () => {
-        setUser(await findUniqueUser(id));
+        setUser(await findUniqueUser(email));
       })();
     } catch (error) {
       console.log(error);
     }
-  }, [id, state]);
+  }, [email, state]);
 
   async function handleClick(e: any) {
     switch (e.target.value) {
@@ -124,7 +125,7 @@ export default function AdminUserDetails({ id }: any) {
         {user ? (
           <div className={styles.detail}>
             <h3>ID: {user.id}</h3>
-            <h3>Username: {user.username}</h3>
+            <h3>Username: {user.name}</h3>
             <h3>Email: {user.email}</h3>
             <h3>Role: {user.role}</h3>
             <button value="role" onClick={(e) => handleClick(e)}>
@@ -137,16 +138,15 @@ export default function AdminUserDetails({ id }: any) {
             <div>
               User&apos;s orders
               <div className={styles.all}>
-                <ul>
-                  {/* Aqui va un map de todas las ordenes de este userId */}
-                  <li>Orden 1</li>
-                  <li>Orden 2</li>
-                  <li>Orden 3</li>
-                </ul>
+                <UserOrdersList id={user.id} />
               </div>
             </div>
           </div>
-        ) : null}
+        ) : (
+          <div className={styles.detail}>
+            <h3>Select a user from the list </h3>
+          </div>
+        )}
       </div>
     </div>
   );

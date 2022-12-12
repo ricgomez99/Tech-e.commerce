@@ -40,14 +40,14 @@ export default function AdminProducts() {
             {Object.keys(chosenProduct).length ?(<Product 
               product={chosenProduct} 
               qty={undefined}
-              showAs="ListItem"
+              showAs="adminProduct"
               />) : ""}
           </div>
         </div>
         <div className={styles.allProducts}>
           <div className={styles.search}>
             <SearchBar handleConditions={handleConditions} />
-            <button onClick={() => setConditions({})}>
+            <button className={styles.refresh} onClick={() => setConditions({})}>
             Refresh
             </button>
           </div>
@@ -63,7 +63,7 @@ export default function AdminProducts() {
                       className={styles.productImg}
                     />
                   </div>
-                  <h5 onClick={() => {handleProduct(p)}}>{p.title}</h5>
+                  <h5 className={styles.name} onClick={() => {handleProduct(p)}}>{p.title}</h5>
                 </div>  
               ))}
           </div>

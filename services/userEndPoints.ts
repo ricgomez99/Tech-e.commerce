@@ -44,7 +44,7 @@ export async function updateUser(data: any, id: string) {
   }
 }
 
-export async function logInUser(data: any){
+export async function logInUser(data: any) {
   try {
     const response = await axios.post(
       "http://localhost:3000/api/loginUser",
@@ -69,10 +69,11 @@ export async function logInUser(data: any){
 
 export async function userSales(id: string) {
   try {
-    const response = await axios.get(`http://localhost:3000/api/findUserSales?id=${id}`)
-    return response.data
-  } catch(error: any){
-    return {error: error.message};
+    const response = await axios.get(
+      `http://localhost:3000/api/findUserSales?id=${id}`
+    );
+    return response.data;
+  } catch (error: any) {
+    return { error: error.message };
   }
 }
-

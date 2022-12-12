@@ -10,7 +10,7 @@ import UserOptions from "./userOptionsModal";
 import { BsPersonCircle } from "react-icons/bs";
 import { useScrollBlock } from "utils/scrollblock";
 import { findUniqueUser } from "services/userEndPoints";
-
+ 
 export default function Navbar() {
   const router = useRouter();
   const cart = useAppContext();

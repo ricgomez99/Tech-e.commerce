@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import UserOptions from "./userOptionsModal";
 import { BsPersonCircle } from "react-icons/bs";
 import { useScrollBlock } from "utils/scrollblock";
+import { findUniqueUser } from "services/userEndPoints";
 
 export default function Navbar() {
   const router = useRouter();
@@ -119,9 +120,24 @@ export default function Navbar() {
                   </a>
                   <Link href="#">
                     <button
+                      // onClick={() => {
+                      //   setShow(false);
+                      //   allowScroll();
+                      // }}
                       className={`btn btn-outline-success ${styles.userDetailsBtn}`}
                     >
                       User details
+                    </button>
+                  </Link>
+                  <Link href="/profile/admin" scroll={true}>
+                    <button
+                      onClick={() => {
+                        setShow(false);
+                        allowScroll();
+                      }}
+                      className={`btn btn-outline-success ${styles.userDetailsBtn}`}
+                    >
+                      Admin Tools
                     </button>
                   </Link>
                 </div>
@@ -132,6 +148,4 @@ export default function Navbar() {
       </nav>
     </header>
   );
-};
-
-
+}

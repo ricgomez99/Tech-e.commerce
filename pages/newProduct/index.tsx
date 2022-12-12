@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "../../styles/newproduct.module.css";
 import { getCategories, postProduct } from "../../services/productEndPoints";
 import Router from "next/router";
+import { MdOutlineArrowBack } from "react-icons/md";
 
 export default function NewProduct(categories: any) {
   const [message, setMessage] = useState("");
@@ -19,7 +20,7 @@ export default function NewProduct(categories: any) {
     Router.push("/store");
   };
 
-  function handleOnChange(changeEvent: any) {
+  function handleChange(changeEvent: any) {
     const reader = new FileReader();
 
     reader.onload = function (onLoadEvent: any) {
@@ -32,6 +33,12 @@ export default function NewProduct(categories: any) {
   return (
     <Layout>
       <div>
+        <div>
+          <MdOutlineArrowBack
+            onClick={() => Router.back()}
+            className={styles.backBtn}
+          />
+        </div>
         <div className="d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
           <div hidden={!submitted} className="alert alert-primary" role="alert">
             {message}
@@ -55,13 +62,6 @@ export default function NewProduct(categories: any) {
             onSubmit={submit}
           >
             <Form className="w-50">
-              <button
-                type="button"
-                className="btn btn-primary btn-xs mb-5 p-1"
-                onClick={() => Router.back()}
-              >
-                Go Back
-              </button>
               <div className="mb-3">
                 <label htmlFor="title" className="form-label">
                   Product Title
@@ -110,9 +110,7 @@ export default function NewProduct(categories: any) {
                   id="categories"
                   className="form-control"
                 >
-                  <option value="default" hidden>
-                    Choose category...
-                  </option>
+                  <option hidden>Choose category...</option>
 
                   {categories.categories?.map((category: any) => (
                     <option value={category.categories} key={category.id}>
@@ -149,7 +147,7 @@ export default function NewProduct(categories: any) {
                 <br />
                 <input
                   type="file"
-                  onChange={handleOnChange}
+                  onChange={handleChange}
                   accept=".jpg, .jpeg, .png"
                 />
                 <ErrorMessage
@@ -159,23 +157,24 @@ export default function NewProduct(categories: any) {
                 />
                 <br />
                 {imageSrc.length ? (
-                  <img
-                    src={imageSrc}
-                    alt={imageSrc}
-                    className={styles.imgUpload}
-                  />
+                  <>
+                    <img
+                      src={imageSrc}
+                      alt={imageSrc}
+                      className={styles.imgUpload}
+                    />
+                    <br />
+                    <label htmlFor="image" className="form-label">
+                      <Field
+                        type="checkbox"
+                        name="image"
+                        id="image"
+                        value={imageSrc}
+                      />
+                      Confirm Image
+                    </label>
+                  </>
                 ) : null}
-
-                <br />
-                <label htmlFor="image" className="form-label">
-                  <Field
-                    type="checkbox"
-                    name="image"
-                    id="image"
-                    value={imageSrc}
-                  />
-                  Confirm Image
-                </label>
               </div>
               <button type="submit" className="btn btn-primary">
                 Add Product
@@ -186,7 +185,7 @@ export default function NewProduct(categories: any) {
       </div>
     </Layout>
   );
-};
+}
 
 export async function getStaticProps() {
   const res = await getCategories();
@@ -197,5 +196,3 @@ export async function getStaticProps() {
     },
   };
 }
-
-

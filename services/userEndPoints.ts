@@ -3,7 +3,7 @@ import axios from "axios";
 export async function createUser(data: any) {
   try {
     const response = await axios.post(
-      "http://localhost:3000/api/createUser",
+      "http://localhost:3000/api/createUsers",
       data
     );
     return response.data;
@@ -21,10 +21,10 @@ export async function findManyUsers() {
   }
 }
 
-export async function findUniqueUser(id: number) {
+export async function findUniqueUser(email: string) {
   try {
     const response = await axios.get(
-      `http://localhost:3000/api/findUniqueUser?id=${id}`
+      `http://localhost:3000/api/findUniqueUser?email=${email}`
     );
     return response.data;
   } catch (error: any) {
@@ -32,7 +32,7 @@ export async function findUniqueUser(id: number) {
   }
 }
 
-export async function updateUser(data: any, id: any) {
+export async function updateUser(data: any, id: string) {
   try {
     const response = await axios.patch(
       `http://localhost:3000/api/updateUser?id=${id}`,
@@ -44,7 +44,7 @@ export async function updateUser(data: any, id: any) {
   }
 }
 
-export async function logInUser(data: any){
+export async function logInUser(data: any) {
   try {
     const response = await axios.post(
       "http://localhost:3000/api/loginUser",
@@ -67,12 +67,13 @@ export async function logInUser(data: any){
 //   }
 // }
 
-export async function userSales(id: any) {
+export async function userSales(id: string) {
   try {
-    const response = await axios.get(`http://localhost:3000/api/findUserSales?id=${id}`)
-    return response.data
-  } catch(error: any){
-    return {error: error.message};
+    const response = await axios.get(
+      `http://localhost:3000/api/findUserSales?id=${id}`
+    );
+    return response.data;
+  } catch (error: any) {
+    return { error: error.message };
   }
 }
-

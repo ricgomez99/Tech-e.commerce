@@ -67,14 +67,14 @@ export default function Payment() {
 
   return (
     <Layout>
+      <div>
+        <MdOutlineArrowBack
+          onClick={() => Router.push("/store")}
+          className={styles.backBtn}
+        />
+      </div>
       {!emptyCart ? (
         <div className={styles.containerPayment}>
-          <button
-            onClick={() => Router.push("/store")}
-            className="btn btn-secondary"
-          >
-            <MdOutlineArrowBack />
-          </button>
           <div className={styles.title}>
             <h2>Payment Details</h2>
           </div>

@@ -1,37 +1,38 @@
 import React, { useState } from "react";
-import { Formik, Field, ErrorMessage, Form } from "formik";
-import * as yup from "yup";
-import { logInUser } from "../services/userEndPoints"
+// import SignInButton from "./signinbutton";
 import SignInButton from "./signinbutton";
 import { useScrollBlock } from "utils/scrollblock";
 import Link from "next/link";
 
-import userServiceFactory from "clientServices/userService";
-import useUser from "../lib/useUser";
-
-const userService = userServiceFactory();
-
-
+// import useUser from "../lib/useUser";
 
 export default function SignInModal() {
-
-  const { user, mutateUser } = useUser({
-    redirectTo: "/",
-    redirectIfFound: true,
-});
-
   const [showModal, setShowModal] = useState(false);
   const [blockScroll, allowScroll] = useScrollBlock();
-  const [submitted, setSubmitted] = useState(false)
 
-  const handleSubmit = async (values: any) => {
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 
-    // try{
+  // const handleSubmit = async (e: any) => {
+  //     e.preventDefault();
+  //     console.log(email,password)
+  //     try {
+  //         mutateUser(
+  //             await userService.login(email, password)
+  //         );
+  //     } catch (error:any) {
+  //         alert(error.response.data.error);
+  //     }
 
-    // }catch(err){
-    // }
- 
-  };
+  // };
+
+  // const emailHandler =  (e:any) => {
+  //     setEmail(e.target.value);
+  // }
+
+  // const passwordHandler =  (e:any) => {
+  //     setPassword(e.target.value);
+  // }
 
   return (
     <>
@@ -40,7 +41,7 @@ export default function SignInModal() {
           onClick={() => {
             setShowModal(true);
             blockScroll();
-          } }
+          }}
           style={{ cursor: "pointer" }}
           className="btn btn-outline-success me-2"
         >
@@ -49,11 +50,13 @@ export default function SignInModal() {
       </div>
 
       {showModal ? (
-        <div className="divsote"
+        <div
+          className="divsote"
           onClick={() => {
             setShowModal(false);
             allowScroll();
-          } }>
+          }}
+        >
           <style jsx>
             {`
               .divsote {
@@ -69,7 +72,7 @@ export default function SignInModal() {
               .divsito {
                 margin: 40vh auto;
                 display: flex;
-                background-color: #A4C3B2;
+                background-color: #a4c3b2;
                 flex-direction: column;
                 width: 20vw;
                 border-radius: 15px;
@@ -78,52 +81,28 @@ export default function SignInModal() {
           </style>
           <div className="divsito" onClick={(e) => e.stopPropagation()}>
             <div>
-            <Formik
-            initialValues={{
-              email: "",
-              password: "",
-            }}
-            validationSchema={yup.object({
-                email: yup.string().required("Email is required."),
-                password: yup.string().required("Password is required"),
-              })}
-            onSubmit={handleSubmit}
-          >
-            <Form>
-            <div>
-                <Field
-                  type="text"
-                  name="email"
-                  placeholder="user@email.com"
-                />
-                <ErrorMessage
-                  name="email"
-                  component="div"
-                  className="text-danger"
-                />
-              </div>
-              <div>
-                <Field
-                  type="password"
-                  name="password"
-                  placeholder="Password..."
-                />
-                <ErrorMessage
-                  name="password"
-                  component="div"
-                  className="text-danger"
-                />
-              </div>
-                <button type="submit" value="Login">Log In!</button>
-            </Form>
-            </Formik>
+              {/* {<form onSubmit={handleSubmit}>
+  
+
+                        <div>
+                            <label><b>Email</b></label>
+                            <input type="email" placeholder="Enter Email" name="email" required
+                                onChange={emailHandler}/>
+
+                            <label><b>Password</b></label>
+                            <input type="password" placeholder="Enter Password" name="password" required
+                                onChange={passwordHandler}/>
+
+                            <button type="submit">Log In</button>
+                        </div>
+                </form>} */}
             </div>
             <SignInButton />
-            <div>
+            {/* <div>
             <Link href="/signup">
                 Do not have an account? Register here!
             </Link>
-          </div>
+          </div> */}
           </div>
         </div>
       ) : null}

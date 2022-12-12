@@ -7,6 +7,7 @@ import { useAppContext } from "../components/statewrapper";
 import { BsFillTrashFill } from "react-icons/bs";
 import { MdOutlineArrowBack } from "react-icons/md";
 import LogicDeleteButton from "./logicDeleteButton";
+import UpdateModal from "./updateModal";
 
 type Data = {
   product: any;
@@ -32,12 +33,12 @@ export default function Product({ product, showAs, qty }: Data) {
   if (showAs === "Page") {
     return (
       <>
-        <button
-          onClick={() => Router.back()}
-          className="btn btn-secondary mt-3"
-        >
-          <MdOutlineArrowBack />
-        </button>
+        <div>
+          <MdOutlineArrowBack
+            onClick={() => Router.back()}
+            className={style.backBtn}
+          />
+        </div>
 
         <div className={style.page}>
           <div>
@@ -63,11 +64,14 @@ export default function Product({ product, showAs, qty }: Data) {
             <div className={`${style.description} fs-6`}>
               {product.description}
             </div>
-            <div>
+            <div className={style.addTocart}>
               <AddButton item={product} />
             </div>
             <div>
               <LogicDeleteButton id={product.id} enabled={product.enabled} />
+            </div>
+            <div>
+              <UpdateModal product={product} />
             </div>
           </div>
         </div>
@@ -135,6 +139,30 @@ export default function Product({ product, showAs, qty }: Data) {
     );
   }
 
+  if(showAs === "adminProduct") {
+    return (
+      <div>
+        <div>
+          <Image
+            src={product.image}
+            alt={product.title}
+            width={200}
+            height={200}
+          />
+        </div>
+        <h3>{product.title}</h3>
+        <div>${product.price}</div>
+        {product.stock === 0 ? "" : <div>Units: {product.stock}</div>}
+        <div>
+          <LogicDeleteButton id={product.id} enabled={product.enabled} />
+        </div>
+        <div>
+          <UpdateModal product={product} />
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className={style.item}>
       <div>
@@ -158,7 +186,9 @@ export default function Product({ product, showAs, qty }: Data) {
           </Link>
         </h3>
       </div>
-      <div style={{ color: "#9A9A9A" }}>US${product.price}</div>
+      <div style={{ color: "#7895B2", fontWeight: "500" }}>
+        US${product.price}
+      </div>
       <div>
         <AddButton item={product} />
       </div>

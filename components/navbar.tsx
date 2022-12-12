@@ -22,6 +22,8 @@ export default function Navbar() {
   const [blockScroll, allowScroll] = useScrollBlock();
 
   const { data: session } = useSession();
+  
+  
 
   function handleOpenCart() {
     cart.openCart();

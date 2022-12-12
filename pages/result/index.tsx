@@ -1,13 +1,15 @@
 import Layout from "components/layout";
 import useSWR from "swr";
 import styles from "../../styles/result.module.css";
-import Link from "next/link";
 import { useRouter } from "next/router";
+import { findUniqueUser } from "services/userEndPoints";
 import { useAppContext } from "components/statewrapper";
 import { useEffect, useState } from "react";
 import { updateStock } from "services/productEndPoints";
+import Link from "next/link";
+import { postSale, findSaleDetails } from "services/saleEndPoints";
+import { createDetailSale } from "services/DetailSaleendPoints";
 import { useSession } from "next-auth/react";
-import { findUniqueUser } from "services/userEndPoints";
 
 export default function Result() {
   const router = useRouter();
@@ -36,14 +38,30 @@ export default function Result() {
   );
 
   let itemsArr: any[] = [];
+  let totalPrice: number;
+  let user: string;
+  const { data: session } = useSession()
+  if(!!session === true) {
+    
+  }
 
   useEffect(() => {
     cart = products.getCart();
     cart ? (itemsArr = Array.from(cart.values())) : null;
+    itemsArr.map((product) => {
+      totalPrice += (product.price * product.qty)
+    })
+    const data = {
+      total : totalPrice,
+      date : new Date().toISOString(),
+      userId : ""
+    }
+    let created = 
     itemsArr.map(async (product) => {
       const stocked = product.stock - product.qty;
       const stock = stocked.toString();
       await updateStock(product.id, stocked);
+
     });
     products.resetCart();
   }, []);
@@ -55,7 +73,6 @@ export default function Result() {
           {data ? (
             <div className={styles.text}>
               <h1 className="text-center">Thank you for your purchase!</h1>
-
               <h2 className={`${styles.description} text-center fs-2`}>
                 Your order was completed successfully.{" "}
               </h2>

@@ -144,21 +144,7 @@ export default function AdminUserDetails({ email }: any) {
           </div>
         ) : (
           <div className={styles.detail}>
-            <h3>ID: </h3>
-            <h3>Username: </h3>
-            <h3>Email: </h3>
-            <h3>Role: </h3>
-            <button disabled={true}>Change role</button>
-            <h3>Active: </h3>
-            <button disabled={true}>Ban User</button>
-            <div>
-              User&apos;s orders
-              <div className={styles.all}>
-                <ul>
-                  <li>Orders List</li>
-                </ul>
-              </div>
-            </div>
+            <h3>Select a user from the list </h3>
           </div>
         )}
       </div>

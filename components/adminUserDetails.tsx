@@ -1,21 +1,23 @@
-import styles from "../styles/usersAdmin.module.css";
+import styles from "../styles/adminUsers.module.css";
 import { updateUser, findUniqueUser } from "services/userEndPoints";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import UserOrdersList from "./userOrdersList";
 
-export default function AdminUserDetails({ id }: any) {
+export default function AdminUserDetails({ email }: any) {
   const [user, setUser] = useState<any>({});
   const [state, setState] = useState<boolean>(true);
 
   useEffect(() => {
     try {
       (async () => {
-        setUser(await findUniqueUser(id));
+        setUser(await findUniqueUser(email));
       })();
+      console.log(user);
     } catch (error) {
       console.log(error);
     }
-  }, [id, state]);
+  }, [email, state]);
 
   async function handleClick(e: any) {
     switch (e.target.value) {
@@ -118,35 +120,38 @@ export default function AdminUserDetails({ id }: any) {
   }
 
   return (
-    <div className={styles.productsContainer}>
-      <div className={styles.productDetail}>
+    <div className={styles.usersContainer}>
+      <div className={styles.userDetail}>
         <h5>User Detail</h5>
         {user ? (
           <div className={styles.detail}>
             <h3>ID: {user.id}</h3>
-            <h3>Username: {user.username}</h3>
+            <h3>Username: {user.name}</h3>
             <h3>Email: {user.email}</h3>
-            <h3>Role: {user.role}</h3>
-            <button value="role" onClick={(e) => handleClick(e)}>
-              {user.role === "ADMIN" ? "Set as User" : "Upgrade to Admin"}
-            </button>
-            <h3>Active: {user.active?.toString()}</h3>
-            <button value="ban" onClick={(e) => handleClick(e)}>
-              {user.active ? "Ban User" : "Unban User"}
-            </button>
+            <div className={styles.click}>
+              <h3>Role: {user.role}</h3>
+              <button value="role" onClick={(e) => handleClick(e)}>
+                {user.role === "ADMIN" ? "Set as User" : "Upgrade to Admin"}
+              </button>
+            </div>
+            <div className={styles.click}>
+              <h3>Active: {user.active?.toString()}</h3>
+              <button value="ban" onClick={(e) => handleClick(e)}>
+                {user.active ? "Ban User" : "Unban User"}
+              </button>
+            </div>
             <div>
-              User&apos;s orders
-              <div className={styles.all}>
-                <ul>
-                  {/* Aqui va un map de todas las ordenes de este userId */}
-                  <li>Orden 1</li>
-                  <li>Orden 2</li>
-                  <li>Orden 3</li>
-                </ul>
+              <h3>Orders</h3>
+              <div className={styles.userOrders}>
+                <UserOrdersList id={user.id} />
               </div>
             </div>
           </div>
-        ) : null}
+        ) : (
+          <div className={styles.detail}>
+            <h3>Select a user from the list </h3>
+          </div>
+        )}
       </div>
     </div>
   );

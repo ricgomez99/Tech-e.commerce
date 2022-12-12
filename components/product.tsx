@@ -166,6 +166,30 @@ export default function Product({ product, showAs, qty }: Data) {
     );
   }
 
+  if(showAs === "adminProduct") {
+    return (
+      <div>
+        <div>
+          <Image
+            src={product.image}
+            alt={product.title}
+            width={200}
+            height={200}
+          />
+        </div>
+        <h3>{product.title}</h3>
+        <div>${product.price}</div>
+        {product.stock === 0 ? "" : <div>Units: {product.stock}</div>}
+        <div>
+          <LogicDeleteButton id={product.id} enabled={product.enabled} />
+        </div>
+        <div>
+          <UpdateModal product={product} />
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className={style.item}>
       <div>

@@ -4,11 +4,13 @@ import AdminProducts from "components/adminProducts";
 import AdminUsers from "components/adminUsers";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { MdOutlineArrowBack } from "react-icons/md";
 import { useSession } from "next-auth/react";
 import { findUniqueUser } from "services/userEndPoints";
+import { MdOutlineArrowBack } from "react-icons/md";
+import styles from "../../styles/admin.module.css";
 
 export default function AdminTools() {
+  
   const router = useRouter();
   const [tool, setTool] = useState("users");
   const [role, setRole] = useState();
@@ -29,17 +31,16 @@ export default function AdminTools() {
       return (
         <Layout>
           <div>
-            <button
-              onClick={() => router.push("/store")}
-              className="btn btn-secondary"
-            >
-              <MdOutlineArrowBack />
+            <div>
+          <MdOutlineArrowBack
+            onClick={() => router.push("/store")}
+            className={styles.backBtn}
+          />
+        </div>
             </button>
             <div className="d-flex justify-content-evenly mt-3">
               <button onClick={() => setTool("users")}>Users</button>
-
               <button onClick={() => setTool("orders")}>Orders</button>
-
               <button onClick={() => setTool("products")}>Products</button>
             </div>
             <div>
@@ -71,3 +72,4 @@ export default function AdminTools() {
     );
   }
 }
+

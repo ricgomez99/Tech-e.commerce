@@ -8,6 +8,8 @@ import { useSession } from "next-auth/react";
 import { findUniqueUser } from "services/userEndPoints";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as yup from "yup";
+import { MdOutlineArrowBack } from "react-icons/md";
+
 
 export default function NewProduct(categories: any) {
   const [message, setMessage] = useState("");
@@ -48,6 +50,12 @@ export default function NewProduct(categories: any) {
       return (
         <Layout>
           <div>
+            <div>
+              <MdOutlineArrowBack
+              onClick={() => Router.back()}
+              className={styles.backBtn}
+              />
+            </div>
             <div className="d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
               <div
                 hidden={!submitted}

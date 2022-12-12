@@ -9,7 +9,8 @@ import { useRouter } from "next/router";
 import UserOptions from "./userOptionsModal";
 import { BsPersonCircle } from "react-icons/bs";
 import { useScrollBlock } from "utils/scrollblock";
-
+import { findUniqueUser } from "services/userEndPoints";
+  
 export default function Navbar() {
   const router = useRouter();
   const cart = useAppContext();
@@ -34,10 +35,11 @@ export default function Navbar() {
       query: { refresh: "true" },
     });
   };
-
+  
   useEffect(() => {
     setCartCounter(cart.getNumberOfItems());
   }, [cart.addItemToCart, cart.deleteItem]);
+  const image: any = session?.user?.image
 
   return (
     <header>
@@ -103,7 +105,7 @@ export default function Navbar() {
                 show={show}
               >
                 <Image
-                  src="/Img/user_profile.jpg"
+                  src={image}
                   alt="profile picture"
                   className={styles.profilePicture}
                   width={160}

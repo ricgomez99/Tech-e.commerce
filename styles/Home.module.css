@@ -174,9 +174,19 @@
   .card {
     width: 100%;
   }
+  .stepsContainer {
+    display: flex;
+    flex-direction: column;
+    margin-right: 5%!important ;
+  }
+  .steps {
+    width: 90%;
+    font-size: 95%;
+  }
 }
 
 .stepsContainer {
   display: flex;
   justify-content: center;
+  margin: 8% auto;
 }

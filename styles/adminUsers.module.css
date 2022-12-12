@@ -1,0 +1,55 @@
+.usersContainer {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+  gap: 30px;
+}
+
+.userDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 11px;
+}
+
+.all {
+  width: 600px;
+  box-shadow: 0 2px 20px #dddddd;
+  padding: 20px;
+  height: 700px;
+  overflow-y: scroll;
+  margin-top: 22px;
+}
+
+.detail {
+  width: 600px;
+  box-shadow: 0 2px 20px #dddddd;
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.click {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.users {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.allUsers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

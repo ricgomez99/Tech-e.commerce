@@ -15,6 +15,7 @@ export default function Navbar() {
   const router = useRouter();
   const cart = useAppContext();
   const [navActive, setNavActive] = useState<boolean>(false);
+  // const [user, setUser] = useState<any>({})
 
   //User Options State (Modal)
   const [show, setShow] = useState<boolean>(false);
@@ -35,10 +36,12 @@ export default function Navbar() {
       query: { refresh: "true" },
     });
   };
+  const email: string | undefined = session?.user?.email?.toString();
 
   useEffect(() => {
     setCartCounter(cart.getNumberOfItems());
   }, [cart.addItemToCart, cart.deleteItem]);
+  const image: any = session?.user?.image
 
   return (
     <header>
@@ -104,7 +107,7 @@ export default function Navbar() {
                 show={show}
               >
                 <Image
-                  src="/Img/user_profile.jpg"
+                  src={image}
                   alt="profile picture"
                   className={styles.profilePicture}
                   width={160}

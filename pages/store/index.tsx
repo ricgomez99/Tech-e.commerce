@@ -1,32 +1,44 @@
-import { getProducts } from "../../services/paths";
 import Layout from "./../../components/layout";
 import Product from "./../../components/product";
 import styledProducts from "../../styles/product.module.css";
 import Pagination from "../../components/pagination";
-import { useEffect, useState } from "react";
-import { paginate } from "./../../utils/paginate";
 import stylePaginator from "../../styles/paginator.module.css";
 import SearchBar from "../../components/searchbar";
-import { getCategories, getProducts2 } from "services/productEndPoints";
-import { useRouter } from "next/router";
 import styles from "styles/filtersort.module.css";
 import Sort from "components/sort";
 import Filter from "components/filter";
-import { BsFillGearFill, BsFillPlusCircleFill } from "react-icons/bs";
 import Button from "react-bootstrap/Button";
+import { useEffect, useState } from "react";
+import { paginate } from "./../../utils/paginate";
+import { getCategories, getProducts2 } from "services/productEndPoints";
+import { useRouter } from "next/router";
+import { BsFillGearFill, BsFillPlusCircleFill } from "react-icons/bs";
+import { useSession } from "next-auth/react";
+import { findUniqueUser } from "services/userEndPoints";
 
 type Data = {
-  products: any[];
   categories: any[];
 };
 
-export default function Index({ products, categories }: Data) {
+export default function Index({ categories }: Data) {
   const router = useRouter();
   const [items, setItems] = useState<any[]>([]);
   const [conditions, setConditions] = useState({});
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 8;
   const paginateItems: any = paginate(items, currentPage, pageSize);
+  const [role, setRole] = useState();
+  const { data: session } = useSession();
+  const email = session?.user?.email;
+
+  useEffect(() => {
+    (async () => {
+      if (typeof email === "string") {
+        let data = await findUniqueUser(email);
+        setRole(data.role);
+      }
+    })();
+  }, [email]);
 
   const handlePageChange = (page: any): any => {
     setCurrentPage(page);
@@ -61,23 +73,25 @@ export default function Index({ products, categories }: Data) {
         <div className={styledProducts.searchBar}>
           <SearchBar handleConditions={handleConditions} />
         </div>
-
-        <div className={styledProducts.toolsBtn}>
-          <button
-            className={styledProducts.addToCart}
-            onClick={() => router.push("/newProduct")}
-          >
-            Add Product
-            <BsFillPlusCircleFill className={styledProducts.icon} />
-          </button>
-
-          <button
-            className={styledProducts.adminBtn}
-            onClick={() => router.push("/profile/admin")}
-          >
-            Admin <BsFillGearFill className={styledProducts.icon} />
-          </button>
-        </div>
+        {role ? (
+          role === "ADMIN" ? (
+            <div className={styledProducts.toolsBtn}>
+              <button
+                className={styledProducts.addToCart}
+                onClick={() => router.push("/newProduct")}
+              >
+                Add Product
+                <BsFillPlusCircleFill className={styledProducts.icon} />
+              </button>
+              <button
+                className={styledProducts.adminBtn}
+                onClick={() => router.push("/profile/admin")}
+              >
+                Admin <BsFillGearFill className={styledProducts.icon} />
+              </button>
+            </div>
+          ) : null
+        ) : null}
       </div>
       <div className={styledProducts.products_filter_container}>
         <div className={styles.filter_sorter}>
@@ -130,11 +144,9 @@ export default function Index({ products, categories }: Data) {
 }
 
 export async function getStaticProps() {
-  const res = await getProducts();
   const res2 = await getCategories();
   return {
     props: {
-      products: res,
       categories: res2,
     },
   };

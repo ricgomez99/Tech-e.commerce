@@ -3,11 +3,14 @@ import Link from "next/link";
 import style from "../styles/product.module.css";
 import AddButton from "./addButton";
 import Router from "next/router";
+import LogicDeleteButton from "./logicDeleteButton";
+import UpdateModal from "./updateModal";
 import { useAppContext } from "../components/statewrapper";
 import { BsFillTrashFill } from "react-icons/bs";
 import { MdOutlineArrowBack } from "react-icons/md";
-import LogicDeleteButton from "./logicDeleteButton";
-import UpdateModal from "./updateModal";
+import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
+import { findUniqueUser } from "services/userEndPoints";
 
 type Data = {
   product: any;
@@ -17,6 +20,18 @@ type Data = {
 
 export default function Product({ product, showAs, qty }: Data) {
   const cart = useAppContext();
+  const [role, setRole] = useState();
+  const { data: session } = useSession();
+  const email = session?.user?.email;
+
+  useEffect(() => {
+    (async () => {
+      if (typeof email === "string") {
+        let data = await findUniqueUser(email);
+        setRole(data.role);
+      }
+    })();
+  }, [email]);
 
   const handleAddItem = (product: any) => {
     cart.addItemToCart(product);
@@ -39,7 +54,6 @@ export default function Product({ product, showAs, qty }: Data) {
             className={style.backBtn}
           />
         </div>
-
         <div className={style.page}>
           <div>
             <Image
@@ -67,12 +81,25 @@ export default function Product({ product, showAs, qty }: Data) {
             <div className={style.addTocart}>
               <AddButton item={product} />
             </div>
-            <div>
-              <LogicDeleteButton id={product.id} enabled={product.enabled} />
-            </div>
-            <div>
-              <UpdateModal product={product} />
-            </div>
+            {role ? (
+              role === "ADMIN" ? (
+                <div>
+                  <LogicDeleteButton
+                    id={product.id}
+                    enabled={product.enabled}
+                  />
+                </div>
+              ) : null
+            ) : null}
+            {role ? (
+              role === "ADMIN" ? (
+                <div>
+                  <div>
+                    <UpdateModal product={product} />
+                  </div>
+                </div>
+              ) : null
+            ) : null}
           </div>
         </div>
       </>

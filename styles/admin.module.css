@@ -1,0 +1,10 @@
+.backBtn {
+  font-size: 25px;
+  margin-top: 10px;
+  margin-left: 25px;
+  cursor: pointer;
+}
+
+.backBtn:hover {
+  color: #385170;
+}

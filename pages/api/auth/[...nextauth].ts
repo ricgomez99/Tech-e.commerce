@@ -13,8 +13,8 @@ export default NextAuth({
       clientSecret: process.env.FACEBOOK_SECRET as string,
     }),
     GoogleProvider({
-      clientId: process.env.GOOGLE_ID as string,
-      clientSecret: process.env.GOOGLE_SECRET as string,
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
     TwitterProvider({
       clientId: process.env.TWITTER_ID as string,

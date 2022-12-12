@@ -40,11 +40,7 @@ export default function Result() {
   let itemsArr: any[] = [];
   let totalPrice: number;
   let user: string;
-  const { data: session } = useSession()
-  if(!!session === true) {
-    
-  }
-
+  
   useEffect(() => {
     cart = products.getCart();
     cart ? (itemsArr = Array.from(cart.values())) : null;

@@ -32,12 +32,11 @@ export default function AdminTools() {
         <Layout>
           <div>
             <div>
-          <MdOutlineArrowBack
-            onClick={() => router.push("/store")}
-            className={styles.backBtn}
-          />
-        </div>
-            </button>
+                <MdOutlineArrowBack
+                onClick={() => router.push("/store")}
+                 className={styles.backBtn}
+                />
+            </div>
             <div className="d-flex justify-content-evenly mt-3">
               <button onClick={() => setTool("users")}>Users</button>
               <button onClick={() => setTool("orders")}>Orders</button>

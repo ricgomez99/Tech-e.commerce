@@ -24,7 +24,7 @@ export async function findManyUsers() {
 export async function findUniqueUser(email: string) {
   try {
     const response = await axios.get(
-      `https://tech-e-commerce.vercel.app/api/findUniqueUser?email=${email}`
+      `http://localhost:3000/api/findUniqueUser?email=${email}`
     );
     return response.data;
   } catch (error: any) {
@@ -70,7 +70,7 @@ export async function logInUser(data: any) {
 export async function userSales(id: string) {
   try {
     const response = await axios.get(
-      `https://tech-e-commerce.vercel.app/api/findUserSales?id=${id}`
+      `http://localhost:3000/api/findUserSales?id=${id}`
     );
     return response.data;
   } catch (error: any) {

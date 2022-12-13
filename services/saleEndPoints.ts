@@ -23,7 +23,7 @@ export async function findManySales() {
 export async function findSaleDetails(id: any) {
   try {
     const response = await axios.get(
-      `https://tech-e-commerce.vercel.app/api/findUniqueSale?id=${id}`
+      `http://localhost:3000/api/findUniqueSale?id=${id}`
     );
     return response.data;
   } catch (error: any) {
@@ -39,3 +39,4 @@ export async function updateSale(data:any, id: string) {
     return { error: error.message };
   }
 }
+

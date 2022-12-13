@@ -123,7 +123,7 @@ export default function Navbar() {
                   >
                     Sign Out
                   </a>
-                  <Link href="#">
+                  <Link href="/profile/user">
                     <button
                       // onClick={() => {
                       //   setShow(false);

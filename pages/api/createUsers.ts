@@ -19,7 +19,10 @@ export default async function handlerCreateUser(
     
     console.log(creation);
     return res.status(200).send(creation);
-  } catch (error) {
-    return res.status(400).json({ message: "It's not working" });
+  }  catch (error) {
+    if(error instanceof Error){
+    return res.status(400).json({ message: error.message });
+    }
+    else return res.status(404).json({message: "error not found"})
   }
 }

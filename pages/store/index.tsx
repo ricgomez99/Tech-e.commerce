@@ -30,7 +30,7 @@ export default function Index({ categories }: Data) {
   const [role, setRole] = useState();
   const { data: session } = useSession();
   const email = session?.user?.email;
-
+  
   useEffect(() => {
     (async () => {
       if (typeof email === "string") {

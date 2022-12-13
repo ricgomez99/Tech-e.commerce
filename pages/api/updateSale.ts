@@ -10,9 +10,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             data: {state: state}
         })
         res.status(201).send(currentState)
-    } catch(error){
-        res.status(400).send(error)
+    }  catch (error) {
+        if(error instanceof Error){
+        return res.status(400).json({ message: error.message });
+        }
+        else return res.status(404).json({message: "error not found"})
+      }
     }
-
-
-}

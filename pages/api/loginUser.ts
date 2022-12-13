@@ -16,7 +16,10 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         if(!validate) res.status(400).send("Wrong password");}
         else res.status(200).send("User verified")
     }
-    }catch(err: any){
-        res.status(400).send("Something went wrong, mate")
+    } catch (error) {
+        if(error instanceof Error){
+        return res.status(400).json({ message: error.message });
+        }
+        else return res.status(404).json({message: "error not found"})
+      }
     }
-}

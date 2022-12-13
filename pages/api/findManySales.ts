@@ -24,8 +24,10 @@ export default async function handlerFindManySales(
       },
     });
     return res.status(200).json(sales);
-  } catch (error) {
-    console.log(error);
-    return res.status(400).send("Cannot get sales");
+  }  catch (error) {
+    if(error instanceof Error){
+    return res.status(400).json({ message: error.message });
+    }
+    else return res.status(404).json({message: "error not found"})
   }
 }

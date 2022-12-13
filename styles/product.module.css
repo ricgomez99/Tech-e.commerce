@@ -219,4 +219,42 @@
   .item {
     width: 100%;
   }
+
+  .page {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 5px;
+  }
+  .detailsImg {
+    width: 300px;
+    height: 300px;
+    object-fit: scale-down;
+  }
+
+  .info {
+    margin: 10px 0;
+    padding: 0 10px;
+  }
+
+  .text {
+    width: 100%;
+    padding-top: 6px;
+  }
+
+  .text h1 {
+    font-size: 1.7rem;
+    text-align: justify;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+  }
+
+  .description {
+    text-align: justify;
+    padding: 0;
+  }
+
+  .addTocart {
+    width: 100%;
+  }
 }

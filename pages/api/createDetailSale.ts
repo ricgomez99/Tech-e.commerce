@@ -16,8 +16,7 @@ export default async function handlerCreateDetailSale(
       },
     });
     return res.status(200).send(creation);
-  } catch (error) {
-    console.log(error);
-    return res.status(400).json({ message: "It's not working" });
+  } catch (error: any) {
+    return res.status(400).json({ message: error.message });
   }
 }

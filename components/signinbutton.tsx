@@ -1,6 +1,8 @@
 import { signIn } from "next-auth/react";
+import useInfoProviders from "hook/providers";
 
 export default function SignInButton() {
+  const { providers }: any = useInfoProviders() 
   return (
     <div
       className="col-md-3 d-flex flex-column justify-content-space-between "
@@ -13,7 +15,9 @@ export default function SignInButton() {
     >
       <a
         className="btn btn-outline-dark  mb-1" //Modify styles
-        onClick={() => signIn("google")}
+        onClick={async () => {
+          await signIn(providers.google.id)
+        }}
         role="button"
         style={{
           textTransform: "none",

@@ -14,17 +14,17 @@ import { useSession } from "next-auth/react";
 export default function Result() {
   const router = useRouter();
   const [role, setRole] = useState();
+  const [prueba, setPrueba] = useState({});
+      const [user, setUser]   = useState();
   const { data: session } = useSession();
   const email = session?.user?.email;
 
-  let user: string;
   useEffect(() => {
     (async () => {
       if (typeof email === "string") {
         let data = await findUniqueUser(email);
         setRole(data.role);
-        user = data.id;
-        console.log("este es el user", user);
+        setUser       (data.id);
       }
     })();
   }, [email]);
@@ -41,31 +41,32 @@ export default function Result() {
   );
 
   let itemsArr: any[] = [];
-  let totalPrice: number;
-  const [prueba, setPrueba] = useState({})
-  console.log(prueba)
+  let totalPrice: number = 0;
 
   useEffect(() => {
     cart = products.getCart();
     cart ? (itemsArr = Array.from(cart.values())) : null;
-    itemsArr.map((product) => {
-      totalPrice += Number(product.price) * Number(product.qty);
-      console.log("holaza", totalPrice)
+    itemsArr.length && itemsArr.map((product) => {
+      totalPrice += (Number(product.price) * Number(product.qty));
     });
-
-    console.log("holi", itemsArr)
-    const saleInfo = {
+    
+    let saleInfo;
+    if(typeof user === "string" && totalPrice && totalPrice !== 0){
+      console.log("palíndromo",totalPrice)
+    saleInfo = {
       total: totalPrice,
       date: new Date().toISOString(),
       userId: user,
       state: "SUCCESSFUL",
     };
+
+  }
     setPrueba({...saleInfo})
     let created: any;
-    (async () => {
+    if(saleInfo && saleInfo.userId) {(async () => {  
       created = await postSale(saleInfo);
-      console.log("this is the created sale", created);
-    })();
+      console.log("nene", created);    
+    })();}
     if (!!created === true) {
       itemsArr.map(async (product) => {
         const stocked = product.stock - product.qty;

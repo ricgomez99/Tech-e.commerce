@@ -14,16 +14,15 @@
 //   secret: process.env.NEXTAUTH_SECRET,
 // });
 
-
 // @ts-nocheck
 
-import NextAuth, {NextAuthOptions} from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "lib/prisma";
 interface cli {
-  clientId: string
-  clientSecret: string
+  clientId: string;
+  clientSecret: string;
 }
 // Este archivoooooooooo
 // profiiiiii
@@ -73,5 +72,5 @@ export const authOptions: NextAuthOptions = {
   //     return params.token
   //   },
   // },
-}
-export default NextAuth(authOptions)
+};
+export default NextAuth(authOptions);

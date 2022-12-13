@@ -35,7 +35,7 @@ export async function updateSale(data:any, id: string) {
   try{
     const { data } = await axios.patch(`https://tech-e-commerce-2lbeoi1sk-ricgomez99.vercel.app/api/updateSale?id=${id}`);
     return data;
-  } catch(error: any){
-    return {error: error.message}
+  } catch (error: any) {
+    return { error: error.message };
   }
 }

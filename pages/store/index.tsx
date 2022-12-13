@@ -30,7 +30,7 @@ export default function Index({ categories }: Data) {
   const [role, setRole] = useState();
   const { data: session } = useSession();
   const email = session?.user?.email;
-  
+
   useEffect(() => {
     (async () => {
       if (typeof email === "string") {
@@ -90,6 +90,15 @@ export default function Index({ categories }: Data) {
                 onClick={() => router.push("/profile/admin")}
               >
                 Admin <BsFillGearFill className={styledProducts.icon} />
+              </button>
+            </div>
+          ) : role === "MOD" ? (
+            <div className={styledProducts.toolsBtn}>
+              <button
+                className={styledProducts.adminBtn}
+                onClick={() => router.push("/profile/admin")}
+              >
+                MOD <BsFillGearFill className={styledProducts.icon} />
               </button>
             </div>
           ) : null

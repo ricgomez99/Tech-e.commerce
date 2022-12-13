@@ -15,8 +15,10 @@ export default async function handler(
       expand: ["payment_intent", "line_items"],
     });
     res.status(200).json({ session });
-  } catch (error: any) {
-    console.log(error);
-    res.status(500).json({ error: error.message });
+  } catch (error) {
+    if(error instanceof Error){
+    return res.status(500).json({ message: error.message });
+    }
+    else return res.status(404).json({message: "error not found"})
   }
 }

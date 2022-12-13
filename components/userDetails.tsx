@@ -19,11 +19,10 @@ export default function userDetails(){
         }
       }, [email]);
 
-      console.log(user)
       return(
         <div>
             <div>
-                <Image src={user.image} alt="img" width={40} height={40}/>
+                <Image src={user.image} alt="img" width={150} height={150}/>
             </div>
             <h1>{user.name}</h1>
             <h5>{user.email}</h5>

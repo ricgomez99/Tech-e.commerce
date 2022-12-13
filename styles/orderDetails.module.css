@@ -1,0 +1,11 @@
+
+.itemTitle {
+    width: 50%;
+    white-space: nowrap;
+  }
+  
+.itemTitle h5 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  

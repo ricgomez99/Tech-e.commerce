@@ -10,8 +10,8 @@ export default function userCard() {
       <div className={styles.mainTitle}>
       </div>
       <div className={styles.detailsCard}>
-      <Image src={userProfile} alt="img" width={200} height={200}>
-      </Image>
+      {/* <Image src={userProfile} alt="img" width={200} height={200}>
+      </Image> */}
       <UserDetails/>
       </div>
       <div className={styles.purchaseOrders}>

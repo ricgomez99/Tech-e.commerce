@@ -1,4 +1,4 @@
-import styles from "../styles/usersAdmin.module.css";
+import styles from "../styles/adminUsers.module.css";
 import { findManyUsers, findUniqueUser } from "services/userEndPoints";
 import { useEffect, useState } from "react";
 import AdminUserDetails from "./adminUserDetails";
@@ -28,10 +28,16 @@ export default function AdminUsers() {
           <ul>
             {users.length ? (
               users.map((u: any) => (
-                <li key={u.id}>
-                  {u.id}, {u.email}, {u.username}, {u.role}
-                  <button onClick={() => setUserEmail(u.email)}>Details</button>
-                </li>
+                <div key={u.id} className={styles.orders}>
+                  <h5
+                    className={styles.name}
+                    onClick={() => setUserEmail(u.email)}
+                  >
+                    {u.role}, Username: {u.name}
+                    <br />
+                    Email: {u.email}
+                  </h5>
+                </div>
               ))
             ) : (
               <li>Users are shown here</li>

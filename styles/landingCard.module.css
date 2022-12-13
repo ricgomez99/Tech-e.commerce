@@ -1,3 +1,31 @@
+.steps {
+  width: 250px;
+  box-shadow: 0 2px 20px #dddddd;
+  padding: 20px;
+  text-align: center;
+  margin: 30px;
+  height: 350px;
+}
+
 .stepsLogo {
   font-size: 40px;
+  color: #2a528a;
+}
+
+.stepsTitle {
+  color: #2a528a;
+}
+
+.stepsText {
+  font-size: 1.2rem;
+  color:  #a6a9b6;
+  font-weight: 500;
+}
+
+@media (max-width: 750px) {
+  .steps {
+    width: 90%;
+    font-size: 95%;
+    height: 270px;
+  }
 }

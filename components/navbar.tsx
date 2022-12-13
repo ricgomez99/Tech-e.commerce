@@ -8,9 +8,10 @@ import styles from "../styles/navbar.module.css";
 import { useRouter } from "next/router";
 import UserOptions from "./userOptionsModal";
 import { BsPersonCircle } from "react-icons/bs";
+import { FiShoppingCart } from "react-icons/fi";
 import { useScrollBlock } from "utils/scrollblock";
 import { findUniqueUser } from "services/userEndPoints";
-
+  
 export default function Navbar() {
   const router = useRouter();
   const cart = useAppContext();
@@ -22,6 +23,8 @@ export default function Navbar() {
   const [blockScroll, allowScroll] = useScrollBlock();
 
   const { data: session } = useSession();
+  
+  
 
   function handleOpenCart() {
     cart.openCart();
@@ -35,10 +38,11 @@ export default function Navbar() {
       query: { refresh: "true" },
     });
   };
-
+  
   useEffect(() => {
     setCartCounter(cart.getNumberOfItems());
   }, [cart.addItemToCart, cart.deleteItem]);
+  const image: any = session?.user?.image
 
   return (
     <header>
@@ -47,13 +51,13 @@ export default function Navbar() {
           <Image
             src="https://res.cloudinary.com/davixx5su/image/upload/v1670005747/folder/e-commerce_ctrsgi.png"
             alt="logo"
-            width={35}
-            height={35}
+            width={50}
+            height={50}
           />
         </Link>
         <div>
           {session ? (
-            <span>Hello, {session.user?.name?.split(" ")[0]}</span>
+            <span>Hello {session.user?.name?.split(" ")[0]}!</span>
           ) : null}
         </div>
         <div
@@ -83,8 +87,9 @@ export default function Navbar() {
           <Link href="/" style={{ textDecoration: "none", color: "black" }}>
             Home
           </Link>
-          <div>
-            <button onClick={handleOpenCart}>Cart({cartCounter})</button>
+          <div className={styles.cart}>
+            <button className={styles.cartButton} onClick={handleOpenCart}><FiShoppingCart className={styles.cartLogo}/></button>
+            <div className={styles.cartCounter}>{cartCounter}</div>
           </div>
           {!session && <SignInModal />}
           {session && (
@@ -104,7 +109,7 @@ export default function Navbar() {
                 show={show}
               >
                 <Image
-                  src="/Img/user_profile.jpg"
+                  src={image}
                   alt="profile picture"
                   className={styles.profilePicture}
                   width={160}
@@ -127,17 +132,6 @@ export default function Navbar() {
                       className={`btn btn-outline-success ${styles.userDetailsBtn}`}
                     >
                       User details
-                    </button>
-                  </Link>
-                  <Link href="/profile/admin" scroll={true}>
-                    <button
-                      onClick={() => {
-                        setShow(false);
-                        allowScroll();
-                      }}
-                      className={`btn btn-outline-success ${styles.userDetailsBtn}`}
-                    >
-                      Admin Tools
                     </button>
                   </Link>
                 </div>

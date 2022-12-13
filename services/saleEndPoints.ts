@@ -2,10 +2,7 @@ import axios from "axios";
 
 export async function postSale(data: any) {
   try {
-    const response = await axios.post(
-      "http://localhost:3000/api/createSale",
-      data
-    );
+    const response = await axios.post("/api/createSale", data);
     return response.data;
   } catch (error: any) {
     return { error: error.message };
@@ -14,7 +11,7 @@ export async function postSale(data: any) {
 
 export async function findManySales() {
   try {
-    const response = await axios.get("http://localhost:3000/api/findManySales");
+    const response = await axios.get("/api/findManySales");
     return response.data;
   } catch (error: any) {
     return { error: error.message };
@@ -22,20 +19,18 @@ export async function findManySales() {
 }
 export async function findSaleDetails(id: any) {
   try {
-    const response = await axios.get(
-      `http://localhost:3000/api/findUniqueSale?id=${id}`
-    );
+    const response = await axios.get(`/api/findUniqueSale?id=${id}`);
     return response.data;
   } catch (error: any) {
     return { error: error.message };
   }
 }
 
-export async function updateSale(data:any, id: string) {
-  try{
-    const { data } = await axios.patch(`http://localhost:3000/api/updateSale?id=${id}`);
+export async function updateSale(data: any, id: string) {
+  try {
+    const { data } = await axios.patch(`/api/updateSale?id=${id}`);
     return data;
-  } catch(error: any){
-    return {error: error.message}
+  } catch (error: any) {
+    return { error: error.message };
   }
 }

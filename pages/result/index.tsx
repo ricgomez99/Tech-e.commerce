@@ -48,41 +48,40 @@ export default function Result() {
     cart = products.getCart();
     let quant = 0;
     cart ? (itemsArr = Array.from(cart.values())) : null;
-    itemsArr.length && itemsArr.map((product) => {
-      // totalPrice += (Number(product.price) * Number(product.qty));
-      setTotalPrice(totalPrice + (Number(product.price) * Number(product.qty)));
-      quant += 1
-    });
-    
-    let saleInfo;
-    if(typeof user === "string" && quant === itemsArr.length){
-      console.log("palíndromo",totalPrice)
-    saleInfo = {
-      total: totalPrice,
-      date: new Date().toISOString(),
-      userId: user,
-      state: "SUCCESSFUL",
-    };
+  //   if(typeof user === "string"){itemsArr.length && itemsArr.map((product) => {
+  //     // totalPrice += (Number(product.price) * Number(product.qty));
+  //     setTotalPrice(totalPrice + (Number(product.price) * Number(product.qty)));
+  //     quant += 1
+  //   });}    
+  //   let saleInfo;
+  //   if(quant === itemsArr.length){
+  //     console.log("palíndromo",totalPrice)
+  //   saleInfo = {
+  //     total: totalPrice,
+  //     date: new Date().toISOString(),
+  //     userId: user,
+  //     state: "SUCCESSFUL",
+  //   };
 
-  }
-    setPrueba({...saleInfo})
-    let created: any;
-    if(saleInfo && saleInfo.userId) {(async () => {  
-      created = await postSale(saleInfo);
-      console.log("nene", created);    
-    })();}
-    if (!!created === true) {
-      itemsArr.map(async (product) => {
-        const stocked = product.stock - product.qty;
-        await updateStock(product.id, stocked);
-        await createDetailSale({
-          amount: product.qty,
-          price: product.price,
-          idProduct: product.id,
-          saleId: created.id,
-        });
-      });
-    }
+  // }
+  //   setPrueba({...saleInfo})
+    // let created: any;
+    // if(saleInfo && saleInfo.userId) {(async () => {  
+    //   created = await postSale(saleInfo);
+    //   console.log("nene", created);    
+    // })();}
+    // if (!!created === true) {
+    //   itemsArr.map(async (product) => {
+    //     const stocked = product.stock - product.qty;
+    //     await updateStock(product.id, stocked);
+    //     await createDetailSale({
+    //       amount: product.qty,
+    //       price: product.price,
+    //       idProduct: product.id,
+    //       saleId: created.id,
+    //     });
+    //   });
+    // }
     products.resetCart();
   }, []);
 

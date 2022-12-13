@@ -5,7 +5,7 @@ import { SessionProvider } from "next-auth/react";
 import StateWrapper from "../components/statewrapper";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://tech-e-commerce.vercel.app";
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

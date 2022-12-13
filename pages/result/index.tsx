@@ -7,7 +7,7 @@ import { useAppContext } from "components/statewrapper";
 import { useEffect, useState } from "react";
 import { updateStock } from "services/productEndPoints";
 import Link from "next/link";
-import { postSale, findSaleDetails } from "services/saleEndPoints";
+import { postSale } from "services/saleEndPoints";
 import { createDetailSale } from "services/DetailSaleendPoints";
 import { useSession } from "next-auth/react";
 
@@ -17,11 +17,14 @@ export default function Result() {
   const { data: session } = useSession();
   const email = session?.user?.email;
 
+  let user: string;
   useEffect(() => {
     (async () => {
       if (typeof email === "string") {
         let data = await findUniqueUser(email);
         setRole(data.role);
+        user = data.id;
+        console.log("este es el user", user);
       }
     })();
   }, [email]);
@@ -39,26 +42,36 @@ export default function Result() {
 
   let itemsArr: any[] = [];
   let totalPrice: number;
-  let user: string;
-  
+
   useEffect(() => {
     cart = products.getCart();
     cart ? (itemsArr = Array.from(cart.values())) : null;
     itemsArr.map((product) => {
-      totalPrice += (product.price * product.qty)
-    })
-    const data = {
-      total : totalPrice,
-      date : new Date().toISOString(),
-      userId : ""
-    }
-    let created = 
-    itemsArr.map(async (product) => {
-      const stocked = product.stock - product.qty;
-      const stock = stocked.toString();
-      await updateStock(product.id, stocked);
-
+      totalPrice += product.price * product.qty;
     });
+    const saleInfo = {
+      total: totalPrice,
+      date: new Date().toISOString(),
+      userId: user,
+      state: "SUCCESSFUL",
+    };
+    let created: any;
+    (async () => {
+      created = await postSale(saleInfo);
+      console.log("this is the created sale", created);
+    })();
+    if (!!created === true) {
+      itemsArr.map(async (product) => {
+        const stocked = product.stock - product.qty;
+        await updateStock(product.id, stocked);
+        await createDetailSale({
+          amount: product.qty,
+          price: product.price,
+          idProduct: product.id,
+          saleId: created.id,
+        });
+      });
+    }
     products.resetCart();
   }, []);
 

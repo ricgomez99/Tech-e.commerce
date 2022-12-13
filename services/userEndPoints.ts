@@ -77,3 +77,11 @@ export async function userSales(id: string) {
     return { error: error.message };
   }
 }
+
+export async function signInUserWithGoogle(email: string, data: any){
+  try {
+    const response = await axios.post(`https://tech-e-commerce-2lbeoi1sk-ricgomez99.vercel.app/api/signInUserWithGoogle?email=${email}`, data)
+  } catch (error: any) {
+    return {error: error.message}
+  }
+}

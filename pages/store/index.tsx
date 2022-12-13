@@ -74,7 +74,7 @@ export default function Index({ categories }: Data) {
       <div className={styledProducts.tools}>
       
         <div className={styledProducts.searchBar}>
-        <button onClick={() => console.log(role)}>Prueba</button>
+        <button onClick={() => console.log(session)}>Prueba</button>
           <SearchBar handleConditions={handleConditions} />
         </div>
         

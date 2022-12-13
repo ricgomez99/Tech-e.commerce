@@ -35,7 +35,6 @@ export default function Index({ categories }: Data) {
     (async () => {
       if (typeof email === "string") {
         let data = await findUniqueUser(email);
-        console.log(data.role);
         setRole(data.role);
       }
     })();

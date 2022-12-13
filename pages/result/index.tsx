@@ -42,19 +42,25 @@ export default function Result() {
 
   let itemsArr: any[] = [];
   let totalPrice: number;
+  const [prueba, setPrueba] = useState({})
+  console.log(prueba)
 
   useEffect(() => {
     cart = products.getCart();
     cart ? (itemsArr = Array.from(cart.values())) : null;
     itemsArr.map((product) => {
-      totalPrice += product.price * product.qty;
+      totalPrice += Number(product.price) * Number(product.qty);
+      console.log("holaza", totalPrice)
     });
+
+    console.log("holi", itemsArr)
     const saleInfo = {
       total: totalPrice,
       date: new Date().toISOString(),
       userId: user,
       state: "SUCCESSFUL",
     };
+    setPrueba({...saleInfo})
     let created: any;
     (async () => {
       created = await postSale(saleInfo);

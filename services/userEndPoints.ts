@@ -16,8 +16,8 @@ export async function findManyUsers() {
   try {
     const response = await axios.get("https://tech-e-commerce-2lbeoi1sk-ricgomez99.vercel.app/api/findManyUsers");
     return response.data;
-  } catch (error: any) {
-    return { error: error.message };
+  } catch (error) {
+    return error;
   }
 }
 
@@ -27,8 +27,8 @@ export async function findUniqueUser(email: string) {
       `https://tech-e-commerce-2lbeoi1sk-ricgomez99.vercel.app/api/findUniqueUser?email=${email}`
     );
     return response.data;
-  } catch (error: any) {
-    return { error: error.message };
+  } catch (error) {
+    return error;
   }
 }
 
@@ -39,8 +39,8 @@ export async function updateUser(data: any, id: string) {
       data
     );
     return response.data;
-  } catch (error: any) {
-    return { error: error.message };
+  } catch (error) {
+    return error;
   }
 }
 
@@ -51,8 +51,8 @@ export async function logInUser(data: any) {
       data
     );
     return response.data;
-  } catch (error: any) {
-    return { error: error.message };
+  } catch (error) {
+    return error;
   }
 }
 
@@ -73,7 +73,7 @@ export async function userSales(id: string) {
       `https://tech-e-commerce-2lbeoi1sk-ricgomez99.vercel.app/api/findUserSales?id=${id}`
     );
     return response.data;
-  } catch (error: any) {
-    return { error: error.message };
+  } catch (error) {
+    return error;
   }
 }

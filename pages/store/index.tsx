@@ -72,12 +72,16 @@ export default function Index({ categories }: Data) {
   return (
     <Layout>
       <div className={styledProducts.tools}>
+      
         <div className={styledProducts.searchBar}>
+        <button onClick={() => console.log(role)}>Prueba</button>
           <SearchBar handleConditions={handleConditions} />
         </div>
+        
         {role ? (
           role === "ADMIN" ? (
             <div className={styledProducts.toolsBtn}>
+              
               <button
                 className={styledProducts.addToCart}
                 onClick={() => router.push("/newProduct")}

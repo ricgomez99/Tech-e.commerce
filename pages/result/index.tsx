@@ -4,7 +4,7 @@ import styles from "../../styles/result.module.css";
 import { useRouter } from "next/router";
 import { findUniqueUser } from "services/userEndPoints";
 import { useAppContext } from "components/statewrapper";
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { updateStock } from "services/productEndPoints";
 import Link from "next/link";
 import { postSale } from "services/saleEndPoints";
@@ -41,25 +41,31 @@ export default function Result() {
   );
 
   let itemsArr: any[] = [];
-  let totalPrice: number = 0;
-  cart = products.getCart();
-  cart ? (itemsArr = Array.from(cart.values())) : null;
-  itemsArr.length && itemsArr.map((product) => {
-    totalPrice += (Number(product.price) * Number(product.qty));
-  });
-  let saleInfo: any;
-  if(typeof user === "string" && totalPrice !== 0){
-    console.log("palíndromo",totalPrice)
-  saleInfo = {
-    total: totalPrice,
-    date: new Date().toISOString(),
-    userId: user,
-    state: "SUCCESSFUL",
-  };
-  setPrueba({...saleInfo})
-}
+  // let totalPrice: number = 0;
+  const [totalPrice, setTotalPrice] = useState(0)
 
-  useEffect(() => {   
+  useEffect(() => {
+    cart = products.getCart();
+    let quant = 0;
+    cart ? (itemsArr = Array.from(cart.values())) : null;
+    itemsArr.length && itemsArr.map((product) => {
+      // totalPrice += (Number(product.price) * Number(product.qty));
+      setTotalPrice(totalPrice + (Number(product.price) * Number(product.qty)));
+      quant += 1
+    });
+    
+    let saleInfo;
+    if(typeof user === "string" && quant === itemsArr.length){
+      console.log("palíndromo",totalPrice)
+    saleInfo = {
+      total: totalPrice,
+      date: new Date().toISOString(),
+      userId: user,
+      state: "SUCCESSFUL",
+    };
+
+  }
+    setPrueba({...saleInfo})
     let created: any;
     if(saleInfo && saleInfo.userId) {(async () => {  
       created = await postSale(saleInfo);

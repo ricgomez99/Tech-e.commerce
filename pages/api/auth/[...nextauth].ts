@@ -20,19 +20,45 @@ import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "lib/prisma";
+import { compare } from "bcryptjs";
 interface cli {
   clientId: string;
   clientSecret: string;
 }
-// Este archivoooooooooo
-// profiiiiii
-// DALE SIIIII
+
 export const authOptions: NextAuthOptions = {
-  // Adatpter Prisma
+
   adapter: PrismaAdapter(prisma),
-  // Configure authentication providers
+  
   providers: [
-    // Google Provider
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        email: { label: "Email", type: "email", placeholder: "jsmith" },
+        password: {  label: "Password", type: "password" }
+      },
+      async authorize(credentials){
+        const user = await prisma.user.findUnique({
+          where: {
+            email: credentials?.email
+          }
+        })
+        if(!user){
+          throw new Error("There's no user with this email, you could try another one, or please sing up")
+        }
+
+        const passwordCompare = await compare( credentials?.password, result.password);
+
+        if(!passwordCompare){
+          throw new Error("Incorrect password");
+        }
+
+        if(!passwordCompare || user.email !== credentials.email){
+          throw new Error("You must enter valid email or password");
+        }
+        return user;
+      },
+    }),
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,

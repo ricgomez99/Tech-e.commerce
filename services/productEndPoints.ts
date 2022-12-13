@@ -7,8 +7,8 @@ export async function postProduct(data: any) {
       data
     );
     return response.data;
-  } catch (error: any) {
-    return { error: error.message };
+  } catch (error) {
+    return error;
   }
 }
 
@@ -18,8 +18,8 @@ export async function idProduct(id: string) {
       `https://techproductsshop-production.up.railway.app/products/${id}`
     );
     return (await request).json();
-  } catch (error: any) {
-    return { error: error.message };
+  } catch (error) {
+    return error;
   }
 }
 
@@ -31,8 +31,8 @@ export async function nameProduct(title: string) {
 
     const response = request.json();
     return response;
-  } catch (error: any) {
-    return { error: error.message };
+  } catch (error) {
+    return error;
   }
 }
 
@@ -43,8 +43,8 @@ export async function getCategories() {
     );
     const categories = await request.json();
     return categories;
-  } catch (error: any) {
-    return { error: error.message };
+  } catch (error) {
+    return error;
   }
 }
 
@@ -71,8 +71,8 @@ export async function getProducts2(data: any) {
       const products = await request.json();
       return products;
     }
-  } catch (error: any) {
-    return { error: error.message };
+  } catch (error) {
+    return error;
   }
 }
 
@@ -86,8 +86,8 @@ export async function updateProduct(id: string, data: any) {
     );
     const response = await request.data;
     return response;
-  } catch (error: any) {
-    return { error: error.message };
+  } catch (error) {
+    return error;
   }
 }
 
@@ -99,8 +99,8 @@ export async function updateStock(id: string, stocked: number) {
     );
     const response = await request.data;
     return response;
-  } catch (error: any) {
-    return { error: error.message };
+  } catch (error) {
+    return error;
   }
 }
 
@@ -112,8 +112,8 @@ export async function logicDelete(id: string, enable: boolean) {
     );
     const response = await request.data;
     return response;
-  } catch (error: any) {
-    return { error: error.message };
+  } catch (error) {
+    return error;
   }
 }
 
@@ -127,7 +127,7 @@ export async function deleteProduct(id: string) {
     );
     const response = await request.json();
     return response;
-  } catch (error: any) {
-    return { error: error.message };
+  } catch (error) {
+    return error;
   }
 }

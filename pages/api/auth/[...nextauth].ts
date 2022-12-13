@@ -29,7 +29,7 @@ interface cli {
 // DALE SIIIII
 export const authOptions: NextAuthOptions = {
   // Adatpter Prisma
-  // adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter(prisma),
   // Configure authentication providers
   providers: [
     // Google Provider

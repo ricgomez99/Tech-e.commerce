@@ -2,10 +2,7 @@ import axios from "axios";
 
 export async function createUser(data: any) {
   try {
-    const response = await axios.post(
-      "http://localhost:3000/api/createUsers",
-      data
-    );
+    const response = await axios.post("/api/createUsers", data);
     return response.data;
   } catch (error: any) {
     return { error: error.message };
@@ -14,7 +11,7 @@ export async function createUser(data: any) {
 
 export async function findManyUsers() {
   try {
-    const response = await axios.get("http://localhost:3000/api/findManyUsers");
+    const response = await axios.get("/api/findManyUsers");
     return response.data;
   } catch (error: any) {
     return { error: error.message };
@@ -23,9 +20,7 @@ export async function findManyUsers() {
 
 export async function findUniqueUser(email: string) {
   try {
-    const response = await axios.get(
-      `http://localhost:3000/api/findUniqueUser?email=${email}`
-    );
+    const response = await axios.get(`/api/findUniqueUser?email=${email}`);
     return response.data;
   } catch (error: any) {
     return { error: error.message };
@@ -34,10 +29,7 @@ export async function findUniqueUser(email: string) {
 
 export async function updateUser(data: any, id: string) {
   try {
-    const response = await axios.patch(
-      `http://localhost:3000/api/updateUser?id=${id}`,
-      data
-    );
+    const response = await axios.patch(`/api/updateUser?id=${id}`, data);
     return response.data;
   } catch (error: any) {
     return { error: error.message };
@@ -46,10 +38,7 @@ export async function updateUser(data: any, id: string) {
 
 export async function logInUser(data: any) {
   try {
-    const response = await axios.post(
-      "http://localhost:3000/api/loginUser",
-      data
-    );
+    const response = await axios.post("/api/loginUser", data);
     return response.data;
   } catch (error: any) {
     return { error: error.message };
@@ -59,7 +48,7 @@ export async function logInUser(data: any) {
 // export async function handlerGetUniqueUsers(id: number) {
 //   try {
 //     const response = await axios.get(
-//       `http://localhost:3000/api/databaseService?id=${id}`
+//       `/api/databaseService?id=${id}`
 //     );
 //     return response.data;
 //   } catch (error: any) {
@@ -69,9 +58,7 @@ export async function logInUser(data: any) {
 
 export async function userSales(id: string) {
   try {
-    const response = await axios.get(
-      `http://localhost:3000/api/findUserSales?id=${id}`
-    );
+    const response = await axios.get(`/api/findUserSales?id=${id}`);
     return response.data;
   } catch (error: any) {
     return { error: error.message };

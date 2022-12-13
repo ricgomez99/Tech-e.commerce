@@ -1,24 +1,22 @@
 import { prisma } from "lib/prisma";
 
 export default async function handlerGetUniqueUsers() {
-
-   const getUser = async(email: any): Promise<any> => {
+  const getUser = async (email: any): Promise<any> => {
     const findUser = await prisma.user.findUnique({
       where: {
         email: email,
       },
       select: {
         email: true,
-        password: true
-      }
+        password: true,
+      },
     });
-    console.log("entro al findUnique", email, findUser)
-    if(!findUser){
+    if (!findUser) {
       throw new Error("User not found");
     }
     return findUser;
-  }
-    return {getUser};
+  };
+  return { getUser };
 }
 // import knex from "knex";
 // ({
@@ -39,7 +37,7 @@ export default async function handlerGetUniqueUsers() {
 //       const userEmail = await knex(TABLE).select().where('email', email);
 //       if (userEmail.length === 0) {
 //           throw new Error("User not found");
-//       } 
+//       }
 //       return userEmail[0];
 //   };
 
@@ -49,4 +47,3 @@ export default async function handlerGetUniqueUsers() {
 // module.exports = {
 //   databaseServiceFactory
 // };
-

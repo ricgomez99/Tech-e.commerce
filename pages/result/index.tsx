@@ -11,14 +11,51 @@ import { postSale } from "services/saleEndPoints";
 import { createDetailSale } from "services/DetailSaleendPoints";
 import { useSession } from "next-auth/react";
 
+async function sale(cart: any, user: any) {
+  let itemsArr: any;
+
+  if (cart) {
+    itemsArr = Array.from(cart.values());
+  }
+
+  let sum = 0;
+  if (itemsArr && itemsArr.length) {
+    if (typeof user === "string") {
+      itemsArr.map((el: any) => {
+        sum += el.price * el.qty;
+      });
+    }
+  }
+
+  if (sum > 0) {
+    const created = await postSale({
+      total: sum,
+      date: new Date().toISOString(),
+      userId: user,
+      state: "SUCCESSFUL",
+    });
+    saleDetail(itemsArr, created.id);
+  }
+}
+
+async function saleDetail(itemsArr: any, idSale: any) {
+  itemsArr.map(async (product: any) => {
+    const stocked = product.stock - product.qty;
+    await updateStock(product.id, stocked);
+    await createDetailSale({
+      amount: product.qty,
+      price: product.price,
+      idProduct: product.id,
+      saleId: idSale,
+    });
+  });
+}
+
 export default function Result() {
   const router = useRouter();
   const [role, setRole] = useState();
   const [user, setUser] = useState();
   const [cart, setCart]: any = useState();
-  const [itemsArr, setItemsArr]: any = useState([]);
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [created, setCreated]: any = useState();
   const { data: session } = useSession();
   const email = session?.user?.email;
   const products = useAppContext();
@@ -26,9 +63,10 @@ export default function Result() {
   useEffect(() => {
     (async () => {
       if (typeof email === "string") {
-        let data = await findUniqueUser(email);
-        setRole(data.role);
-        setUser(data.id);
+        const res = await findUniqueUser(email);
+        setRole(res.role);
+        setUser(res.id);
+        setCart(products.getCart());
       }
     })();
   }, [email]);
@@ -41,110 +79,14 @@ export default function Result() {
   );
 
   useEffect(() => {
-    setCart(products.getCart());
-    console.log(cart);
-  }, [products]);
-
-  useEffect(() => {
-    cart ? setItemsArr(Array.from(cart.values())) : null;
-    console.log(itemsArr);
+    (async () => {
+      await sale(cart, user);
+    })();
   }, [cart]);
-
-  useEffect(() => {
-    let sum = 0;
-    if (itemsArr.length) {
-      if (typeof user === "string") {
-        console.log("algo", itemsArr);
-        itemsArr.map((el: any) => {
-          sum += el.price * el.qty;
-          console.log(sum);
-        });
-      }
-    }
-    console.log(sum);
-    setTotalPrice(sum);
-  }, [itemsArr]);
-
-  if (itemsArr.length) {
-    useEffect(() => {
-      (async () => {
-        setCreated(
-          await postSale({
-            total: totalPrice,
-            date: new Date().toISOString(),
-            userId: user,
-            state: "SUCCESSFUL",
-          })
-        );
-        console.log(created);
-      })();
-    }, [totalPrice]);
-
-    useEffect(() => {
-      if (created) {
-        itemsArr.map(async (product: any) => {
-          const stocked = product.stock - product.qty;
-          await updateStock(product.id, stocked);
-          await createDetailSale({
-            amount: product.qty,
-            price: product.price,
-            idProduct: product.id,
-            saleId: created.id,
-          });
-        });
-      }
-    }, [created]);
-  }
-
-  // useEffect(() => {
-  //   cart = products.getCart();
-  //   cart ? setItemsArr(Array.from(cart.values())) : null;
-  //   let quant = 0;
-  //   if (typeof user === "string") {
-  //     itemsArr?.length &&
-  //       itemsArr?.map((product) => {
-  //         // totalPrice += (Number(product.price) * Number(product.qty));
-  //         setTotalPrice(totalprice + (Number(product.price) * Number(product.qty)));
-  //         quant += 1;
-  //       });
-  //   }
-  //   let saleInfo;
-  //   if (quant === itemsArr.length) {
-  //     console.log("palíndromo", totalPrice);
-  //     saleInfo = {
-  //       total: totalPrice,
-  //       date: new Date().toISOString(),
-  //       userId: user,
-  //       state: "SUCCESSFUL",
-  //     };
-  //   }
-  //   // setPrueba({ ...saleInfo });
-  //   let created: any;
-  //   if (saleInfo && saleInfo.userId) {
-  //     (async () => {
-  //       created = await postSale(saleInfo);
-  //       console.log("nene", created);
-  //     })();
-  //   }
-  //   if (!!created === true) {
-  //     itemsArr.map(async (product) => {
-  //       const stocked = product.stock - product.qty;
-  //       await updateStock(product.id, stocked);
-  //       await createDetailSale({
-  //         amount: product.qty,
-  //         price: product.price,
-  //         idProduct: product.id,
-  //         saleId: created.id,
-  //       });
-  //     });
-  //   }
-  //   // products.resetCart();
-  // }, []);
 
   if (role) {
     return (
       <Layout>
-        <button onClick={() => console.log(itemsArr, totalPrice)}>asdf</button>
         <div className={styles.container}>
           {data ? (
             <div className={styles.text}>

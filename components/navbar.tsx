@@ -52,7 +52,6 @@ export default function Navbar() {
     setCartCounter(cart.getNumberOfItems());
   }, [cart.addItemToCart, cart.deleteItem]);
   const image: any = session?.user?.image
-console.log(session)
   return (
     <header>
       <nav className={styles.navbar}>

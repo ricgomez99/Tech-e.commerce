@@ -10,7 +10,7 @@ export default async function handlerCreateSale(
   //!in order create the sale, you must pass by date an constant with new Date()
   //! and then pass that constant like date.toISOString()
   //? just like this => new Date().toISOString()
-
+  console.log(total, date, userId, state)
   try {
     const creation = await prisma.sale.create({
       data: {

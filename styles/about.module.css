@@ -37,7 +37,7 @@
   height: 20%;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 750px) {
   .logoAbout {
     width: 5%;
     height: 5%;

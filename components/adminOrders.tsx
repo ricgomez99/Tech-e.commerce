@@ -33,11 +33,11 @@ export default function AdminOrders() {
                 style={{ cursor: "pointer" }}
               >
                 Order ID: {o.id}
-                </h5>
-                <h6 className={styles.data}>
+              </h5>
+              <h6 className={styles.data}>
                 Date: {o.date.substring(0, 10)}
                 <br /> User Id: {o.userId}
-                </h6>
+              </h6>
             </div>
           ))}
         </div>

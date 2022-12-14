@@ -29,16 +29,20 @@ export default function About() {
           <h6>Antonio Michel</h6>
         </div>
         <p className={styles.paragraphAbout}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex illo
-          doloribus labore, eius adipisci nemo ipsum necessitatibus recusandae
-          consequatur accusamus distinctio iusto sapiente iste inventore.
-          Aspernatur optio velit error ex Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Dignissimos incidunt, aut magni rerum adipisci, eum
-          aperiam praesentium sint, blanditiis odio modi perspiciatis quod animi
-          laboriosam quia iure reiciendis mollitia aspernatur Lorem ipsum dolor
-          sit amet, consectetur adipisicing elit. Sint iste, porro sequi nemo
-          eius voluptatum! Et nisi, dolorum sequi doloribus nihil culpa maiores
-          repellat fugiat aliquam cupiditate nobis quia soluta?
+          We are the Fullstack Street Guys team, and our mission with this
+          project is to make a friendly and suitable enviroment for all kind of
+          users that want to set up their work, study and gaming space. Since we
+          started studying FullStack Web Development in "Soy Henry", we realized
+          there's a problem when a common user starts diving in the IT world,
+          wheter to work, study, or just play video games, and is that you need
+          to be confortable, and to fulfill this conformity, we developed this
+          website. Do you need an ergonomic chair to make your back feel better?
+          We have it!. Are you tired of being sitted in the same position? We
+          have the best standing desktop for you! Or you just want a brand new
+          laptop with a gaming keyboard? Well, this is the best site you could ever be! We
+          have all of these and a whole lot more. We hope you enjoy and have the
+          very best time navigating our website. Designed and built with all the
+          love in the world.
         </p>
       </div>
     </Layout>

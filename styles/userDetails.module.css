@@ -24,6 +24,7 @@
 }
 
 .userName{
+    color: #4b678d;
     display: flex;
     /* text-decoration: underline 1.2px rgb(170, 169, 179); */
     text-decoration: wavy;

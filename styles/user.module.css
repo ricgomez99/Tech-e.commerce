@@ -13,15 +13,7 @@
     margin: 30px;
     border-style: ridge;
     border-color: rgb(233, 238, 243);
-
-}
-
-.purchaseOrders{
-    width: 500px;
-    box-shadow: 0 2px 20px #dddddd;
-    padding: 20px;
-    text-align: center;
-    margin: 40px;
+    margin-bottom: 150px;
 }
 
 .general{
@@ -32,3 +24,10 @@
     margin: 30px;
 }
 
+.divider{
+    display: flex;
+    align-items: center;
+    margin-bottom: 100px;
+    color: #292929; 
+    border-bottom: solid 1px #ccc;
+}

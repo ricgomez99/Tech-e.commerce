@@ -1,6 +1,7 @@
 import { userSales } from "services/userEndPoints";
 import { useEffect, useState } from "react";
 import UserSaleDetails from "./userSaleDetails";
+import styles from "styles/userOrders.module.css"
 
 export default function UserOrdersList({ id }: any) {
   const [orders, setOrders] = useState<any[]>();
@@ -26,7 +27,7 @@ export default function UserOrdersList({ id }: any) {
       {orders
         ? orders.map((o) => (
           <>
-          <h5 onClick={() => handleClick(o.id)} key={o.id}>
+          <h5 className={styles.principalInfo}onClick={() => handleClick(o.id)} key={o.id}>
               ID: {o.id}, Date: {o.date.slice(0,10)}, Total: ${o.total}.00 USD
             </h5>
               <UserSaleDetails id={o.id}/>

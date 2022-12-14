@@ -7,29 +7,72 @@ import { useAppContext } from "components/statewrapper";
 import { useEffect, useState } from "react";
 import { updateStock } from "services/productEndPoints";
 import Link from "next/link";
-import { postSale, findSaleDetails } from "services/saleEndPoints";
+import { postSale } from "services/saleEndPoints";
 import { createDetailSale } from "services/DetailSaleendPoints";
 import { useSession } from "next-auth/react";
+import Product from "components/product";
+
+async function sale(cart: any, user: any) {
+  let itemsArr: any;
+
+  if (cart) {
+    itemsArr = Array.from(cart.values());
+  }
+
+  let sum = 0;
+  if (itemsArr && itemsArr.length) {
+    if (typeof user === "string") {
+      itemsArr.map((el: any) => {
+        sum += el.price * el.qty;
+      });
+    }
+  }
+
+  if (sum > 0) {
+    const created = await postSale({
+      total: sum,
+      date: new Date().toISOString(),
+      userId: user,
+      state: "SUCCESSFUL",
+    });
+    return saleDetail(itemsArr, created.id);
+  }
+}
+
+async function saleDetail(itemsArr: any, idSale: any) {
+  itemsArr.map(async (product: any) => {
+    const stocked = product.stock - product.qty;
+    await updateStock(product.id, stocked);
+    await createDetailSale({
+      amount: product.qty,
+      price: product.price,
+      idProduct: product.id,
+      saleId: idSale,
+    });
+  });
+  return "do it";
+}
 
 export default function Result() {
   const router = useRouter();
   const [role, setRole] = useState();
+  const [user, setUser] = useState();
+  const [cart, setCart]: any = useState();
   const { data: session } = useSession();
+  const [userId, setUserId] = useState();
   const email = session?.user?.email;
+  const products = useAppContext();
 
   useEffect(() => {
     (async () => {
       if (typeof email === "string") {
-        let data = await findUniqueUser(email);
-        setRole(data.role);
-        console.log(data)
+        const res = await findUniqueUser(email);
+        setRole(res.role);
+        setUser(res.id);
+        setCart(products.getCart());
       }
     })();
   }, [email]);
-
-  let cart;
-
-  const products = useAppContext();
 
   const { data, error } = useSWR(
     router.query.session_id
@@ -38,30 +81,14 @@ export default function Result() {
     (url) => fetch(url).then((res) => res.json())
   );
 
-  let itemsArr: any[] = [];
-  let totalPrice: number;
-  let user: string;
-  
   useEffect(() => {
-    cart = products.getCart();
-    cart ? (itemsArr = Array.from(cart.values())) : null;
-    itemsArr.map((product) => {
-      totalPrice += (product.price * product.qty)
-    })
-    const data = {
-      total : totalPrice,
-      date : new Date().toISOString(),
-      userId : ""
-    }
-    let created = 
-    itemsArr.map(async (product) => {
-      const stocked = product.stock - product.qty;
-      const stock = stocked.toString();
-      await updateStock(product.id, stocked);
-
-    });
-    products.resetCart();
-  }, []);
+    (async () => {
+      const res = await sale(cart, user);
+      if (res) {
+        products.resetCart();
+      }
+    })();
+  }, [cart]);
 
   if (role) {
     return (

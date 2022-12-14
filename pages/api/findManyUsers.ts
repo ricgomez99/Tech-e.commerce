@@ -11,16 +11,13 @@ export default async function handlerGetUsers(
         id: true,
         email: true,
         role: true,
-        name: true
-
+        name: true,
       },
     });
     return res.status(200).json(findUsers);
-  }  catch (error) {
-    if(error instanceof Error){
-    return res.status(400).json({ message: error.message });
-    }
-    else return res.status(404).json({message: "error not found"})
+  } catch (error) {
+    if (error instanceof Error) {
+      return res.status(400).json({ message: error.message });
+    } else return res.status(404).json({ message: "error not found" });
   }
 }
-

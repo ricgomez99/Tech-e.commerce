@@ -31,3 +31,10 @@
 .searchIcon:hover {
   color: #a4c3b2;
 }
+
+@media(max-width:750px) {
+  .searchBar {
+    position: fixed;
+    z-index: 0;
+  }
+}

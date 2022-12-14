@@ -4,6 +4,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #d3dfd9;
+  
 }
 
 .nav__menu_bar {
@@ -35,6 +36,7 @@
   transition: all 0.2s;
   min-height: calc(100vh - 60px);
   background-color: #d3dfd9;
+  z-index: 1;
 }
 
 .nav__menu_list_active {
@@ -135,4 +137,5 @@
   .nav__link:hover:before {
     width: 100%;
   }
+  
 }

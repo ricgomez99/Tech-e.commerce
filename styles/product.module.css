@@ -239,6 +239,10 @@
     flex-flow: row wrap;
     justify-content: center;
   }
+  .searchBar {
+  margin-bottom: 20px;
+  }
+  
 
   .toolsBtn {
     align-items: center;

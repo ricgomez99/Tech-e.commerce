@@ -15,6 +15,7 @@ export default function Result() {
   const router = useRouter();
   const [role, setRole] = useState();
   const { data: session } = useSession();
+  const [userId, setUserId] = useState();
   const email = session?.user?.email;
 
   useEffect(() => {
@@ -22,7 +23,7 @@ export default function Result() {
       if (typeof email === "string") {
         let data = await findUniqueUser(email);
         setRole(data.role);
-        console.log(data)
+        setUserId(data.id);
       }
     })();
   }, [email]);
@@ -42,7 +43,7 @@ export default function Result() {
   let totalPrice: number;
   let user: string;
   
-  useEffect(() => {
+ if(role){useEffect(() => {
     cart = products.getCart();
     cart ? (itemsArr = Array.from(cart.values())) : null;
     itemsArr.map((product) => {
@@ -61,7 +62,7 @@ export default function Result() {
 
     });
     products.resetCart();
-  }, []);
+  }, []);}
 
   if (role) {
     return (

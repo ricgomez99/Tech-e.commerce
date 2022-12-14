@@ -1,0 +1,95 @@
+.divsote {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(4px);
+  z-index: 10;
+}
+.divsito {
+  margin: 40vh auto;
+  display: flex;
+  background-color: #fff;
+  flex-direction: column;
+  width: 400px;
+  height: 520px;
+  border-radius: 15px;
+  position: relative;
+  padding: 15px 15px;
+  transform: translateY(-170px);
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.label {
+  padding-bottom: 7px;
+}
+
+.label b {
+  color: #a4c3b2;
+}
+
+.info {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.userInput {
+  padding: 7px 10px;
+  margin-bottom: 18px;
+  font-size: 0.9rem;
+}
+
+.submit {
+  margin-top: 30px;
+  margin-bottom: -15px;
+  padding: 10px;
+  font-weight: 500;
+  border-radius: 10px;
+  background: #a4c3b2;
+  color: #fff;
+  border: none;
+  box-shadow: 6px 7px 20px #bbbbbb;
+}
+
+.submit:hover {
+  background: #bfdccc;
+}
+
+.signIn {
+  width: 100%;
+  text-transform: none;
+}
+
+.signContainer {
+  width: 100%;
+}
+
+.register {
+  text-align: center;
+}
+
+.link {
+  text-decoration: none;
+  color: #a4c3b2;
+  padding-left: 5px;
+}
+
+@media (max-width: 750px) {
+  .divsito {
+    width: 300px;
+    height: 450px;
+  }
+
+  .submit {
+    margin-top: 20px;
+  }
+}

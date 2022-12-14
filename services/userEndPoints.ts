@@ -24,7 +24,7 @@ export async function findUniqueUser(email: string) {
     const res = await response.json();
     return res;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return error;
   }
 }
@@ -47,17 +47,6 @@ export async function logInUser(data: any) {
   }
 }
 
-// export async function handlerGetUniqueUsers(id: number) {
-//   try {
-//     const response = await axios.get(
-//       `/api/databaseService?id=${id}`
-//     );
-//     return response.data;
-//   } catch (error: any) {
-//     return { error: error.message };
-//   }
-// }
-
 export async function userSales(id: string) {
   try {
     const response = await axios.get(`/api/findUserSales?id=${id}`);
@@ -67,10 +56,13 @@ export async function userSales(id: string) {
   }
 }
 
-export async function signInUserWithGoogle(email: string, data: any){
+export async function signInUserWithGoogle(email: string, data: any) {
   try {
-    const response = await axios.post(`/api/signInUserWithGoogle?email=${email}`, data)
+    const response = await axios.post(
+      `/api/signInUserWithGoogle?email=${email}`,
+      data
+    );
   } catch (error) {
-    return error
+    return error;
   }
 }

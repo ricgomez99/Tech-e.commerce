@@ -28,7 +28,7 @@ export default function AdminUsers() {
           <ul>
             {users.length ? (
               users.map((u: any) => (
-                <div key={u.id} className={styles.orders}>
+                <div key={u.id} className={styles.users}>
                   <h5
                     className={styles.name}
                     onClick={() => setUserEmail(u.email)}

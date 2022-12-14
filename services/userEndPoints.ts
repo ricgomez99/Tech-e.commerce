@@ -70,7 +70,7 @@ export async function userSales(id: string) {
 export async function signInUserWithGoogle(email: string, data: any){
   try {
     const response = await axios.post(`/api/signInUserWithGoogle?email=${email}`, data)
-  } catch (error: any) {
-    return {error: error.message}
+  } catch (error) {
+    return error
   }
 }

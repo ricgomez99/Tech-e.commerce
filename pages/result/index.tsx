@@ -10,6 +10,7 @@ import Link from "next/link";
 import { postSale } from "services/saleEndPoints";
 import { createDetailSale } from "services/DetailSaleendPoints";
 import { useSession } from "next-auth/react";
+import Product from "components/product";
 
 async function sale(cart: any, user: any) {
   let itemsArr: any;
@@ -34,7 +35,7 @@ async function sale(cart: any, user: any) {
       userId: user,
       state: "SUCCESSFUL",
     });
-    saleDetail(itemsArr, created.id);
+    return saleDetail(itemsArr, created.id);
   }
 }
 
@@ -49,6 +50,7 @@ async function saleDetail(itemsArr: any, idSale: any) {
       saleId: idSale,
     });
   });
+  return "do it";
 }
 
 export default function Result() {
@@ -80,7 +82,10 @@ export default function Result() {
 
   useEffect(() => {
     (async () => {
-      await sale(cart, user);
+      const res = await sale(cart, user);
+      if (res) {
+        products.resetCart();
+      }
     })();
   }, [cart]);
 

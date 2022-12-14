@@ -59,6 +59,7 @@ export default function Result() {
   const [user, setUser] = useState();
   const [cart, setCart]: any = useState();
   const { data: session } = useSession();
+  const [userId, setUserId] = useState();
   const email = session?.user?.email;
   const products = useAppContext();
 

@@ -34,4 +34,3 @@ export async function updateSale(data: any, id: string) {
     return error;
   }
 }
-

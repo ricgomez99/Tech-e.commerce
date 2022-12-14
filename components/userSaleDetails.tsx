@@ -29,7 +29,7 @@ return (
     {show?
     <div>
         {sale?.saleDetails?.map((e: any) => (
-          <div>
+          <div key={e.idProduct}>
             <div className={styles.saleMap}>
             <OrderDetails id={e.idProduct}/>
             <h5>Quantity: {e.amount}</h5>

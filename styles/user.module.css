@@ -4,14 +4,16 @@
 
 .detailsCard{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    width: 400px;
+    width: 550px;
     box-shadow: 0 2px 20px #dddddd;
-    padding: 20px;
+    padding: 60px;
     text-align: center;
     margin: 30px;
-    margin-right: 250px;
+    border-style: ridge;
+    border-color: rgb(233, 238, 243);
+
 }
 
 .purchaseOrders{
@@ -25,7 +27,8 @@
 .general{
     display: flex;
     align-items: center;
-    flex-direction: row;
+    justify-content: center;
+    flex-direction: column;
     margin: 30px;
 }
 

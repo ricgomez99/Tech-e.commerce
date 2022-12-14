@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { idProduct } from "services/productEndPoints";
 import styles from "styles/orderDetails.module.css"
-import Image from "next/image";
 import { findSaleDetails } from "services/saleEndPoints";
 import OrderDetails from "./orderDetails";
 
@@ -25,15 +24,15 @@ export default function UserSaleDetails({ id }: any) {
 
 return (
   <div>
-    <h3 onClick={() => handleClick()}>View more details</h3>
+    <h6 onClick={() => handleClick()}>View more details</h6>
     {show?
-    <div>
+    <div className={styles.viewDetails}>
         {sale?.saleDetails?.map((e: any) => (
           <div key={e.idProduct}>
             <div className={styles.saleMap}>
             <OrderDetails id={e.idProduct}/>
-            <h5>Quantity: {e.amount}</h5>
-            <h5>Total item price: {e.price}</h5>
+            <h6>Quantity: {e.amount}</h6>
+            <h6>Item price: {e.price}</h6>
             </div>
           </div>
         ))}

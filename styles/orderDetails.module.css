@@ -4,8 +4,11 @@
     white-space: nowrap;
   }
   
-.itemTitle h5 {
+.itemTitle h6 {
     text-overflow: ellipsis;
     overflow: hidden;
   }
+
+.viewDetails{
+}
   

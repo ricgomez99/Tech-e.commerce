@@ -13,12 +13,15 @@ export default function AdminUserDetails({ email }: any) {
   const currentEmail = session?.user?.email;
 
   useEffect(() => {
-    (async () => {
+    try{(async () => {
       if (typeof currentEmail === "string") {
         let data = await findUniqueUser(currentEmail);
         setRole(data.role);
       }
     })();
+    } catch(error){
+      console.log(error);
+    }
   }, [currentEmail]);
 
   useEffect(() => {

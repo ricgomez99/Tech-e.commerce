@@ -1,8 +1,11 @@
 import { userSales } from "services/userEndPoints";
 import { useEffect, useState } from "react";
+import UserSaleDetails from "./userSaleDetails";
 
 export default function UserOrdersList({ id }: any) {
   const [orders, setOrders] = useState<any[]>();
+  const [saleId, setSaleId] = useState();
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     try {
@@ -14,14 +17,21 @@ export default function UserOrdersList({ id }: any) {
     }
   }, [orders]);
 
+  function handleClick(id: any) {
+    setSaleId(id);
+  }
+
   return (
     <ul>
       {orders
         ? orders.map((o) => (
-            <h6 key={o.id}>
-              ID: {o.id}, Date: {o.date}, Total: ${o.total}.00 USD, Payment:{" "}
-              {o.state}{" "}
-            </h6>
+            <>
+              <h6 onClick={() => handleClick(o.id)} key={o.id}>
+                ID: {o.id}, Date: {o.date.slice(0, 10)}, Total: ${o.total}.00
+                USD
+              </h6>
+              <UserSaleDetails id={o.id} />
+            </>
           ))
         : null}
     </ul>

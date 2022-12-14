@@ -40,6 +40,9 @@
   display: flex;
   align-items: center;
   gap: 15px;
+  border-bottom: solid 1px #ccc;
+  margin-left: 30px;
+  margin-top: 5px;
 }
 
 .productImg {
@@ -59,4 +62,40 @@
 
 .name {
   cursor: pointer;
+  color: #2a528a; 
+}
+
+.addTocart {
+  width: 30%;
+  padding: 15px 0;
+}
+
+.icon {
+  margin: 6px;
+  margin-left: 15px;
+  margin-right: 5px;
+  font-size: 16px;
+  color: #2a528a;
+  background: transparent;
+}
+
+.toolsBtn {
+  gap: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.toolsBtn button {
+  display: flex;
+  padding: 8px 20px;
+  background: #fff;
+  font-weight: 500;
+  color: #92ba92;
+  border-radius: 5px;
+  border: 1px solid #92ba92;
+}
+
+.toolsBtn button:hover {
+  color: #ffff;
+  background: #a4c3b2;
 }

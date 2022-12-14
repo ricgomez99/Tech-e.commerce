@@ -133,7 +133,7 @@ console.log(session)
                   >
                     Sign Out
                   </a>
-                  <Link href="#">
+                  <Link href="/profile">
                     <button
                       // onClick={() => {
                       //   setShow(false);

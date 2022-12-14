@@ -1,4 +1,4 @@
-import Layout from "./../../components/layout";
+import Layout from "../../components/layout";
 import AdminOrders from "components/adminOrders";
 import AdminProducts from "components/adminProducts";
 import AdminUsers from "components/adminUsers";

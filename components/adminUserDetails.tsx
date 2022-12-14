@@ -141,13 +141,14 @@ export default function AdminUserDetails({ email }: any) {
         <h5 className={styles.titles}>User Detail</h5>
         {email.length ? (
           <div className={styles.detail}>
-            <h3>ID: {user?.id}</h3>
-            <h3>Username: {user?.name}</h3>
-            <h3>Email: {user?.email}</h3>
-            <div className={styles.click}>
-              <h3>Role: {user?.role}</h3>
+            <h3 className={styles.userID}>ID: {user?.id}</h3>
+            <h3 className={styles.userData}>Username: {user?.name}</h3>
+            <h3 className={styles.userData}>Email: {user?.email}</h3>
+            <div className={styles.userBtnsContainer}>
+              <h3 className={styles.userData}>Role: {user?.role}</h3>
               {user?.role === "USER" ? null : (
                 <button
+                  className={`btn btn-outline-dark ${styles.active} `}
                   value="user"
                   onClick={(e) => handleClick(e)}
                   disabled={role ? (role === "ADMIN" ? false : true) : false}
@@ -157,6 +158,7 @@ export default function AdminUserDetails({ email }: any) {
               )}
               {user?.role === "MOD" ? null : (
                 <button
+                  className={`btn btn-outline-primary ${styles.active} `}
                   value="mod"
                   onClick={(e) => handleClick(e)}
                   disabled={role ? (role === "ADMIN" ? false : true) : false}
@@ -166,6 +168,7 @@ export default function AdminUserDetails({ email }: any) {
               )}
               {user?.role === "ADMIN" ? null : (
                 <button
+                  className={`btn btn-outline-success ${styles.active} `}
                   value="admin"
                   onClick={(e) => handleClick(e)}
                   disabled={role ? (role === "ADMIN" ? false : true) : false}
@@ -174,14 +177,24 @@ export default function AdminUserDetails({ email }: any) {
                 </button>
               )}
             </div>
-            <div className={styles.click}>
-              <h3>Status: {user?.active ? "Active" : "Banned"}</h3>
-              <button value="ban" onClick={(e) => handleClick(e)}>
+            <div className={styles.userBtnsContainer}>
+              <h3 className={styles.userData}>
+                Status: {user?.active ? "Active" : "Banned"}
+              </h3>
+              <button
+                className={
+                  user?.active
+                    ? `btn btn-outline-danger ${styles.active} `
+                    : `btn btn-outline-success ${styles.active} `
+                }
+                value="ban"
+                onClick={(e) => handleClick(e)}
+              >
                 {user?.active ? "Ban User" : "Unban User"}
               </button>
             </div>
             <div>
-              <h3>Orders</h3>
+              <h3 className={styles.userOrdersTitle}>Orders</h3>
               <div className={styles.userOrders}>
                 <UserOrdersList id={user?.id} />
               </div>

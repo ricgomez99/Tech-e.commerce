@@ -22,7 +22,7 @@ export default function AdminOrderDetails({ id }: any) {
   return (
     <div>
       <div className={styles.orderDetail}>
-        <h5>Order Detail</h5>
+        <h5 className={styles.titles}>Order Detail</h5>
         {id ? (
           <div className={styles.detail}>
             <h5>Order ID: {order.id}</h5>
@@ -43,7 +43,7 @@ export default function AdminOrderDetails({ id }: any) {
           </div>
         ) : (
           <div className={styles.detail}>
-            <h3>Select an order from the list </h3>
+            <h4 className={styles.select}>Select an order from the list </h4>
           </div>
         )}
       </div>

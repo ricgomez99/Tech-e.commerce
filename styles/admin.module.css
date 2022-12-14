@@ -8,3 +8,8 @@
 .backBtn:hover {
   color: #385170;
 }
+
+.active:focus {
+  background-color: grey;
+  color: white;
+}

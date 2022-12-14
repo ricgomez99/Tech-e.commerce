@@ -41,7 +41,7 @@ export default function UpdateModal({ product }: any) {
     <>
       <button
         onClick={() => setShowModal(true)}
-        className="btn btn-outline-info"
+        className="btn btn-outline-success"
       >
         Update product
       </button>

@@ -36,6 +36,7 @@ export default function Index({ categories }: Data) {
       if (typeof email === "string") {
         let data = await findUniqueUser(email);
         setRole(data.role);
+        console.log(data);
       }
     })();
   }, [email]);
@@ -72,12 +73,16 @@ export default function Index({ categories }: Data) {
   return (
     <Layout>
       <div className={styledProducts.tools}>
+      
         <div className={styledProducts.searchBar}>
+        <button onClick={() => console.log(session, email, role)}>Prueba</button>
           <SearchBar handleConditions={handleConditions} />
         </div>
+        
         {role ? (
           role === "ADMIN" ? (
             <div className={styledProducts.toolsBtn}>
+              
               <button
                 className={styledProducts.addToCart}
                 onClick={() => router.push("/newProduct")}

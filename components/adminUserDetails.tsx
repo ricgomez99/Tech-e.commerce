@@ -133,25 +133,29 @@ export default function AdminUserDetails({ email }: any) {
             <h3>Username: {user.name}</h3>
             <h3>Email: {user.email}</h3>
             <div className={styles.click}>
-              <h3>Role: {user.role}</h3>
-              {user.role === "USER" ? null : (
-                <button value="user" onClick={(e) => handleClick(e)}>
-                  Set as User
-                </button>
-              )}
-              {user.role === "MOD" ? null : (
-                <button value="mod" onClick={(e) => handleClick(e)}>
-                  Upgrade to Mod
-                </button>
-              )}
-              {user.role === "ADMIN" ? null : (
-                <button value="admin" onClick={(e) => handleClick(e)}>
-                  Upgrade to Admin
-                </button>
-              )}
+              <div>
+                <h3>Role: {user.role}</h3>
+              </div>
+              <div>
+                {user.role === "USER" ? null : (
+                  <button value="user" onClick={(e) => handleClick(e)}>
+                    Set as User
+                  </button>
+                )}
+                {user.role === "MOD" ? null : (
+                  <button value="mod" onClick={(e) => handleClick(e)}>
+                    Upgrade to Mod
+                  </button>
+                )}
+                {user.role === "ADMIN" ? null : (
+                  <button value="admin" onClick={(e) => handleClick(e)}>
+                    Upgrade to Admin
+                  </button>
+                )}
+              </div>
             </div>
             <div className={styles.click}>
-              <h3>Active: {user.active?.toString()}</h3>
+              <h3>Status: {user.active ? "Active" : "Banned"}</h3>
               <button value="ban" onClick={(e) => handleClick(e)}>
                 {user.active ? "Ban User" : "Unban User"}
               </button>

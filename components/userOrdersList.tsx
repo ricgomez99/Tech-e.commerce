@@ -19,8 +19,8 @@ export default function UserOrdersList({ id }: any) {
       {orders
         ? orders.map((o) => (
             <h6 key={o.id}>
-              ID: {o.id}, Date: {o.date}, Total: ${o.total}.00 USD, Payment:{" "}
-              {o.state}{" "}
+              ID: {o.id}, Date: {o.date.substring(0, 10)}, Total: ${o.total}.00
+              USD
             </h6>
           ))
         : null}

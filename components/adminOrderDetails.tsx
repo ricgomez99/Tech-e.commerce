@@ -102,7 +102,8 @@ export default function AdminOrderDetails({ id }: any) {
             <div>
               {order.saleDetails?.map((p: any) => (
                 <h6 key={p.id}>
-                  {p.id}, {p.amount}, {p.price}, {p.idProduct}
+                  Order Id:{p.id}, Qty:{p.amount}, Price: ${p.price}.00 USD,
+                  Product Id:{p.idProduct}
                 </h6>
               ))}
             </div>

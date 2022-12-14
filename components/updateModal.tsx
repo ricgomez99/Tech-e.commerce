@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import { getCategories, updateProduct } from "../services/productEndPoints";
+import Swal from "sweetalert2";
 import styles from "../styles/updateModal.module.css";
 
 export default function UpdateModal({ product }: any) {
@@ -33,7 +34,16 @@ export default function UpdateModal({ product }: any) {
   }
 
   const submit = async (values: any) => {
-    await updateProduct(product.id, values);
+    const res = await updateProduct(product.id, values);
+    if (res) {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "The product has been updated",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
     setShowModal(false);
   };
 

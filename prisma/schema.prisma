@@ -11,21 +11,21 @@ datasource db {
 }
 
 model Account {
-  id                 String  @id @default(cuid())
-  userId             String  @map("user_id")
-  type               String
-  provider           String
-  providerAccountId  String  @map("provider_account_id")
-  refresh_token      String? @db.Text
-  access_token       String? @db.Text
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String? @db.Text
-  session_state      String?
-  oauth_token_secret String?
-  oauth_token        String?
-  refresh_token_expires_in        Int?
+  id                       String  @id @default(cuid())
+  userId                   String  @map("user_id")
+  type                     String
+  provider                 String
+  providerAccountId        String  @map("provider_account_id")
+  refresh_token            String? @db.Text
+  access_token             String? @db.Text
+  expires_at               Int?
+  token_type               String?
+  scope                    String?
+  id_token                 String? @db.Text
+  session_state            String?
+  oauth_token_secret       String?
+  oauth_token              String?
+  refresh_token_expires_in Int?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -42,18 +42,19 @@ model Session {
 
   @@map("sessions")
 }
+
 model User {
-  id        String  @id @default(cuid())
-  email     String  @unique
-  password  String?
-  name      String?
-  image     String?
-  emailVerified DateTime? @map("email_verified")  
-  active    Boolean @default(true)
-  role      Role    @default(USER)
-  sales     Sale[]
-  accounts  Account[]
-  sessions  Session[]
+  id            String    @id @default(cuid())
+  email         String    @unique
+  password      String?
+  name          String?
+  image         String?
+  emailVerified DateTime? @map("email_verified")
+  active        Boolean   @default(true)
+  role          Role      @default(USER)
+  sales         Sale[]
+  accounts      Account[]
+  sessions      Session[]
 
   @@map("users")
 }
@@ -68,22 +69,22 @@ model VerificationToken {
 }
 
 model Sale {
-  id          Int           @id @default(autoincrement())
-  total       Int   
-  date        DateTime    
-  state       State         @default(PENDING)
-  user        User          @relation(fields: [userId], references: [id])
-  userId      String   
+  id          Int          @id @default(autoincrement())
+  total       Int
+  date        DateTime
+  state       State        @default(PENDING)
+  user        User         @relation(fields: [userId], references: [id])
+  userId      String
   saleDetails SaleDetail[]
 }
 
-model SaleDetail { 
-  id        Int     @id @default(autoincrement())
-  amount    Int     
-  price     Int     
-  idProduct String  
-  sale      Sale    @relation(fields: [saleId], references: [id])
-  saleId    Int     
+model SaleDetail {
+  id        Int    @id @default(autoincrement())
+  amount    Int
+  price     Int
+  idProduct String
+  sale      Sale   @relation(fields: [saleId], references: [id])
+  saleId    Int
 }
 
 enum Role {

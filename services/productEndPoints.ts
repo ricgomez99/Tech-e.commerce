@@ -97,7 +97,7 @@ export async function updateStock(id: string, stocked: number) {
       `https://techproductsshop-production.up.railway.app/products/${id}`,
       { stock: stocked }
     );
-    const response = await request.data;
+    const response = request.data;
     return response;
   } catch (error) {
     return error;

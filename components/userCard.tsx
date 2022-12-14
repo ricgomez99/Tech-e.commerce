@@ -5,20 +5,23 @@ import { useSession } from "next-auth/react";
 import { findUniqueUser } from "services/userEndPoints";
 import UserOrdersList from "./userOrdersList";
 
-
 export default function UserCard() {
   const [user, setUser] = useState<any>({});
   const { data: session } = useSession();
   const email = session?.user?.email;
 
   useEffect(() => {
-    (async () => {
-      if (typeof email === "string") {
-        let data = await findUniqueUser(email);
-        setUser(data);
-        console.log(data);
-      }
-    })();
+    try {
+      (async () => {
+        if (typeof email === "string") {
+          let data = await findUniqueUser(email);
+          setUser(data);
+          console.log(data);
+        }
+      })();
+    } catch (error) {
+      console.log(error);
+    }
   }, [email]);
 
   return (

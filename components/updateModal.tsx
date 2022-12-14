@@ -16,10 +16,14 @@ export default function UpdateModal({ product }: any) {
   const [imageSrc, setImageSrc] = useState("");
 
   const handleClickCategories = async () => {
-    setCategoriesButton(!categoriesButton);
-    if (!categories.length) {
-      const response = await getCategories();
-      setCategories(response);
+    try {
+      setCategoriesButton(!categoriesButton);
+      if (!categories.length) {
+        const response = await getCategories();
+        setCategories(response);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 

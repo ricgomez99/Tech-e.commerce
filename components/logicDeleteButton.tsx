@@ -11,10 +11,14 @@ export default function LogicDeleteButton({ id, enabled }: any) {
   };
 
   useEffect(() => {
-    const data = async () => {
-      await logicDelete(id, enable);
-    };
-    data();
+    try {
+      const data = async () => {
+        await logicDelete(id, enable);
+      };
+      data();
+    } catch (error) {
+      console.log(error);
+    }
   }, [enable]);
 
   return (

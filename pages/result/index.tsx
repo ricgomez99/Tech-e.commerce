@@ -11,7 +11,7 @@ import { postSale } from "services/saleEndPoints";
 import { createDetailSale } from "services/DetailSaleendPoints";
 import { useSession } from "next-auth/react";
 
-async function sale(cart: any, user: any) {
+async function sale(cart: any[], user: any): Promise<string | undefined> {
   let itemsArr: any;
 
   if (cart) {

@@ -3,7 +3,7 @@ import styles from "../styles/searchBar.module.css";
 import { FiSearch } from "react-icons/fi";
 
 export default function SearchBar({ handleConditions }: any) {
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState(""); 
 
   const handlerOnSubmit = (e: any) => {
     e.preventDefault();
@@ -16,6 +16,7 @@ export default function SearchBar({ handleConditions }: any) {
       <div className={styles.searchBar}>
         <input
           type="text"
+          className={styles.query}
           value={title}
           placeholder="Search product..."
           onChange={(e) => setTitle(e.target.value)}

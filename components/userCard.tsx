@@ -6,7 +6,7 @@ import { findUniqueUser } from "services/userEndPoints";
 import UserOrdersList from "./userOrdersList";
 
 
-export default function userCard() {
+export default function UserCard() {
   const [user, setUser] = useState<any>({});
   const { data: session } = useSession();
   const email = session?.user?.email;

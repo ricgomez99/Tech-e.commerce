@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import { findUniqueUser } from "services/userEndPoints";
 import Image from 'next/image';
 
-export default function userDetails(){
+export default function UserDetails(){
     const [user, setUser] = useState<any>({});
     const { data: session } = useSession();
     const email: string | undefined = session?.user?.email?.toString();

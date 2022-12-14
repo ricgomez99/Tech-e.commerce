@@ -25,12 +25,16 @@ export default function Product({ product, showAs, qty }: Data) {
   const email = session?.user?.email;
 
   useEffect(() => {
-    (async () => {
-      if (typeof email === "string") {
-        let data = await findUniqueUser(email);
-        setRole(data.role);
-      }
-    })();
+    try {
+      (async () => {
+        if (typeof email === "string") {
+          let data = await findUniqueUser(email);
+          setRole(data.role);
+        }
+      })();
+    } catch (error) {
+      console.log(error);
+    }
   }, [email]);
 
   const handleAddItem = (product: any) => {

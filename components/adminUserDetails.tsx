@@ -136,7 +136,7 @@ export default function AdminUserDetails({ email }: any) {
   }
 
   return (
-    <div className={styles.usersContainer}>
+    <div>
       <div className={styles.userDetail}>
         <h5>User Detail</h5>
         {email.length ? (

@@ -21,7 +21,7 @@ export default function AdminUsers() {
     <div className={styles.title}>
       <h3>Users</h3>
       <div className={styles.usersContainer}>
-        <div className={styles.userDetail}>
+        <div>
           <AdminUserDetails email={userEmail} />
         </div>
         <div className={styles.all}>
@@ -34,10 +34,14 @@ export default function AdminUsers() {
                     onClick={() => setUserEmail(u.email)}
                     style={{ cursor: "pointer" }}
                   >
-                    {u.role}, Username: {u.name}
+                    {u.role}
+                  </h5>
+                  <h6 className={styles.data}>
+                    <br />
+                    Username: {u.name}
                     <br />
                     Email: {u.email}
-                  </h5>
+                  </h6>
                 </div>
               ))
             ) : (

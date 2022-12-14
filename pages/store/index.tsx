@@ -30,12 +30,13 @@ export default function Index({ categories }: Data) {
   const [role, setRole] = useState();
   const { data: session } = useSession();
   const email = session?.user?.email;
-  
+
   useEffect(() => {
     (async () => {
       if (typeof email === "string") {
         let data = await findUniqueUser(email);
         setRole(data.role);
+        console.log(data);
       }
     })();
   }, [email]);
@@ -72,12 +73,16 @@ export default function Index({ categories }: Data) {
   return (
     <Layout>
       <div className={styledProducts.tools}>
+      
         <div className={styledProducts.searchBar}>
+        <button onClick={() => console.log(session, email, role)}>Prueba</button>
           <SearchBar handleConditions={handleConditions} />
         </div>
+        
         {role ? (
           role === "ADMIN" ? (
             <div className={styledProducts.toolsBtn}>
+              
               <button
                 className={styledProducts.addToCart}
                 onClick={() => router.push("/newProduct")}
@@ -90,6 +95,15 @@ export default function Index({ categories }: Data) {
                 onClick={() => router.push("/profile/admin")}
               >
                 Admin <BsFillGearFill className={styledProducts.icon} />
+              </button>
+            </div>
+          ) : role === "MOD" ? (
+            <div className={styledProducts.toolsBtn}>
+              <button
+                className={styledProducts.adminBtn}
+                onClick={() => router.push("/profile/admin")}
+              >
+                MOD <BsFillGearFill className={styledProducts.icon} />
               </button>
             </div>
           ) : null

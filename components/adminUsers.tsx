@@ -32,6 +32,7 @@ export default function AdminUsers() {
                   <h5
                     className={styles.name}
                     onClick={() => setUserEmail(u.email)}
+                    style={{ cursor: "pointer" }}
                   >
                     {u.role}, Username: {u.name}
                     <br />

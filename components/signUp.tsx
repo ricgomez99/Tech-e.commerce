@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import { createUser } from "../services/userEndPoints";
 import * as yup from "yup";
+import { useRouter } from "next/router";
+
+
 
 export default function SignIn(){
     const [submitted,setSubmitted] = useState(false);
@@ -10,9 +13,9 @@ export default function SignIn(){
         alert("Registered successfully");
         await createUser(values)
         setSubmitted(true);
-     
+        router.back()
       };
-
+      const router = useRouter();
     return (
         <div>
             <Formik

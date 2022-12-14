@@ -3,16 +3,20 @@ import Image from "next/image";
 import { idProduct } from "services/productEndPoints";
 import styles from "styles/orderDetails.module.css"
 
+
 export default function OrderDetails({ id }: any) {
     const[product, setProduct] = useState<any[]>([]);
+  
     
     useEffect(() => {
       if(product){
         (async () => {
           setProduct(await idProduct(id))  
+          
         })()
       }
     },[]);
+
 
    
   return (

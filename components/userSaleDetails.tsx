@@ -2,35 +2,46 @@ import { useEffect, useState } from "react";
 import { idProduct } from "services/productEndPoints";
 import styles from "styles/orderDetails.module.css"
 import Image from "next/image";
+import { findSaleDetails } from "services/saleEndPoints";
+import OrderDetails from "./orderDetails";
 
 export default function UserSaleDetails({ id }: any) {
   const[product, setProduct] = useState<any[]>([]);
   const [show, setShow] = useState(false)
+  const[sale, setSale] = useState<any>();
     
   useEffect(() => {
     if(product){
       (async () => {
-        setProduct(await idProduct(id))  
+        setProduct(await idProduct(id)) 
+        setSale(await findSaleDetails(id)) 
       })()
     }
   },[]);
 
   function handleClick () {
-    setShow(!show)
+    setShow(!show);
   }
- 
+
 return (
   <div>
-    <h6 onClick={() => handleClick()}>View more details</h6>
+    <h3 onClick={() => handleClick()}>View more details</h3>
     {show?
-    <>
-    <div className={styles.itemTitle}>
-        <h5>{product[0]?.title}</h5>
-    </div>
-    {product?<Image src={product[0]?.image} alt="img" width={110} height={90}/> : null} 
-    </>
-    : null
+    <div>
+        {sale?.saleDetails?.map((e: any) => (
+          <div>
+            <div className={styles.saleMap}>
+            <OrderDetails id={e.idProduct}/>
+            <h5>Quantity: {e.amount}</h5>
+            <h5>Total item price: {e.price}</h5>
+            </div>
+          </div>
+        ))}
+      </div>
+      : null
     }
+
   </div>
 )
 }
+

@@ -5,7 +5,7 @@ import UserSaleDetails from "./userSaleDetails";
 export default function UserOrdersList({ id }: any) {
   const [orders, setOrders] = useState<any[]>();
   const [saleId, setSaleId] = useState();
-  
+  const [show, setShow] = useState(false)
 
   useEffect(() => {
     try {
@@ -19,7 +19,6 @@ export default function UserOrdersList({ id }: any) {
 
   function handleClick (id: any) {
     setSaleId(id);
-    
   }
 
   return (

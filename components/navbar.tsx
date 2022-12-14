@@ -11,6 +11,7 @@ import { BsPersonCircle } from "react-icons/bs";
 import { FiShoppingCart } from "react-icons/fi";
 import { useScrollBlock } from "utils/scrollblock";
 import { findUniqueUser } from "services/userEndPoints";
+import userImage from "public/Img/user_profile.jpg"
   
 export default function Navbar() {
   const router = useRouter();
@@ -22,7 +23,7 @@ export default function Navbar() {
   //Block Sroll bar
   const [blockScroll, allowScroll] = useScrollBlock();
 
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   
   
 
@@ -38,12 +39,17 @@ export default function Navbar() {
       query: { refresh: "true" },
     });
   };
-  
+
+  let sessionPrueba;
+  if(session && session.user){
+    sessionPrueba = session.user
+  }
+
   useEffect(() => {
     setCartCounter(cart.getNumberOfItems());
   }, [cart.addItemToCart, cart.deleteItem]);
   const image: any = session?.user?.image
-
+console.log(session)
   return (
     <header>
       <nav className={styles.navbar}>
@@ -75,6 +81,7 @@ export default function Navbar() {
               : `${styles.nav__menu_list}`
           } `}
         >
+         
           <Link
             href="/store"
             onClick={
@@ -92,7 +99,7 @@ export default function Navbar() {
             <div className={styles.cartCounter}>{cartCounter}</div>
           </div>
           {!session && <SignInModal />}
-          {session && (
+          {session  && (
             <>
               <BsPersonCircle
                 onClick={() => {
@@ -109,7 +116,7 @@ export default function Navbar() {
                 show={show}
               >
                 <Image
-                  src={image}
+                  src={image || userImage}
                   alt="profile picture"
                   className={styles.profilePicture}
                   width={160}
@@ -123,7 +130,7 @@ export default function Navbar() {
                   >
                     Sign Out
                   </a>
-                  <Link href="/profile/user">
+                  <Link href="/profile">
                     <button
                       // onClick={() => {
                       //   setShow(false);

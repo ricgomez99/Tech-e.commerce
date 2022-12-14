@@ -30,7 +30,7 @@ export default function Index({ categories }: Data) {
   const [role, setRole] = useState();
   const { data: session } = useSession();
   const email = session?.user?.email;
-
+  
   useEffect(() => {
     (async () => {
       if (typeof email === "string") {
@@ -52,10 +52,12 @@ export default function Index({ categories }: Data) {
     try {
       (async () => {
         const response = await getProducts2(conditions);
-        const filtered = response.filter(
-          (product: any) => product.enabled === true
-        );
-        setItems(filtered);
+        if (response.length > 0) {
+          const filtered = response.filter(
+            (product: any) => product.enabled === true
+          );
+          setItems(filtered);
+        } else setItems(response);
         setCurrentPage(1);
       })();
     } catch (error) {

@@ -8,6 +8,6 @@ export async function createDetailSale(data: any) {
     );
     return response.data;
   } catch (error) {
-    console.log(error);
+    return error
   }
 }

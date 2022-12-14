@@ -3,11 +3,8 @@ import Layout from "components/layout";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { findUniqueUser } from "services/userEndPoints";
-import UserOrderHistory from "../../../components/userSaleDetails";
-import UserOrdersList from "components/userOrdersList";
 
 export default function Profile() {
-  const [orders, setOrders] = useState<any[]>();
   const [user, setUser] = useState<any>({});
   const { data: session } = useSession();
   const email = session?.user?.email;

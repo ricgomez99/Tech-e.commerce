@@ -28,7 +28,7 @@ export default function About() {
           <a className={styles.names} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/felipe-hernandez-72037b248/">Felipe Hernández</a>
           <a className={styles.names} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/juan-jos%C3%A9-bogado-ab0480245/">Juan José Bogado </a>
           <a className={styles.names} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/joaquin-maza">Joaquín Maza</a>
-          <a className={styles.names} >Martina Girollet</a>
+          <a className={styles.names} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/martina-girollet-61790425a/">Martina Girollet</a>
           <a className={styles.names} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/nicolas-rojas-castro-65b156150/">Nicolás Rojas</a>
           <a className={styles.names} target="_blank" rel="noopener noreferrer" href="http://linkedin.com/in/antonio-michel-952296bb">Antonio Michel</a>
         </div>

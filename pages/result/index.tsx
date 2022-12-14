@@ -7,13 +7,15 @@ import { useAppContext } from "components/statewrapper";
 import { useEffect, useState } from "react";
 import { updateStock } from "services/productEndPoints";
 import Link from "next/link";
-import { postSale, findSaleDetails } from "services/saleEndPoints";
+import { postSale } from "services/saleEndPoints";
 import { createDetailSale } from "services/DetailSaleendPoints";
 import { useSession } from "next-auth/react";
 
 export default function Result() {
   const router = useRouter();
   const [role, setRole] = useState();
+  const [prueba, setPrueba] = useState({});
+      const [user, setUser]   = useState();
   const { data: session } = useSession();
   const email = session?.user?.email;
 
@@ -22,6 +24,7 @@ export default function Result() {
       if (typeof email === "string") {
         let data = await findUniqueUser(email);
         setRole(data.role);
+        setUser       (data.id);
       }
     })();
   }, [email]);
@@ -38,27 +41,47 @@ export default function Result() {
   );
 
   let itemsArr: any[] = [];
-  let totalPrice: number;
-  let user: string;
-  
+  // let totalPrice: number = 0;
+  const [totalPrice, setTotalPrice] = useState(0)
+
   useEffect(() => {
     cart = products.getCart();
+    let quant = 0;
     cart ? (itemsArr = Array.from(cart.values())) : null;
-    itemsArr.map((product) => {
-      totalPrice += (product.price * product.qty)
-    })
-    const data = {
-      total : totalPrice,
-      date : new Date().toISOString(),
-      userId : ""
-    }
-    let created = 
-    itemsArr.map(async (product) => {
-      const stocked = product.stock - product.qty;
-      const stock = stocked.toString();
-      await updateStock(product.id, stocked);
+  //   if(typeof user === "string"){itemsArr.length && itemsArr.map((product) => {
+  //     // totalPrice += (Number(product.price) * Number(product.qty));
+  //     setTotalPrice(totalPrice + (Number(product.price) * Number(product.qty)));
+  //     quant += 1
+  //   });}    
+  //   let saleInfo;
+  //   if(quant === itemsArr.length){
+  //     console.log("palíndromo",totalPrice)
+  //   saleInfo = {
+  //     total: totalPrice,
+  //     date: new Date().toISOString(),
+  //     userId: user,
+  //     state: "SUCCESSFUL",
+  //   };
 
-    });
+  // }
+  //   setPrueba({...saleInfo})
+    // let created: any;
+    // if(saleInfo && saleInfo.userId) {(async () => {  
+    //   created = await postSale(saleInfo);
+    //   console.log("nene", created);    
+    // })();}
+    // if (!!created === true) {
+    //   itemsArr.map(async (product) => {
+    //     const stocked = product.stock - product.qty;
+    //     await updateStock(product.id, stocked);
+    //     await createDetailSale({
+    //       amount: product.qty,
+    //       price: product.price,
+    //       idProduct: product.id,
+    //       saleId: created.id,
+    //     });
+    //   });
+    // }
     products.resetCart();
   }, []);
 

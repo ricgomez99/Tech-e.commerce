@@ -10,7 +10,6 @@ import UserOptions from "./userOptionsModal";
 import { BsPersonCircle } from "react-icons/bs";
 import { FiShoppingCart } from "react-icons/fi";
 import { useScrollBlock } from "utils/scrollblock";
-import { findUniqueUser } from "services/userEndPoints";
 import userImage from "public/Img/user_profile.jpg";
 
 export default function Navbar() {

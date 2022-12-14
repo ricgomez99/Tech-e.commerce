@@ -10,7 +10,6 @@ import Link from "next/link";
 import { postSale } from "services/saleEndPoints";
 import { createDetailSale } from "services/DetailSaleendPoints";
 import { useSession } from "next-auth/react";
-import Product from "components/product";
 
 async function sale(cart: any, user: any) {
   let itemsArr: any;
@@ -59,7 +58,6 @@ export default function Result() {
   const [user, setUser] = useState();
   const [cart, setCart]: any = useState();
   const { data: session } = useSession();
-  const [userId, setUserId] = useState();
   const email = session?.user?.email;
   const products = useAppContext();
 

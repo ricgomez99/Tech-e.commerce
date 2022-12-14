@@ -70,27 +70,31 @@ export default function AdminProducts() {
             </div>
           </div>
           <div className={styles.all}>
-            {products?.map((p) => (
-              <div key={p.id} className={styles.products}>
-                <div>
-                  <Image
-                    width={100}
-                    height={100}
-                    src={p.image}
-                    alt={p.title}
-                    className={styles.productImg}
-                  />
+            {products.length ? (
+              products.map((p) => (
+                <div key={p.id} className={styles.products}>
+                  <div>
+                    <Image
+                      width={100}
+                      height={100}
+                      src={p.image}
+                      alt={p.title}
+                      className={styles.productImg}
+                    />
+                  </div>
+                  <h5
+                    className={styles.name}
+                    onClick={() => {
+                      handleProduct(p);
+                    }}
+                  >
+                    {p.title}
+                  </h5>
                 </div>
-                <h5
-                  className={styles.name}
-                  onClick={() => {
-                    handleProduct(p);
-                  }}
-                >
-                  {p.title}
-                </h5>
-              </div>
-            ))}
+              ))
+            ) : (
+              <h3>Loading Products...</h3>
+            )}
           </div>
         </div>
       </div>

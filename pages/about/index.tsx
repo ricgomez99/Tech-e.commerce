@@ -2,17 +2,21 @@ import Layout from "../../components/layout";
 import Image from "next/image";
 import logo from "../../public/Img/e-commerce.png";
 import styles from "../../styles/about.module.css";
-import Router from "next/router";
 import { MdOutlineArrowBack } from "react-icons/md";
+import Router from "next/router";
+import style from "styles/product.module.css";
 
 export default function About() {
   return (
     <Layout>
+      
       <div className={styles.everythingAbout}>
+      <MdOutlineArrowBack
+            onClick={() => Router.back()}
+            className={style.backBtn}
+          />
         <div>
-          <button onClick={() => Router.back()} className="btn btn-secondary">
-            <MdOutlineArrowBack />
-          </button>
+      
         </div>
         <div className={styles.titleAbout}>
           <Image className={styles.logoAbout} src={logo} alt="img"></Image>

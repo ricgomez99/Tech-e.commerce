@@ -13,14 +13,6 @@
   color: #6b9080;
 }
 
-/* .namesAbout {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-items: center;
-  margin: 50px;
-  
-} */
-
 .namesAbout{
   padding: 15px 25px;
   margin-top: 40px;
@@ -40,11 +32,11 @@
 }
 
 .names{
-  /* color: #6b9080; */
-  /* color:#223437 */
- 
+  outline: none;
+  text-decoration: none;
   color: #fdfaf6;
 }
+
 
 .paragraphAbout {
   display: flex;

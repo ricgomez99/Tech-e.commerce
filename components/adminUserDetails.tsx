@@ -161,7 +161,7 @@ export default function AdminUserDetails({ email }: any) {
                   onClick={(e) => handleClick(e)}
                   disabled={role ? (role === "ADMIN" ? false : true) : false}
                 >
-                  Upgrade to Mod
+                  {user.role === "ADMIN" ? "Set as Mod" : "Upgrade to Mod"}
                 </button>
               )}
               {user.role === "ADMIN" ? null : (
@@ -175,7 +175,7 @@ export default function AdminUserDetails({ email }: any) {
               )}
             </div>
             <div className={styles.click}>
-              <h3>Active: {user.active?.toString()}</h3>
+              <h3>Status: {user.active ? "Active" : "Banned"}</h3>
               <button value="ban" onClick={(e) => handleClick(e)}>
                 {user.active ? "Ban User" : "Unban User"}
               </button>

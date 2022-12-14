@@ -5,7 +5,7 @@ import UserSaleDetails from "./userSaleDetails";
 export default function UserOrdersList({ id }: any) {
   const [orders, setOrders] = useState<any[]>();
   const [saleId, setSaleId] = useState();
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     try {
@@ -17,7 +17,7 @@ export default function UserOrdersList({ id }: any) {
     }
   }, [orders]);
 
-  function handleClick (id: any) {
+  function handleClick(id: any) {
     setSaleId(id);
   }
 
@@ -25,14 +25,15 @@ export default function UserOrdersList({ id }: any) {
     <ul>
       {orders
         ? orders.map((o) => (
-          <>
-          <h6 onClick={() => handleClick(o.id)} key={o.id}>
-              ID: {o.id}, Date: {o.date.slice(0,10)}, Total: ${o.total}.00 USD
-            </h6>
-              <UserSaleDetails id={o.id}/>
-          </>
+            <>
+              <h6 onClick={() => handleClick(o.id)} key={o.id}>
+                ID: {o.id}, Date: {o.date.slice(0, 10)}, Total: ${o.total}.00
+                USD
+              </h6>
+              <UserSaleDetails id={o.id} />
+            </>
           ))
-          : null}
+        : null}
     </ul>
   );
 }

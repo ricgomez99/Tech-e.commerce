@@ -23,14 +23,14 @@ export default function About() {
           <h1>Tech-E-Commerce</h1>
         </div>
         <div className={styles.namesAbout}>
-          <h6>Ricardo Gómez</h6>
-          <h6>José Méndez</h6>
-          <h6>Felipe Hernández</h6>
-          <h6>Juan José Bogado </h6>
-          <h6>Joaquín Maza</h6>
-          <h6>Martina Girollet</h6>
-          <h6>Nicolás Rojas</h6>
-          <h6>Antonio Michel</h6>
+          <a className={styles.names} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/andres-gomez-restrepo">Ricardo Gómez</a>
+          <a className={styles.names} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jose-mendez-6215b6150">José Méndez</a>
+          <a className={styles.names} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/felipe-hernandez-72037b248/">Felipe Hernández</a>
+          <a className={styles.names} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/juan-jos%C3%A9-bogado-ab0480245/">Juan José Bogado </a>
+          <a className={styles.names} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/joaquin-maza">Joaquín Maza</a>
+          <a className={styles.names} >Martina Girollet</a>
+          <a className={styles.names} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/nicolas-rojas-castro-65b156150/">Nicolás Rojas</a>
+          <a className={styles.names} target="_blank" rel="noopener noreferrer" href="http://linkedin.com/in/antonio-michel-952296bb">Antonio Michel</a>
         </div>
         <p className={styles.paragraphAbout}>
           We are the Fullstack Street Guys team, and our mission with this

@@ -19,7 +19,7 @@ export default function AdminUsers() {
 
   return (
     <div className={styles.title}>
-      <h3>Users</h3>
+      <h3 className={styles.titles}>Users</h3>
       <div className={styles.usersContainer}>
         <div>
           <AdminUserDetails email={userEmail} />

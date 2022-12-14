@@ -16,7 +16,7 @@ export default function About() {
             className={style.backBtn}
           />
         <div>
-      
+       
         </div>
         <div className={styles.titleAbout}>
           <Image className={styles.logoAbout} src={logo} alt="img"></Image>
@@ -37,6 +37,7 @@ export default function About() {
           </div>
           <div className={styles.box}>
           <a className={styles.names} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/joaquin-maza">Joaquín Maza</a>
+          <a className={styles.names} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/martina-girollet-61790425a/">Martina Girollet</a>
           </div>
           <div className={styles.box}>
           <a className={styles.names} >Martina Girollet</a>
@@ -62,7 +63,7 @@ export default function About() {
           laptop with a gaming keyboard? Well, this is the best site you could ever be! We
           have all of these and a whole lot more. We hope you enjoy and have the
           very best time navigating our website. Designed and built with all the
-          love in the world.
+          love in the world. 
         </p>
       </div>
     </Layout>

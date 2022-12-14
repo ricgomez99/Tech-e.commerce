@@ -19,11 +19,11 @@ export default function OrderDetails({ id }: any) {
   }, []);
 
   return (
-    <div>
+    <div className={styles.imageAndText}>
       <div className={styles.itemTitle}>
-        <h5>{product[0]?.title}</h5>
+          <h6>{product[0]?.title}</h6>
       </div>
-      <Image src={product[0]?.image} alt="img" width={110} height={90} />
+      <Image className={styles.detailsImage} src={product[0]?.image} alt="img" width={110} height={90} />
     </div>
   );
 }

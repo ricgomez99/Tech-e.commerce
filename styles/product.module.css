@@ -219,6 +219,11 @@
   margin-top: 20px;
 }
 
+.adminImage {
+  object-fit:scale-down;
+  margin-top: 10px;
+}
+
 @keyframes scale {
   from {
     transform: scale(0);

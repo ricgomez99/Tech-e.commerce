@@ -175,6 +175,7 @@ export default function Product({ product, showAs, qty }: Data) {
             alt={product.title}
             width={200}
             height={200}
+            className={style.adminImage}
           />
         </div>
         <h3 className={style.adminTitle}>{product.title}</h3>
@@ -182,10 +183,10 @@ export default function Product({ product, showAs, qty }: Data) {
         {product.stock === 0 ? "" : <div className={style.adminUnits}>Units: {product.stock}</div>}
         <div className={style.adminEdit}>
           <div className={style.adminEditButtons}>
-            <LogicDeleteButton id={product.id} enabled={product.enabled} />
+            <UpdateModal product={product} />
           </div>
           <div className={style.adminEditButtons}>
-            <UpdateModal product={product} />
+            <LogicDeleteButton id={product.id} enabled={product.enabled} />
           </div>
         </div>
       </div>

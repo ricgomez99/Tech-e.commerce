@@ -46,7 +46,7 @@ export default function Result() {
     cart = products.getCart();
     cart ? (itemsArr = Array.from(cart.values())) : null;
     itemsArr.map((product) => {
-      totalPrice += (product.price * product.qty)
+      totalPrice += (product.price * product.qty) 
     })
     const data = {
       total : totalPrice,

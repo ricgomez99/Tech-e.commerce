@@ -25,16 +25,20 @@ export default function AdminOrderDetails({ id }: any) {
         <h5 className={styles.titles}>Order Detail</h5>
         {id ? (
           <div className={styles.detail}>
-            <h5>Order ID: {order.id}</h5>
-            <h5>User: {order.userId}</h5>
-            <h5>Date: {order.date?.substring(0, 10)}</h5>
-            <h5>Sale total: $ {order.total}.00 USD</h5>
+            <h5 className={styles.orderID}>Order ID: {order.id}</h5>
+            <h5 className={styles.orderData}>User: {order.userId}</h5>
+            <h5 className={styles.orderData}>
+              Date: {order.date?.substring(0, 10)}
+            </h5>
+            <h5 className={styles.orderTotal}>
+              Sale total: $ {order.total}.00 USD
+            </h5>
 
             <div>
               {order.saleDetails?.map((p: any) => (
-                <h6 key={p.id}>
-                  Product Id:{p.idProduct}, Qty:{p.amount}, Price: ${p.price}.00
-                  USD,
+                <h6 className={styles.orderProduct} key={p.id}>
+                  Product Id: {p.idProduct}, Qty: {p.amount}, Price: $ {p.price}
+                  .00 USD,
                   <br />
                   Subtotal ${p.amount * p.price}.00 USD
                 </h6>

@@ -3,34 +3,41 @@ import { updateUser, findUniqueUser } from "services/userEndPoints";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import UserOrdersList from "./userOrdersList";
+import { useSession } from "next-auth/react";
 
 export default function AdminUserDetails({ email }: any) {
   const [user, setUser] = useState<any>({});
   const [state, setState] = useState<boolean>(true);
+  const [role, setRole] = useState();
+  const { data: session } = useSession();
+  const currentEmail = session?.user?.email;
+
+  useEffect(() => {
+    (async () => {
+      if (typeof currentEmail === "string") {
+        let data = await findUniqueUser(currentEmail);
+        setRole(data.role);
+      }
+    })();
+  }, [currentEmail]);
 
   useEffect(() => {
     try {
       (async () => {
         setUser(await findUniqueUser(email));
       })();
-      console.log(user);
     } catch (error) {
       console.log(error);
     }
   }, [email, state]);
 
   async function handleClick(e: any) {
-    switch (e.target.value) {
-      case "ban":
-        await banAlert();
-        break;
+    let role = e.target.value;
 
-      case "role":
-        await upgradeAlert();
-        break;
-
-      default:
-        break;
+    if (e.target.value === "ban") {
+      await banAlert();
+    } else {
+      await upgradeAlert(role);
     }
   }
 
@@ -76,12 +83,14 @@ export default function AdminUserDetails({ email }: any) {
     }
   }
 
-  async function upgradeAlert() {
+  async function upgradeAlert(role: string) {
     Swal.fire({
       title:
-        user.role === "ADMIN"
-          ? "Are you sure you want this user to lose Admin status?"
-          : "Are you sure you want this user to become an Admin?",
+        role === "user"
+          ? "Are you sure you want this user to lose it's status?"
+          : role === "mod"
+          ? "Are you sure you want this user to become a Mod?"
+          : "Are you sure you want this user to become aa Admin?",
       text: "This action can be reverted at any time",
       icon: "warning",
       showCancelButton: true,
@@ -91,29 +100,36 @@ export default function AdminUserDetails({ email }: any) {
       reverseButtons: true,
     }).then(async (result) => {
       if (result.isConfirmed) {
-        if (user.role === "ADMIN") {
-          await upgradeUser();
-          Swal.fire("User is no longer an ADMIN", "", "success");
+        if (role === "user") {
+          await upgradeUser(role);
+          Swal.fire("User is no longer a MOD/ADMIN", "", "success");
+        } else if (role === "mod") {
+          await upgradeUser(role);
+          Swal.fire("User is now a Mod", "", "success");
         } else {
-          await upgradeUser();
+          await upgradeUser(role);
           Swal.fire("User is now an Admin", "", "success");
         }
       }
     });
   }
 
-  async function upgradeUser() {
-    switch (user.role) {
-      case "ADMIN":
+  async function upgradeUser(role: string) {
+    switch (role) {
+      case "user":
         await updateUser({ role: "USER" }, user.id);
         setState(!state);
         break;
 
-      case "USER":
-        await updateUser({ role: "ADMIN" }, user.id);
+      case "mod":
+        await updateUser({ role: "MOD" }, user.id);
         setState(!state);
         break;
 
+      case "admin":
+        await updateUser({ role: "ADMIN" }, user.id);
+        setState(!state);
+        break;
       default:
         break;
     }
@@ -130,9 +146,33 @@ export default function AdminUserDetails({ email }: any) {
             <h3>Email: {user.email}</h3>
             <div className={styles.click}>
               <h3>Role: {user.role}</h3>
-              <button value="role" onClick={(e) => handleClick(e)}>
-                {user.role === "ADMIN" ? "Set as User" : "Upgrade to Admin"}
-              </button>
+              {user.role === "USER" ? null : (
+                <button
+                  value="user"
+                  onClick={(e) => handleClick(e)}
+                  disabled={role ? (role === "ADMIN" ? false : true) : false}
+                >
+                  Set as User
+                </button>
+              )}
+              {user.role === "MOD" ? null : (
+                <button
+                  value="mod"
+                  onClick={(e) => handleClick(e)}
+                  disabled={role ? (role === "ADMIN" ? false : true) : false}
+                >
+                  Upgrade to Mod
+                </button>
+              )}
+              {user.role === "ADMIN" ? null : (
+                <button
+                  value="admin"
+                  onClick={(e) => handleClick(e)}
+                  disabled={role ? (role === "ADMIN" ? false : true) : false}
+                >
+                  Upgrade to Admin
+                </button>
+              )}
             </div>
             <div className={styles.click}>
               <h3>Active: {user.active?.toString()}</h3>

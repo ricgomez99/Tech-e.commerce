@@ -23,7 +23,10 @@ export default async function handler(
       },
     });
     res.status(200).json(detail);
-  } catch (err: any) {
-    res.status(400).json({ message: err.message });
+  }  catch (error) {
+    if(error instanceof Error){
+    return res.status(400).json({ message: error.message });
+    }
+    else return res.status(404).json({message: "error not found"})
   }
 }

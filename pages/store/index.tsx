@@ -36,6 +36,7 @@ export default function Index({ categories }: Data) {
       if (typeof email === "string") {
         let data = await findUniqueUser(email);
         setRole(data.role);
+        console.log(data);
       }
     })();
   }, [email]);
@@ -52,10 +53,12 @@ export default function Index({ categories }: Data) {
     try {
       (async () => {
         const response = await getProducts2(conditions);
-        const filtered = response.filter(
-          (product: any) => product.enabled === true
-        );
-        setItems(filtered);
+        if (response.length > 0) {
+          const filtered = response.filter(
+            (product: any) => product.enabled === true
+          );
+          setItems(filtered);
+        } else setItems(response);
         setCurrentPage(1);
       })();
     } catch (error) {
@@ -70,12 +73,16 @@ export default function Index({ categories }: Data) {
   return (
     <Layout>
       <div className={styledProducts.tools}>
+      
         <div className={styledProducts.searchBar}>
+        <button onClick={() => console.log(session, email, role)}>Prueba</button>
           <SearchBar handleConditions={handleConditions} />
         </div>
+        
         {role ? (
           role === "ADMIN" ? (
             <div className={styledProducts.toolsBtn}>
+              
               <button
                 className={styledProducts.addToCart}
                 onClick={() => router.push("/newProduct")}
@@ -88,6 +95,15 @@ export default function Index({ categories }: Data) {
                 onClick={() => router.push("/profile/admin")}
               >
                 Admin <BsFillGearFill className={styledProducts.icon} />
+              </button>
+            </div>
+          ) : role === "MOD" ? (
+            <div className={styledProducts.toolsBtn}>
+              <button
+                className={styledProducts.adminBtn}
+                onClick={() => router.push("/profile/admin")}
+              >
+                MOD <BsFillGearFill className={styledProducts.icon} />
               </button>
             </div>
           ) : null

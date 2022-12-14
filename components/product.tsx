@@ -166,7 +166,7 @@ export default function Product({ product, showAs, qty }: Data) {
     );
   }
 
-  if(showAs === "adminProduct") {
+  if (showAs === "adminProduct") {
     return (
       <div>
         <div>
@@ -187,7 +187,7 @@ export default function Product({ product, showAs, qty }: Data) {
           <UpdateModal product={product} />
         </div>
       </div>
-    )
+    );
   }
 
   return (

@@ -27,7 +27,11 @@ export default function AdminOrders() {
         <div className={styles.all + " " + styles.allOrders}>
           {orders?.map((o: any) => (
             <div key={o.id} className={styles.orders}>
-              <h5 className={styles.name} onClick={() => setSaleId(o.id)}>
+              <h5
+                className={styles.name}
+                onClick={() => setSaleId(o.id)}
+                style={{ cursor: "pointer" }}
+              >
                 Order ID: {o.id}, Date: {o.date.substring(0, 10)}
                 <br /> User Id: {o.userId}
               </h5>

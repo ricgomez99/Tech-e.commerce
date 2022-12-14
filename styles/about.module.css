@@ -1,7 +1,7 @@
 .everythingAbout {
   height: 100%;
   background: #fdfaf6;
-  padding: 50px 2rem;
+  padding: 100px 2rem;
 }
 
 .titleAbout {
@@ -13,13 +13,33 @@
   color: #6b9080;
 }
 
-.namesAbout {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-items: center;
-  margin: 50px;
-  color: #7895b2;
+.namesAbout{
+  padding: 25px 25px;
+  margin: 40px auto;
+  border: unset;
+  border-radius: 15px;
+  z-index: 1;
+  background: #fff;
+  position: relative;
+  font-weight: bold;
+  font-size: 17px;
+  -webkit-box-shadow: 4px 8px 19px -3px #bbbbbb;
+  box-shadow: 4px 8px 19px -3px #bbbbbb;
+  transition: all 250ms;
+  overflow: hidden;
+  width: 80%;
 }
+
+.names{
+  outline: none;
+  text-decoration: none;
+  color: #6b9080;
+}
+
+.names:hover{
+  color: #A4C3B2;
+}
+
 
 .paragraphAbout {
   display: flex;

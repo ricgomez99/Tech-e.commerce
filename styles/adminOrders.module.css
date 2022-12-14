@@ -56,7 +56,7 @@
 
 .name {
   cursor: pointer;
-  color: #2a528a; 
+  color: #2a528a;
 }
 
 .data {
@@ -70,4 +70,45 @@
 
 .select {
   color: #2a528a;
+}
+
+.orderID {
+  color: #2a528a;
+}
+
+.orderData {
+  color: #959595;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.orderProduct {
+  color: #959595;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: left;
+  margin-left: 25%;
+}
+
+.orderTotal {
+  color: #2a528a;
+  border-bottom: solid 1px #ccc;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.toolsBtn button {
+  display: flex;
+  padding: 8px 20px;
+  background: #fff;
+  font-weight: 500;
+  color: #92ba92;
+  border-radius: 5px;
+  border: 1px solid #92ba92;
+}
+
+.toolsBtn button:hover {
+  color: #ffff;
+  background: #a4c3b2;
 }

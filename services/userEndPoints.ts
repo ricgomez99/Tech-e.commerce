@@ -23,6 +23,7 @@ export async function findUniqueUser(email: string) {
     const response = await axios.get(`/api/findUniqueUser?email=${email}`);
     return response.data;
   } catch (error) {
+    console.log(error)
     return error;
   }
 }

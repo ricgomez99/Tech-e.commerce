@@ -32,7 +32,7 @@ export default function About() {
           We are the Fullstack Street Guys team, and our mission with this
           project is to make a friendly and suitable enviroment for all kind of
           users that want to set up their work, study and gaming space. Since we
-          started studying FullStack Web Development in "Soy Henry", we realized
+          started studying FullStack Web Development in Soy Henry, we realized
           there's a problem when a common user starts diving in the IT world,
           wheter to work, study, or just play video games, and is that you need
           to be confortable, and to fulfill this conformity, we developed this

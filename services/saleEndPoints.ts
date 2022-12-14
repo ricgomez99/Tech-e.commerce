@@ -28,10 +28,9 @@ export async function findSaleDetails(id: any) {
 
 export async function updateSale(data: any, id: string) {
   try {
-    const { data } = await axios.patch(`/api/updateSale?id=${id}`);
-    return data;
+    const response = await axios.patch(`/api/updateSale?id=${id}`, data);
+    return response.data;
   } catch (error) {
     return error;
   }
 }
-

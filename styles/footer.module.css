@@ -31,7 +31,7 @@
   color: #f6fff8;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 750px) {
   .nav {
     display: flex;
     justify-content: space-around;

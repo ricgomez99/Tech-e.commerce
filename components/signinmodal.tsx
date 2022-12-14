@@ -3,6 +3,7 @@ import SignInButton from "./signinbutton";
 import { useScrollBlock } from "utils/scrollblock";
 import Link from "next/link";
 import { signIn } from "next-auth/react";
+import styles from "../styles/signInModal.module.css";
 
 export default function SignInModal() {
   const [showModal, setShowModal] = useState(false);
@@ -12,21 +13,20 @@ export default function SignInModal() {
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (e: any) => {
-      e.preventDefault();
-      const res = await signIn("credentials", {
-        email: email,
-        password: password,
-      })
-
+    e.preventDefault();
+    const res = await signIn("credentials", {
+      email: email,
+      password: password,
+    });
   };
 
-  const emailHandler =  (e:any) => {
-      setEmail(e.target.value);
-  }
+  const emailHandler = (e: any) => {
+    setEmail(e.target.value);
+  };
 
-  const passwordHandler =  (e:any) => {
-      setPassword(e.target.value);
-  }
+  const passwordHandler = (e: any) => {
+    setPassword(e.target.value);
+  };
 
   return (
     <>
@@ -45,58 +45,59 @@ export default function SignInModal() {
 
       {showModal ? (
         <div
-          className="divsote"
+          className={styles.divsote}
           onClick={() => {
             setShowModal(false);
             allowScroll();
           }}
         >
-          <style jsx>
-            {`
-              .divsote {
-                background-color: rgba(0, 0, 0, 0.5);
-                height: 100vh;
-                width: 100vw;
-                position: fixed;
-                top: 0;
-                left: 0;
-                backdrop-filter: blur(4px);
-                z-index: 10;
+          <div className={styles.divsito} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.info}>
+              {
+                <form onSubmit={handleSubmit}>
+                  <div className={styles.inputs}>
+                    <label className={styles.label}>
+                      <b>Email</b>
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="Enter Email"
+                      name="email"
+                      required
+                      onChange={emailHandler}
+                      className={styles.userInput}
+                    />
+
+                    <label className={styles.label}>
+                      <b>Password</b>
+                    </label>
+                    <input
+                      type="password"
+                      placeholder="Enter Password"
+                      name="password"
+                      required
+                      onChange={passwordHandler}
+                      className={styles.userInput}
+                    />
+
+                    <button type="submit" className={styles.submit}>
+                      Log In
+                    </button>
+                  </div>
+                </form>
               }
-              .divsito {
-                margin: 40vh auto;
-                display: flex;
-                background-color: #a4c3b2;
-                flex-direction: column;
-                width: 20vw;
-                border-radius: 15px;
-              }
-            `}
-          </style>
-          <div className="divsito" onClick={(e) => e.stopPropagation()}>
-            <div>
-              {<form onSubmit={handleSubmit}>
-  
-
-                        <div>
-                            <label><b>Email</b></label>
-                            <input type="email" placeholder="Enter Email" name="email" required
-                                onChange={emailHandler}/>
-
-                            <label><b>Password</b></label>
-                            <input type="password" placeholder="Enter Password" name="password" required
-                                onChange={passwordHandler}/>
-
-                            <button type="submit">Log In</button>
-                        </div>
-                </form>}
+              <div className={styles.signContainer}>
+                <SignInButton />
+              </div>
             </div>
-            <SignInButton />
-            <div>
-            <Link href="/signup">
-                Do not have an account? Register here!
-            </Link>
-          </div>
+            <div className={styles.register}>
+              <p>
+                Do not have an account?
+                <Link href="/signup" className={styles.link}>
+                  Register here!
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
       ) : null}

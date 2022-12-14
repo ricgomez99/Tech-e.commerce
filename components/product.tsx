@@ -25,12 +25,16 @@ export default function Product({ product, showAs, qty }: Data) {
   const email = session?.user?.email;
 
   useEffect(() => {
-    (async () => {
-      if (typeof email === "string") {
-        let data = await findUniqueUser(email);
-        setRole(data.role);
-      }
-    })();
+    try {
+      (async () => {
+        if (typeof email === "string") {
+          let data = await findUniqueUser(email);
+          setRole(data.role);
+        }
+      })();
+    } catch (error) {
+      console.log(error);
+    }
   }, [email]);
 
   const handleAddItem = (product: any) => {
@@ -175,16 +179,19 @@ export default function Product({ product, showAs, qty }: Data) {
             alt={product.title}
             width={200}
             height={200}
+            className={style.adminImage}
           />
         </div>
-        <h3>{product.title}</h3>
-        <div>${product.price}</div>
-        {product.stock === 0 ? "" : <div>Units: {product.stock}</div>}
-        <div>
-          <LogicDeleteButton id={product.id} enabled={product.enabled} />
-        </div>
-        <div>
-          <UpdateModal product={product} />
+        <h3 className={style.adminTitle}>{product.title}</h3>
+        <div className={style.adminPrice}>${product.price}</div>
+        {product.stock === 0 ? "" : <div className={style.adminUnits}>Units: {product.stock}</div>}
+        <div className={style.adminEdit}>
+          <div className={style.adminEditButtons}>
+            <UpdateModal product={product} />
+          </div>
+          <div className={style.adminEditButtons}>
+            <LogicDeleteButton id={product.id} enabled={product.enabled} />
+          </div>
         </div>
       </div>
     );

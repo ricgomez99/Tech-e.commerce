@@ -1,24 +1,29 @@
 import { useEffect, useState } from "react";
 import { idProduct } from "services/productEndPoints";
-import styles from "styles/orderDetails.module.css"
+import styles from "styles/orderDetails.module.css";
+import Image from "next/image";
 import { findSaleDetails } from "services/saleEndPoints";
 import OrderDetails from "./orderDetails";
 
 export default function UserSaleDetails({ id }: any) {
-  const[product, setProduct] = useState<any[]>([]);
-  const [show, setShow] = useState(false)
-  const[sale, setSale] = useState<any>();
-    
-  useEffect(() => {
-    if(product){
-      (async () => {
-        setProduct(await idProduct(id)) 
-        setSale(await findSaleDetails(id)) 
-      })()
-    }
-  },[]);
+  const [product, setProduct] = useState<any[]>([]);
+  const [show, setShow] = useState(false);
+  const [sale, setSale] = useState<any>();
 
-  function handleClick () {
+  useEffect(() => {
+    try {
+      if (product) {
+        (async () => {
+          setProduct(await idProduct(id));
+          setSale(await findSaleDetails(id));
+        })();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
+  function handleClick() {
     setShow(!show);
   }
 
@@ -34,13 +39,10 @@ return (
             <h6>Quantity: {e.amount}</h6>
             <h6>Item price: {e.price}</h6>
             </div>
-          </div>
-        ))}
-      </div>
-      : null
-    }
-
-  </div>
-)
+        </div>
+          ))}
+   </div>
+  : null}
+ </div>
+  );
 }
-

@@ -5,7 +5,7 @@ import UserSaleDetails from "./userSaleDetails";
 export default function UserOrdersList({ id }: any) {
   const [orders, setOrders] = useState<any[]>();
   const [saleId, setSaleId] = useState();
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     try {
@@ -17,7 +17,7 @@ export default function UserOrdersList({ id }: any) {
     }
   }, [orders]);
 
-  function handleClick (id: any) {
+  function handleClick(id: any) {
     setSaleId(id);
   }
 
@@ -32,7 +32,7 @@ export default function UserOrdersList({ id }: any) {
               <UserSaleDetails id={o.id}/>
           </>
           ))
-          : null}
+        : null}
     </ul>
   );
 }

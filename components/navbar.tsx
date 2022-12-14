@@ -24,6 +24,11 @@ export default function Navbar() {
 
   const { data: session, status } = useSession();
 
+  function handleSignOut() {
+    signOut();
+    cart.resetCart();
+  }
+
   function handleOpenCart() {
     cart.openCart();
   }
@@ -46,7 +51,6 @@ export default function Navbar() {
     setCartCounter(cart.getNumberOfItems());
   }, [cart.addItemToCart, cart.deleteItem]);
   const image: any = session?.user?.image;
-  console.log(session);
   return (
     <header>
       <nav className={styles.navbar}>
@@ -124,7 +128,7 @@ export default function Navbar() {
                 <div className={styles.buttons}>
                   <a
                     className={`btn btn-secondary ${styles.signOutBtn}`}
-                    onClick={() => signOut()}
+                    onClick={handleSignOut}
                   >
                     Sign Out
                   </a>

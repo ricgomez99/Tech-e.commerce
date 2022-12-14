@@ -34,10 +34,10 @@ export default function AdminProducts() {
 
   return (
     <div className={styles.title}>
-      <h3>Products</h3>
+      <h3 className={styles.titles}>Products</h3>
       <div className={styles.productsContainer}>
         <div className={styles.productDetail}>
-          <h5>Product Detail</h5>
+          <h5 className={styles.titles}>Product Detail</h5>
           <div className={styles.detail}>
             {Object.keys(chosenProduct).length ? (
               <Product
@@ -46,7 +46,7 @@ export default function AdminProducts() {
                 showAs="adminProduct"
               />
             ) : (
-              <h4>Choose a product from the list</h4>
+              <h4 className={styles.select}>Select a product from the list</h4>
             )}
           </div>
         </div>
@@ -54,13 +54,13 @@ export default function AdminProducts() {
           <div className={styles.search}>
             <SearchBar handleConditions={handleConditions} />
             <div className={styles.toolsBtn}>
-            <button
-              className={styles.refresh}
-              onClick={() => setConditions({})}
-            >
-              Refresh
-            </button>
-            <button
+              <button
+                className={styles.refresh}
+                onClick={() => setConditions({})}
+              >
+                Refresh
+              </button>
+              <button
                 className={styles.addToCart}
                 onClick={() => router.push("/newProduct")}
               >

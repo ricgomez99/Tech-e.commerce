@@ -141,7 +141,7 @@ export default function AdminUserDetails({ email }: any) {
   return (
     <div>
       <div className={styles.userDetail}>
-        <h5>User Detail</h5>
+        <h5 className={styles.titles}>User Detail</h5>
         {email.length ? (
           <div className={styles.detail}>
             <h3>ID: {user?.id}</h3>
@@ -192,7 +192,7 @@ export default function AdminUserDetails({ email }: any) {
           </div>
         ) : (
           <div className={styles.detail}>
-            <h3>Select a user from the list </h3>
+            <h4 className={styles.select}>Select a user from the list </h4>
           </div>
         )}
       </div>

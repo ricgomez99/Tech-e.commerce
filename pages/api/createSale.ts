@@ -6,7 +6,6 @@ export default async function handlerCreateSale(
   res: NextApiResponse
 ) {
   const { total, date, userId, state } = req.body;
-
   try {
     const creation = await prisma.sale.create({
       data: {

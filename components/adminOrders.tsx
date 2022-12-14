@@ -19,7 +19,7 @@ export default function AdminOrders() {
 
   return (
     <div className={styles.title}>
-      <h3>Orders</h3>
+      <h3 className={styles.titles}>Orders</h3>
       <div className={styles.ordersContainer}>
         <div>
           <AdminOrderDetails id={saleId} />

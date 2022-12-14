@@ -41,9 +41,9 @@ export default function AdminTools() {
               />
             </div>
             <div className="d-flex justify-content-evenly mt-3">
-              <button onClick={() => setTool("users")}>Users</button>
-              <button onClick={() => setTool("orders")}>Orders</button>
-              <button onClick={() => setTool("products")}>Products</button>
+              <button className={`btn btn-outline-secondary ${styles.active} `} onClick={() => setTool("users")}>Users</button>
+              <button className={`btn btn-outline-secondary ${styles.active} `} onClick={() => setTool("orders")}>Orders</button>
+              <button className={`btn btn-outline-secondary ${styles.active} `}onClick={() => setTool("products")}>Products</button>
             </div>
             <div>
               {tool === "users" ? (

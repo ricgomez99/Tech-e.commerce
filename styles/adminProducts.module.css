@@ -13,16 +13,18 @@
 }
 
 .all {
-  width: 600px;
+  width: 40vw;
   box-shadow: 0 2px 20px #dddddd;
   padding: 20px;
-  height: 700px;
+  min-height: 55vh;
+  max-height: 700px;
   overflow-y: scroll;
   margin-top: 22px;
 }
 
 .detail {
-  width: 600px;
+  width: 40vw;
+  /* max-height: 55vh; */
   box-shadow: 0 2px 20px #dddddd;
   padding: 20px;
   text-align: center;
@@ -62,7 +64,7 @@
 
 .name {
   cursor: pointer;
-  color: #2a528a; 
+  color: #2a528a;
 }
 
 .addTocart {
@@ -107,5 +109,3 @@
 .select {
   color: #2a528a;
 }
-
-

@@ -14,7 +14,6 @@ export default function Profile() {
       if (typeof email === "string") {
         let data = await findUniqueUser(email);
         setUser(data);
-        console.log(data);
       }
     })();
   }, [email]);

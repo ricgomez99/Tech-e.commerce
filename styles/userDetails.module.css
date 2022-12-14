@@ -1,0 +1,31 @@
+.email{
+    color: rgb(104, 121, 106);
+}
+
+.userImage{
+    border-radius: 15px;
+    margin-right: 30px;
+    box-shadow: 0 2px 20px #cccccc;
+}
+
+.cardContainer{
+    display: flex;
+    margin: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.imageAndName{
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    align-items: center;
+    
+}
+
+.userName{
+    color: #4b678d;
+    display: flex;
+    /* text-decoration: underline 1.2px rgb(170, 169, 179); */
+    text-decoration: wavy;
+}

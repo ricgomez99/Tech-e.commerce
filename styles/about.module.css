@@ -28,6 +28,10 @@
   transition: all 250ms;
   overflow: hidden;
   width: 80%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 18rem));
+  gap: 2.5rem;
+  justify-content: center;
 }
 
 .names{

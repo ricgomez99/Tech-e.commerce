@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { idProduct } from "services/productEndPoints";
 import styles from "styles/orderDetails.module.css";
-import Image from "next/image";
 import { findSaleDetails } from "services/saleEndPoints";
 import OrderDetails from "./orderDetails";
 
@@ -9,6 +8,7 @@ export default function UserSaleDetails({ id }: any) {
   const [product, setProduct] = useState<any[]>([]);
   const [show, setShow] = useState(false);
   const [sale, setSale] = useState<any>();
+  const [message, setMessage] = useState(false);
 
   useEffect(() => {
     try {
@@ -24,25 +24,30 @@ export default function UserSaleDetails({ id }: any) {
   }, []);
 
   function handleClick() {
+    setMessage(!message)
     setShow(!show);
   }
 
-  return (
-    <div>
-      <h3 onClick={() => handleClick()}>View more details</h3>
-      {show ? (
-        <div>
-          {sale?.saleDetails?.map((e: any) => (
-            <div key={e.idProduct}>
-              <div className={styles.saleMap}>
-                <OrderDetails id={e.idProduct} />
-                <h5>Quantity: {e.amount}</h5>
-                <h5>Total item price: {e.price}</h5>
-              </div>
+return (
+  <div>
+    <div className={styles.detailsContainer}>
+    <button className={styles.buttonInfo} onClick={() => handleClick()}>{message ? "Show less" : "View details"}</button>
+    {show?
+    <div className={styles.viewDetails}>
+        {sale?.saleDetails?.map((e: any) => (
+          <div className={styles.details} key={e.idProduct}>
+            <div className={styles.saleMap}>
+            <OrderDetails id={e.idProduct}/>
+            <div className={styles.pandq}>
+            <h6 className={styles.quantity}>Quantity: {e.amount}</h6>
+            <h6 className={styles.price}>Item price: ${e.price}</h6>
             </div>
-          ))}
+            </div>
         </div>
-      ) : null}
-    </div>
+          ))}
+   </div>
+  : null}
+  </div>
+ </div>
   );
 }

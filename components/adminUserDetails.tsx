@@ -136,17 +136,17 @@ export default function AdminUserDetails({ email }: any) {
   }
 
   return (
-    <div className={styles.usersContainer}>
+    <div>
       <div className={styles.userDetail}>
-        <h5>User Detail</h5>
-        {user ? (
+        <h5 className={styles.titles}>User Detail</h5>
+        {email.length ? (
           <div className={styles.detail}>
-            <h3>ID: {user.id}</h3>
-            <h3>Username: {user.name}</h3>
-            <h3>Email: {user.email}</h3>
+            <h3>ID: {user?.id}</h3>
+            <h3>Username: {user?.name}</h3>
+            <h3>Email: {user?.email}</h3>
             <div className={styles.click}>
-              <h3>Role: {user.role}</h3>
-              {user.role === "USER" ? null : (
+              <h3>Role: {user?.role}</h3>
+              {user?.role === "USER" ? null : (
                 <button
                   value="user"
                   onClick={(e) => handleClick(e)}
@@ -155,16 +155,16 @@ export default function AdminUserDetails({ email }: any) {
                   Set as User
                 </button>
               )}
-              {user.role === "MOD" ? null : (
+              {user?.role === "MOD" ? null : (
                 <button
                   value="mod"
                   onClick={(e) => handleClick(e)}
                   disabled={role ? (role === "ADMIN" ? false : true) : false}
                 >
-                  Upgrade to Mod
+                  {user?.role === "ADMIN" ? "Set as Mod" : "Upgrade to Mod"}
                 </button>
               )}
-              {user.role === "ADMIN" ? null : (
+              {user?.role === "ADMIN" ? null : (
                 <button
                   value="admin"
                   onClick={(e) => handleClick(e)}
@@ -175,21 +175,21 @@ export default function AdminUserDetails({ email }: any) {
               )}
             </div>
             <div className={styles.click}>
-              <h3>Active: {user.active?.toString()}</h3>
+              <h3>Status: {user?.active ? "Active" : "Banned"}</h3>
               <button value="ban" onClick={(e) => handleClick(e)}>
-                {user.active ? "Ban User" : "Unban User"}
+                {user?.active ? "Ban User" : "Unban User"}
               </button>
             </div>
             <div>
               <h3>Orders</h3>
               <div className={styles.userOrders}>
-                <UserOrdersList id={user.id} />
+                <UserOrdersList id={user?.id} />
               </div>
             </div>
           </div>
         ) : (
           <div className={styles.detail}>
-            <h3>Select a user from the list </h3>
+            <h4 className={styles.select}>Select a user from the list </h4>
           </div>
         )}
       </div>

@@ -4,11 +4,14 @@ import { getProducts2 } from "../services/productEndPoints";
 import Image from "next/image";
 import SearchBar from "./searchbar";
 import Product from "./product";
+import { BsFillPlusCircleFill } from "react-icons/bs";
+import { useRouter } from "next/router";
 
 export default function AdminProducts() {
   const [products, setProducts] = useState<any[]>([]);
   const [conditions, setConditions] = useState({});
   const [chosenProduct, setChosenProduct] = useState({});
+  const router = useRouter();
 
   const handleConditions = (values: any) => {
     setConditions({ ...conditions, ...values });
@@ -31,10 +34,10 @@ export default function AdminProducts() {
 
   return (
     <div className={styles.title}>
-      <h3>Products</h3>
+      <h3 className={styles.titles}>Products</h3>
       <div className={styles.productsContainer}>
         <div className={styles.productDetail}>
-          <h5>Product Detail</h5>
+          <h5 className={styles.titles}>Product Detail</h5>
           <div className={styles.detail}>
             {Object.keys(chosenProduct).length ? (
               <Product
@@ -43,19 +46,28 @@ export default function AdminProducts() {
                 showAs="adminProduct"
               />
             ) : (
-              <h4>Choose a product from the list</h4>
+              <h4 className={styles.select}>Select a product from the list</h4>
             )}
           </div>
         </div>
         <div className={styles.allProducts}>
           <div className={styles.search}>
             <SearchBar handleConditions={handleConditions} />
-            <button
-              className={styles.refresh}
-              onClick={() => setConditions({})}
-            >
-              Refresh
-            </button>
+            <div className={styles.toolsBtn}>
+              <button
+                className={styles.refresh}
+                onClick={() => setConditions({})}
+              >
+                Refresh
+              </button>
+              <button
+                className={styles.addToCart}
+                onClick={() => router.push("/newProduct")}
+              >
+                Add Product
+                <BsFillPlusCircleFill className={styles.icon} />
+              </button>
+            </div>
           </div>
           <div className={styles.all}>
             {products?.map((p) => (

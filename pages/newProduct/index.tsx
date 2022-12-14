@@ -83,13 +83,6 @@ export default function NewProduct(categories: any) {
                 onSubmit={submit}
               >
                 <Form className="w-50">
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-xs mb-5 p-1"
-                    onClick={() => Router.back()}
-                  >
-                    Go Back
-                  </button>
                   <div className="mb-3">
                     <label htmlFor="title" className="form-label">
                       Product Title

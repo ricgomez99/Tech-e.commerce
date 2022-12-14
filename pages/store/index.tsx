@@ -75,6 +75,7 @@ export default function Index({ categories }: Data) {
         <div className={styledProducts.searchBar}>
           <SearchBar handleConditions={handleConditions} />
         </div>
+
         {role ? (
           role === "ADMIN" ? (
             <div className={styledProducts.toolsBtn}>
@@ -87,7 +88,7 @@ export default function Index({ categories }: Data) {
               </button>
               <button
                 className={styledProducts.adminBtn}
-                onClick={() => router.push("/profile/admin")}
+                onClick={() => router.push("/admin")}
               >
                 Admin <BsFillGearFill className={styledProducts.icon} />
               </button>
@@ -96,7 +97,7 @@ export default function Index({ categories }: Data) {
             <div className={styledProducts.toolsBtn}>
               <button
                 className={styledProducts.adminBtn}
-                onClick={() => router.push("/profile/admin")}
+                onClick={() => router.push("/admin")}
               >
                 MOD <BsFillGearFill className={styledProducts.icon} />
               </button>

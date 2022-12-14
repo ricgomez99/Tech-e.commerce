@@ -7,7 +7,3 @@ export default function authServiceFactory() {
     };
     return {validate};
 };
-
-// module.exports = {
-//     authServiceFactory
-// };

@@ -19,18 +19,25 @@ export default function AdminOrders() {
 
   return (
     <div className={styles.title}>
-      <h3>Orders</h3>
+      <h3 className={styles.titles}>Orders</h3>
       <div className={styles.ordersContainer}>
-        <div className={styles.orderDetail}>
+        <div>
           <AdminOrderDetails id={saleId} />
         </div>
-        <div className={styles.all + " " + styles.allOrders}>
+        <div className={styles.all}>
           {orders?.map((o: any) => (
             <div key={o.id} className={styles.orders}>
-              <h5 className={styles.name} onClick={() => setSaleId(o.id)}>
-                Order ID: {o.id}, Status: {o.state}, User: {o.userId}, Date:{" "}
-                {o.date}
-              </h5>
+              <h5
+                className={styles.name}
+                onClick={() => setSaleId(o.id)}
+                style={{ cursor: "pointer" }}
+              >
+                Order ID: {o.id}
+                </h5>
+                <h6 className={styles.data}>
+                Date: {o.date.substring(0, 10)}
+                <br /> User Id: {o.userId}
+                </h6>
             </div>
           ))}
         </div>

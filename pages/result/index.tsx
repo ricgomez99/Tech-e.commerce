@@ -22,6 +22,7 @@ export default function Result() {
       if (typeof email === "string") {
         let data = await findUniqueUser(email);
         setRole(data.role);
+        console.log(data)
       }
     })();
   }, [email]);

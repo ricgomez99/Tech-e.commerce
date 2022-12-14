@@ -29,7 +29,7 @@ export default function AdminOrders() {
             <div key={o.id} className={styles.orders}>
               <h5 className={styles.name} onClick={() => setSaleId(o.id)}>
                 Order ID: {o.id}, Date: {o.date.substring(0, 10)}
-                <br /> User: {o.userId}
+                <br /> User Id: {o.userId}
               </h5>
             </div>
           ))}

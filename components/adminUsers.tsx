@@ -26,20 +26,23 @@ export default function AdminUsers() {
         </div>
         <div className={styles.all}>
           <ul>
-            {users.length
-              ? users.map((u: any) => (
-                  <div key={u.id} className={styles.users}>
-                    <h5
-                      className={styles.name}
-                      onClick={() => setUserEmail(u.email)}
-                    >
-                      {u.role}, Username: {u.name}
-                      <br />
-                      Email: {u.email}
-                    </h5>
-                  </div>
-                ))
-              : null}
+            {users.length ? (
+              users.map((u: any) => (
+                <div key={u.id} className={styles.users}>
+                  <h5
+                    className={styles.name}
+                    onClick={() => setUserEmail(u.email)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {u.role}, Username: {u.name}
+                    <br />
+                    Email: {u.email}
+                  </h5>
+                </div>
+              ))
+            ) : (
+              <li>Users are shown here</li>
+            )}
           </ul>
         </div>
       </div>

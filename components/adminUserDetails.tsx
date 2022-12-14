@@ -3,17 +3,29 @@ import { updateUser, findUniqueUser } from "services/userEndPoints";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import UserOrdersList from "./userOrdersList";
+import { useSession } from "next-auth/react";
 
 export default function AdminUserDetails({ email }: any) {
   const [user, setUser] = useState<any>({});
   const [state, setState] = useState<boolean>(true);
+  const [role, setRole] = useState();
+  const { data: session } = useSession();
+  const currentEmail = session?.user?.email;
+
+  useEffect(() => {
+    (async () => {
+      if (typeof currentEmail === "string") {
+        let data = await findUniqueUser(currentEmail);
+        setRole(data.role);
+      }
+    })();
+  }, [currentEmail]);
 
   useEffect(() => {
     try {
       (async () => {
         setUser(await findUniqueUser(email));
       })();
-      console.log(user);
     } catch (error) {
       console.log(error);
     }
@@ -133,26 +145,34 @@ export default function AdminUserDetails({ email }: any) {
             <h3>Username: {user.name}</h3>
             <h3>Email: {user.email}</h3>
             <div className={styles.click}>
-              <div>
-                <h3>Role: {user.role}</h3>
-              </div>
-              <div>
-                {user.role === "USER" ? null : (
-                  <button value="user" onClick={(e) => handleClick(e)}>
-                    Set as User
-                  </button>
-                )}
-                {user.role === "MOD" ? null : (
-                  <button value="mod" onClick={(e) => handleClick(e)}>
-                    Upgrade to Mod
-                  </button>
-                )}
-                {user.role === "ADMIN" ? null : (
-                  <button value="admin" onClick={(e) => handleClick(e)}>
-                    Upgrade to Admin
-                  </button>
-                )}
-              </div>
+              <h3>Role: {user.role}</h3>
+              {user.role === "USER" ? null : (
+                <button
+                  value="user"
+                  onClick={(e) => handleClick(e)}
+                  disabled={role ? (role === "ADMIN" ? false : true) : false}
+                >
+                  Set as User
+                </button>
+              )}
+              {user.role === "MOD" ? null : (
+                <button
+                  value="mod"
+                  onClick={(e) => handleClick(e)}
+                  disabled={role ? (role === "ADMIN" ? false : true) : false}
+                >
+                  {user.role === "ADMIN" ? "Set as Mod" : "Upgrade to Mod"}
+                </button>
+              )}
+              {user.role === "ADMIN" ? null : (
+                <button
+                  value="admin"
+                  onClick={(e) => handleClick(e)}
+                  disabled={role ? (role === "ADMIN" ? false : true) : false}
+                >
+                  Upgrade to Admin
+                </button>
+              )}
             </div>
             <div className={styles.click}>
               <h3>Status: {user.active ? "Active" : "Banned"}</h3>

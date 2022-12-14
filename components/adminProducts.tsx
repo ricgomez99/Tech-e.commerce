@@ -4,11 +4,14 @@ import { getProducts2 } from "../services/productEndPoints";
 import Image from "next/image";
 import SearchBar from "./searchbar";
 import Product from "./product";
+import { BsFillPlusCircleFill } from "react-icons/bs";
+import { useRouter } from "next/router";
 
 export default function AdminProducts() {
   const [products, setProducts] = useState<any[]>([]);
   const [conditions, setConditions] = useState({});
   const [chosenProduct, setChosenProduct] = useState({});
+  const router = useRouter();
 
   const handleConditions = (values: any) => {
     setConditions({ ...conditions, ...values });
@@ -50,12 +53,21 @@ export default function AdminProducts() {
         <div className={styles.allProducts}>
           <div className={styles.search}>
             <SearchBar handleConditions={handleConditions} />
+            <div className={styles.toolsBtn}>
             <button
               className={styles.refresh}
               onClick={() => setConditions({})}
             >
               Refresh
             </button>
+            <button
+                className={styles.addToCart}
+                onClick={() => router.push("/newProduct")}
+              >
+                Add Product
+                <BsFillPlusCircleFill className={styles.icon} />
+              </button>
+            </div>
           </div>
           <div className={styles.all}>
             {products?.map((p) => (

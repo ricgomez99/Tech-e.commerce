@@ -20,8 +20,9 @@ export async function findManyUsers() {
 
 export async function findUniqueUser(email: string) {
   try {
-    const response = await axios.get(`/api/findUniqueUser?email=${email}`);
-    return response.data;
+    const response = await fetch(`/api/findUniqueUser?email=${email}`);
+    const res = await response.json();
+    return res;
   } catch (error) {
     console.log(error)
     return error;

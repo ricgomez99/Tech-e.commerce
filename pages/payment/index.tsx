@@ -3,12 +3,14 @@ import CardPayment from "components/cardPayment";
 import Router from "next/router";
 import React from "react";
 import styles from "../../styles/payment.module.css";
+import Button from "react-bootstrap/Button";
+import Swal from "sweetalert2";
 import { useAppContext } from "components/statewrapper";
 import { MdOutlineArrowBack } from "react-icons/md";
 import { loadStripe } from "@stripe/stripe-js";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import Button from "react-bootstrap/Button";
+import { findUniqueUser } from "services/userEndPoints";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
@@ -36,7 +38,19 @@ function conversion(cart: any) {
 export default function Payment() {
   const cart = useAppContext();
   const [emptyCart, setEmptyCart] = useState(true);
-  const { status } = useSession();
+  const [active, setActive] = useState();
+
+  const { status, data: session } = useSession();
+  const email = session?.user?.email;
+
+  useEffect(() => {
+    (async () => {
+      if (typeof email === "string") {
+        let data = await findUniqueUser(email);
+        setActive(data.active);
+      }
+    })();
+  }, [email]);
 
   const getTotal = () => {
     const total = cart.items.reduce(
@@ -57,6 +71,14 @@ export default function Payment() {
     const stripe = await stripePromise;
     const { error }: any = await stripe?.redirectToCheckout({
       sessionId,
+    });
+  };
+
+  const handleClickBaned = () => {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Your account has been suspended, please contact support at name@gmail.com",
     });
   };
 
@@ -88,14 +110,25 @@ export default function Payment() {
               </h3>
               {status !== "loading" ? (
                 status === "authenticated" ? (
-                  <Button
-                    className={styles.button}
-                    variant="primary"
-                    role="link"
-                    onClick={handleClick}
-                  >
-                    Pay
-                  </Button>
+                  active ? (
+                    <Button
+                      className={styles.button}
+                      variant="primary"
+                      role="link"
+                      onClick={handleClick}
+                    >
+                      Pay
+                    </Button>
+                  ) : (
+                    <Button
+                      className={styles.button}
+                      variant="primary"
+                      role="link"
+                      onClick={handleClickBaned}
+                    >
+                      Pay
+                    </Button>
+                  )
                 ) : (
                   <Button
                     className={styles.button}

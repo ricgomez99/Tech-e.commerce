@@ -1,8 +1,7 @@
 .ordersContainer {
   display: flex;
   justify-content: center;
-  margin: 20px;
-  margin-top: 60px;
+
   gap: 30px;
 }
 
@@ -14,16 +13,17 @@
 }
 
 .all {
-  width: 600px;
+  width: 40vw;
   box-shadow: 0 2px 20px #dddddd;
   padding: 20px;
-  height: 700px;
+  height: 60vh;
   overflow-y: scroll;
   margin-top: 22px;
 }
 
 .detail {
-  width: 600px;
+  width: 40vw;
+  max-height: 60vh;
   box-shadow: 0 2px 20px #dddddd;
   padding: 20px;
   text-align: center;

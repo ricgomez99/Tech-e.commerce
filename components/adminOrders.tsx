@@ -21,7 +21,7 @@ export default function AdminOrders() {
     <div className={styles.title}>
       <h3>Orders</h3>
       <div className={styles.ordersContainer}>
-        <div className={styles.orderDetail}>
+        <div>
           <AdminOrderDetails id={saleId} />
         </div>
         <div className={styles.all + " " + styles.allOrders}>

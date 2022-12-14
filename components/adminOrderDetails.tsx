@@ -89,7 +89,7 @@ export default function AdminOrderDetails({ id }: any) {
   // }
 
   return (
-    <div className={styles.ordersContainer}>
+    <div>
       <div className={styles.orderDetail}>
         <h5>Order Detail</h5>
         {id ? (

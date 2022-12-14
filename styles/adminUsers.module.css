@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   margin: 20px;
+  margin-top: 60px;
   gap: 30px;
 }
 
@@ -9,7 +10,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 11px;
+  margin-top: -30px;
 }
 
 .all {
@@ -43,9 +44,8 @@
 }
 
 .users {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+  border-bottom: solid 1px #ccc;
+  padding: 10px 0;
 }
 
 .allUsers {
@@ -53,3 +53,15 @@
   flex-direction: column;
   align-items: center;
 }
+
+.name {
+  color: #2a528a; 
+  margin-bottom: -20px;
+  /* #6b9080; #7a9aba;*/
+}
+
+.data {
+  color: #959595;
+  font-size: 19px;
+}
+

@@ -14,24 +14,24 @@ import { useSession } from "next-auth/react";
 export default function Result() {
   const router = useRouter();
   const [role, setRole] = useState();
-  const [prueba, setPrueba] = useState({});
-      const [user, setUser]   = useState();
+  const [user, setUser] = useState();
+  const [cart, setCart]: any = useState();
+  const [itemsArr, setItemsArr]: any = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [created, setCreated]: any = useState();
   const { data: session } = useSession();
   const email = session?.user?.email;
+  const products = useAppContext();
 
   useEffect(() => {
     (async () => {
       if (typeof email === "string") {
         let data = await findUniqueUser(email);
         setRole(data.role);
-        setUser       (data.id);
+        setUser(data.id);
       }
     })();
   }, [email]);
-
-  let cart;
-
-  const products = useAppContext();
 
   const { data, error } = useSWR(
     router.query.session_id
@@ -40,54 +40,111 @@ export default function Result() {
     (url) => fetch(url).then((res) => res.json())
   );
 
-  let itemsArr: any[] = [];
-  // let totalPrice: number = 0;
-  const [totalPrice, setTotalPrice] = useState(0)
+  useEffect(() => {
+    setCart(products.getCart());
+    console.log(cart);
+  }, [products]);
 
   useEffect(() => {
-    cart = products.getCart();
-    let quant = 0;
-    cart ? (itemsArr = Array.from(cart.values())) : null;
-  //   if(typeof user === "string"){itemsArr.length && itemsArr.map((product) => {
-  //     // totalPrice += (Number(product.price) * Number(product.qty));
-  //     setTotalPrice(totalPrice + (Number(product.price) * Number(product.qty)));
-  //     quant += 1
-  //   });}    
-  //   let saleInfo;
-  //   if(quant === itemsArr.length){
-  //     console.log("palíndromo",totalPrice)
-  //   saleInfo = {
-  //     total: totalPrice,
-  //     date: new Date().toISOString(),
-  //     userId: user,
-  //     state: "SUCCESSFUL",
-  //   };
+    cart ? setItemsArr(Array.from(cart.values())) : null;
+    console.log(itemsArr);
+  }, [cart]);
 
-  // }
-  //   setPrueba({...saleInfo})
-    // let created: any;
-    // if(saleInfo && saleInfo.userId) {(async () => {  
-    //   created = await postSale(saleInfo);
-    //   console.log("nene", created);    
-    // })();}
-    // if (!!created === true) {
-    //   itemsArr.map(async (product) => {
-    //     const stocked = product.stock - product.qty;
-    //     await updateStock(product.id, stocked);
-    //     await createDetailSale({
-    //       amount: product.qty,
-    //       price: product.price,
-    //       idProduct: product.id,
-    //       saleId: created.id,
-    //     });
-    //   });
-    // }
-    products.resetCart();
-  }, []);
+  useEffect(() => {
+    let sum = 0;
+    if (itemsArr.length) {
+      if (typeof user === "string") {
+        console.log("algo", itemsArr);
+        itemsArr.map((el: any) => {
+          sum += el.price * el.qty;
+          console.log(sum);
+        });
+      }
+    }
+    console.log(sum);
+    setTotalPrice(sum);
+  }, [itemsArr]);
+
+  if (itemsArr.length) {
+    useEffect(() => {
+      (async () => {
+        setCreated(
+          await postSale({
+            total: totalPrice,
+            date: new Date().toISOString(),
+            userId: user,
+            state: "SUCCESSFUL",
+          })
+        );
+        console.log(created);
+      })();
+    }, [totalPrice]);
+
+    useEffect(() => {
+      if (created) {
+        itemsArr.map(async (product: any) => {
+          const stocked = product.stock - product.qty;
+          await updateStock(product.id, stocked);
+          await createDetailSale({
+            amount: product.qty,
+            price: product.price,
+            idProduct: product.id,
+            saleId: created.id,
+          });
+        });
+      }
+    }, [created]);
+  }
+
+  // useEffect(() => {
+  //   cart = products.getCart();
+  //   cart ? setItemsArr(Array.from(cart.values())) : null;
+  //   let quant = 0;
+  //   if (typeof user === "string") {
+  //     itemsArr?.length &&
+  //       itemsArr?.map((product) => {
+  //         // totalPrice += (Number(product.price) * Number(product.qty));
+  //         setTotalPrice(totalprice + (Number(product.price) * Number(product.qty)));
+  //         quant += 1;
+  //       });
+  //   }
+  //   let saleInfo;
+  //   if (quant === itemsArr.length) {
+  //     console.log("palíndromo", totalPrice);
+  //     saleInfo = {
+  //       total: totalPrice,
+  //       date: new Date().toISOString(),
+  //       userId: user,
+  //       state: "SUCCESSFUL",
+  //     };
+  //   }
+  //   // setPrueba({ ...saleInfo });
+  //   let created: any;
+  //   if (saleInfo && saleInfo.userId) {
+  //     (async () => {
+  //       created = await postSale(saleInfo);
+  //       console.log("nene", created);
+  //     })();
+  //   }
+  //   if (!!created === true) {
+  //     itemsArr.map(async (product) => {
+  //       const stocked = product.stock - product.qty;
+  //       await updateStock(product.id, stocked);
+  //       await createDetailSale({
+  //         amount: product.qty,
+  //         price: product.price,
+  //         idProduct: product.id,
+  //         saleId: created.id,
+  //       });
+  //     });
+  //   }
+  //   // products.resetCart();
+  // }, []);
 
   if (role) {
     return (
       <Layout>
+        <button onClick={() => console.log(itemsArr, totalPrice)}>asdf</button>
         <div className={styles.container}>
           {data ? (
             <div className={styles.text}>

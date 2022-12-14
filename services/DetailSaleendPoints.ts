@@ -6,8 +6,10 @@ export async function createDetailSale(data: any) {
       "https://tech-e-commerce.vercel.app/api/createDetailSale",
       data
     );
+    console.log(response.data);
+
     return response.data;
   } catch (error) {
-    return error
+    return error;
   }
 }

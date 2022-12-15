@@ -9,44 +9,96 @@ import style from "styles/product.module.css";
 export default function About() {
   return (
     <Layout>
-      
       <div className={styles.everythingAbout}>
-      <MdOutlineArrowBack
-            onClick={() => Router.back()}
-            className={style.backBtn}
-          />
-        <div>
-       
-        </div>
+        <MdOutlineArrowBack
+          onClick={() => Router.back()}
+          className={style.backBtn}
+        />
+        <div></div>
         <div className={styles.titleAbout}>
           <Image className={styles.logoAbout} src={logo} alt="img"></Image>
           <h1>Tech-E-Commerce</h1>
         </div>
         <div className={styles.namesAbout}>
           <div className={styles.box}>
-          <a className={styles.names} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/andres-gomez-restrepo">Ricardo Gómez</a>
+            <a
+              className={styles.names}
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.linkedin.com/in/andres-gomez-restrepo"
+            >
+              Ricardo Gómez
+            </a>
           </div>
           <div className={styles.box}>
-          <a  className={styles.names} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jose-mendez-6215b6150">José Méndez</a>
+            <a
+              className={styles.names}
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.linkedin.com/in/jose-mendez-6215b6150"
+            >
+              José Méndez
+            </a>
           </div>
           <div className={styles.box}>
-          <a className={styles.names} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/felipe-hernandez-72037b248/">Felipe Hernández</a>
+            <a
+              className={styles.names}
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.linkedin.com/in/felipe-hernandez-72037b248/"
+            >
+              Felipe Hernández
+            </a>
           </div>
           <div className={styles.box}>
-          <a className={styles.names} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/juan-jos%C3%A9-bogado-ab0480245/">Juan José Bogado </a>
+            <a
+              className={styles.names}
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.linkedin.com/in/juan-jos%C3%A9-bogado-ab0480245/"
+            >
+              Juan José Bogado{" "}
+            </a>
           </div>
           <div className={styles.box}>
-          <a className={styles.names} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/joaquin-maza">Joaquín Maza</a>
-          <a className={styles.names} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/martina-girollet-61790425a/">Martina Girollet</a>
+            <a
+              className={styles.names}
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.linkedin.com/in/joaquin-maza"
+            >
+              Joaquín Maza
+            </a>
           </div>
           <div className={styles.box}>
-          <a className={styles.names} >Martina Girollet</a>
+            <a
+              className={styles.names}
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.linkedin.com/in/martina-girollet-61790425a/"
+            >
+              Martina Girollet
+            </a>
           </div>
           <div className={styles.box}>
-          <a className={styles.names} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/nicolas-rojas-castro-65b156150/">Nicolás Rojas</a>
+            <a
+              className={styles.names}
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.linkedin.com/in/nicolas-rojas-castro-65b156150/"
+            >
+              Nicolás Rojas
+            </a>
           </div>
           <div className={styles.box}>
-          <a className={styles.names} target="_blank" rel="noopener noreferrer" href="http://linkedin.com/in/antonio-michel-952296bb">Antonio Michel</a>
+            <a
+              className={styles.names}
+              target="_blank"
+              rel="noopener noreferrer"
+              href="http://linkedin.com/in/antonio-michel-952296bb"
+            >
+              Antonio Michel
+            </a>
           </div>
         </div>
         <p className={styles.paragraphAbout}>
@@ -60,10 +112,10 @@ export default function About() {
           website. Do you need an ergonomic chair to make your back feel better?
           We have it!. Are you tired of being sitted in the same position? We
           have the best standing desktop for you! Or you just want a brand new
-          laptop with a gaming keyboard? Well, this is the best site you could ever be! We
-          have all of these and a whole lot more. We hope you enjoy and have the
-          very best time navigating our website. Designed and built with all the
-          love in the world. 
+          laptop with a gaming keyboard? Well, this is the best site you could
+          ever be! We have all of these and a whole lot more. We hope you enjoy
+          and have the very best time navigating our website. Designed and built
+          with all the love in the world.
         </p>
       </div>
     </Layout>

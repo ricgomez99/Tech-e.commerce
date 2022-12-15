@@ -1,23 +1,58 @@
 .everythingAbout {
   height: 100%;
+  background: #fdfaf6;
+  padding: 100px 2rem;
 }
 
 .titleAbout {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #6b9080;
 }
 
-.namesAbout {
+.namesAbout{
+  padding: 25px 25px;
+  margin: 40px auto;
+  border: unset;
+  border-radius: 15px;
+  z-index: 1;
+  background: #fff;
+  position: relative;
+  font-weight: bold;
+  font-size: 17px;
+  -webkit-box-shadow: 4px 8px 19px -3px #bbbbbb;
+  box-shadow: 4px 8px 19px -3px #bbbbbb;
+  transition: all 250ms;
+  overflow: hidden;
+  width: 80%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-items: center;
-  margin: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 18rem));
+  gap: 2.5rem;
+  justify-content: center;
 }
+
+.names{
+  outline: none;
+  text-decoration: none;
+  color: #6b9080;
+}
+
+.names:hover{
+  color: #A4C3B2;
+}
+
 
 .paragraphAbout {
   display: flex;
-  margin: 20px;
+  margin: 70px;
+  padding-top: 40px;
+  padding-right: 25px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #a6a9b6;
 }
 
 .logoAbout {
@@ -26,7 +61,7 @@
   height: 20%;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 750px) {
   .logoAbout {
     width: 5%;
     height: 5%;

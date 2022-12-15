@@ -1,19 +1,18 @@
 import Layout from "../../components/layout";
 import styles from "../../styles/newproduct.module.css";
 import Router from "next/router";
+import Swal from "sweetalert2";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { getCategories, postProduct } from "../../services/productEndPoints";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { findUniqueUser } from "services/userEndPoints";
+import { MdOutlineArrowBack } from "react-icons/md";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as yup from "yup";
-import { MdOutlineArrowBack } from "react-icons/md";
-
+import NotFound from "components/notFound";
 
 export default function NewProduct(categories: any) {
-  const [message, setMessage] = useState("");
-  const [submitted, setSubmitted] = useState(false);
   const [imageSrc, setImageSrc] = useState("");
   const [role, setRole] = useState();
   const { data: session } = useSession();
@@ -29,9 +28,16 @@ export default function NewProduct(categories: any) {
   }, [email]);
 
   const submit = async (values: any) => {
-    setMessage("Form submitted");
-    await postProduct(values);
-    setSubmitted(true);
+    const res = await postProduct(values);
+    if (res) {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "The product has been created",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
     Router.push("/store");
   };
 
@@ -52,18 +58,11 @@ export default function NewProduct(categories: any) {
           <div>
             <div>
               <MdOutlineArrowBack
-              onClick={() => Router.back()}
-              className={styles.backBtn}
+                onClick={() => Router.back()}
+                className={styles.backBtn}
               />
             </div>
             <div className="d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
-              <div
-                hidden={!submitted}
-                className="alert alert-primary"
-                role="alert"
-              >
-                {message}
-              </div>
               <Formik
                 initialValues={{
                   title: "",
@@ -83,13 +82,6 @@ export default function NewProduct(categories: any) {
                 onSubmit={submit}
               >
                 <Form className="w-50">
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-xs mb-5 p-1"
-                    onClick={() => Router.back()}
-                  >
-                    Go Back
-                  </button>
                   <div className="mb-3">
                     <label htmlFor="title" className="form-label">
                       Product Title
@@ -224,14 +216,22 @@ export default function NewProduct(categories: any) {
     } else {
       return (
         <Layout>
-          <h1>Not Found</h1>
+          <NotFound
+            shortMessage=""
+            title="ACCESS DENIED"
+            description="You are not allowed to access to this content, please go back to the HomePage"
+          />
         </Layout>
       );
     }
   } else {
     return (
       <Layout>
-        <h1>Not Found</h1>
+        <NotFound
+          shortMessage=""
+          title="ACCESS DENIED"
+          description="You are not allowed to access to this content, please go back to the HomePage"
+        />
       </Layout>
     );
   }

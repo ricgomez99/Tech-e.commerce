@@ -10,9 +10,8 @@ import UserOptions from "./userOptionsModal";
 import { BsPersonCircle } from "react-icons/bs";
 import { FiShoppingCart } from "react-icons/fi";
 import { useScrollBlock } from "utils/scrollblock";
-import { findUniqueUser } from "services/userEndPoints";
-import userImage from "public/Img/user_profile.jpg"
-  
+import userImage from "public/Img/user_profile.jpg";
+
 export default function Navbar() {
   const router = useRouter();
   const cart = useAppContext();
@@ -24,8 +23,11 @@ export default function Navbar() {
   const [blockScroll, allowScroll] = useScrollBlock();
 
   const { data: session, status } = useSession();
-  
-  
+
+  function handleSignOut() {
+    signOut();
+    cart.resetCart();
+  }
 
   function handleOpenCart() {
     cart.openCart();
@@ -41,15 +43,14 @@ export default function Navbar() {
   };
 
   let sessionPrueba;
-  if(session && session.user){
-    sessionPrueba = session.user
+  if (session && session.user) {
+    sessionPrueba = session.user;
   }
 
   useEffect(() => {
     setCartCounter(cart.getNumberOfItems());
   }, [cart.addItemToCart, cart.deleteItem]);
-  const image: any = session?.user?.image
-console.log(session)
+  const image: any = session?.user?.image;
   return (
     <header>
       <nav className={styles.navbar}>
@@ -81,7 +82,6 @@ console.log(session)
               : `${styles.nav__menu_list}`
           } `}
         >
-         
           <Link
             href="/store"
             onClick={
@@ -95,11 +95,13 @@ console.log(session)
             Home
           </Link>
           <div className={styles.cart}>
-            <button className={styles.cartButton} onClick={handleOpenCart}><FiShoppingCart className={styles.cartLogo}/></button>
+            <button className={styles.cartButton} onClick={handleOpenCart}>
+              <FiShoppingCart className={styles.cartLogo} />
+            </button>
             <div className={styles.cartCounter}>{cartCounter}</div>
           </div>
           {!session && <SignInModal />}
-          {session  && (
+          {session && (
             <>
               <BsPersonCircle
                 onClick={() => {
@@ -126,16 +128,16 @@ console.log(session)
                 <div className={styles.buttons}>
                   <a
                     className={`btn btn-secondary ${styles.signOutBtn}`}
-                    onClick={() => signOut()}
+                    onClick={handleSignOut}
                   >
                     Sign Out
                   </a>
-                  <Link href="#">
+                  <Link href="/profile">
                     <button
-                      // onClick={() => {
-                      //   setShow(false);
-                      //   allowScroll();
-                      // }}
+                      onClick={() => {
+                        setShow(false);
+                        allowScroll();
+                      }}
                       className={`btn btn-outline-success ${styles.userDetailsBtn}`}
                     >
                       User details

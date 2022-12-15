@@ -195,6 +195,35 @@
   background: #a4c3b2;
 }
 
+.adminTitle {
+  color: #2a528a;
+}
+
+.adminPrice {
+  color: #959595;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.adminUnits {
+  color: #959595;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.adminEditButtons {
+  padding: 10px;
+}
+
+.adminEdit {
+  margin-top: 20px;
+}
+
+.adminImage {
+  object-fit:scale-down;
+  margin-top: 10px;
+}
+
 @keyframes scale {
   from {
     transform: scale(0);
@@ -210,6 +239,10 @@
     flex-flow: row wrap;
     justify-content: center;
   }
+  .searchBar {
+  margin-bottom: 20px;
+  }
+  
 
   .toolsBtn {
     align-items: center;

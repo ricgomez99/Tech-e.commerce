@@ -16,9 +16,8 @@ export default async function handler(
     });
     res.status(200).json({ session });
   } catch (error) {
-    if(error instanceof Error){
-    return res.status(500).json({ message: error.message });
-    }
-    else return res.status(404).json({message: "error not found"})
+    if (error instanceof Error) {
+      return res.status(500).json({ message: error.message });
+    } else return res.status(404).json({ message: "error not found" });
   }
 }

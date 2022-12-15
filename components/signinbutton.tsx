@@ -1,28 +1,25 @@
 import { signIn } from "next-auth/react";
 import useInfoProviders from "hook/providers";
+import styledSignIn from "../styles/signInModal.module.css";
 
 export default function SignInButton() {
-  const { providers }: any = useInfoProviders() 
+  const { providers }: any = useInfoProviders();
   return (
     <div
       className="col-md-3 d-flex flex-column justify-content-space-between "
       style={{
-        backgroundColor: "#F6FFF8",
-        width: "max-content",
+        backgroundColor: "#FFF",
+        width: "100%",
         borderRadius: "10px",
-        margin: "1vw",
+        margin: "10px 0",
       }}
     >
       <a
-        className="btn btn-outline-dark  mb-1" //Modify styles
+        className={`p-2 btn btn-outline-dark  mb-0.5 ${styledSignIn.signIn}`} //Modify styles
         onClick={async () => {
-          await signIn(providers.google.id)
+          await signIn(providers.google.id);
         }}
         role="button"
-        style={{
-          textTransform: "none",
-          width: "18vw",
-        }}
       >
         <img
           width="20px"
@@ -32,6 +29,9 @@ export default function SignInButton() {
         />
         Login with Google
       </a>
+
+      {/* //Please check if this is going to be used in production or delete
+      instead, Thank you! */}
       {/* <a
         className="btn btn-outline-dark mb-1"
         onClick={() => signIn("facebook")}

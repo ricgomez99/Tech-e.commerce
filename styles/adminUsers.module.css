@@ -1,7 +1,6 @@
 .usersContainer {
   display: flex;
   justify-content: center;
-  margin: 20px;
   gap: 30px;
 }
 
@@ -9,20 +8,22 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 11px;
+  margin-top: -30px;
 }
 
 .all {
-  width: 600px;
+  width: 40vw;
   box-shadow: 0 2px 20px #dddddd;
   padding: 20px;
-  height: 700px;
+  min-height: 60vh;
+  max-height: 700px;
   overflow-y: scroll;
   margin-top: 22px;
 }
 
 .detail {
-  width: 600px;
+  width: 40vw;
+  max-height: 700px;
   box-shadow: 0 2px 20px #dddddd;
   padding: 20px;
   text-align: center;
@@ -36,20 +37,76 @@
   margin: 30px 0;
 }
 
-.click {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-
 .users {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+  border-bottom: solid 1px #ccc;
+  padding: 10px 0;
 }
 
 .allUsers {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.name {
+  color: #2a528a;
+  margin-bottom: -20px;
+}
+
+.data {
+  color: #959595;
+  font-size: 19px;
+}
+
+.titles {
+  color: #6b9080;
+}
+
+.select {
+  color: #2a528a;
+}
+
+.userID {
+  color: #2a528a;
+}
+
+.userData {
+  color: #959595;
+  font-size: 23px;
+  font-weight: 500;
+}
+
+.userProduct {
+  color: #959595;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: left;
+  margin-left: 25%;
+}
+
+.userOrdersTitle {
+  color: #2a528a;
+  border-bottom: solid 1px #ccc;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.userBtnsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 0.5em;
+}
+
+.active:focus {
+  background-color: grey;
+  color: white;
+}
+
+.userOrders {
+  border-bottom: solid 1px #ccc;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: scroll;
 }

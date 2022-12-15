@@ -5,6 +5,7 @@
 
 .searchBar input {
   position: absolute;
+  color: black;
   background: #fff;
   padding: 10px 40px;
   border: none;
@@ -30,4 +31,11 @@
 
 .searchIcon:hover {
   color: #a4c3b2;
+}
+
+@media(max-width:750px) {
+  .searchBar {
+    position: fixed;
+    z-index: 0;
+  }
 }

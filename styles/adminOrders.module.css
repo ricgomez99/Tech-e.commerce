@@ -1,7 +1,7 @@
 .ordersContainer {
   display: flex;
   justify-content: center;
-  margin: 20px;
+
   gap: 30px;
 }
 
@@ -9,20 +9,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 11px;
+  margin-top: -30px;
 }
 
 .all {
-  width: 600px;
+  width: 40vw;
   box-shadow: 0 2px 20px #dddddd;
   padding: 20px;
-  height: 700px;
+  min-height: 60vh;
+  max-height: 700px;
   overflow-y: scroll;
   margin-top: 22px;
 }
 
 .detail {
-  width: 600px;
+  width: 40vw;
   box-shadow: 0 2px 20px #dddddd;
   padding: 20px;
   text-align: center;
@@ -37,15 +38,15 @@
 }
 
 .orders {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+  border-bottom: solid 1px #ccc;
+  padding: 10px 0;
+  margin-left: 30px;
+  margin-top: 5px;
 }
 
 .allOrders {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .search {
@@ -55,4 +56,59 @@
 
 .name {
   cursor: pointer;
+  color: #2a528a;
+}
+
+.data {
+  color: #959595;
+  font-size: 19px;
+}
+
+.titles {
+  color: #6b9080;
+}
+
+.select {
+  color: #2a528a;
+}
+
+.orderID {
+  color: #2a528a;
+}
+
+.orderData {
+  color: #959595;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.orderProduct {
+  color: #959595;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: left;
+  margin-left: 25%;
+}
+
+.orderTotal {
+  color: #2a528a;
+  border-bottom: solid 1px #ccc;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.toolsBtn button {
+  display: flex;
+  padding: 8px 20px;
+  background: #fff;
+  font-weight: 500;
+  color: #92ba92;
+  border-radius: 5px;
+  border: 1px solid #92ba92;
+}
+
+.toolsBtn button:hover {
+  color: #ffff;
+  background: #a4c3b2;
 }

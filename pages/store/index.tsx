@@ -15,6 +15,7 @@ import { useRouter } from "next/router";
 import { BsFillGearFill, BsFillPlusCircleFill } from "react-icons/bs";
 import { useSession } from "next-auth/react";
 import { findUniqueUser } from "services/userEndPoints";
+import NotFound from "components/notFound";
 
 type Data = {
   categories: any[];
@@ -30,7 +31,7 @@ export default function Index({ categories }: Data) {
   const [role, setRole] = useState();
   const { data: session } = useSession();
   const email = session?.user?.email;
-  
+
   useEffect(() => {
     (async () => {
       if (typeof email === "string") {
@@ -75,6 +76,7 @@ export default function Index({ categories }: Data) {
         <div className={styledProducts.searchBar}>
           <SearchBar handleConditions={handleConditions} />
         </div>
+
         {role ? (
           role === "ADMIN" ? (
             <div className={styledProducts.toolsBtn}>
@@ -87,9 +89,18 @@ export default function Index({ categories }: Data) {
               </button>
               <button
                 className={styledProducts.adminBtn}
-                onClick={() => router.push("/profile/admin")}
+                onClick={() => router.push("/admin")}
               >
                 Admin <BsFillGearFill className={styledProducts.icon} />
+              </button>
+            </div>
+          ) : role === "MOD" ? (
+            <div className={styledProducts.toolsBtn}>
+              <button
+                className={styledProducts.adminBtn}
+                onClick={() => router.push("/admin")}
+              >
+                MOD <BsFillGearFill className={styledProducts.icon} />
               </button>
             </div>
           ) : null
@@ -111,36 +122,51 @@ export default function Index({ categories }: Data) {
               All
             </Button>
           </div>
-          <div className={styles.sort}>
-            <Sort handleConditions={handleConditions} />
-          </div>
-          <div className={styles.categories}>
-            <Filter
-              categories={categories}
-              handleConditions={handleConditions}
-            />
-          </div>
+          {items.length > 0 && (
+            <div>
+              <div className={styles.sort}>
+                <Sort handleConditions={handleConditions} />
+              </div>
+              <div className={styles.categories}>
+                <Filter
+                  categories={categories}
+                  handleConditions={handleConditions}
+                />
+              </div>
+            </div>
+          )}
         </div>
-        <div className={styledProducts.items}>
-          {paginateItems &&
-            paginateItems.map((product: any) => (
-              <Product
-                key={product.id}
-                showAs="Default"
-                qty={undefined}
-                product={product}
-              />
-            ))}
+        {items.length > 0 ? (
+          <div className={styledProducts.items}>
+            {paginateItems &&
+              paginateItems.map((product: any) => (
+                <Product
+                  key={product.id}
+                  showAs="Default"
+                  qty={undefined}
+                  product={product}
+                />
+              ))}
+          </div>
+        ) : (
+          <NotFound
+            button={false}
+            shortMessage=""
+            description="Seems like we could not find the product you want"
+            title="Not Found"
+          />
+        )}
+      </div>
+      {items.length > 0 && (
+        <div className={stylePaginator.container}>
+          <Pagination
+            items={items.length}
+            currentPage={currentPage}
+            pageSize={pageSize}
+            onPageChange={handlePageChange}
+          />
         </div>
-      </div>
-      <div className={stylePaginator.container}>
-        <Pagination
-          items={items.length}
-          currentPage={currentPage}
-          pageSize={pageSize}
-          onPageChange={handlePageChange}
-        />
-      </div>
+      )}
     </Layout>
   );
 }

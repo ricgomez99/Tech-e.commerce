@@ -134,10 +134,10 @@ export default function Navbar() {
                   </a>
                   <Link href="/profile">
                     <button
-                      // onClick={() => {
-                      //   setShow(false);
-                      //   allowScroll();
-                      // }}
+                      onClick={() => {
+                        setShow(false);
+                        allowScroll();
+                      }}
                       className={`btn btn-outline-success ${styles.userDetailsBtn}`}
                     >
                       User details

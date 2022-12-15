@@ -24,7 +24,7 @@ export default function UserOrdersList({ id }: any) {
 
   return (
     <ul>
-      {orders
+      {orders?.length
         ? orders.map((o) => (
             <>
               <h6 onClick={() => handleClick(o.id)} key={o.id}>

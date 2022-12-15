@@ -65,3 +65,7 @@
   display: flex;
   flex-direction: row-reverse;
 }
+
+.detailsContainer::-webkit-scrollbar { 
+  display: none; 
+  }

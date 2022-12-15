@@ -78,7 +78,7 @@ export default function Payment() {
     Swal.fire({
       icon: "error",
       title: "Oops...",
-      text: "Your account has been suspended, please contact support at name@gmail.com",
+      text: "Your account has been suspended, please contact support at tech.shop.grp05@gmail.com",
     });
   };
 

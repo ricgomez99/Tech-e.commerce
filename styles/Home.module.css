@@ -10,7 +10,7 @@
   border: unset;
   border-radius: 15px;
   color: #fff;
-  z-index: 1;
+  z-index: 0;
   background: #6b9080;
   position: relative;
   font-weight: bold;

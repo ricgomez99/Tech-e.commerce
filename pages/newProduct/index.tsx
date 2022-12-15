@@ -10,6 +10,7 @@ import { findUniqueUser } from "services/userEndPoints";
 import { MdOutlineArrowBack } from "react-icons/md";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as yup from "yup";
+import NotFound from "components/notFound";
 
 export default function NewProduct(categories: any) {
   const [imageSrc, setImageSrc] = useState("");
@@ -215,14 +216,22 @@ export default function NewProduct(categories: any) {
     } else {
       return (
         <Layout>
-          <h1>Not Found</h1>
+          <NotFound
+            shortMessage=""
+            title="ACCESS DENIED"
+            description="You are not allowed to access to this content, please go back to the HomePage"
+          />
         </Layout>
       );
     }
   } else {
     return (
       <Layout>
-        <h1>Not Found</h1>
+        <NotFound
+          shortMessage=""
+          title="ACCESS DENIED"
+          description="You are not allowed to access to this content, please go back to the HomePage"
+        />
       </Layout>
     );
   }

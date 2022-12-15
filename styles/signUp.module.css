@@ -1,0 +1,121 @@
+.main {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: #fffdf9;
+}
+
+.card {
+  width: 350px;
+  height: 530px;
+  margin: 60px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 2px 20px 40px #aaa;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  padding: 0 15px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+.input input {
+  width: 100%;
+  padding: 7px 5px;
+  border: 1px solid #bbbb;
+  border-radius: 5px;
+}
+
+.input {
+  padding-bottom: 8px;
+}
+
+.image {
+  max-width: 100%;
+  height: 130px;
+  object-fit: contain;
+  padding-top: 15px;
+  transform: scale(2);
+}
+
+.errorTxt {
+  color: #ff7878;
+  font-size: 0.8rem;
+  padding: 0 4px;
+}
+
+.registerBtn {
+  margin-top: 35px;
+  margin-bottom: -15px;
+  padding: 12px;
+  color: #fff;
+  font-weight: 500;
+  background: #a4c3b2;
+  box-shadow: 0px 14px 30px -11px #aaa;
+  border: none;
+  border-radius: 7px;
+  transition: all 0.4s;
+}
+
+.registerBtn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.4s;
+}
+
+.registerBtn span::after {
+  content: " now!";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.7s;
+}
+
+.registerBtn:hover span {
+  padding-right: 2.5em;
+}
+
+.registerBtn:hover span::after {
+  opacity: 4;
+  right: 0;
+}
+
+@media (max-width: 750px) {
+  .image {
+    transform: scale(1.2);
+  }
+
+  .card {
+    width: 250px;
+    height: 410px;
+    margin: 100px auto;
+  }
+
+  .registerBtn {
+    padding: 6px;
+    margin-top: 10px;
+  }
+
+  .input input {
+    padding: 5px 5px;
+  }
+
+  .input {
+    padding-bottom: 4px;
+  }
+}

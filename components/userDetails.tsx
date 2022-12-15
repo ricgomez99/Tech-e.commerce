@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import { findUniqueUser } from "services/userEndPoints";
 import Image from 'next/image';
 import styles from "styles/userDetails.module.css"
+import userImage from "public/Img/user_profile.jpg";
 
 export default function UserDetails() {
   const [user, setUser] = useState<any>({});
@@ -24,7 +25,7 @@ export default function UserDetails() {
           <div>
             <div className={styles.cardContainer}>
               <div className={styles.imageAndName}>
-                <Image className={styles.userImage} src={user.image} alt="img" width={150} height={150}/>
+                <Image className={styles.userImage} src={user.image || userImage} alt="img" width={150} height={150}/>
             <h1 className={styles.userName}>{user.name}</h1>
             </div>
             </div>

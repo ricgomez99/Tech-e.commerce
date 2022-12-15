@@ -1,21 +1,20 @@
-
 .itemTitle {
-    width: 75%;
-    white-space: nowrap;
-    color: #2a528a; 
-  }
-  
-.itemTitle h6 {
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
+  width: 75%;
+  white-space: nowrap;
+  color: #2a528a;
+}
 
-.viewDetails{
+.itemTitle h6 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.viewDetails {
   display: flex;
   flex-direction: column;
 }
 
-.detailsContainer{
+.detailsContainer {
   overflow-y: scroll;
   max-height: 350px;
   width: 500px;
@@ -25,43 +24,40 @@
   margin: 40px;
 }
 
-.details{
+.details {
   margin: 20px;
   justify-content: flex-start;
   border-bottom: solid 1px #ccc;
 }
 
-.price{
+.price {
   font-size: 15px;
   color: #959595;
 }
 
-
-.pandq{
+.pandq {
   color: #959595;
   margin-top: -60px;
   margin-right: -21px;
   margin-bottom: 20px;
-} 
+}
 
-.detailsImage{
+.detailsImage {
   object-fit: scale-down;
 }
 
-.buttonInfo{
+.buttonInfo {
   border: none;
   color: rgb(54, 54, 54);
   background: none;
 }
 
-.buttonInfo:hover{
-  text-shadow: 0 0 5px #d8d8d8,
-              0 0 10px #d8d8d8,
-              0 0 25px #d8d8d8,
-              0 0 50px #d8d8d8
+.buttonInfo:hover {
+  text-shadow: 0 0 5px #d8d8d8, 0 0 10px #d8d8d8, 0 0 25px #d8d8d8,
+    0 0 50px #d8d8d8;
 }
 
-.imageAndText{
+.imageAndText {
   display: flex;
   flex-direction: row-reverse;
 }

@@ -32,6 +32,7 @@
   grid-template-columns: repeat(auto-fit, minmax(12rem, 18rem));
   gap: 2.5rem;
   justify-content: center;
+  z-index: 0;
 }
 
 .names{

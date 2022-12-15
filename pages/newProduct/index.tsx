@@ -9,7 +9,7 @@ import { findUniqueUser } from "services/userEndPoints";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as yup from "yup";
 import { MdOutlineArrowBack } from "react-icons/md";
-
+import NotFound from "components/notFound";
 
 export default function NewProduct(categories: any) {
   const [message, setMessage] = useState("");
@@ -52,8 +52,8 @@ export default function NewProduct(categories: any) {
           <div>
             <div>
               <MdOutlineArrowBack
-              onClick={() => Router.back()}
-              className={styles.backBtn}
+                onClick={() => Router.back()}
+                className={styles.backBtn}
               />
             </div>
             <div className="d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
@@ -217,14 +217,22 @@ export default function NewProduct(categories: any) {
     } else {
       return (
         <Layout>
-          <h1>Not Found</h1>
+          <NotFound
+            shortMessage=""
+            title="ACCESS DENIED"
+            description="You are not allowed to access to this content, please go back to the HomePage"
+          />
         </Layout>
       );
     }
   } else {
     return (
       <Layout>
-        <h1>Not Found</h1>
+        <NotFound
+          shortMessage=""
+          title="ACCESS DENIED"
+          description="You are not allowed to access to this content, please go back to the HomePage"
+        />
       </Layout>
     );
   }

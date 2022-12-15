@@ -8,6 +8,7 @@ import { useSession } from "next-auth/react";
 import { findUniqueUser } from "services/userEndPoints";
 import { MdOutlineArrowBack } from "react-icons/md";
 import styles from "../../styles/admin.module.css";
+import NotFound from "components/notFound";
 
 export default function AdminTools() {
   const router = useRouter();
@@ -48,12 +49,19 @@ export default function AdminTools() {
             <div>
               {tool === "users" ? (
                 <AdminUsers />
-              ) : tool === "orders" ? (
+              ) : tool === "orders"  && role === 'ADMIN' ? (
                 <AdminOrders />
-              ) : tool === "products" ? (
+              ) : tool === "products" && role === 'ADMIN' ? (
                 <AdminProducts />
               ) : (
-                <div>404 Not Found</div>
+                <div>
+                  <NotFound 
+                    shortMessage="" 
+                    title="ACCESS DENIED" 
+                    description="Only Admins can see this content, please contact with an Admin" 
+                    button={false}
+                  />
+                </div>
               )}
             </div>
           </div>
@@ -62,14 +70,14 @@ export default function AdminTools() {
     } else {
       return (
         <Layout>
-          <h1>Not Found</h1>
+          <NotFound shortMessage="" title="ACCESS DENIED" description="You are not allowed to access to this content, please go back to the HomePage"/>
         </Layout>
       );
     }
   } else {
     return (
       <Layout>
-        <h1>Not Found</h1>
+        <NotFound shortMessage="" title="ACCESS DENIED" description="You are not allowed to access to this content, please go back to the HomePage"/>
       </Layout>
     );
   }

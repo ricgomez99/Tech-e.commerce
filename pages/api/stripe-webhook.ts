@@ -103,7 +103,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         ...generateEmailContent(
           session.customer_details?.email,
           session.amount_total / 100,
-          "jmendez4tob@gmail.com",
+          process.env.GOOGLE_APLICATION_EMAIL as string,
           session.line_items?.data
         ),
       };

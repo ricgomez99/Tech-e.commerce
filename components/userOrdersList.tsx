@@ -2,6 +2,7 @@ import { userSales } from "services/userEndPoints";
 import { useEffect, useState } from "react";
 import UserSaleDetails from "./userSaleDetails";
 import styles from "styles/adminOrders.module.css";
+import NotFound from "./notFound";
 
 export default function UserOrdersList({ id }: any) {
   const [orders, setOrders] = useState<any[]>();
@@ -24,7 +25,7 @@ export default function UserOrdersList({ id }: any) {
 
   return (
     <ul>
-      {orders
+      {orders?.length
         ? orders.map((o) => (
             <>
               <h6
@@ -38,7 +39,9 @@ export default function UserOrdersList({ id }: any) {
               <UserSaleDetails id={o.id} />
             </>
           ))
-        : null}
+        : (
+          <NotFound shortMessage="" title="There's no orders here yet" description="Go to the store and buy those products that you like the most." button={false}/>
+        )}
     </ul>
   );
 }

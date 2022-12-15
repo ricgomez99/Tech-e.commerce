@@ -9,6 +9,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Button from "react-bootstrap/Button";
+import NotFound from "components/notFound";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
@@ -114,7 +115,7 @@ export default function Payment() {
           </div>
         </div>
       ) : (
-        <div>Empty Car</div>
+        <NotFound shortMessage="Oops" title="YOUR CART IS EMPTY" description="Go to the store and select those products that you like the most" button={false} />
       )}
     </Layout>
   );

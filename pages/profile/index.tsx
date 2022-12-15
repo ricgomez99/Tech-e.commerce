@@ -3,6 +3,7 @@ import Layout from "components/layout";
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { findUniqueUser } from "services/userEndPoints";
+import NotFound from "components/notFound";
 
 export default function Profile() {
   const [user, setUser] = useState<any>({});
@@ -14,10 +15,21 @@ export default function Profile() {
       if (typeof email === "string") {
         let data = await findUniqueUser(email);
         setUser(data);
-        console.log(data);
       }
     })();
   }, [email]);
+
+  if (!session) {
+    return (
+      <Layout>
+        <NotFound
+          shortMessage=""
+          title="WHO ARE YOU?"
+          description="Please log in first to see the content of this page, unless go to the Homepage"
+        />
+      </Layout>
+    );
+  }
 
   return (
     <Layout>

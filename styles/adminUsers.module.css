@@ -1,8 +1,6 @@
 .usersContainer {
   display: flex;
   justify-content: center;
-  margin: 20px;
-  margin-top: 60px;
   gap: 30px;
 }
 
@@ -14,16 +12,18 @@
 }
 
 .all {
-  width: 600px;
+  width: 40vw;
   box-shadow: 0 2px 20px #dddddd;
   padding: 20px;
-  height: 700px;
+  min-height: 60vh;
+  max-height: 700px;
   overflow-y: scroll;
   margin-top: 22px;
 }
 
 .detail {
-  width: 600px;
+  width: 40vw;
+  max-height: 700px;
   box-shadow: 0 2px 20px #dddddd;
   padding: 20px;
   text-align: center;
@@ -102,4 +102,11 @@
 .active:focus {
   background-color: grey;
   color: white;
+}
+
+.userOrders {
+  border-bottom: solid 1px #ccc;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: scroll;
 }

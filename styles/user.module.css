@@ -4,28 +4,48 @@
 
 .detailsCard{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    width: 400px;
+    width: 550px;
     box-shadow: 0 2px 20px #dddddd;
-    padding: 20px;
+    padding: 60px;
     text-align: center;
     margin: 30px;
-    margin-right: 250px;
+    border-color: rgb(233, 238, 243);
+    margin-bottom: 100px;
+    border-radius: 30px;
+    /* background: conic-gradient(#CCE3DE 0deg 90deg, #A4C3B2 90deg 0deg ); */
+    background-image: linear-gradient(
+        to bottom,
+        #A4C3B2 0%,
+        #A4C3B2 40%,
+        #F6FFF8 40%,
+        #F6FFF8 100%
+        );
+    height: 48vh;
 }
-
-.purchaseOrders{
-    width: 500px;
-    box-shadow: 0 2px 20px #dddddd;
-    padding: 20px;
-    text-align: center;
-    margin: 40px;
-}
+/*  */
 
 .general{
     display: flex;
     align-items: center;
-    flex-direction: row;
+    justify-content: center;
     margin: 30px;
 }
 
+.divider{
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    color: #292929; 
+    border-bottom: solid 1px #ccc;
+}
+
+.purchaseOrders{
+    overflow-y: scroll;
+    max-height: 500px;
+    box-shadow: 0 2px 20px #dddddd;
+    padding: 20px;
+    margin: 40px;
+    background-color: #F6FFF8;
+}

@@ -16,7 +16,6 @@ export default function UserCard() {
         if (typeof email === "string") {
           let data = await findUniqueUser(email);
           setUser(data);
-          console.log(data);
         }
       })();
     } catch (error) {
@@ -28,11 +27,12 @@ export default function UserCard() {
     <div className={styles.general}>
       <div className={styles.mainTitle}></div>
       <div className={styles.detailsCard}>
-        {/* <Image src={userProfile} alt="img" width={200} height={200}>
-      </Image> */}
         <UserDetails />
       </div>
       <div className={styles.purchaseOrders}>
+      <div className={styles.divider}>
+        <h1>Order history</h1>
+      </div>  
         <UserOrdersList id={user.id} />
       </div>
     </div>

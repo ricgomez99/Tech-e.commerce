@@ -1,0 +1,40 @@
+
+.userImage{
+    border-radius: 100px;
+    margin-left: 90px;
+    box-shadow: 0 2px 20px #cccccc;
+    margin-top: -30px;
+}
+
+.userName{
+    color: #ffffff;
+    display: flex;
+    font-size: 30px;
+    margin-left: -20px;
+    margin-top: -55px;
+    text-align: start;
+}
+
+.emailAndRole{
+    color: rgb(104, 121, 106);
+    margin-left: -20px;
+    margin-top: -30px;
+}
+
+.cardContainer{
+    display: flex;
+    margin: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.imageAndName{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.emailAndRole h5{
+    font-size: 20px;
+    display: flex;
+    justify-content: flex-start;
+}

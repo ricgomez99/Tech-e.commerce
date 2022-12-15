@@ -5,6 +5,7 @@
 
 .searchBar input {
   position: absolute;
+  color: black;
   background: #fff;
   padding: 10px 40px;
   border: none;

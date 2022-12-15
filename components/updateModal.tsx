@@ -3,7 +3,6 @@ import { Formik, Form, Field } from "formik";
 import { getCategories, updateProduct } from "../services/productEndPoints";
 import Swal from "sweetalert2";
 import styles from "../styles/updateModal.module.css";
-import { Modal, Button } from "react-bootstrap";
 
 export default function UpdateModal({ product }: any) {
   const [showModal, setShowModal] = useState(false);
@@ -52,33 +51,33 @@ export default function UpdateModal({ product }: any) {
     setShowModal(false);
   };
 
-  const handleClose = () => setShowModal(false);
-  const handleShow = () => setShowModal(true);
+  // const handleClose = () => setShowModal(false);
+  // const handleShow = () => setShowModal(true);
 
   return (
     <>
-      <Button variant="success" onClick={handleShow}>
+      <button
+        onClick={() => setShowModal(true)}
+        className="btn btn-outline-success"
+      >
         Update product
-      </Button>
+      </button>
 
-      <div>
-        <Formik
-          initialValues={{
-            title: "",
-            price: "",
-            stock: "",
-            categories: "",
-            description: "",
-            image: "",
-          }}
-          onSubmit={submit}
-        >
-          <Form className="w-50">
-            <Modal show={showModal} onHide={handleClose} size="lg">
-              <Modal.Header closeButton>
-                <Modal.Title>Update Product</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
+      {showModal ? (
+        <div className={styles.modal}>
+          <div className="d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
+            <Formik
+              initialValues={{
+                title: "",
+                price: "",
+                stock: "",
+                categories: "",
+                description: "",
+                image: "",
+              }}
+              onSubmit={submit}
+            >
+              <Form className="w-50">
                 <div className="mb-3">
                   <label htmlFor="title" className="form-label">
                     Product Title
@@ -112,7 +111,6 @@ export default function UpdateModal({ product }: any) {
                       placeholder={product.price}
                       disabled={priceButton}
                     />
-
                     <button
                       type="button"
                       className="btn btn-outline-warning ms-2"
@@ -171,7 +169,6 @@ export default function UpdateModal({ product }: any) {
                         ))}
                       </Field>
                     )}
-
                     <button
                       type="button"
                       className="btn btn-outline-warning ms-2"
@@ -251,23 +248,23 @@ export default function UpdateModal({ product }: any) {
                     </button>
                   </div>
                 </div>
-              </Modal.Body>
-              <Modal.Footer>
-                <button type="submit" className="btn btn-info">
-                  Update Product
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-danger"
-                  onClick={handleClose}
-                >
-                  Close
-                </button>
-              </Modal.Footer>
-            </Modal>
-          </Form>
-        </Formik>
-      </div>
+                <div className="d-flex justify-content-between">
+                  <button type="submit" className="btn btn-info">
+                    Update Product
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-danger"
+                    onClick={() => setShowModal(false)}
+                  >
+                    Close
+                  </button>
+                </div>
+              </Form>
+            </Formik>
+          </div>
+        </div>
+      ) : null}
     </>
   );
 }

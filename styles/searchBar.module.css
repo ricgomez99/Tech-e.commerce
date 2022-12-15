@@ -35,7 +35,7 @@
 
 @media(max-width:750px) {
   .searchBar {
-    position: fixed;
+    position: sticky;
     z-index: 0;
   }
 }

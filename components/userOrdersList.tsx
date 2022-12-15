@@ -28,7 +28,7 @@ export default function UserOrdersList({ id }: any) {
         ? orders.map((o) => (
             <>
               <h6 onClick={() => handleClick(o.id)} key={o.id}>
-                ID: {o.id}, Date: {o.date.slice(0, 10)}, Total: ${o.total}.00
+                Sale ID: {o.id}, Date: {o.date.slice(0, 10)}, Total: ${o.total}.00
                 USD
               </h6>
               <UserSaleDetails id={o.id} />

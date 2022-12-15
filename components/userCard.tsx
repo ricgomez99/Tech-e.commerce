@@ -29,10 +29,10 @@ export default function UserCard() {
       <div className={styles.detailsCard}>
         <UserDetails />
       </div>
+      <div className={styles.purchaseOrders}>
       <div className={styles.divider}>
         <h1>Order history</h1>
-      </div>
-      <div className={styles.purchaseOrders}>
+      </div>  
         <UserOrdersList id={user.id} />
       </div>
     </div>

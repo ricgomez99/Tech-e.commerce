@@ -1,11 +1,24 @@
-.email{
-    color: rgb(104, 121, 106);
-}
 
 .userImage{
-    border-radius: 15px;
-    margin-right: 30px;
+    border-radius: 100px;
+    margin-left: 90px;
     box-shadow: 0 2px 20px #cccccc;
+    margin-top: -30px;
+}
+
+.userName{
+    color: #ffffff;
+    display: flex;
+    font-size: 30px;
+    margin-left: -20px;
+    margin-top: -55px;
+    text-align: start;
+}
+
+.emailAndRole{
+    color: rgb(104, 121, 106);
+    margin-left: -20px;
+    margin-top: -30px;
 }
 
 .cardContainer{
@@ -17,15 +30,11 @@
 
 .imageAndName{
     display: flex;
-    flex-direction: row;
-    margin: 20px;
-    align-items: center;
-    
+    flex-direction: row-reverse;
 }
 
-.userName{
-    color: #4b678d;
+.emailAndRole h5{
+    font-size: 20px;
     display: flex;
-    /* text-decoration: underline 1.2px rgb(170, 169, 179); */
-    text-decoration: wavy;
+    justify-content: flex-start;
 }

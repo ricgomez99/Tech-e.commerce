@@ -28,7 +28,10 @@ export default function UserDetails() {
             <h1 className={styles.userName}>{user.name}</h1>
             </div>
             </div>
-            <h5 className={styles.email}> {user.email} </h5>
+            <div className={styles.emailAndRole}>
+            <h5> {user.email} </h5>
+            <h5>{user.role}</h5>
+            </div>
             </div>
         </div>
     )

@@ -39,7 +39,7 @@ export async function nameProduct(title: string) {
 export async function getCategories() {
   try {
     const request = await fetch(
-      "https://techproductsshop-production.up.railway.app/categories"
+      "http://localhost:3001/categories"
     );
     const categories = await request.json();
     return categories;
@@ -60,13 +60,13 @@ export async function getProducts2(data: any) {
     }
     if (!query.length) {
       const request = await fetch(
-        "https://techproductsshop-production.up.railway.app/products"
+        "http://localhost:3001/products"
       );
       const products = await request.json();
       return products;
     } else {
       const request = await fetch(
-        `https://techproductsshop-production.up.railway.app/products?${query}`
+        `http://localhost:3001/products?${query}`
       );
       const products = await request.json();
       return products;

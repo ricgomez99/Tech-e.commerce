@@ -11,16 +11,17 @@ import Button from "react-bootstrap/Button";
 import { useEffect, useState } from "react";
 import { paginate } from "./../../utils/paginate";
 import { getCategories, getProducts2 } from "services/productEndPoints";
+import { getProducts } from "services/paths";
 import { useRouter } from "next/router";
 import { BsFillGearFill, BsFillPlusCircleFill } from "react-icons/bs";
 import { useSession } from "next-auth/react";
 import { findUniqueUser } from "services/userEndPoints";
 
 type Data = {
-  categories: any[];
+  products: any[];
 };
 
-export default function Index({ categories }: Data) {
+export default function Index({ products }: Data) {
   const router = useRouter();
   const [items, setItems] = useState<any[]>([]);
   const [conditions, setConditions] = useState({});
@@ -48,26 +49,32 @@ export default function Index({ categories }: Data) {
     setConditions({ ...conditions, ...values });
   };
 
-  useEffect(() => {
-    try {
-      (async () => {
-        const response = await getProducts2(conditions);
-        if (response.length > 0) {
-          const filtered = response.filter(
-            (product: any) => product.enabled === true
-          );
-          setItems(filtered);
-        } else setItems(response);
-        setCurrentPage(1);
-      })();
-    } catch (error) {
-      console.log(error);
-    }
-  }, [conditions]);
+  useEffect(()=>{
+    //FELI SE LA COME 
+    setItems(products)
+  },[])
+ 
 
-  useEffect(() => {
-    setConditions({});
-  }, [router.query.refresh]);
+  // useEffect(() => {
+  //   try {
+  //     (async () => {
+  //       const response = await getProducts2(conditions);
+  //       if (response.length > 0) {
+  //         const filtered = response.filter(
+  //           (product: any) => product.enabled === true
+  //         );
+  //         setItems(filtered);
+  //       } else setItems(response);
+  //       setCurrentPage(1);
+  //     })();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }, [conditions]);
+
+  // useEffect(() => {
+  //   setConditions({});
+  // }, [router.query.refresh]);
 
   return (
     <Layout>
@@ -124,12 +131,12 @@ export default function Index({ categories }: Data) {
           <div className={styles.sort}>
             <Sort handleConditions={handleConditions} />
           </div>
-          <div className={styles.categories}>
+          {/* <div className={styles.categories}>
             <Filter
               categories={categories}
               handleConditions={handleConditions}
             />
-          </div>
+          </div> */}
         </div>
         <div className={styledProducts.items}>
           {paginateItems &&
@@ -156,10 +163,10 @@ export default function Index({ categories }: Data) {
 }
 
 export async function getStaticProps() {
-  const res2 = await getCategories();
+  const res2 = await getProducts();
   return {
     props: {
-      categories: res2,
+     products: res2,
     },
   };
 }

@@ -1,6 +1,6 @@
 export async function getProducts() {
   const request = await fetch(
-    "https://techproductsshop-production.up.railway.app/products"
+    "http://localhost:3001/products"
   );
   const products = await request.json();
 

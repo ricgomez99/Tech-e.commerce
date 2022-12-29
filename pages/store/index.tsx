@@ -16,6 +16,7 @@ import { useRouter } from "next/router";
 import { BsFillGearFill, BsFillPlusCircleFill } from "react-icons/bs";
 import { useSession } from "next-auth/react";
 import { findUniqueUser } from "services/userEndPoints";
+import NotFound from "components/notFound";
 
 type Data = {
   products: any[];
@@ -128,36 +129,51 @@ export default function Index({ products }: Data) {
               All
             </Button>
           </div>
-          <div className={styles.sort}>
-            <Sort handleConditions={handleConditions} />
+          {/* {items.length > 0 && (
+            <div>
+              <div className={styles.sort}>
+                <Sort handleConditions={handleConditions} />
+              </div>
+              <div className={styles.categories}>
+                <Filter
+                  categories={categories}
+                  handleConditions={handleConditions}
+                />
+              </div>
+            </div>
+          )} */}
+        </div>
+        {items.length > 0 ? (
+          <div className={styledProducts.items}>
+            {paginateItems &&
+              paginateItems.map((product: any) => (
+                <Product
+                  key={product.id}
+                  showAs="Default"
+                  qty={undefined}
+                  product={product}
+                />
+              ))}
           </div>
-          {/* <div className={styles.categories}>
-            <Filter
-              categories={categories}
-              handleConditions={handleConditions}
-            />
-          </div> */}
-        </div>
-        <div className={styledProducts.items}>
-          {paginateItems &&
-            paginateItems.map((product: any) => (
-              <Product
-                key={product.id}
-                showAs="Default"
-                qty={undefined}
-                product={product}
-              />
-            ))}
-        </div>
+        ) : (
+          <NotFound
+            button={false}
+            shortMessage=""
+            description="Seems like we could not find the product you want"
+            title="Not Found"
+          />
+        )}
       </div>
-      <div className={stylePaginator.container}>
-        <Pagination
-          items={items.length}
-          currentPage={currentPage}
-          pageSize={pageSize}
-          onPageChange={handlePageChange}
-        />
-      </div>
+      {items.length > 0 && (
+        <div className={stylePaginator.container}>
+          <Pagination
+            items={items.length}
+            currentPage={currentPage}
+            pageSize={pageSize}
+            onPageChange={handlePageChange}
+          />
+        </div>
+      )}
     </Layout>
   );
 }

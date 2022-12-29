@@ -24,6 +24,7 @@ export default function UserCard() {
   }, [email]);
 
   return (
+    <div>
     <div className={styles.general}>
       <div className={styles.mainTitle}></div>
       <div className={styles.detailsCard}>
@@ -35,6 +36,7 @@ export default function UserCard() {
       </div>  
         <UserOrdersList id={user.id} />
       </div>
+    </div>
     </div>
   );
 }

@@ -1,10 +1,9 @@
 .navbar {
   display: flex;
-  padding: 8px 16px;
+  padding: 0 16px;
   justify-content: space-between;
   align-items: center;
   background-color: #d3dfd9;
-  
 }
 
 .nav__menu_bar {
@@ -15,13 +14,37 @@
 }
 
 .nav__menu_bar div {
-  width: 40px;
+  width: 30px;
   height: 4px;
-  background-color: black;
+  background-color: #385170;
   border-radius: 2px;
 }
 .a_pointer {
   cursor: pointer;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #385170;
+  font-weight: 500;
+}
+
+.navLink:hover {
+  color: #f9f9f9;
+}
+
+.userName {
+  color: #385170;
+  font-weight: 500;
+}
+
+.userIcon {
+  font-size: 30px;
+  cursor: pointer;
+  color: #41444b;
+}
+.userIcon:hover {
+  color: #f9f9f9;
 }
 
 .nav__menu_list {
@@ -94,19 +117,26 @@
 
 .cartLogo {
   font-size: 30px;
+  color: #385477;
+}
+
+.cartLogo:hover {
+  color: #5a6f89;
+  transform: scale(1.05);
 }
 
 .cartCounter {
   border-radius: 100px;
-  height: 25px;
+  height: 20px;
   background-color: white;
   padding: 4px 4px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 25px;
-  color: #6b9080;
+  width: 20px;
+  color: #385477;
   font-weight: 500;
+  font-size: 0.8rem;
 }
 
 @media screen and (min-width: 750px) {
@@ -137,5 +167,4 @@
   .nav__link:hover:before {
     width: 100%;
   }
-  
 }

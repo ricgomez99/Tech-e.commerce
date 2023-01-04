@@ -8,13 +8,21 @@ import LandingCard from "../components/landingCard";
 import { FiShoppingCart } from "react-icons/fi";
 import { GoSearch } from "react-icons/go";
 import { BsCreditCard } from "react-icons/bs";
+//IntersectionObserver Hook
+import { useInView } from "react-intersection-observer";
 
 export default function Home() {
+  const { ref, inView, entry: newEntry } = useInView();
+  const { ref: myRef, inView: elementIsVisible, entry } = useInView();
+  const { ref: carRef, inView: catVisible, entry: lastEntry } = useInView();
   const router = useRouter();
 
   return (
     <Layout>
-      <div className={styles.container}>
+      <div
+        ref={ref}
+        className={`${styles.container}  ${inView ? styles.animateText : ""}`}
+      >
         <div className={styles.container_all}>
           <div className={styles.text}>
             <h1>Set your env up!</h1>
@@ -45,36 +53,41 @@ export default function Home() {
           </button>
         </div>
       </div>
-      <div className={styles.stepsContainer}>
-      <div>
-        <LandingCard 
-          logo={<GoSearch/>}
-          title="Search products"
-          text="We have 8 different categories for 
-                an easier searching process, and over
-                100 products for you to find whatever
-                you are looking for."
-        />   
-      </div>
-      <div className={styles.middleCard}>
-        <LandingCard 
-          logo={<FiShoppingCart/>}
-          title="Add it to cart"
-          text="Add products to the shopping cart directly 
+      <div
+        ref={myRef}
+        className={`${styles.stepsContainer} ${
+          elementIsVisible ? styles.animateContainer : ""
+        }`}
+      >
+        <div>
+          <LandingCard
+            logo={<GoSearch />}
+            title="Search it"
+            text="Search across 8 different categories and over 100 products that are available to find whatever you want."
+          />
+        </div>
+        <div>
+          <LandingCard
+            logo={<FiShoppingCart />}
+            title="Add it"
+            text="Add products to the shopping cart directly 
                 from the store page or take a look at the
-                product details and add them when you are ready."
-        />
-      </div>
-      <div>
-        <LandingCard
-          logo={<BsCreditCard/>}
-          title="Buy it"
-          text="Go to checkout, review or update your
+                product details."
+          />
+        </div>
+        <div>
+          <LandingCard
+            logo={<BsCreditCard />}
+            title="Buy it"
+            text="Go to checkout, review or update your
                 order and proceed to payment easily."
-        />
+          />
+        </div>
       </div>
-      </div>
-      <div className={styles.carousel}>
+      <div
+        ref={carRef}
+        className={`${styles.carousel} ${catVisible ? styles.catAnimated : ""}`}
+      >
         <h2>Our Categories</h2>
         <p>
           The categories will allow you to sort and explore all the products

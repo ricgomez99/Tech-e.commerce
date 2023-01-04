@@ -5,18 +5,18 @@
 }
 
 .card {
-  padding: 15px 25px;
+  padding: 15px 35px;
   margin-bottom: 40px;
   border: unset;
   border-radius: 15px;
   color: #fff;
   z-index: 0;
-  background: #6b9080;
+  background: #749f82;
   position: relative;
   font-weight: bold;
   font-size: 17px;
-  -webkit-box-shadow: 4px 8px 19px -3px #bbbbbb;
-  box-shadow: 4px 8px 19px -3px #bbbbbb;
+  -webkit-box-shadow: 4px 8px 19px -3px #aaaa;
+  box-shadow: 4px 8px 19px -3px #aaaa;
   transition: all 250ms;
   overflow: hidden;
 }
@@ -31,13 +31,13 @@
   border-radius: 15px;
   background-color: #212121;
   z-index: -1;
-  -webkit-box-shadow: 4px 8px 19px -3px #bbbbbb;
-  box-shadow: 4px 8px 19px -3px #bbbbbb;
+  -webkit-box-shadow: 4px 8px 19px -3px #aaaa;
+  box-shadow: 4px 8px 19px -3px #aaaa;
   transition: all 250ms;
 }
 
 .card:hover {
-  color: #a4c3b2;
+  color: #749f82;
 }
 
 .card:hover::before {
@@ -55,13 +55,14 @@
   flex-direction: column;
   align-items: center;
   padding: 50px 2rem;
-  background: #fdfaf6;
+  background: #f9f7f7;
+  min-height: 100vh;
 }
 
 .text h1 {
-  font-size: 3.5rem;
-  font-weight: bold;
-  color: #6b9080;
+  font-size: 3.8rem;
+  font-weight: 700;
+  color: #749f82;
 }
 
 .description {
@@ -69,7 +70,7 @@
   padding-right: 25px;
   font-size: 1.5rem;
   font-weight: 500;
-  color: #a6a9b6;
+  color: #a9abb4;
 }
 
 .subDescription {
@@ -77,35 +78,39 @@
   padding-right: 25px;
   font-size: 1.2rem;
   font-weight: 500;
-  color: #bbbbbb;
+  color: #b8b8b8;
 }
 
 .products {
   font-size: 1.3rem;
-  color: #a4c3b2;
+  color: #98b4a6;
 }
 
 .carousel {
   padding: 100px 0;
-  background: #fffdf9;
+  background: #f9f7f7;
   text-align: center;
 }
 
 .carousel h2 {
   font-size: 3.5rem;
   font-weight: bold;
-  color: #6b9080;
+  color: #749f82;
   padding-bottom: 60px;
 }
 
 .carousel p {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   font-weight: 500;
-  color: #a6a9b6;
+  color: #a9abb4;
   width: 650px;
   margin: 0 auto;
 }
 
+.mainImage {
+  background: #f9f7f7;
+  object-fit: scale-down;
+}
 
 @media (max-width: 750px) {
   .ImageContainer {
@@ -170,13 +175,64 @@
   .stepsContainer {
     display: flex;
     flex-direction: column;
-    margin-right: 5%!important ;
+    margin: 100px auto;
   }
 }
 
 .stepsContainer {
   display: flex;
   justify-content: center;
-  margin: 8% auto;
+  margin: 150px auto;
+}
+.animateContainer {
+  animation-duration: 2s;
+  animation-name: animate-container;
 }
 
+.animateText {
+  animation-duration: 2s;
+  animation-name: animate-text;
+}
+
+.catAnimated {
+  animation-duration: 1.5s;
+  animation-name: animate-cat;
+}
+
+@keyframes animate-cat {
+  0% {
+    opacity: 0;
+    transition: all 3s;
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes animate-text {
+  0% {
+    opacity: 0;
+    transition: all 3s;
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes animate-container {
+  0% {
+    opacity: 0;
+    transition: all 3s;
+    filter: blur(5px);
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+  }
+}

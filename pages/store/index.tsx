@@ -16,6 +16,7 @@ import { BsFillGearFill, BsFillPlusCircleFill } from "react-icons/bs";
 import { useSession } from "next-auth/react";
 import { findUniqueUser } from "services/userEndPoints";
 import NotFound from "components/notFound";
+import Loading from "components/loading";
 
 type Data = {
   categories: any[];
@@ -23,7 +24,7 @@ type Data = {
 
 export default function Index({ categories }: Data) {
   const router = useRouter();
-  const [items, setItems] = useState<any[]>([]);
+  const [items, setItems] = useState<any[] | false>([]);
   const [conditions, setConditions] = useState({});
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 8;
@@ -58,7 +59,7 @@ export default function Index({ categories }: Data) {
             (product: any) => product.enabled === true
           );
           setItems(filtered);
-        } else setItems(response);
+        } else setItems(false);
         setCurrentPage(1);
       })();
     } catch (error) {
@@ -122,7 +123,7 @@ export default function Index({ categories }: Data) {
               All
             </Button>
           </div>
-          {items.length > 0 && (
+          {items !== false && items.length > 0 && (
             <div>
               <div className={styles.sort}>
                 <Sort handleConditions={handleConditions} />
@@ -136,7 +137,7 @@ export default function Index({ categories }: Data) {
             </div>
           )}
         </div>
-        {items.length > 0 ? (
+        {items !== false && items.length > 0 ? (
           <div className={styledProducts.items}>
             {paginateItems &&
               paginateItems.map((product: any) => (
@@ -148,16 +149,21 @@ export default function Index({ categories }: Data) {
                 />
               ))}
           </div>
-        ) : (
+        ) : items === false ? 
+         (
           <NotFound
             button={false}
             shortMessage=""
             description="Seems like we could not find the product you want"
             title="Not Found"
           />
-        )}
+        ) :
+        (
+          <Loading/>
+        )
+        }
       </div>
-      {items.length > 0 && (
+      {items !== false && items.length > 0 && (
         <div className={stylePaginator.container}>
           <Pagination
             items={items.length}

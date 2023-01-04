@@ -1,5 +1,5 @@
 .footer {
-  background-color: #a4c3b2;
+  background-color: #385170;
   padding-top: 8px;
 }
 
@@ -15,8 +15,9 @@
   text-align: center;
   line-height: 1.3rem;
   transform: translateY(7px);
-  color: rgb(63, 63, 63);
+  color: rgb(255, 255, 255);
   width: 300px;
+  font-size: 0.8rem;
 }
 
 .aboutus {
@@ -24,11 +25,29 @@
   height: 3px;
   transform: translateY(-15px);
   text-decoration: none;
-  color: #000000;
+  color: #ffffff;
+  transition: 0.2s;
 }
 
 .aboutus:hover {
-  color: #f6fff8;
+  color: #fff2fe;
+  text-shadow: 0 0 10px #fce8f3,
+               0 0 20px #fce8f3,
+               0 0 80px #fce8f3;
+  transition-delay: 0.1s;
+}
+
+.logo{
+  transition: 0.2s;
+  font-size: 40px;
+  color: black;
+  margin-top: -14px;
+}
+
+.logo:hover{
+  transform:scale(1.1);
+  z-index: 2;
+  color: white;
 }
 
 @media (max-width: 750px) {

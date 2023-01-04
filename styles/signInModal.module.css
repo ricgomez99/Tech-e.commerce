@@ -27,6 +27,21 @@
   padding: 20px 0;
 }
 
+.signInBtn {
+  padding: 6px 14px;
+  background: transparent;
+  font-weight: 500;
+  color: #385170;
+  border: 1.5px solid #385170;
+  border-radius: 6px;
+}
+
+.signInBtn:hover {
+  color: #f9f9f9;
+  background: #385170;
+  border: 1.5px solid #385170;
+}
+
 .label {
   padding-bottom: 7px;
 }

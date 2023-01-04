@@ -64,7 +64,9 @@ export default function Navbar() {
         </Link>
         <div>
           {session ? (
-            <span>Hello {session.user?.name?.split(" ")[0]}!</span>
+            <span className={styles.userName}>
+              Hello {session.user?.name?.split(" ")[0]}!
+            </span>
           ) : null}
         </div>
         <div
@@ -87,11 +89,11 @@ export default function Navbar() {
             onClick={
               router.pathname === "/store" ? () => handlerRefresh() : () => null
             }
-            style={{ textDecoration: "none", color: "black" }}
+            className={styles.navLink}
           >
             Store
           </Link>
-          <Link href="/" style={{ textDecoration: "none", color: "black" }}>
+          <Link href="/" className={styles.navLink}>
             Home
           </Link>
           <div className={styles.cart}>
@@ -108,7 +110,7 @@ export default function Navbar() {
                   setShow(true);
                   blockScroll();
                 }}
-                style={{ fontSize: "30px", cursor: "pointer" }}
+                className={styles.userIcon}
               />
               <UserOptions
                 onClose={() => {

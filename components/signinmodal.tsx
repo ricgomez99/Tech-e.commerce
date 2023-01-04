@@ -31,16 +31,15 @@ export default function SignInModal() {
   return (
     <>
       <div>
-        <a
+        <button
           onClick={() => {
             setShowModal(true);
             blockScroll();
           }}
-          style={{ cursor: "pointer" }}
-          className="btn btn-outline-success me-2"
+          className={styles.signInBtn}
         >
           Sign In
-        </a>
+        </button>
       </div>
 
       {showModal ? (

@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-// import githubLogo from "../public/Img/githubLogo.png";
 import styles from "../styles/footer.module.css";
 import { GoMarkGithub } from "react-icons/go";
 

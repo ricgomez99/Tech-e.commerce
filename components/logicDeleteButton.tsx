@@ -29,7 +29,7 @@ export default function LogicDeleteButton({ id, enabled }: any) {
           className="btn btn-outline-danger"
           onClick={handleClick}
         >
-          Disabled
+          Disable
         </button>
       ) : (
         <button
@@ -37,7 +37,7 @@ export default function LogicDeleteButton({ id, enabled }: any) {
           className="btn btn-outline-success"
           onClick={handleClick}
         >
-          Enabled
+          Enable
         </button>
       )}
     </div>

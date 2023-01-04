@@ -1,5 +1,26 @@
+.modal {
+  background-color: #F6FFF8;
+  border-radius: 20px;
+  height: 80vh;
+  width: 80vw;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  overflow-y:scroll
+}
+
+.modal label {
+  color: black;
+}
+
 .img {
-  height: 200px;
-  width: auto;
+  width: 500px;
+  height: 400px;
   object-fit: scale-down;
+}
+
+.modal::-webkit-scrollbar { 
+  display: none; 
 }

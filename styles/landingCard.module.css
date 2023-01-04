@@ -1,31 +1,39 @@
 .steps {
   width: 250px;
-  box-shadow: 0 2px 20px #dddddd;
+  box-shadow: -7px 10px 30px #aaaa;
   padding: 20px;
   text-align: center;
   margin: 30px;
   height: 350px;
+  background: #fff;
+  border-radius: 6px;
 }
 
 .stepsLogo {
-  font-size: 40px;
-  color: #2a528a;
+  font-size: 60px;
+  color: #98b4a6;
 }
 
 .stepsTitle {
-  color: #2a528a;
+  color: #98b4a6;
+  font-size: 1.5rem;
+  margin-top: 10px;
+  font-weight: bold;
 }
 
 .stepsText {
-  font-size: 1.2rem;
-  color:  #a6a9b6;
+  font-size: 1rem;
+  color: #9c9ea9cb;
   font-weight: 500;
+  line-height: 1.3rem;
+  margin-top: 17px;
+  text-align: center;
 }
 
 @media (max-width: 750px) {
   .steps {
-    width: 90%;
-    font-size: 95%;
-    height: 270px;
+    width: 300px;
+    height: 300px;
+    margin: 15px auto;
   }
 }

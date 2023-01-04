@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import githubLogo from "../public/Img/githubLogo.png";
+// import githubLogo from "../public/Img/githubLogo.png";
 import styles from "../styles/footer.module.css";
+import { GoMarkGithub } from "react-icons/go";
+
 
 export default function Footer() {
   return (
@@ -20,7 +22,7 @@ export default function Footer() {
               className={styles.logo}
               href="https://github.com/ricgomez99/Tech-e.commerce"
             >
-              <Image src={githubLogo} alt="img" width={40} height={40}></Image>
+             <GoMarkGithub />
             </a>
           </nav>
         </div>

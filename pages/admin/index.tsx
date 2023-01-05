@@ -33,9 +33,11 @@ export default function AdminTools() {
 
   if(role !== "ADMIN" && role !== "MOD" && role != undefined){
     return (
-      <NotFound
-      title="You are not allowed to be here " />
+      <Layout >
+        <NotFound button= {true} />
+      </Layout>
     )
+
   }
 
   return (

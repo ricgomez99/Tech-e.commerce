@@ -38,7 +38,7 @@ export default function ShoppingCart() {
       className={style.shoppingCart}
       style={{ display: cart.isOpen ? "block" : "none" }}
     >
-      <div>
+      <div className={style.back}>
         <button onClick={handleCloseCart} className={style.button}>
           <BsFillXCircleFill />
         </button>
@@ -47,7 +47,7 @@ export default function ShoppingCart() {
         <div className={style.empty}>Cart is empty</div>
       ) : (
         <>
-          <h3>items</h3>
+          <h3 className={style.title}>Products</h3>
           <div>
             {currentCart.map((item: any) => (
               <Product
@@ -58,14 +58,11 @@ export default function ShoppingCart() {
               />
             ))}
           </div>
-          <div>Total: ${getTotal()}</div>
+          <div className={style.totalSection}>
+            <h4 className={style.total}>Total: ${getTotal()}</h4>
+          </div>
           <Link href="/payment">
-            <button
-              style={{ cursor: "pointer", width: "150px", height: "40px" }}
-              className="btn btn-success"
-            >
-              Checkout
-            </button>
+            <button className={style.checkBtn}>Go to checkout</button>
           </Link>
         </>
       )}

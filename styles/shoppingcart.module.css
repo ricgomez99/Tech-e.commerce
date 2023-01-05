@@ -3,14 +3,15 @@
   top: 6em;
   right: 0;
   background-color: #fff;
-  width: 350px;
+  width: 400px;
   height: max-content;
   max-height: 80vh;
-  padding: 25px;
+  padding: 16px;
   box-sizing: border-box;
   box-shadow: 0 0 10px #bbbb;
   z-index: 1;
   overflow-y: scroll;
+  border-radius: 8px;
 }
 
 .empty {
@@ -23,6 +24,55 @@
 
 .button {
   background-color: transparent;
-  color: #535353;
+  color: #749f82;
   border: none;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  color: #82a08c;
+}
+
+.back {
+  padding: 10px 0;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 1.5rem;
+  padding-left: 6px;
+  color: #a9abb4;
+}
+
+.totalSection {
+  margin: 13px 0;
+}
+
+.total {
+  color: #385170;
+  font-weight: 500;
+  font-size: 1.3rem;
+  padding-left: 7px;
+}
+
+.checkBtn {
+  margin: 12px 6px;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 6px;
+  background: #749f82;
+  font-weight: 500;
+  color: #fff;
+  box-shadow: 3px 5px 15px #bbbb;
+}
+
+.checkBtn:hover {
+  background: #96c2a5;
+}
+
+@media (max-width: 750px) {
+  .shoppingCart {
+    margin: 0 20px;
+    width: 350px;
+  }
 }

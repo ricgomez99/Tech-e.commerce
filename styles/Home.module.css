@@ -204,6 +204,7 @@
     opacity: 0;
     transition: all 3s;
     filter: blur(5px);
+    animation-delay: 2s;
   }
   100% {
     opacity: 1;
@@ -214,12 +215,11 @@
 @keyframes animate-text {
   0% {
     opacity: 0;
-    transition: all 3s;
-    filter: blur(5px);
+    transition: all 5s;
+    animation-delay: 2s;
   }
   100% {
     opacity: 1;
-    filter: blur(0);
   }
 }
 

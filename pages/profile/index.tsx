@@ -22,11 +22,7 @@ export default function Profile() {
   if (!session) {
     return (
       <Layout>
-        <NotFound
-          shortMessage=""
-          title="WHO ARE YOU?"
-          description="Please log in first to see the content of this page, unless go to the Homepage"
-        />
+        <NotFound button={false} />
       </Layout>
     );
   }

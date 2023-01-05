@@ -1,36 +1,32 @@
 import styles from "styles/notFound.module.css";
-import Button from "react-bootstrap/Button";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
-export default function NotFound({
-  shortMessage = "Oops!",
-  title = "404 NOT FOUND",
-  description = "The Page you are looking for might have been removed, had its name changed or its temporarily unavailable",
-  button = true,
-}) {
+interface Props {
+  button?: boolean;
+}
+
+export default function NotFound({ button }: Props) {
   const router = useRouter();
-
   return (
     <div className={styles.container}>
-      <div className={styles.oops}> {shortMessage} </div>
-      <div className={styles.text}>
-        <h1 className="text-center">{title}</h1>
-        <h2 className={`${styles.description} text-center fs-2`}>
-          {description}
-        </h2>
-      </div>
-      <div>
+      <section className={styles.feedback}>
+        <Image
+          src="/Img/notFound.svg"
+          alt="not Found"
+          width={450}
+          height={450}
+          className={styles.img}
+        />
+        <h4 className={styles.errorMsg}>
+          Sorry we could not find the content you are looking for
+        </h4>
         {button && (
-          <Button
-            className={styles.button}
-            variant="primary"
-            role="link"
-            onClick={() => router.push("/")}
-          >
-            GO TO HOMEPAGE
-          </Button>
+          <button onClick={() => router.push("/")} className={styles.backBtn}>
+            Go to homepage
+          </button>
         )}
-      </div>
+      </section>
     </div>
   );
 }

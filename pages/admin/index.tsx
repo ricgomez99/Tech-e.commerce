@@ -64,18 +64,13 @@ export default function AdminTools() {
             <div>
               {tool === "users" ? (
                 <AdminUsers />
-              ) : tool === "orders"  && role === 'ADMIN' ? (
+              ) : tool === "orders" && role === "ADMIN" ? (
                 <AdminOrders />
-              ) : tool === "products" && role === 'ADMIN' ? (
+              ) : tool === "products" && role === "ADMIN" ? (
                 <AdminProducts />
               ) : (
                 <div>
-                  <NotFound 
-                    shortMessage="" 
-                    title="ACCESS DENIED" 
-                    description="Only Admins can see this content, please contact with an Admin" 
-                    button={false}
-                  />
+                  <NotFound button={false} />
                 </div>
               )}
             </div>
@@ -85,14 +80,14 @@ export default function AdminTools() {
     } else {
       return (
         <Layout>
-          <NotFound shortMessage="" title="ACCESS DENIED" description="You are not allowed to access to this content, please go back to the HomePage"/>
+          <NotFound button={true} />
         </Layout>
       );
     }
   } else {
     return (
       <Layout>
-        <NotFound shortMessage="" title="ACCESS DENIED" description="You are not allowed to access to this content, please go back to the HomePage"/>
+        <NotFound button={true} />
       </Layout>
     );
   }

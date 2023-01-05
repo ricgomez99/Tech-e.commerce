@@ -149,19 +149,11 @@ export default function Index({ categories }: Data) {
                 />
               ))}
           </div>
-        ) : items === false ? 
-         (
-          <NotFound
-            button={false}
-            shortMessage=""
-            description="Seems like we could not find the product you want"
-            title="Not Found"
-          />
-        ) :
-        (
-          <Loading/>
-        )
-        }
+        ) : items === false ? (
+          <NotFound button={false} />
+        ) : (
+          <Loading />
+        )}
       </div>
       {items !== false && items.length > 0 && (
         <div className={stylePaginator.container}>

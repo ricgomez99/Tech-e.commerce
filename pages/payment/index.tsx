@@ -148,7 +148,7 @@ export default function Payment() {
           </div>
         </div>
       ) : (
-        <NotFound shortMessage="Oops" title="YOUR CART IS EMPTY" description="Go to the store and select those products that you like the most" button={false} />
+        <NotFound button={false} />
       )}
     </Layout>
   );

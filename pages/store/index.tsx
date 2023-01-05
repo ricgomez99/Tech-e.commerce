@@ -90,7 +90,7 @@ export default function Index({ categories }: Data) {
               </button>
               <button
                 className={styledProducts.adminBtn}
-                onClick={() => router.push("/admin")}
+                onClick={() => router.push(`/admin?role=${role}`)}
               >
                 Admin <BsFillGearFill className={styledProducts.icon} />
               </button>
@@ -99,7 +99,7 @@ export default function Index({ categories }: Data) {
             <div className={styledProducts.toolsBtn}>
               <button
                 className={styledProducts.adminBtn}
-                onClick={() => router.push("/admin")}
+                onClick={() => router.push(`/admin?role=${role}`)}
               >
                 MOD <BsFillGearFill className={styledProducts.icon} />
               </button>

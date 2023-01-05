@@ -15,8 +15,11 @@ export default function AdminTools() {
   const router = useRouter();
   const [tool, setTool] = useState("users");
   const [role, setRole] = useState();
+  const [active, setActive] = useState(false)
   const { data: session } = useSession();
-  const email = session?.user?.email;
+  const email = session?.user?.email;//2seg
+
+  const rol = router.query.role;
 
   useEffect(() => {
     try {
@@ -24,65 +27,61 @@ export default function AdminTools() {
         if (typeof email === "string") {
           let data = await findUniqueUser(email);
           setRole(data.role);
+          setActive(true);
         }
       })();
     } catch (error) {
       console.log(error);
     }
-  }, [email]);
+  }, []);
 
-  if(role !== "ADMIN" && role !== "MOD" && role != undefined){
-    return (
-      <Layout >
-        <NotFound button= {true} />
-      </Layout>
-    )
-
-  }
+  
 
   return (
     <Layout>
-      <div>
-        <div>
-          <MdOutlineArrowBack
-            onClick={() => router.push("/store")}
-            className={styles.backBtn}
-          />
-        </div>
-        <div className="d-flex justify-content-evenly">
-          <button
-            className={`btn btn-outline-secondary ${styles.active} `}
-            onClick={() => setTool("users")}
-          >
-            Users
-          </button>
-          <button
-            className={`btn btn-outline-secondary ${styles.active} `}
-            onClick={() => setTool("orders")}
-          >
-            Orders
-          </button>
-          <button
-            className={`btn btn-outline-secondary ${styles.active} `}
-            onClick={() => setTool("products")}
-          >
-            Products
-          </button>
-        </div>
-        <div>
-          {tool === "users" ? (
-            <AdminUsers />
-          ) : tool === "orders" && role === "ADMIN" ? (
-            <AdminOrders />
-          ) : tool === "products" && role === "ADMIN" ? (
-            <AdminProducts />
-          ) : (
+    {rol ? (<div>
             <div>
-              <Loading />
+              <MdOutlineArrowBack
+                onClick={() => router.push("/store")}
+                className={styles.backBtn}
+              />
             </div>
-          )}
-        </div>
-      </div>
+            <div className="d-flex justify-content-evenly">
+              <button
+                className={`btn btn-outline-secondary ${styles.active} `}
+                onClick={() => setTool("users")}
+              >
+                Users
+              </button>
+              <button
+                className={`btn btn-outline-secondary ${styles.active} `}
+                onClick={() => setTool("orders")}
+              >
+                Orders
+              </button>
+              <button
+                className={`btn btn-outline-secondary ${styles.active} `}
+                onClick={() => setTool("products")}
+              >
+                Products
+              </button>
+            </div>
+            <div>
+              {tool === "users" ? (
+                <AdminUsers />
+              ) : tool === "orders" && role === "ADMIN" ? (
+                <AdminOrders />
+              ) : tool === "products" && role === "ADMIN" ? (
+                <AdminProducts />
+              ) : (
+                <div>
+                  <NotFound button={false} />
+                </div>
+              )}
+            </div>
+          </div>) : (<NotFound button={true}/>)}
     </Layout>
   );
 }
+
+{/*  */}

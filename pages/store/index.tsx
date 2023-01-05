@@ -77,7 +77,10 @@ export default function Index({ categories }: Data) {
         <div className={styledProducts.searchBar}>
           <SearchBar handleConditions={handleConditions} />
         </div>
-
+        <div className={styledProducts.options}>
+          <Sort handleConditions={handleConditions}/>
+          <Filter categories={categories} handleConditions={handleConditions}/>
+        </div>
         {role ? (
           role === "ADMIN" ? (
             <div className={styledProducts.toolsBtn}>
@@ -107,36 +110,7 @@ export default function Index({ categories }: Data) {
           ) : null
         ) : null}
       </div>
-      <div className={styledProducts.products_filter_container}>
-        <div className={styles.filter_sorter}>
-          <div className={styles.allBtn}>
-            <Button
-              variant="light"
-              size="sm"
-              style={{
-                color: "#6B9080",
-                padding: "6px 25px",
-                fontWeight: "500",
-              }}
-              onClick={() => setConditions({})}
-            >
-              All
-            </Button>
-          </div>
-          {items !== false && items.length > 0 && (
-            <div>
-              <div className={styles.sort}>
-                <Sort handleConditions={handleConditions} />
-              </div>
-              <div className={styles.categories}>
-                <Filter
-                  categories={categories}
-                  handleConditions={handleConditions}
-                />
-              </div>
-            </div>
-          )}
-        </div>
+      <div>
         {items !== false && items.length > 0 ? (
           <div className={styledProducts.items}>
             {paginateItems &&

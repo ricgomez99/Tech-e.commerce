@@ -1,12 +1,24 @@
 import styles from "styles/filter.module.css";
 import { useEffect, useState } from "react";
 
-export default function Filter({ categories, handleConditions }: any) {
+interface Cat {
+  id: number;
+  categories: string;
+}
+
+export default function Filter({
+  categories,
+  handleConditions,
+}: any): JSX.Element {
   const [state, setState] = useState("");
 
-  const handlerOnClick = (e: any) => {
+  const handleClick = (e: any) => {
     e.preventDefault();
-    state === e.target.outerText ? setState("") : setState(e.target.outerText);
+    if (e.target.value === "All") {
+      setState("");
+    } else {
+      state === e.target.value ? setState("") : setState(e.target.value);
+    }
   };
 
   useEffect(() => {
@@ -15,15 +27,16 @@ export default function Filter({ categories, handleConditions }: any) {
 
   return (
     <div className={styles.container}>
-      {categories?.map((e: any) => (
-        <div
-          key={e.id}
-          onClick={(e) => handlerOnClick(e)}
-          className={state === e.categories ? styles.filtered : styles.filter}
-        >
-          {e.categories}
-        </div>
-      ))}
+      <select className={styles.select} onChange={(e) => handleClick(e)}>
+        <option value="All" className={styles.option}>
+          All
+        </option>
+        {categories?.map((e: Cat) => (
+          <option key={e.id} value={e.categories} className={styles.option}>
+            {e.categories}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }

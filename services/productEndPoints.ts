@@ -58,7 +58,7 @@ export async function getProducts2(data: any) {
       }
       query = array.join("&");
     }
-    if (!query.length) {
+    if (data === "All") {
       const request = await fetch(
         "https://techproductsshop-production.up.railway.app/products"
       );

@@ -16,6 +16,7 @@
   text-align: center;
   gap: 10px;
   box-shadow: 0 2px 20px #dddddd;
+  border-radius: 6px;
 }
 
 .item:hover {
@@ -168,6 +169,23 @@
   padding: 25px 0;
   display: flex;
   width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 15px;
+}
+
+.options{
+  display: flex;
+  flex-direction: row;
+  width: 700px;
+  justify-content: space-between;
+}
+
+.ordering{
+  display: flex;
+  width: 200px;
+  flex-flow: row nowrap;
+  gap: 8px;
 }
 
 .searchBar {
@@ -180,10 +198,10 @@
 .toolsBtn {
   justify-content: space-evenly;
   gap: 8px;
-  width: 400px;
+  width: 300px;
   display: flex;
   flex-direction: row;
-  margin: 0 220px;
+  margin: 0 50px;
 }
 
 .toolsBtn button {
@@ -194,15 +212,7 @@
   color: #92ba92;
   border-radius: 5px;
   border: 1px solid #92ba92;
-}
-
-.icon {
-  margin: 6px;
-  margin-left: 15px;
-  margin-right: 5px;
-  font-size: 16px;
-  color: #2a528a;
-  background: transparent;
+  font-size: 0.9rem;
 }
 
 .toolsBtn button:hover {
@@ -255,7 +265,8 @@
     justify-content: center;
   }
   .searchBar {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
+  padding: 0 1em 0 0;  
   }
 
   .toolsBtn {

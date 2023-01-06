@@ -249,6 +249,24 @@
   margin-top: 10px;
 }
 
+.refreshBtn{
+  padding: 12px 20px;
+  border: none;
+  border-radius: 9px;
+  background: #f5f5f5;
+  color: #6b9080;
+  font-weight: 500;
+}
+.refreshBtn:hover{
+  background: #749f82;
+  color:#fff;
+}
+.refresh{
+  margin: 0 10px;
+  width: 200px;
+  height: 30px;
+}
+
 @keyframes scale {
   from {
     transform: scale(0);
@@ -268,6 +286,21 @@
   margin-bottom: 20px;
   padding: 0 1em 0 0;  
   }
+
+  .options{
+    flex-direction: column;
+  }
+  .ordering{
+    margin: 20px 70px;
+    gap: 10px;
+
+  }
+  
+  .refresh{
+    margin: 10px 200px;
+  }
+  
+
 
   .toolsBtn {
     align-items: center;

@@ -86,15 +86,21 @@ export default function Index({ categories }: Data) {
     setConditions({});
   }, [router.query.refresh]);
 
-  if (items && items.length > 150) {
-    products = [...items];
-  }
-
   return (
     <Layout>
       <div className={styledProducts.tools}>
         <div className={styledProducts.searchBar}>
           <SearchBar handleConditions={handleConditions} />
+        </div>
+        <div className={styledProducts.refresh}>
+          {items && items.length < 150 ? (
+            <button
+              className={styledProducts.refreshBtn}
+              onClick={() => setConditions({})}
+            >
+              Refresh{" "}
+            </button>
+          ) : null}
         </div>
         <div className={styledProducts.options}>
           <div className={styledProducts.ordering}>

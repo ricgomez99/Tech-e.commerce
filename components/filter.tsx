@@ -20,6 +20,8 @@ export default function Filter({
       state === e.target.value ? setState("") : setState(e.target.value);
     }
   };
+  
+
 
   useEffect(() => {
     handleConditions({ categories: state });
@@ -27,7 +29,7 @@ export default function Filter({
 
   return (
     <div className={styles.container}>
-      <select className={styles.select} onChange={(e) => handleClick(e)}>
+      <select className={styles.select} defaultValue= "All" onChange={(e) => handleClick(e)}>
         <option value="All" className={styles.option}>
           All
         </option>

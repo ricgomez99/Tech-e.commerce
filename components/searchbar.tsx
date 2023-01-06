@@ -7,8 +7,12 @@ export default function SearchBar({ handleConditions }: any) {
 
   const handlerOnSubmit = (e: any) => {
     e.preventDefault();
+    if(title === ""){
+      handleConditions({});
+    }else{
     handleConditions({ title });
     setTitle("");
+    }
   };
 
   return (

@@ -1,4 +1,5 @@
 import _ from "lodash";
+import "styles/paginator.module.css";
 
 type Params = {
   items: number;

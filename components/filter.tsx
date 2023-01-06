@@ -6,16 +6,18 @@ interface Cat {
   categories: string;
 }
 
-export default function Filter({ categories, handleConditions }: any) {
+export default function Filter({
+  categories,
+  handleConditions,
+}: any): JSX.Element {
   const [state, setState] = useState("");
 
   const handleClick = (e: any) => {
     e.preventDefault();
-    if(e.target.value === "All" ){
+    if (e.target.value === "All") {
       setState("");
-    }
-    else{
-    state === e.target.value ? setState("") : setState(e.target.value);
+    } else {
+      state === e.target.value ? setState("") : setState(e.target.value);
     }
   };
 
@@ -25,24 +27,16 @@ export default function Filter({ categories, handleConditions }: any) {
 
   return (
     <div className={styles.container}>
-      <select onChange={(e) => handleClick(e)}>
-        <option value= "All" >ALL</option>
-        {categories?.map((e: Cat)=>(
-          <option key={e.id} value={e.categories}>
+      <select className={styles.select} onChange={(e) => handleClick(e)}>
+        <option value="All" className={styles.option}>
+          All
+        </option>
+        {categories?.map((e: Cat) => (
+          <option key={e.id} value={e.categories} className={styles.option}>
             {e.categories}
           </option>
         ))}
-      </select>   
-     
+      </select>
     </div>
   );
 }
-// {categories?.map((e: any) => (
-//   <div
-//     key={e.id}
-//     onClick={(e) => handlerOnClick(e)}
-//     className={state === e.categories ? styles.filtered : styles.filter}
-//   >
-//     {e.categories}
-//   </div>
-// ))}

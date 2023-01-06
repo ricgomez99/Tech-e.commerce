@@ -112,13 +112,12 @@ export default function Index({ categories }: Data) {
                   onClick={() => router.push("/newProduct")}
                 >
                   Add Product
-                  <BsFillPlusCircleFill className={styledProducts.icon} />
                 </button>
                 <button
                   className={styledProducts.adminBtn}
                   onClick={() => router.push(`/admin?role=${role}`)}
                 >
-                  Admin <BsFillGearFill className={styledProducts.icon} />
+                  Admin
                 </button>
               </div>
             ) : role === "MOD" ? (

@@ -154,6 +154,9 @@
   padding: 25px 0;
   display: flex;
   width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 15px;
 }
 
 .options{
@@ -161,7 +164,6 @@
   flex-direction: row;
   width: 700px;
   justify-content: space-between;
-  transform: translateX(350px);
 }
 
 .ordering{
@@ -181,7 +183,7 @@
 .toolsBtn {
   justify-content: space-evenly;
   gap: 8px;
-  width: 200px;
+  width: 300px;
   display: flex;
   flex-direction: row;
   margin: 0 50px;
@@ -195,15 +197,7 @@
   color: #92ba92;
   border-radius: 5px;
   border: 1px solid #92ba92;
-}
-
-.icon {
-  margin: 6px;
-  margin-left: 15px;
-  margin-right: 5px;
-  font-size: 16px;
-  color: #2a528a;
-  background: transparent;
+  font-size: 0.9rem;
 }
 
 .toolsBtn button:hover {

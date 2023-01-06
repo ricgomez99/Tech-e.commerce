@@ -20,11 +20,14 @@ export default function Sort({ handleConditions }: any) {
         size="sm"
         style={{
           color: "#6B9080",
-          padding: "6px 20px",
+          padding: "9px 20px",
           fontWeight: "500",
-          width: "120px"
+          width: "120px",
+          boxShadow: "4px 8px 20px #bbbb",
+          borderRadius: "9px",
+          background:"#f5f5f5",
         }}
-        onClick={(e: any)=> handleOnClick(e)}
+        onClick={(e: any) => handleOnClick(e)}
       >
         PRICE <TbArrowsSort />
       </Button>

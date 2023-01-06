@@ -5,6 +5,17 @@
   justify-content: center;
   align-items: center;
 }
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+    z-index: 3 !important;
+    color: #23527c !important;
+    background-color: purple !important;
+    border-color: #ddd !important;
+}
+
+
 @media(max-width:750px){
   .container{
     flex-wrap: wrap;

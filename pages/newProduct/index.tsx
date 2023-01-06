@@ -216,22 +216,14 @@ export default function NewProduct(categories: any) {
     } else {
       return (
         <Layout>
-          <NotFound
-            shortMessage=""
-            title="ACCESS DENIED"
-            description="You are not allowed to access to this content, please go back to the HomePage"
-          />
+          <NotFound button={false} />
         </Layout>
       );
     }
   } else {
     return (
       <Layout>
-        <NotFound
-          shortMessage=""
-          title="ACCESS DENIED"
-          description="You are not allowed to access to this content, please go back to the HomePage"
-        />
+        <NotFound button={false} />
       </Layout>
     );
   }

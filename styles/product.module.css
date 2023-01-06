@@ -16,6 +16,7 @@
   text-align: center;
   gap: 10px;
   box-shadow: 0 2px 20px #dddddd;
+  border-radius: 6px;
 }
 
 .item:hover {
@@ -89,32 +90,47 @@
 
 .listItem {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   border-bottom: solid 1px #ccc;
-  padding: 10px 0;
+  padding: 10px 5px;
 }
 
 .content {
   white-space: nowrap;
-  width: 190px;
+  width: 220px;
+}
+
+.listTitle {
+  font-weight: 500;
+  font-size: 1.5rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin: 5px 0;
+  color: #385170;
 }
 
 .detailContent {
   display: flex;
   justify-content: space-between;
+  padding: 0 3px;
 }
 
 .button {
   background-color: transparent;
-  color: #223fff;
+  color: #749f82;
   border: none;
 }
 
-.listItem h3 {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  margin: 5px 0;
+.button:hover {
+  color: #96c2a5;
+  transform: scale(1.05);
 }
+
+.listPrice {
+  color: #4e6c90;
+  font-weight: 500;
+}
+
 .buttons {
   display: flex;
   flex-direction: column;
@@ -153,6 +169,23 @@
   padding: 25px 0;
   display: flex;
   width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 15px;
+}
+
+.options{
+  display: flex;
+  flex-direction: row;
+  width: 700px;
+  justify-content: space-between;
+}
+
+.ordering{
+  display: flex;
+  width: 200px;
+  flex-flow: row nowrap;
+  gap: 8px;
 }
 
 .searchBar {
@@ -165,10 +198,10 @@
 .toolsBtn {
   justify-content: space-evenly;
   gap: 8px;
-  width: 400px;
+  width: 300px;
   display: flex;
   flex-direction: row;
-  margin: 0 220px;
+  margin: 0 50px;
 }
 
 .toolsBtn button {
@@ -179,15 +212,7 @@
   color: #92ba92;
   border-radius: 5px;
   border: 1px solid #92ba92;
-}
-
-.icon {
-  margin: 6px;
-  margin-left: 15px;
-  margin-right: 5px;
-  font-size: 16px;
-  color: #2a528a;
-  background: transparent;
+  font-size: 0.9rem;
 }
 
 .toolsBtn button:hover {
@@ -220,8 +245,26 @@
 }
 
 .adminImage {
-  object-fit:scale-down;
+  object-fit: scale-down;
   margin-top: 10px;
+}
+
+.refreshBtn{
+  padding: 12px 20px;
+  border: none;
+  border-radius: 9px;
+  background: #f5f5f5;
+  color: #6b9080;
+  font-weight: 500;
+}
+.refreshBtn:hover{
+  background: #749f82;
+  color:#fff;
+}
+.refresh{
+  margin: 0 10px;
+  width: 200px;
+  height: 30px;
 }
 
 @keyframes scale {
@@ -241,8 +284,23 @@
   }
   .searchBar {
   margin-bottom: 20px;
+  padding: 0 1em 0 0;  
+  }
+
+  .options{
+    flex-direction: column;
+  }
+  .ordering{
+    margin: 20px 70px;
+    gap: 10px;
+
   }
   
+  .refresh{
+    margin: 10px 200px;
+  }
+  
+
 
   .toolsBtn {
     align-items: center;

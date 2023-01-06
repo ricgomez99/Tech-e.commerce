@@ -21,10 +21,21 @@ import Loading from "components/loading";
 type Data = {
   categories: any[];
 };
+interface Product {
+  id: string;
+  title: string;
+  url: null;
+  image: string;
+  price: number;
+  stock: number;
+  categories: string;
+  description: string;
+  enabled: boolean;
+}
 
 export default function Index({ categories }: Data) {
   const router = useRouter();
-  const [items, setItems] = useState<any[] | false>([]);
+  const [items, setItems] = useState<Product[] | false>([]);
   const [conditions, setConditions] = useState({});
   const [currentPage, setCurrentPage] = useState<number>(1);
   const pageSize = 8;
@@ -32,6 +43,7 @@ export default function Index({ categories }: Data) {
   const [role, setRole] = useState();
   const { data: session } = useSession();
   const email = session?.user?.email;
+  let products: Product[] = [];
 
   useEffect(() => {
     (async () => {
@@ -47,6 +59,9 @@ export default function Index({ categories }: Data) {
   };
 
   const handleConditions = (values: any) => {
+    if (values.categories === "All") {
+      setConditions("All");
+    }
     setConditions({ ...conditions, ...values });
   };
 
@@ -77,66 +92,54 @@ export default function Index({ categories }: Data) {
         <div className={styledProducts.searchBar}>
           <SearchBar handleConditions={handleConditions} />
         </div>
-
-        {role ? (
-          role === "ADMIN" ? (
-            <div className={styledProducts.toolsBtn}>
-              <button
-                className={styledProducts.addToCart}
-                onClick={() => router.push("/newProduct")}
-              >
-                Add Product
-                <BsFillPlusCircleFill className={styledProducts.icon} />
-              </button>
-              <button
-                className={styledProducts.adminBtn}
-                onClick={() => router.push("/admin")}
-              >
-                Admin <BsFillGearFill className={styledProducts.icon} />
-              </button>
-            </div>
-          ) : role === "MOD" ? (
-            <div className={styledProducts.toolsBtn}>
-              <button
-                className={styledProducts.adminBtn}
-                onClick={() => router.push("/admin")}
-              >
-                MOD <BsFillGearFill className={styledProducts.icon} />
-              </button>
-            </div>
-          ) : null
-        ) : null}
-      </div>
-      <div className={styledProducts.products_filter_container}>
-        <div className={styles.filter_sorter}>
-          <div className={styles.allBtn}>
-            <Button
-              variant="light"
-              size="sm"
-              style={{
-                color: "#6B9080",
-                padding: "6px 25px",
-                fontWeight: "500",
-              }}
+        <div className={styledProducts.refresh}>
+          {items && items.length < 150 ? (
+            <button
+              className={styledProducts.refreshBtn}
               onClick={() => setConditions({})}
             >
-              All
-            </Button>
-          </div>
-          {items !== false && items.length > 0 && (
-            <div>
-              <div className={styles.sort}>
-                <Sort handleConditions={handleConditions} />
-              </div>
-              <div className={styles.categories}>
-                <Filter
-                  categories={categories}
-                  handleConditions={handleConditions}
-                />
-              </div>
-            </div>
-          )}
+              Refresh{" "}
+            </button>
+          ) : null}
         </div>
+        <div className={styledProducts.options}>
+          <div className={styledProducts.ordering}>
+            <Sort handleConditions={handleConditions} />
+            <Filter
+              categories={categories}
+              handleConditions={handleConditions}
+            />
+          </div>
+          {role ? (
+            role === "ADMIN" ? (
+              <div className={styledProducts.toolsBtn}>
+                <button
+                  className={styledProducts.addToCart}
+                  onClick={() => router.push("/newProduct")}
+                >
+                  Add Product
+                </button>
+                <button
+                  className={styledProducts.adminBtn}
+                  onClick={() => router.push(`/admin?role=${role}`)}
+                >
+                  Admin
+                </button>
+              </div>
+            ) : role === "MOD" ? (
+              <div className={styledProducts.toolsBtn}>
+                <button
+                  className={styledProducts.adminBtn}
+                  onClick={() => router.push(`/admin?role=${role}`)}
+                >
+                  MOD <BsFillGearFill className={styledProducts.icon} />
+                </button>
+              </div>
+            ) : null
+          ) : null}
+        </div>
+      </div>
+      <div>
         {items !== false && items.length > 0 ? (
           <div className={styledProducts.items}>
             {paginateItems &&
@@ -149,19 +152,11 @@ export default function Index({ categories }: Data) {
                 />
               ))}
           </div>
-        ) : items === false ? 
-         (
-          <NotFound
-            button={false}
-            shortMessage=""
-            description="Seems like we could not find the product you want"
-            title="Not Found"
-          />
-        ) :
-        (
-          <Loading/>
-        )
-        }
+        ) : items === false ? (
+          <NotFound button={false} />
+        ) : (
+          <Loading />
+        )}
       </div>
       {items !== false && items.length > 0 && (
         <div className={stylePaginator.container}>

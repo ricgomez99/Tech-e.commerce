@@ -25,19 +25,19 @@ export default function UserOrdersList({ id }: any) {
 
   return (
     <ul>
-      {orders?.length
-        ? orders.map((o) => (
-            <>
-              <h6 onClick={() => handleClick(o.id)} key={o.id}>
-                Sale ID: {o.id}, Date: {o.date.slice(0, 10)}, Total: ${o.total}.00
-                USD
-              </h6>
-              <UserSaleDetails id={o.id} />
-            </>
-          ))
-        : (
-          <NotFound shortMessage="" title="There's no orders here yet" description="Go to the store and buy those products that you like the most." button={false}/>
-        )}
+      {orders?.length ? (
+        orders.map((o) => (
+          <>
+            <h6 onClick={() => handleClick(o.id)} key={o.id}>
+              Sale ID: {o.id}, Date: {o.date.slice(0, 10)}, Total: ${o.total}.00
+              USD
+            </h6>
+            <UserSaleDetails id={o.id} />
+          </>
+        ))
+      ) : (
+        <NotFound button={false} />
+      )}
     </ul>
   );
 }

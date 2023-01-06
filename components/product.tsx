@@ -123,10 +123,10 @@ export default function Product({ product, showAs, qty }: Data) {
           />
         </div>
         <div className={style.content}>
-          <h3>{product.title}</h3>
+          <h3 className={style.listTitle}>{product.title}</h3>
           <div className={style.detailContent}>
             <div className="left">
-              <div>${product.price}</div>
+              <div className={style.listPrice}>${product.price}</div>
               {qty === 0 ? "" : <div>Units: {qty}</div>}
               {qty === 0 ? "" : <div>Subtotal: ${qty * product.price}</div>}
             </div>
@@ -184,7 +184,11 @@ export default function Product({ product, showAs, qty }: Data) {
         </div>
         <h3 className={style.adminTitle}>{product.title}</h3>
         <div className={style.adminPrice}>${product.price}</div>
-        {product.stock === 0 ? "" : <div className={style.adminUnits}>Units: {product.stock}</div>}
+        {product.stock === 0 ? (
+          ""
+        ) : (
+          <div className={style.adminUnits}>Units: {product.stock}</div>
+        )}
         <div className={style.adminEdit}>
           <div className={style.adminEditButtons}>
             <UpdateModal product={product} />

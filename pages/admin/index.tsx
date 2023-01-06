@@ -8,14 +8,18 @@ import { useSession } from "next-auth/react";
 import { findUniqueUser } from "services/userEndPoints";
 import { MdOutlineArrowBack } from "react-icons/md";
 import styles from "../../styles/admin.module.css";
+import Loading from "components/loading";
 import NotFound from "components/notFound";
 
 export default function AdminTools() {
   const router = useRouter();
   const [tool, setTool] = useState("users");
   const [role, setRole] = useState();
+  const [active, setActive] = useState(false);
   const { data: session } = useSession();
-  const email = session?.user?.email;
+  const email = session?.user?.email; //2seg
+
+  const rol = router.query.role;
 
   useEffect(() => {
     try {
@@ -23,77 +27,65 @@ export default function AdminTools() {
         if (typeof email === "string") {
           let data = await findUniqueUser(email);
           setRole(data.role);
+          setActive(true);
         }
       })();
     } catch (error) {
       console.log(error);
     }
-  }, [email]);
+  }, []);
 
-  if (role) {
-    if (role === "ADMIN" || role === "MOD") {
-      return (
-        <Layout>
+  return (
+    <Layout>
+      {rol ? (
+        <div>
           <div>
-            <div>
-              <MdOutlineArrowBack
-                onClick={() => router.push("/store")}
-                className={styles.backBtn}
-              />
-            </div>
-            <div className="d-flex justify-content-evenly">
-              <button
-                className={`btn btn-outline-secondary ${styles.active} `}
-                onClick={() => setTool("users")}
-              >
-                Users
-              </button>
-              <button
-                className={`btn btn-outline-secondary ${styles.active} `}
-                onClick={() => setTool("orders")}
-              >
-                Orders
-              </button>
-              <button
-                className={`btn btn-outline-secondary ${styles.active} `}
-                onClick={() => setTool("products")}
-              >
-                Products
-              </button>
-            </div>
-            <div>
-              {tool === "users" ? (
-                <AdminUsers />
-              ) : tool === "orders"  && role === 'ADMIN' ? (
-                <AdminOrders />
-              ) : tool === "products" && role === 'ADMIN' ? (
-                <AdminProducts />
-              ) : (
-                <div>
-                  <NotFound 
-                    shortMessage="" 
-                    title="ACCESS DENIED" 
-                    description="Only Admins can see this content, please contact with an Admin" 
-                    button={false}
-                  />
-                </div>
-              )}
-            </div>
+            <MdOutlineArrowBack
+              onClick={() => router.push("/store")}
+              className={styles.backBtn}
+            />
           </div>
-        </Layout>
-      );
-    } else {
-      return (
-        <Layout>
-          <NotFound shortMessage="" title="ACCESS DENIED" description="You are not allowed to access to this content, please go back to the HomePage"/>
-        </Layout>
-      );
-    }
-  } else {
-    return (
-      <Layout>
-        <NotFound shortMessage="" title="ACCESS DENIED" description="You are not allowed to access to this content, please go back to the HomePage"/>
-      </Layout>
-    );
-  }
+          <div className="d-flex justify-content-evenly">
+            <button
+              className={`btn btn-outline-secondary ${styles.active} `}
+              onClick={() => setTool("users")}
+            >
+              Users
+            </button>
+            <button
+              className={`btn btn-outline-secondary ${styles.active} `}
+              onClick={() => setTool("orders")}
+            >
+              Orders
+            </button>
+            <button
+              className={`btn btn-outline-secondary ${styles.active} `}
+              onClick={() => setTool("products")}
+            >
+              Products
+            </button>
+          </div>
+          <div>
+            {tool === "users" ? (
+              <AdminUsers />
+            ) : tool === "orders" && role === "ADMIN" ? (
+              <AdminOrders />
+            ) : tool === "products" && role === "ADMIN" ? (
+              <AdminProducts />
+            ) : (
+              <div>
+                <NotFound button={false} />
+              </div>
+            )}
+          </div>
+        </div>
+      ) : (
+        <NotFound button={true} />
+      )}
+    </Layout>
+  );
+}
+
+{
+  /*  */
 }

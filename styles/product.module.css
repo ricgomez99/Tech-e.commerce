@@ -90,32 +90,47 @@
 
 .listItem {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   border-bottom: solid 1px #ccc;
-  padding: 10px 0;
+  padding: 10px 5px;
 }
 
 .content {
   white-space: nowrap;
-  width: 190px;
+  width: 220px;
+}
+
+.listTitle {
+  font-weight: 500;
+  font-size: 1.5rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin: 5px 0;
+  color: #385170;
 }
 
 .detailContent {
   display: flex;
   justify-content: space-between;
+  padding: 0 3px;
 }
 
 .button {
   background-color: transparent;
-  color: #223fff;
+  color: #749f82;
   border: none;
 }
 
-.listItem h3 {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  margin: 5px 0;
+.button:hover {
+  color: #96c2a5;
+  transform: scale(1.05);
 }
+
+.listPrice {
+  color: #4e6c90;
+  font-weight: 500;
+}
+
 .buttons {
   display: flex;
   flex-direction: column;
@@ -230,7 +245,7 @@
 }
 
 .adminImage {
-  object-fit:scale-down;
+  object-fit: scale-down;
   margin-top: 10px;
 }
 
@@ -253,7 +268,6 @@
   margin-bottom: 20px;
   padding: 0 1em 0 0;  
   }
-  
 
   .toolsBtn {
     align-items: center;

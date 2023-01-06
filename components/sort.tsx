@@ -22,8 +22,9 @@ export default function Sort({ handleConditions }: any) {
           color: "#6B9080",
           padding: "6px 20px",
           fontWeight: "500",
+          width: "120px"
         }}
-        onClick={(e) => handleOnClick(e)}
+        onClick={(e: any)=> handleOnClick(e)}
       >
         PRICE <TbArrowsSort />
       </Button>

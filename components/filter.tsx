@@ -11,22 +11,22 @@ export default function Filter({ categories, handleConditions }: any) {
 
   const handleClick = (e: any) => {
     e.preventDefault();
-    console.log("papa",e)
-    if(e.target.value === "ALL" ){
+    if(e.target.value === "All" ){
       setState("");
     }
+    else{
     state === e.target.value ? setState("") : setState(e.target.value);
+    }
   };
 
   useEffect(() => {
     handleConditions({ categories: state });
   }, [state]);
-  console.log(categories)
 
   return (
     <div className={styles.container}>
       <select onChange={(e) => handleClick(e)}>
-        <option value= "ALL" >ALL</option>
+        <option value= "All" >ALL</option>
         {categories?.map((e: Cat)=>(
           <option key={e.id} value={e.categories}>
             {e.categories}

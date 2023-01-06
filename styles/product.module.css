@@ -16,6 +16,7 @@
   text-align: center;
   gap: 10px;
   box-shadow: 0 2px 20px #dddddd;
+  border-radius: 6px;
 }
 
 .item:hover {
@@ -155,6 +156,21 @@
   width: 100%;
 }
 
+.options{
+  display: flex;
+  flex-direction: row;
+  width: 700px;
+  justify-content: space-between;
+  transform: translateX(350px);
+}
+
+.ordering{
+  display: flex;
+  width: 200px;
+  flex-flow: row nowrap;
+  gap: 8px;
+}
+
 .searchBar {
   justify-content: flex-start;
   display: flex;
@@ -165,10 +181,10 @@
 .toolsBtn {
   justify-content: space-evenly;
   gap: 8px;
-  width: 400px;
+  width: 200px;
   display: flex;
   flex-direction: row;
-  margin: 0 220px;
+  margin: 0 50px;
 }
 
 .toolsBtn button {
